@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtl0yorbotjnc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1oxyp"]
-[ext_resource type="PackedScene" uid="uid://cx3vvx5let8fr" path="res://player.tscn" id="1_sgkt5"]
-[ext_resource type="Script" path="res://player_2.gd" id="2_mjfw7"]
-[ext_resource type="PackedScene" uid="uid://bwk1dahk8pwq1" path="res://enemy.tscn" id="4_d8af1"]
+[ext_resource type="PackedScene" uid="uid://cx3vvx5let8fr" path="res://player/mango/mango.tscn" id="1_sgkt5"]
+[ext_resource type="Script" path="res://player/coco/coco.gd" id="2_mjfw7"]
+[ext_resource type="PackedScene" uid="uid://bwk1dahk8pwq1" path="res://enemy/enemy.tscn" id="4_d8af1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hktrr"]
 
@@ -25,9 +25,10 @@ mesh = SubResource("BoxMesh_hktrr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_7ilxj")
 
-[node name="player_1" parent="." instance=ExtResource("1_sgkt5")]
+[node name="mango" parent="." instance=ExtResource("1_sgkt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28386, 1.21449, -1.25079)
 
-[node name="player_2" parent="." instance=ExtResource("1_sgkt5")]
+[node name="coco" parent="." instance=ExtResource("1_sgkt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21521, 1.00842, 2.28278)
 script = ExtResource("2_mjfw7")
 
@@ -44,6 +45,6 @@ offset_bottom = 239.0
 text = "Despacito"
 
 [node name="enemy" parent="." instance=ExtResource("4_d8af1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60084, 1.20589, 0.623712)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60084, 1.20589, -0.0568863)
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

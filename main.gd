@@ -4,7 +4,7 @@ extends Node3D
 var player1 : Player
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player1 = get_node("player_2")
+	player1 = get_node("coco")
 	if player1:
 		print("player1 is assigned correctly")
 	else:
