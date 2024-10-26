@@ -4,6 +4,7 @@ extends Player
 func _ready() -> void:
 	jump_key = "jump_2"
 	attack_key = "attack_2"
+	upper_key = "upper_2"
 	
 	JUMP_VELOCITY = 7
 	player_name = "coco"

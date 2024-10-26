@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cx3vvx5let8fr"]
+[gd_scene load_steps=74 format=3 uid="uid://cx3vvx5let8fr"]
 
 [ext_resource type="Script" path="res://player/mango/scripts/mango.gd" id="1_voefm"]
 [ext_resource type="Texture2D" uid="uid://c1ualol0b73qu" path="res://player/mango/sprites/Attack (64x32).png" id="2_a5g5h"]
@@ -200,6 +200,50 @@ region = Rect2(768, 0, 64, 32)
 atlas = ExtResource("4_nscti")
 region = Rect2(832, 0, 64, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_42os8"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enfj7"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cftcn"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7dat"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edu8c"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp801"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugy2r"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2x8a"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qps6"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfmg7"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(576, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyss3"]
+atlas = ExtResource("2_a5g5h")
+region = Rect2(640, 0, 64, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_xvpom"]
 animations = [{
 "frames": [{
@@ -365,6 +409,44 @@ animations = [{
 "loop": true,
 "name": &"jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42os8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enfj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cftcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7dat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edu8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp801")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugy2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2x8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qps6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfmg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyss3")
+}],
+"loop": true,
+"name": &"uppercut",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_tfy0e"]
@@ -508,13 +590,42 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 }
 
+[sub_resource type="Animation" id="Animation_kisaf"]
+resource_name = "uppercut"
+length = 1.33334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"uppercut"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mirs2"]
 _data = {
 "RESET": SubResource("Animation_tfy0e"),
 "attack": SubResource("Animation_v4j7g"),
 "hurt": SubResource("Animation_jh4yw"),
 "idle": SubResource("Animation_acuac"),
-"jump": SubResource("Animation_lqnid")
+"jump": SubResource("Animation_lqnid"),
+"uppercut": SubResource("Animation_kisaf")
 }
 
 [node name="player" type="CharacterBody3D"]
