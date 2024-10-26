@@ -11,6 +11,7 @@ var player_name: String = "Despacito"
 var is_banned = false
 var is_hurt = false
 var is_attack = false
+var is_jump = false
 
 signal hurt(amount:float)
 signal downed
@@ -30,11 +31,13 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	jump(jump_key)
-	attack(attack_key)
+	if !is_banned and !is_hurt:
+		jump(jump_key)
+		attack(attack_key)
 	
 	if anim_player and !is_hurt and !is_attack:
 		if is_on_floor():
+			is_jump = false
 			if anim_player.current_animation != "idle":  # Go back to idle if landed
 				anim_player.play("idle")
 		else:
@@ -44,16 +47,17 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func jump(j_key: String):
-	if !is_banned and !is_hurt and !is_attack and Input.is_action_just_pressed(j_key) and is_on_floor():
+	if !is_attack and Input.is_action_just_pressed(j_key) and is_on_floor():
+		is_jump = true
 		print(str(health) + " " + player_name)
 		velocity.y = JUMP_VELOCITY
 		anim_player.play("jump")
 
 func attack(a_key: String):
-	if !is_banned and !is_hurt and Input.is_action_just_pressed(a_key) and is_on_floor():
+	if !is_jump and Input.is_action_just_pressed(a_key) and is_on_floor():
+		is_attack = true
 		print("attacks " + player_name)
 		anim_player.play("attack")
-		is_attack = true
 
 func hurt_me(amount: float):
 	health -= amount

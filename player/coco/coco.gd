@@ -3,6 +3,8 @@ extends Player
 # Player 1 uses "jump_1" for jumping
 func _ready() -> void:
 	jump_key = "jump_2"
+	attack_key = "attack_2"
+	
 	JUMP_VELOCITY = 7
 	player_name = "coco"
 	health = 50
