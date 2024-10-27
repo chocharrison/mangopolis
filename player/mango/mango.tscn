@@ -628,7 +628,7 @@ _data = {
 "uppercut": SubResource("Animation_kisaf")
 }
 
-[node name="player" type="CharacterBody3D"]
+[node name="mango" type="CharacterBody3D"]
 script = ExtResource("1_voefm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -15,6 +15,9 @@ func _ready() -> void:
 	connect("hurt", Callable(self, "hurt_me"))
 	connect("downed", Callable(self, "banned"))
 	connect("animationover",Callable(self,"animationOver"))
+	
+func _process(delta: float) -> void:
+	pass
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

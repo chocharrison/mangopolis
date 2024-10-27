@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_1oxyp"]
 [ext_resource type="PackedScene" uid="uid://cx3vvx5let8fr" path="res://player/mango/mango.tscn" id="1_sgkt5"]
-[ext_resource type="Script" path="res://player/coco/coco.gd" id="2_mjfw7"]
+[ext_resource type="PackedScene" uid="uid://caxrn5rflxhf1" path="res://player/coco/coco.tscn" id="3_5fsrg"]
 [ext_resource type="PackedScene" uid="uid://bwk1dahk8pwq1" path="res://enemy/enemy.tscn" id="4_d8af1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hktrr"]
@@ -28,9 +28,8 @@ shape = SubResource("BoxShape3D_7ilxj")
 [node name="mango" parent="." instance=ExtResource("1_sgkt5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28386, 1.21449, -1.25079)
 
-[node name="coco" parent="." instance=ExtResource("1_sgkt5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21521, 1.00842, 2.28278)
-script = ExtResource("2_mjfw7")
+[node name="coco" parent="." instance=ExtResource("3_5fsrg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47608, 0.864608, 1.75089)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.952257, 0.305296, 0, -0.305296, 0.952257, 0.160697, 3.10579, 5.57848)
