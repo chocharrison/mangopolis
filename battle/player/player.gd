@@ -9,6 +9,7 @@ var upper_key: String = "ui_accept"
 
 var player_name: String = "Despacito"
 var health: float = 100
+var MAX_HEALTH: float = 100
 var JUMP_VELOCITY: float = 4
 
 var anim_player: AnimationPlayer
@@ -25,7 +26,7 @@ var is_jump = false
 var is_stunned = false
 
 var is_select = false
-
+var is_menu = false
 
 enum PHASE {ATTACK , DEFEND, DED, MISC}
 
@@ -36,10 +37,10 @@ var current_action: ACTION = ACTION.JUMP
 
 ################################# Signals
 
-signal hurt(amount:float)
-signal downed
-signal animationover
-signal switch_phase(phase:int)
+signal hurt_signal(amount:float)
+signal banned_signal
+signal animation_over_signal
+signal phase_switch_signal(phase:int)
 
 ################################# main functions
 
@@ -74,8 +75,13 @@ func attack():
 		
 		else:
 			executing_action()
-			if anim_player.current_animation != "idle":  # Go back to idle if landed
-				anim_player.play("idle")
+			if is_on_floor():
+				is_jump = false
+				if anim_player.current_animation != "idle":  # Go back to idle if landed
+					anim_player.play("idle")
+			else:
+				if anim_player.current_animation != "jump":  # Play jump if in the air
+					anim_player.play("jump")
 
 
 
@@ -90,24 +96,30 @@ func selecting_action():
 		
 	if Input.is_action_just_pressed(jump_key):
 		print(current_action)
+		jump()
 		is_select = true
 
 func executing_action():
-	match current_action:
-		ACTION.JUMP:
-			jumping_qte()
-		ACTION.PUNCH:
-			jumping_qte()
-		ACTION.ITEMS:
-			jumping_qte()
-		ACTION.SPECIAL:
-			jumping_qte()
-		ACTION.RUN:
-			jumping_qte()
-
-func jumping_qte():
+	if !is_menu:
+		match current_action:
+			ACTION.JUMP:
+				jumping_qte()
+			ACTION.PUNCH:
+				jumping_qte()
+			ACTION.ITEMS:
+				jumping_qte()
+			ACTION.SPECIAL:
+				jumping_qte()
+			ACTION.RUN:
+				jumping_qte()
 	if Input.is_action_just_pressed(attack_key):
 		is_select = false
+		is_menu = false
+
+func jumping_qte():
+	is_menu = true
+	print(player_name+ " selected jump")
+		
 
 ############################################## defense moves
 func defend():
@@ -166,7 +178,7 @@ func hurt_me(amount: float):
 	anim_player.play("hurt")
 
 	if(health <= 0):
-		downed.emit()
+		banned_signal.emit()
 
 func banned():
 	print(player_name+" ded")
@@ -184,3 +196,11 @@ func animationOver():
 
 func phase_switch(change: int):
 	phase = change
+
+########################### ui changes
+func cancel_menu():
+	is_select = false
+	is_menu = false
+	
+func get_health_info():
+	return [health,MAX_HEALTH]

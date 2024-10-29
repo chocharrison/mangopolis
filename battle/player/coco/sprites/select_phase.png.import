@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s2yjg20ms0rv"
-path="res://.godot/imported/mario-jump.png-81930e9b16cefff83cd672ffa812ab34.ctex"
+uid="uid://cjdobemvi8yww"
+path="res://.godot/imported/select_phase.png-c7854266282ce140abd7b41de4c1fd42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/coco/sprites/mario-jump.png"
-dest_files=["res://.godot/imported/mario-jump.png-81930e9b16cefff83cd672ffa812ab34.ctex"]
+source_file="res://battle/player/coco/sprites/select_phase.png"
+dest_files=["res://.godot/imported/select_phase.png-c7854266282ce140abd7b41de4c1fd42.ctex"]
 
 [params]
 

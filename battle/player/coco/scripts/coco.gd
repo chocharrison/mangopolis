@@ -11,13 +11,14 @@ func _ready() -> void:
 	
 	JUMP_VELOCITY = 7
 	health = 50
+	MAX_HEALTH = 50
 	player_name = "coco"
 	anim_player = get_node("AnimationPlayer")
 	animated = get_node("AnimatedSprite3D")
 	
-	connect("hurt", Callable(self, "hurt_me"))
-	connect("downed", Callable(self, "banned"))
-	connect("switch_phase", Callable(self, "phase_switch"))
+	connect("hurt_signal", Callable(self, "hurt_me"))
+	connect("banned_signal", Callable(self, "banned"))
+	connect("phase_switch_signal", Callable(self, "phase_switch"))
 
 func _process(delta: float) -> void:
 	pass

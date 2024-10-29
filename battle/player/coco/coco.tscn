@@ -1,14 +1,15 @@
 [gd_scene load_steps=74 format=3 uid="uid://caxrn5rflxhf1"]
 
-[ext_resource type="Script" path="res://player/coco/scripts/coco.gd" id="1_17sgv"]
-[ext_resource type="Texture2D" uid="uid://c1ualol0b73qu" path="res://player/mango/sprites/Attack (64x32).png" id="2_e3k61"]
-[ext_resource type="Texture2D" uid="uid://c8lc1p5lkc7v3" path="res://player/coco/sprites/mario-hammer_1.png" id="2_lyrid"]
-[ext_resource type="Texture2D" uid="uid://bwilvj8cpy84g" path="res://player/coco/sprites/mario-hammer_2.png" id="3_1gvup"]
-[ext_resource type="Texture2D" uid="uid://dycgry4y0dfq7" path="res://player/mango/sprites/Hit (64x32).png" id="3_wnfe8"]
-[ext_resource type="Texture2D" uid="uid://dvct2m7q2diul" path="res://player/coco/sprites/mario-idle.png" id="4_dcu54"]
-[ext_resource type="Texture2D" uid="uid://b51rpke001v5f" path="res://player/coco/sprites/mario-hammer_3.png" id="4_f1d1u"]
-[ext_resource type="Texture2D" uid="uid://s2yjg20ms0rv" path="res://player/coco/sprites/mario-jump.png" id="5_njprc"]
-[ext_resource type="Texture2D" uid="uid://cjdobemvi8yww" path="res://player/coco/sprites/select_phase.png" id="8_e4qqr"]
+[ext_resource type="Script" path="res://battle/player/coco/scripts/coco.gd" id="1_17sgv"]
+[ext_resource type="Texture2D" uid="uid://c1ualol0b73qu" path="res://battle/player/mango/sprites/Attack (64x32).png" id="2_e3k61"]
+[ext_resource type="Texture2D" uid="uid://c8lc1p5lkc7v3" path="res://battle/player/coco/sprites/mario-hammer_1.png" id="2_lyrid"]
+[ext_resource type="Texture2D" uid="uid://bwilvj8cpy84g" path="res://battle/player/coco/sprites/mario-hammer_2.png" id="3_1gvup"]
+[ext_resource type="Texture2D" uid="uid://dycgry4y0dfq7" path="res://battle/player/mango/sprites/Hit (64x32).png" id="3_wnfe8"]
+[ext_resource type="Texture2D" uid="uid://dvct2m7q2diul" path="res://battle/player/coco/sprites/mario-idle.png" id="4_dcu54"]
+[ext_resource type="Texture2D" uid="uid://b51rpke001v5f" path="res://battle/player/coco/sprites/mario-hammer_3.png" id="4_f1d1u"]
+[ext_resource type="Texture2D" uid="uid://s2yjg20ms0rv" path="res://battle/player/coco/sprites/mario-jump.png" id="5_njprc"]
+[ext_resource type="Texture2D" uid="uid://cjdobemvi8yww" path="res://battle/player/coco/sprites/select_phase.png" id="8_e4qqr"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hyca5"]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1ualol0b73qu"
-path.s3tc="res://.godot/imported/Attack (64x32).png-05ffbf947d5acd8a8db253e189f5cda8.s3tc.ctex"
+uid="uid://dycgry4y0dfq7"
+path.s3tc="res://.godot/imported/Hit (64x32).png-2991333eede88fe0eaa3cafa28fb29e2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://player/mango/sprites/Attack (64x32).png"
-dest_files=["res://.godot/imported/Attack (64x32).png-05ffbf947d5acd8a8db253e189f5cda8.s3tc.ctex"]
+source_file="res://battle/player/mango/sprites/Hit (64x32).png"
+dest_files=["res://.godot/imported/Hit (64x32).png-2991333eede88fe0eaa3cafa28fb29e2.s3tc.ctex"]
 
 [params]
 

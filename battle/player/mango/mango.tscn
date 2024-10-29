@@ -1,11 +1,11 @@
 [gd_scene load_steps=88 format=3 uid="uid://cx3vvx5let8fr"]
 
-[ext_resource type="Script" path="res://player/mango/scripts/mango.gd" id="1_voefm"]
-[ext_resource type="Texture2D" uid="uid://c1ualol0b73qu" path="res://player/mango/sprites/Attack (64x32).png" id="2_a5g5h"]
-[ext_resource type="Texture2D" uid="uid://dycgry4y0dfq7" path="res://player/mango/sprites/Hit (64x32).png" id="2_vvifg"]
-[ext_resource type="Texture2D" uid="uid://c8tq8vr4s3qcv" path="res://player/mango/sprites/Idle (64x32).png" id="2_xbpq2"]
-[ext_resource type="Texture2D" uid="uid://bwuhyrpdig1m2" path="res://player/mango/sprites/Run (64x32).png" id="4_nscti"]
-[ext_resource type="Texture2D" uid="uid://cjdobemvi8yww" path="res://player/coco/sprites/select_phase.png" id="6_a27wd"]
+[ext_resource type="Script" path="res://battle/player/mango/scripts/mango.gd" id="1_voefm"]
+[ext_resource type="Texture2D" uid="uid://c1ualol0b73qu" path="res://battle/player/mango/sprites/Attack (64x32).png" id="2_a5g5h"]
+[ext_resource type="Texture2D" uid="uid://dycgry4y0dfq7" path="res://battle/player/mango/sprites/Hit (64x32).png" id="2_vvifg"]
+[ext_resource type="Texture2D" uid="uid://c8tq8vr4s3qcv" path="res://battle/player/mango/sprites/Idle (64x32).png" id="2_xbpq2"]
+[ext_resource type="Texture2D" uid="uid://bwuhyrpdig1m2" path="res://battle/player/mango/sprites/Run (64x32).png" id="4_nscti"]
+[ext_resource type="Texture2D" uid="uid://cjdobemvi8yww" path="res://battle/player/coco/sprites/select_phase.png" id="6_a27wd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hyca5"]
 
@@ -692,34 +692,6 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 }
 
-[sub_resource type="Animation" id="Animation_kisaf"]
-resource_name = "uppercut"
-length = 1.33334
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite3D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"uppercut"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite3D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-}
-
 [sub_resource type="Animation" id="Animation_megxj"]
 resource_name = "select"
 length = 0.400003
@@ -758,6 +730,34 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kisaf"]
+resource_name = "uppercut"
+length = 1.33334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"uppercut"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mirs2"]

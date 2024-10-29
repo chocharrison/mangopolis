@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c58jk04trchdc"
-path="res://.godot/imported/mario.png-9a0cbc5db746e305556a923c185afe9f.ctex"
+uid="uid://c8lc1p5lkc7v3"
+path="res://.godot/imported/mario-hammer_1.png-007913965d923d52ee06a6adbe6c08b2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/coco/sprites/mario.png"
-dest_files=["res://.godot/imported/mario.png-9a0cbc5db746e305556a923c185afe9f.ctex"]
+source_file="res://battle/player/coco/sprites/mario-hammer_1.png"
+dest_files=["res://.godot/imported/mario-hammer_1.png-007913965d923d52ee06a6adbe6c08b2.ctex"]
 
 [params]
 

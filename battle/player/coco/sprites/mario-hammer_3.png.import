@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8tq8vr4s3qcv"
-path.s3tc="res://.godot/imported/Idle (64x32).png-72c77a12989240169b7f14f434539f64.s3tc.ctex"
+uid="uid://b51rpke001v5f"
+path="res://.godot/imported/mario-hammer_3.png-ef6b4a8e3229fbe9a64f4e56d309e84e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/mango/sprites/Idle (64x32).png"
-dest_files=["res://.godot/imported/Idle (64x32).png-72c77a12989240169b7f14f434539f64.s3tc.ctex"]
+source_file="res://battle/player/coco/sprites/mario-hammer_3.png"
+dest_files=["res://.godot/imported/mario-hammer_3.png-ef6b4a8e3229fbe9a64f4e56d309e84e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwuhyrpdig1m2"
-path.s3tc="res://.godot/imported/Run (64x32).png-6287432d4fdc355fbdbc7700eb252b18.s3tc.ctex"
+uid="uid://dvct2m7q2diul"
+path="res://.godot/imported/mario-idle.png-f340e0918225d7ff4ac3ebda173e8d55.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/mango/sprites/Run (64x32).png"
-dest_files=["res://.godot/imported/Run (64x32).png-6287432d4fdc355fbdbc7700eb252b18.s3tc.ctex"]
+source_file="res://battle/player/coco/sprites/mario-idle.png"
+dest_files=["res://.godot/imported/mario-idle.png-f340e0918225d7ff4ac3ebda173e8d55.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
