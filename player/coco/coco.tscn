@@ -1,13 +1,14 @@
-[gd_scene load_steps=60 format=3 uid="uid://caxrn5rflxhf1"]
+[gd_scene load_steps=74 format=3 uid="uid://caxrn5rflxhf1"]
 
 [ext_resource type="Script" path="res://player/coco/scripts/coco.gd" id="1_17sgv"]
 [ext_resource type="Texture2D" uid="uid://c1ualol0b73qu" path="res://player/mango/sprites/Attack (64x32).png" id="2_e3k61"]
-[ext_resource type="Texture2D" uid="uid://c4o41patq23xf" path="res://player/coco/sprites/mario-hammer_1.png" id="2_lyrid"]
-[ext_resource type="Texture2D" uid="uid://db2ubarxslyeq" path="res://player/coco/sprites/mario-hammer_2.png" id="3_1gvup"]
+[ext_resource type="Texture2D" uid="uid://c8lc1p5lkc7v3" path="res://player/coco/sprites/mario-hammer_1.png" id="2_lyrid"]
+[ext_resource type="Texture2D" uid="uid://bwilvj8cpy84g" path="res://player/coco/sprites/mario-hammer_2.png" id="3_1gvup"]
 [ext_resource type="Texture2D" uid="uid://dycgry4y0dfq7" path="res://player/mango/sprites/Hit (64x32).png" id="3_wnfe8"]
-[ext_resource type="Texture2D" uid="uid://b0km6ebhmfglj" path="res://player/coco/sprites/mario-idle.png" id="4_dcu54"]
-[ext_resource type="Texture2D" uid="uid://on8vlm3va5t8" path="res://player/coco/sprites/mario-hammer_3.png" id="4_f1d1u"]
-[ext_resource type="Texture2D" uid="uid://cf5clnbogm7n8" path="res://player/coco/sprites/mario-jump.png" id="5_njprc"]
+[ext_resource type="Texture2D" uid="uid://dvct2m7q2diul" path="res://player/coco/sprites/mario-idle.png" id="4_dcu54"]
+[ext_resource type="Texture2D" uid="uid://b51rpke001v5f" path="res://player/coco/sprites/mario-hammer_3.png" id="4_f1d1u"]
+[ext_resource type="Texture2D" uid="uid://s2yjg20ms0rv" path="res://player/coco/sprites/mario-jump.png" id="5_njprc"]
+[ext_resource type="Texture2D" uid="uid://cjdobemvi8yww" path="res://player/coco/sprites/select_phase.png" id="8_e4qqr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hyca5"]
 
@@ -134,6 +135,54 @@ region = Rect2(189, 0, 27, 39)
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5sr5"]
 atlas = ExtResource("5_njprc")
 region = Rect2(216, 0, 27, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o7j3"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(0, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtshn"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(25, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjujh"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(50, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aixnm"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(75, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmvfx"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(100, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekvy3"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(125, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x631"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(150, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tf7n"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(175, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uovvg"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(200, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mud4k"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(225, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jee0"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(250, 0, 25, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ot3"]
+atlas = ExtResource("8_e4qqr")
+region = Rect2(275, 0, 25, 36)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_42os8"]
 atlas = ExtResource("2_e3k61")
@@ -292,6 +341,47 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o7j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtshn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjujh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aixnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmvfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekvy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x631")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tf7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uovvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mud4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jee0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ot3")
+}],
+"loop": true,
+"name": &"select",
 "speed": 5.0
 }, {
 "frames": [{
@@ -550,6 +640,47 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_fsyqd"]
+resource_name = "select"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"select"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mirs2"]
 _data = {
 "RESET": SubResource("Animation_tfy0e"),
@@ -557,6 +688,7 @@ _data = {
 "hurt": SubResource("Animation_jh4yw"),
 "idle": SubResource("Animation_acuac"),
 "jump": SubResource("Animation_lqnid"),
+"select": SubResource("Animation_fsyqd"),
 "uppercut": SubResource("Animation_kisaf")
 }
 

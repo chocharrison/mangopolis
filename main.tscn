@@ -36,14 +36,21 @@ transform = Transform3D(1, 0, 0, 0, 0.952257, 0.305296, 0, -0.305296, 0.952257, 
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="hurt" type="Button" parent="CanvasLayer"]
 offset_left = 795.0
 offset_top = 163.0
 offset_right = 982.0
 offset_bottom = 239.0
 text = "Despacito"
 
+[node name="phase" type="CheckButton" parent="CanvasLayer"]
+offset_left = 870.0
+offset_top = 285.0
+offset_right = 914.0
+offset_bottom = 309.0
+
 [node name="enemy" parent="." instance=ExtResource("4_d8af1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60084, 1.20589, -0.0568863)
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/hurt" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/phase" to="." method="_on_phase_toggled"]

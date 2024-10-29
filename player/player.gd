@@ -22,13 +22,24 @@ var is_hurt = false
 var is_attack = false
 var is_upper = false
 var is_jump = false
-var is_cutscene = false
+var is_stunned = false
+
+var is_select = false
+
+
+enum PHASE {ATTACK , DEFEND, DED, MISC}
+
+var phase: PHASE = PHASE.ATTACK 
+
+enum ACTION { JUMP, PUNCH, ITEMS, SPECIAL, RUN }
+var current_action: ACTION = ACTION.JUMP
 
 ################################# Signals
 
 signal hurt(amount:float)
 signal downed
 signal animationover
+signal switch_phase(phase:int)
 
 ################################# main functions
 
@@ -44,8 +55,63 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		is_jump = true
 
+	match phase:
+		PHASE.DEFEND:
+			defend()
+		PHASE.ATTACK:
+			attack()
 
-	if !is_banned and !is_hurt and !is_cutscene:
+	move_and_slide()
+
+
+################################# controls functions
+func attack():
+	if can_perform_action() and !is_attack and !is_upper:
+		if !is_select:
+			selecting_action()
+			if anim_player.current_animation != "select":  # Go back to idle if landed
+				anim_player.play("select")
+		
+		else:
+			executing_action()
+			if anim_player.current_animation != "idle":  # Go back to idle if landed
+				anim_player.play("idle")
+
+
+
+func selecting_action():
+	if Input.is_action_just_pressed("ui_left"):
+		current_action = int(fposmod((current_action - 1), ACTION.size()))
+		print(current_action)
+		
+	if Input.is_action_just_pressed("ui_right"):
+		current_action = int(fposmod((current_action + 1), ACTION.size()))
+		print(current_action)
+		
+	if Input.is_action_just_pressed(jump_key):
+		print(current_action)
+		is_select = true
+
+func executing_action():
+	match current_action:
+		ACTION.JUMP:
+			jumping_qte()
+		ACTION.PUNCH:
+			jumping_qte()
+		ACTION.ITEMS:
+			jumping_qte()
+		ACTION.SPECIAL:
+			jumping_qte()
+		ACTION.RUN:
+			jumping_qte()
+
+func jumping_qte():
+	if Input.is_action_just_pressed(attack_key):
+		is_select = false
+
+############################################## defense moves
+func defend():
+	if can_perform_action():
 		handle_actions()
 		if !is_attack and !is_upper:
 			if is_on_floor():
@@ -56,16 +122,12 @@ func _physics_process(delta: float) -> void:
 				if anim_player.current_animation != "jump":  # Play jump if in the air
 					anim_player.play("jump")
 
-	move_and_slide()
-
-
-################################# controls functions
 
 func handle_actions():
 	if check_action(jump_key):
 		jump()
 	elif check_action(attack_key):
-		attack()
+		punch()
 	elif check_action(upper_key):
 		uppercut()
 	
@@ -76,7 +138,7 @@ func jump():
 	velocity.y = JUMP_VELOCITY
 	anim_player.play("jump")
 
-func attack():
+func punch():
 	is_attack = true
 	print("attacks " + player_name)
 	anim_player.play("attack")
@@ -92,6 +154,9 @@ func check_action(key):
 		return true
 	return false
 
+func can_perform_action() -> bool:
+	return not (is_banned or is_hurt or is_stunned)
+
 
 ################################# signal functions
 func hurt_me(amount: float):
@@ -105,7 +170,8 @@ func hurt_me(amount: float):
 
 func banned():
 	print(player_name+" ded")
-	is_banned = true	
+	is_banned = true
+	phase = PHASE.DED	
 
 func animationOver():
 	match animated.animation:
@@ -115,3 +181,6 @@ func animationOver():
 			is_attack = false
 		"uppercut":
 			is_upper = false
+
+func phase_switch(change: int):
+	phase = change
