@@ -9,7 +9,7 @@ func _ready() -> void:
 	attack_key = "attack_2"
 	upper_key = "upper_2"
 	
-	JUMP_VELOCITY = 7
+	JUMP_VELOCITY = 4.5
 	health = 50
 	MAX_HEALTH = 50
 	player_name = "coco"
