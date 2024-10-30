@@ -41,7 +41,7 @@ signal hurt_signal(amount:float)
 signal banned_signal
 signal animation_over_signal
 signal phase_switch_signal(phase:int)
-
+signal health_change
 ################################# main functions
 
 func _ready() -> void:
@@ -61,6 +61,10 @@ func _physics_process(delta: float) -> void:
 			defend()
 		PHASE.ATTACK:
 			attack()
+		PHASE.MISC:
+			is_hurt = false
+			is_upper = false
+			is_attack = false
 
 	move_and_slide()
 
@@ -171,14 +175,17 @@ func can_perform_action() -> bool:
 
 
 ################################# signal functions
-func hurt_me(amount: float):
-	health -= amount
-	print(player_name+" is hart and has "+str(health))
-	is_hurt = true
-	anim_player.play("hurt")
-
-	if(health <= 0):
-		banned_signal.emit()
+func hurt(amount: float):
+	if(phase != PHASE.DED):
+		health -= amount
+		print(player_name+" is hart and has "+str(health))
+		is_hurt = true
+		anim_player.play("hurt")
+	
+		if(health <= 0):
+			health = 0
+			banned_signal.emit()
+		emit_signal("health_change", self)	
 
 func banned():
 	print(player_name+" ded")
@@ -203,4 +210,4 @@ func cancel_menu():
 	is_menu = false
 	
 func get_health_info():
-	return [health,MAX_HEALTH]
+	return [health , MAX_HEALTH]

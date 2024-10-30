@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtl0yorbotjnc"]
+[gd_scene load_steps=7 format=3 uid="uid://dtl0yorbotjnc"]
 
 [ext_resource type="Script" path="res://battle/battle.gd" id="1_0gifj"]
 [ext_resource type="PackedScene" uid="uid://cx3vvx5let8fr" path="res://battle/player/mango/mango.tscn" id="2_ag3ef"]
 [ext_resource type="PackedScene" uid="uid://caxrn5rflxhf1" path="res://battle/player/coco/coco.tscn" id="3_tca3w"]
 [ext_resource type="PackedScene" uid="uid://bwk1dahk8pwq1" path="res://battle/enemy/enemy.tscn" id="4_3s285"]
-[ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="4_davwe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hktrr"]
 
@@ -51,11 +50,8 @@ offset_right = 914.0
 offset_bottom = 309.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ui"]
-offset_right = 558.0
-offset_bottom = 189.0
-theme_override_fonts/normal_font = ExtResource("4_davwe")
-theme_override_font_sizes/normal_font_size = 25
-text = "I have a morning ritual that I need to share. I call it \"the terminator\". First I crouch down in the shower in the classic \"naked terminator traveling through time\" pose. With my eyes closed I crouch there for a minute, visualizing either Arnold or the guy from the second movie (not the chick in the third one because that one sucked) and I start to hum the terminator theme. Then I slowly rise to a standing position and open my eyes. It helps me to proceed through my day as an emotionless, cyborg badass. The only problem is if the shower curtain sticks to my terminator leg. It ruins the fantasy."
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="coco_ui" type="Panel" parent="ui"]
 offset_left = 625.0

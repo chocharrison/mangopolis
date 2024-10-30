@@ -16,7 +16,7 @@ func _ready() -> void:
 	anim_player = get_node("AnimationPlayer")
 	animated = get_node("AnimatedSprite3D")
 	
-	connect("hurt_signal", Callable(self, "hurt_me"))
+	connect("hurt_signal", Callable(self, "hurt"))
 	connect("banned_signal", Callable(self, "banned"))
 	connect("phase_switch_signal", Callable(self, "phase_switch"))
 

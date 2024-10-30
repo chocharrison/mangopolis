@@ -7,8 +7,8 @@ var health: float = 100
 var enemy_name: String = "Despacito"
 var is_banned = false
 
-signal hurt(amount:float)
-signal downed
+signal hurt_signal(amount:float)
+signal banned_signal
 
 func _ready() -> void:
 	pass
@@ -25,11 +25,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func hurt_me(amount: float):
+func hurt(amount: float):
 	health -= amount
 	print(enemy_name+" is hart and has "+str(health))
 	if(health <= 0):
-		downed.emit()
+		banned_signal.emit()
 
 func banned():
 	print(enemy_name+" ded")
