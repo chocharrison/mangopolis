@@ -166,9 +166,7 @@ func uppercut():
 
 
 func check_action(key):
-	if !is_upper and !is_attack and !is_jump and Input.is_action_just_pressed(key):
-		return true
-	return false
+	return (!is_upper and !is_attack and !is_jump and Input.is_action_just_pressed(key))
 
 func can_perform_action() -> bool:
 	return not (is_banned or is_hurt or is_stunned)
