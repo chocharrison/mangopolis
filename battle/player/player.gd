@@ -182,8 +182,9 @@ func hurt(amount: float):
 	
 		if(health <= 0):
 			health = 0
-			banned_signal.emit()
-		emit_signal("health_change", self)	
+			emit_signal("banned_signal", self)
+		else:
+			emit_signal("health_change", self)
 
 func banned():
 	print(player_name+" ded")
