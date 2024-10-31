@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://15y6dlwjteos"
-path="res://.godot/imported/rpg-font.ttf-e8ed73012b59b93dff6e9cdb14288e50.fontdata"
+uid="uid://b8vk7x318v3q8"
+path="res://.godot/imported/Axolotl.ttf-b994494456c36dbc23284368d09324da.fontdata"
 
 [deps]
 
-source_file="res://fonts/rpg-font.ttf"
-dest_files=["res://.godot/imported/rpg-font.ttf-e8ed73012b59b93dff6e9cdb14288e50.fontdata"]
+source_file="res://fonts/Axolotl.ttf"
+dest_files=["res://.godot/imported/Axolotl.ttf-b994494456c36dbc23284368d09324da.fontdata"]
 
 [params]
 

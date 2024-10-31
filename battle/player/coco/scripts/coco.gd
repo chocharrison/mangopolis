@@ -17,7 +17,7 @@ func _ready() -> void:
 	animated = get_node("AnimatedSprite3D")
 	
 	connect("hurt_signal", Callable(self, "hurt"))
-	connect("banned_signal", Callable(self, "banned"))
+	connect("banned_signal", Callable(self, "banned").unbind(1))
 	connect("phase_switch_signal", Callable(self, "phase_switch"))
 
 func _process(delta: float) -> void:
