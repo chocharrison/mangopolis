@@ -3,7 +3,21 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const BREAD_CRUMB_INTERVAL = 0.3
+const ARRAY_SIZE = 2
 
+var bread_crumbs_array = []
+#var bread_crumbs_timer = 0.0
+
+var input_mappings = [
+	["ui_left", "ui_right", "ui_up", "ui_down"],  # Default
+	["ui_up", "ui_down", "ui_right", "ui_left"],  # Inverted Y-axis
+	["ui_right", "ui_left", "ui_down", "ui_up"],  # Rotated 90 degrees clockwise
+	["ui_down", "ui_up", "ui_left", "ui_right"]   # Inverted X-axis
+]
+var input_index = 0
+func _ready() -> void:
+	bread_crumbs_array.append(position)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -16,7 +30,8 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var current_mapping = input_mappings[input_index]
+	var input_dir := Input.get_vector(current_mapping[0], current_mapping[1], current_mapping[2], current_mapping[3])
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -26,3 +41,16 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	var temp = bread_crumbs_array.back()
+	var distance_moved = position.distance_to(Vector3(temp.x,0,temp.z))
+	if distance_moved >= BREAD_CRUMB_INTERVAL:
+		if bread_crumbs_array.size() == 0 or bread_crumbs_array.back() != position:
+			bread_crumbs_array.append(position)
+			if bread_crumbs_array.size() > ARRAY_SIZE:
+				bread_crumbs_array.pop_front()
+
+	#print(bread_crumbs_array.size())
+func get_bread_crumbs() -> Array:
+	return bread_crumbs_array
+func set_disorientation(i: int):
+	input_index = i
