@@ -25,7 +25,9 @@ func _physics_process(delta: float) -> void:
 		camera_controller.position = camera_position
 		if Input.is_action_just_pressed("turn_left"):
 			angle+=90
-			i+=1%4
+			i+=1
+			if(i>3):
+				i = 0
 			main_player.set_disorientation(i)
 		elif Input.is_action_just_pressed("turn_right"):
 			angle-=90
@@ -34,6 +36,7 @@ func _physics_process(delta: float) -> void:
 				i = 3
 			main_player.set_disorientation(i)
 		camera_controller.rotation.y = lerp_angle(camera_controller.rotation.y,deg_to_rad(angle),0.1)
+		
 		#print(camera_controller.rotation.y)
 	
 func set_cutscene(scene: bool):

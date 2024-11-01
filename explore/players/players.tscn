@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://clo6cck334no3"]
 
-[ext_resource type="Script" path="res://explore/main_player.gd" id="1_kyxrf"]
-[ext_resource type="Script" path="res://explore/player_controller.gd" id="1_x3i8c"]
-[ext_resource type="Script" path="res://explore/sub_player.gd" id="3_xaldi"]
+[ext_resource type="Script" path="res://explore/players/scripts/main_player.gd" id="1_kyxrf"]
+[ext_resource type="Script" path="res://explore/players/scripts/player_controller.gd" id="1_x3i8c"]
+[ext_resource type="Script" path="res://explore/players/scripts/sub_player.gd" id="3_xaldi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w6cc5"]
 

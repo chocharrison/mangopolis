@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	#print("sub "+str(bread_crumbs_array.size()))
 	
 	var vertical_distance = position.y - master.position.y
-	print(velocity)
+	#print(velocity)
 	if vertical_distance < VERTICAL_DISTANCE:
 		if bread_crumbs_index < bread_crumbs_array.size():
 			var target_position = bread_crumbs_array[bread_crumbs_index]
@@ -45,6 +45,6 @@ func _physics_process(delta: float) -> void:
 		position.x = master.position.x
 		position.y = master.position.y+2
 		position.z = master.position.z
-	
+	print(bread_crumbs_index)
 	move_and_slide()
 	
