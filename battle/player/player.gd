@@ -37,7 +37,7 @@ var current_action: ACTION = ACTION.JUMP
 
 ################################# Signals
 
-signal hurt_signal(amount:float)
+signal hurt_signal(change:float)
 signal banned_signal
 signal animation_over_signal
 signal phase_switch_signal(phase:int)

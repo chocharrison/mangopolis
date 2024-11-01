@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://clo6cck334no3"]
+
+[ext_resource type="Script" path="res://explore/main_player.gd" id="1_kyxrf"]
+[ext_resource type="Script" path="res://explore/player_controller.gd" id="1_x3i8c"]
+[ext_resource type="Script" path="res://explore/sub_player.gd" id="3_xaldi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w6cc5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6t3vp"]
+
+[node name="Players" type="Node3D"]
+script = ExtResource("1_x3i8c")
+
+[node name="main_player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_kyxrf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="main_player"]
+mesh = SubResource("CapsuleMesh_w6cc5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="main_player"]
+shape = SubResource("CapsuleShape3D_6t3vp")
+
+[node name="camera_controller" type="Node3D" parent="."]
+
+[node name="camera_target" type="Node3D" parent="camera_controller"]
+transform = Transform3D(1, 0, 0, 0, 0.967999, 0.250954, 0, -0.250954, 0.967999, 0, 2.10661, 3.82248)
+
+[node name="Camera3D" type="Camera3D" parent="camera_controller/camera_target"]
+
+[node name="sub_player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.47561)
+script = ExtResource("3_xaldi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="sub_player"]
+mesh = SubResource("CapsuleMesh_w6cc5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sub_player"]
+shape = SubResource("CapsuleShape3D_6t3vp")

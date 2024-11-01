@@ -67,32 +67,32 @@ tracks/3/keys = {
 "values": [Vector2(-1, -68)]
 }
 
-[sub_resource type="Animation" id="Animation_4kld2"]
-resource_name = "mango_hurt"
+[sub_resource type="Animation" id="Animation_dwjnv"]
+resource_name = "coco_banned"
 length = 0.333337
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("icon:texture")
+tracks/0/path = NodePath("../coco_ui/icon:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("6_6axir"), ExtResource("7_sbyww"), ExtResource("6_6axir")]
+"values": [ExtResource("5_ibsn6"), ExtResource("8_xiqrp")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("icon:position")
+tracks/1/path = NodePath("../coco_ui/icon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
+"values": [Vector2(-1, -68), Vector2(8, -68), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -68), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
 }
 
 [sub_resource type="Animation" id="Animation_r13e1"]
@@ -151,32 +151,32 @@ tracks/1/keys = {
 "values": [Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
 }
 
-[sub_resource type="Animation" id="Animation_dwjnv"]
-resource_name = "coco_banned"
+[sub_resource type="Animation" id="Animation_4kld2"]
+resource_name = "mango_hurt"
 length = 0.333337
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../coco_ui/icon:texture")
+tracks/0/path = NodePath("icon:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("5_ibsn6"), ExtResource("8_xiqrp")]
+"values": [ExtResource("6_6axir"), ExtResource("7_sbyww"), ExtResource("6_6axir")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../coco_ui/icon:position")
+tracks/1/path = NodePath("icon:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-1, -68), Vector2(8, -68), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -68), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
+"values": [Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uy8pj"]
