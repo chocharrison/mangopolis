@@ -3,8 +3,10 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-const BREAD_CRUMB_INTERVAL = 0.3
+const BREAD_CRUMB_INTERVAL = 0.05
 const ARRAY_SIZE = 2
+const DISTANCE = 2
+const VERTICAL_DISTANCE = 2
 
 var bread_crumbs_array = []
 #var bread_crumbs_timer = 0.0
@@ -16,13 +18,17 @@ var input_mappings = [
 	["ui_down", "ui_up", "ui_left", "ui_right"]   # Inverted X-axis
 ]
 var input_index = 0
+
+var sub: CharacterBody3D = null
+
 func _ready() -> void:
+	sub = get_parent().get_node("sub_player")
 	bread_crumbs_array.append(position)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y += get_gravity().y * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump_1") and is_on_floor():
@@ -33,7 +39,15 @@ func _physics_process(delta: float) -> void:
 	var current_mapping = input_mappings[input_index]
 	var input_dir := Input.get_vector(current_mapping[0], current_mapping[1], current_mapping[2], current_mapping[3])
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
+	
+	var distance_to_sub = Vector3(position.x, 0, position.z).distance_to(Vector3(sub.position.x, 0, sub.position.z))
+	var vertical_distance = position.y - sub.position.y
+	print(velocity)
+	if vertical_distance >= VERTICAL_DISTANCE:
+		position.x = sub.position.x
+		position.y = sub.position.y + 2
+		position.z = sub.position.z
+	elif direction and distance_to_sub < DISTANCE:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
@@ -43,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	var temp = bread_crumbs_array.back()
 	var distance_moved = position.distance_to(Vector3(temp.x,0,temp.z))
-	if distance_moved >= BREAD_CRUMB_INTERVAL:
+	if distance_moved - BREAD_CRUMB_INTERVAL:
 		if bread_crumbs_array.size() == 0 or bread_crumbs_array.back() != position:
 			bread_crumbs_array.append(position)
 			if bread_crumbs_array.size() > ARRAY_SIZE:

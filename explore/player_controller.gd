@@ -16,6 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	#print(main_player.position.distance_to(sub_player.position))
 	if !is_cutscene:
 		var camera_position = camera_controller.position
 		camera_position.x = lerp(camera_position.x, main_player.position.x, 0.1)

@@ -40,3 +40,23 @@ shape = SubResource("BoxShape3D_t6kdy")
 
 [node name="Players" parent="." instance=ExtResource("1_gqk4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16068, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(27.5346, 0, 0, 0, 0.0823554, 0, 0, 0, 24.7579, 0, -0.56379, 28.4143)
+mesh = SubResource("BoxMesh_cxilj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_t6kdy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(27.5346, 0, 0, 0, 0.0823554, 0, 0, 0, 24.7579, 0, -9.85714, 24.7216)
+mesh = SubResource("BoxMesh_cxilj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_t6kdy")
