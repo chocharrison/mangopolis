@@ -17,12 +17,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	#print(main_player.position.distance_to(sub_player.position))
-	if !is_cutscene:
-		var camera_position = camera_controller.position
-		camera_position.x = lerp(camera_position.x, main_player.position.x, 0.1)
-		camera_position.y = lerp(camera_position.y, main_player.position.y, 0.1)
-		camera_position.z = lerp(camera_position.z, main_player.position.z, 0.1)
-		camera_controller.position = camera_position
+	var camera_position = camera_controller.position
+	camera_position.x = lerp(camera_position.x, main_player.position.x, 0.1)
+	camera_position.y = lerp(camera_position.y, main_player.position.y, 0.1)
+	camera_position.z = lerp(camera_position.z, main_player.position.z, 0.1)
+	camera_controller.position = camera_position
+	if !is_cutscene:	
 		if Input.is_action_just_pressed("turn_left"):
 			angle+=90
 			i+=1

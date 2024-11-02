@@ -20,9 +20,11 @@ var input_mappings = [
 var input_index = 0
 
 var sub: CharacterBody3D = null
+var sprite: AnimatedSprite3D = null
 
 func _ready() -> void:
 	sub = get_parent().get_node("sub_player")
+	sprite = get_node("AnimatedSprite3D")
 	bread_crumbs_array.append(position)
 
 func _physics_process(delta: float) -> void:
