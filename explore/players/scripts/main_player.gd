@@ -20,11 +20,11 @@ var input_mappings = [
 var input_index = 0
 
 var sub: CharacterBody3D = null
-var sprite: AnimatedSprite3D = null
+var anime: AnimationTree = null
 
 func _ready() -> void:
 	sub = get_parent().get_node("sub_player")
-	sprite = get_node("AnimatedSprite3D")
+	anime = get_node("AnimationTree")
 	bread_crumbs_array.append(position)
 
 func _physics_process(delta: float) -> void:
@@ -35,12 +35,26 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump_1") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var current_mapping = input_mappings[input_index]
 	var input_dir := Input.get_vector(current_mapping[0], current_mapping[1], current_mapping[2], current_mapping[3])
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if(direction == Vector3.ZERO):
+		anime.get("parameters/playback").travel("idle")
+	else:
+		anime.get("parameters/playback").travel("walk")
+		anime.set("parameters/idle/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+		anime.set("parameters/jump/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+		anime.set("parameters/walk/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+		anime.set("parameters/fall/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+	
+	var jump_norm = velocity.normalized()
+	if(jump_norm.y > 0):
+		anime.get("parameters/playback").travel("jump")
+	if(jump_norm.y < 0):
+		anime.get("parameters/playback").travel("fall")
 	
 	var distance_to_sub = Vector3(position.x, 0, position.z).distance_to(Vector3(sub.position.x, 0, sub.position.z))
 	var vertical_distance = position.y - sub.position.y

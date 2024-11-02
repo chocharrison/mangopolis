@@ -34,7 +34,7 @@ func check_player(player: Player):
 func _on_button_pressed() -> void:
 	if check_player(players[1]):
 		print("ouch")
-		players[0].emit_signal("hurt_signal", 30) # Emit the "hurt" signal with a damage value of 30
+		players[1].emit_signal("hurt_signal", 30) # Emit the "hurt" signal with a damage value of 30
 
 
 func _on_phase_toggled(toggled_on: bool) -> void:
@@ -55,7 +55,7 @@ func _on_health_change(player: Player) -> void:
 	var ui_player = player_ui.get_node("ui_animation")
 	health_label.text = str(health_info[0]) + "/" + str(health_info[1])
 	if(health_info[0] < health_storage[player.name]):
-		ui_player.play(player.name+"_hurt")
+		ui_player.play("hurt")
 		
 	health_storage[player.name] = health_info[0]
 	
@@ -65,7 +65,7 @@ func _on_banned(player: Player) -> void:
 	var health_info = player.get_health_info()
 	var ui_player = player_ui.get_node("ui_animation")
 	health_label.text = str(health_info[0]) + "/" + str(health_info[1])
-	ui_player.play(player.name+"_banned")
+	ui_player.play("banned")
 
 ######################## set up the players
 func setup_player(player: Player) -> void:
