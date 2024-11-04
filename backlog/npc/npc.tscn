@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5aeila6wxnfo"]
+
+[ext_resource type="Script" path="res://backlog/npc/npc.gd" id="1_i1wtk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p4bge"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbmr7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hr321"]
+height = 2.45229
+radius = 2.15341
+
+[node name="Npc" type="CharacterBody3D"]
+collision_mask = 3
+script = ExtResource("1_i1wtk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_p4bge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_wbmr7")
+
+[node name="detect" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detect"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00514281, 0.239637, 0.00337017)
+shape = SubResource("CylinderShape3D_hr321")

@@ -8,8 +8,11 @@ const VERTICAL_DISTANCE = 2
 var master: CharacterBody3D = null
 var bread_crumbs_index = 0
 
+var anime: AnimationTree = null
+
 func _ready() -> void:
 	master = get_parent().get_node("main_player")
+	anime = get_node("AnimationTree")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -23,6 +26,7 @@ func _physics_process(delta: float) -> void:
 	var bread_crumbs_array = master.get_bread_crumbs()
 	#print("sub "+str(bread_crumbs_array.size()))
 	
+	
 	var vertical_distance = position.y - master.position.y
 	#print(velocity)
 	if vertical_distance < VERTICAL_DISTANCE:
@@ -31,9 +35,10 @@ func _physics_process(delta: float) -> void:
 			var distance_to_target = Vector3(position.x,0,position.z).distance_to(Vector3(target_position.x,0,target_position.z))
 		
 			if distance_to_target > DISTANCE:
-				var direction = (Vector3(target_position.x,0,target_position.z) - Vector3(position.x,0,position.z)).normalized()
-				velocity.x = direction.x * SPEED
-				velocity.z = direction.z * SPEED
+				var bread_direction = (Vector3(target_position.x,0,target_position.z) - Vector3(position.x,0,position.z)).normalized()
+				velocity.x = bread_direction.x * SPEED
+				velocity.z = bread_direction.z * SPEED
+
 			else:
 				bread_crumbs_index += 1
 	
@@ -45,6 +50,23 @@ func _physics_process(delta: float) -> void:
 		position.x = master.position.x
 		position.y = master.position.y+2
 		position.z = master.position.z
-	print(bread_crumbs_index)
+	#print(bread_crumbs_index)
 	move_and_slide()
+	
+	if(velocity == Vector3(0,0,0)):
+		anime.get("parameters/playback").travel("idle")
+	else:
+		anime.get("parameters/playback").travel("walk")
+	var direction = (Vector3(master.position.x,0,master.position.z) - Vector3(position.x,0,position.z)).normalized()
+	anime.set("parameters/idle/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+	anime.set("parameters/jump/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+	anime.set("parameters/walk/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+	anime.set("parameters/fall/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+	
+	var jump_norm = velocity.normalized()
+	if(jump_norm.y > 0):
+		anime.get("parameters/playback").travel("jump")
+	if(jump_norm.y < 0):
+		anime.get("parameters/playback").travel("fall")
+	
 	

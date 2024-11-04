@@ -1,0 +1,400 @@
+[gd_scene load_steps=24 format=3 uid="uid://dtl0yorbotjnc"]
+
+[ext_resource type="Script" path="res://backlog/battle/battle.gd" id="1_ch3d7"]
+[ext_resource type="PackedScene" uid="uid://cx3vvx5let8fr" path="res://backlog/battle/player/mango/mango.tscn" id="2_ag3ef"]
+[ext_resource type="PackedScene" uid="uid://caxrn5rflxhf1" path="res://backlog/battle/player/coco/coco.tscn" id="3_tca3w"]
+[ext_resource type="PackedScene" uid="uid://bwk1dahk8pwq1" path="res://backlog/battle/enemy/enemy.tscn" id="4_3s285"]
+[ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="4_davwe"]
+[ext_resource type="Texture2D" uid="uid://bnt0j4eyhjvok" path="res://backlog/battle/ui/sprite/coco.png" id="5_ibsn6"]
+[ext_resource type="Texture2D" uid="uid://cilyjgdyicwob" path="res://backlog/battle/ui/sprite/mango.png" id="6_6axir"]
+[ext_resource type="PackedScene" uid="uid://depqs0oyshuur" path="res://backlog/battle/arena/arena.tscn" id="6_bpcna"]
+[ext_resource type="Texture2D" uid="uid://cnaxolkpbnecj" path="res://backlog/battle/ui/sprite/mango_banned.png" id="7_sbyww"]
+[ext_resource type="Texture2D" uid="uid://wkt1dy0mkijg" path="res://backlog/battle/ui/sprite/coco_banned.png" id="8_xiqrp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t4ldd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_fyxrj"]
+sky_material = SubResource("ProceduralSkyMaterial_t4ldd")
+
+[sub_resource type="Environment" id="Environment_l8pex"]
+background_mode = 2
+sky = SubResource("Sky_fyxrj")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hpa83"]
+load_path = "res://.godot/imported/coco_ui.png-de0538cf961f808a9ce6c258a620b9bf.ctex"
+
+[sub_resource type="Animation" id="Animation_e53ny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_6axir")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -68)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../coco_ui/icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ibsn6")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../coco_ui/icon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -68)]
+}
+
+[sub_resource type="Animation" id="Animation_2qcw7"]
+resource_name = "banned"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../coco_ui/icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_ibsn6"), ExtResource("8_xiqrp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../coco_ui/icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -68), Vector2(8, -68), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -68), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
+}
+
+[sub_resource type="Animation" id="Animation_f1cbf"]
+resource_name = "hurt"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../coco_ui/icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_ibsn6"), ExtResource("8_xiqrp"), ExtResource("5_ibsn6")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../coco_ui/icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -68), Vector2(8, -68), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -68), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wd31j"]
+_data = {
+"RESET": SubResource("Animation_e53ny"),
+"banned": SubResource("Animation_2qcw7"),
+"hurt": SubResource("Animation_f1cbf")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bexi2"]
+load_path = "res://.godot/imported/mango_ui.png-cbb609e0e8708dc5db6f76f8b061bf95.ctex"
+
+[sub_resource type="Animation" id="Animation_0wsne"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_6axir")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -68)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../coco_ui/icon:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ibsn6")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../coco_ui/icon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -68)]
+}
+
+[sub_resource type="Animation" id="Animation_q6kgw"]
+resource_name = "banned"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_6axir"), ExtResource("7_sbyww")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
+}
+
+[sub_resource type="Animation" id="Animation_rnmjr"]
+resource_name = "hurt"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_6axir"), ExtResource("7_sbyww"), ExtResource("6_6axir")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68), Vector2(8, -67), Vector2(-1, -68), Vector2(-9, -68), Vector2(-1, -68)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2u31"]
+_data = {
+"RESET": SubResource("Animation_0wsne"),
+"banned": SubResource("Animation_q6kgw"),
+"hurt": SubResource("Animation_rnmjr")
+}
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_ch3d7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l8pex")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="mango" parent="." instance=ExtResource("2_ag3ef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28386, 1.21449, -1.25079)
+
+[node name="coco" parent="." instance=ExtResource("3_tca3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47608, 0.864608, 1.75089)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.952257, 0.305296, 0, -0.305296, 0.952257, 0.160697, 3.10579, 5.57848)
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="hurt" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 795.0
+offset_top = 163.0
+offset_right = 982.0
+offset_bottom = 239.0
+text = "Despacito"
+
+[node name="phase" type="CheckButton" parent="ui"]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 285.0
+offset_right = 914.0
+offset_bottom = 309.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui"]
+layout_mode = 0
+offset_right = 558.0
+offset_bottom = 189.0
+theme_override_fonts/normal_font = ExtResource("4_davwe")
+theme_override_font_sizes/normal_font_size = 25
+text = "I have a morning ritual that I need to share. I call it \"the terminator\". First I crouch down in the shower in the classic \"naked terminator traveling through time\" pose. With my eyes closed I crouch there for a minute, visualizing either Arnold or the guy from the second movie (not the chick in the third one because that one sucked) and I start to hum the terminator theme. Then I slowly rise to a standing position and open my eyes. It helps me to proceed through my day as an emotionless, cyborg badass. The only problem is if the shower curtain sticks to my terminator leg. It ruins the fantasy."
+
+[node name="coco_ui" type="Panel" parent="ui"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 435.0
+offset_top = 538.0
+offset_right = 958.0
+offset_bottom = 644.0
+
+[node name="texture_ui" type="TextureRect" parent="ui/coco_ui"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = -22.0
+offset_right = 324.0
+offset_bottom = 78.0
+scale = Vector2(1.78659, 1.40372)
+texture = SubResource("CompressedTexture2D_hpa83")
+
+[node name="icon" type="TextureRect" parent="ui/coco_ui"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -68.0
+offset_right = 260.0
+offset_bottom = 110.0
+texture = ExtResource("5_ibsn6")
+
+[node name="health" type="Label" parent="ui/coco_ui"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 10.0
+offset_right = 310.0
+offset_bottom = 35.0
+scale = Vector2(1.84, 1.79782)
+theme_override_colors/font_color = Color(0.301961, 0.141176, 0.0823529, 1)
+theme_override_fonts/font = ExtResource("4_davwe")
+theme_override_font_sizes/font_size = 28
+text = "100/100"
+
+[node name="ui_animation" type="AnimationPlayer" parent="ui/coco_ui"]
+root_node = NodePath("../../mango_ui")
+libraries = {
+"": SubResource("AnimationLibrary_wd31j")
+}
+
+[node name="mango_ui" type="Panel" parent="ui"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -5.0
+offset_top = 538.0
+offset_right = 518.0
+offset_bottom = 644.0
+
+[node name="texture_ui" type="TextureRect" parent="ui/mango_ui"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = -22.0
+offset_right = 324.0
+offset_bottom = 78.0
+scale = Vector2(1.78659, 1.40372)
+texture = SubResource("CompressedTexture2D_bexi2")
+
+[node name="icon" type="TextureRect" parent="ui/mango_ui"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -68.0
+offset_right = 260.0
+offset_bottom = 110.0
+texture = ExtResource("6_6axir")
+
+[node name="health" type="Label" parent="ui/mango_ui"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 10.0
+offset_right = 308.0
+offset_bottom = 35.0
+scale = Vector2(1.84, 1.79782)
+theme_override_colors/font_color = Color(0.639216, 0.364706, 0.054902, 1)
+theme_override_fonts/font = ExtResource("4_davwe")
+theme_override_font_sizes/font_size = 28
+text = "100/100"
+
+[node name="ui_animation" type="AnimationPlayer" parent="ui/mango_ui"]
+root_node = NodePath("../../mango_ui")
+libraries = {
+"": SubResource("AnimationLibrary_o2u31")
+}
+
+[node name="enemy" parent="." instance=ExtResource("4_3s285")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.60084, 1.20589, -0.0568863)
+script = null
+
+[node name="arena" parent="." instance=ExtResource("6_bpcna")]
+
+[connection signal="pressed" from="ui/hurt" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="ui/phase" to="." method="_on_phase_toggled"]

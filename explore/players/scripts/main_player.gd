@@ -58,14 +58,14 @@ func _physics_process(delta: float) -> void:
 	
 	var distance_to_sub = Vector3(position.x, 0, position.z).distance_to(Vector3(sub.position.x, 0, sub.position.z))
 	var vertical_distance = position.y - sub.position.y
-	print(velocity)
+	#print(velocity)
 	if vertical_distance >= VERTICAL_DISTANCE:
 		position.x = sub.position.x
 		position.y = sub.position.y + 2
 		position.z = sub.position.z
 	elif direction and distance_to_sub < DISTANCE:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
