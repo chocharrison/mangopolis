@@ -11,34 +11,38 @@ const VERTICAL_DISTANCE = 2
 var bread_crumbs_array = []
 #var bread_crumbs_timer = 0.0
 
-var input_mappings = [
-	["ui_left", "ui_right", "ui_up", "ui_down"],  # Default
-	["ui_up", "ui_down", "ui_right", "ui_left"],  # Inverted Y-axis
-	["ui_right", "ui_left", "ui_down", "ui_up"],  # Rotated 90 degrees clockwise
-	["ui_down", "ui_up", "ui_left", "ui_right"]   # Inverted X-axis
-]
-var input_index = 0
-
 var sub: CharacterBody3D = null
 var anime: AnimationTree = null
+
+var is_ded = false
 
 func _ready() -> void:
 	sub = get_parent().get_node("sub_player")
 	anime = get_node("AnimationTree")
 	bread_crumbs_array.append(position)
+	is_ded = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 
+	if !is_ded:
+		player_move(delta)
+	else:
+		anime.get("parameters/playback").travel("fall")
+	
 	# Handle jump.
+
+
+func player_move(delta: float) -> void:
 	if Input.is_action_just_pressed("jump_1") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var current_mapping = input_mappings[input_index]
-	var input_dir := Input.get_vector(current_mapping[0], current_mapping[1], current_mapping[2], current_mapping[3])
+	
+	
+	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if(direction == Vector3.ZERO):
@@ -63,7 +67,7 @@ func _physics_process(delta: float) -> void:
 		position.x = sub.position.x
 		position.y = sub.position.y + 2
 		position.z = sub.position.z
-	elif direction and distance_to_sub < DISTANCE:
+	elif direction:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
 	else:
@@ -78,9 +82,18 @@ func _physics_process(delta: float) -> void:
 			bread_crumbs_array.append(position)
 			if bread_crumbs_array.size() > ARRAY_SIZE:
 				bread_crumbs_array.pop_front()
-
 	#print(bread_crumbs_array.size())
 func get_bread_crumbs() -> Array:
 	return bread_crumbs_array
-func set_disorientation(i: int):
-	input_index = i
+
+
+#var input_mappings = [
+#	["ui_left", "ui_right", "ui_up", "ui_down"],  # Default
+#	["ui_up", "ui_down", "ui_right", "ui_left"],  # Inverted Y-axis
+#	["ui_right", "ui_left", "ui_down", "ui_up"],  # Rotated 90 degrees clockwise
+#	["ui_down", "ui_up", "ui_left", "ui_right"]   # Inverted X-axis
+#]
+#var input_index = 0
+#func set_disorientation(i: int):
+#	input_index = i
+#	var current_mapping = input_mappings[input_index]

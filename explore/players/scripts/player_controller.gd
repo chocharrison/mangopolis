@@ -1,16 +1,42 @@
 extends Node3D
 
+var health = 100
+const MAX_HEALTH = 100
+
+var timer: Timer
+var main_player:CharacterBody3D
+var sub_player:CharacterBody3D
+
 func _ready() -> void:
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	timer = get_node("health_deplete")
+	main_player = get_node("main_player")
+	sub_player = get_node("sub_player")
+	
+	_set_random_timer_interval()
+
+# Sets a random interval for the timer and starts it
+func _set_random_timer_interval() -> void:
+	var random_interval = randi_range(30, 60) # Set random time between 1 to 5 seconds
+	timer.wait_time = random_interval
+	timer.start()
+
+# Function to deplete health and restart the timer
+
+func _on_health_deplete_timeout() -> void:
+	if health > 0:
+		var health_decrease = randi_range(5, 10) # Randomly decrease health between 5 and 20 points
+		health -= health_decrease
+		health = max(0, health) # Ensure health doesn't drop below 0
+		print("Health decreased by ", health_decrease, " - Current health: ", health)
+	
+	# Restart the timer with a new random interval
+	_set_random_timer_interval()
+	
+	if(health <= 0):
+		main_player.is_ded = true
+
 func _physics_process(delta: float) -> void:
-	#print(main_player.position.distance_to(sub_player.position))
-	pass		
-		
-		#print(camera_controller.rotation.y)
-		
-
-
+	pass
 
 
 

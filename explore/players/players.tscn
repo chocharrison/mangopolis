@@ -309,6 +309,11 @@ animations = [{
 "name": &"jump_up",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rmuc0")
@@ -2035,3 +2040,8 @@ parameters/fall/BlendSpace2D/blend_position = Vector2(-0.00105375, -0.0176991)
 parameters/idle/BlendSpace2D/blend_position = Vector2(0, -0.0088495)
 parameters/jump/BlendSpace2D/blend_position = Vector2(-0.00105375, -0.0088495)
 parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
+
+[node name="health_deplete" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="health_deplete" to="." method="_on_health_deplete_timeout"]
