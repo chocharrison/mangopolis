@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://clo6cck334no3" path="res://explore/players/players.tscn" id="1_gqk4c"]
 [ext_resource type="Script" path="res://explore/hub.gd" id="1_op7ef"]
-[ext_resource type="PackedScene" uid="uid://db8fgquaqo5fn" path="res://backlog/battle/explore_ui.tscn" id="3_huarg"]
+[ext_resource type="PackedScene" uid="uid://db8fgquaqo5fn" path="res://explore/ui/explore_ui.tscn" id="3_huarg"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://explore/collectibles/collectible.tscn" id="5_dt7mg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y15db"]

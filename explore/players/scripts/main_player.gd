@@ -15,6 +15,7 @@ var sub: CharacterBody3D = null
 var anime: AnimationTree = null
 
 var is_ded = false
+var is_pause = false
 
 func _ready() -> void:
 	sub = get_parent().get_node("sub_player")
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 
-	if !is_ded:
+	if !is_ded and !is_pause:
 		player_move(delta)
 	else:
 		anime.get("parameters/playback").travel("fall")
