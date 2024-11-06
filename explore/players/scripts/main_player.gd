@@ -62,8 +62,6 @@ func player_move(delta: float) -> void:
 	elif !is_tired:
 		speed = SPEED
 
-	print(sprint_meter)
-
 	if Input.is_action_pressed("sprint") and is_on_floor() and !is_tired and !is_sprinted:
 	# Sprinting: reduce the sprint meter, set sprint speed, stop cooldown timer
 		sprint_meter -= 1
@@ -93,7 +91,7 @@ func player_move(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if(direction == Vector3.ZERO or sprint_meter==0):
+	if(direction == Vector3.ZERO):
 		anime.get("parameters/playback").travel("idle")
 	else:
 		anime.get("parameters/playback").travel("walk")
@@ -140,6 +138,9 @@ func get_sprint() -> float:
 func disable_control(val: bool):
 	is_disable = val
 
+func ded():
+	is_ded = true
+
 #var input_mappings = [
 #	["ui_left", "ui_right", "ui_up", "ui_down"],  # Default
 #	["ui_up", "ui_down", "ui_right", "ui_left"],  # Inverted Y-axis
@@ -150,7 +151,6 @@ func disable_control(val: bool):
 #func set_disorientation(i: int):
 #	input_index = i
 #	var current_mapping = input_mappings[input_index]
-
 
 func _on_sprint_cooldown_timeout() -> void:
 	is_cooldown = false

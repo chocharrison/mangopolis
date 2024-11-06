@@ -1,11 +1,15 @@
 extends Control
 
-var is_note = false
+
 # Called when the node enters the scene tree for the first time.
 
 var anime:AnimationPlayer
 var notebook:Control
-var page = 0
+
+@onready var page = 0
+@onready var is_interrupted = false
+@onready var is_note = false
+
 const MAX_PAGE = 10
 
 var health_bar: TextureProgressBar
@@ -14,18 +18,31 @@ var stamina_bar: TextureProgressBar
 var main_player: CharacterBody3D
 var players: Node3D
 
+var math:Panel
+var first:Label
+var second:Label
+var equation:Label
+var answer:LineEdit
 
 func _ready() -> void:
 	anime = get_node("AnimationPlayer")
+	math = get_node("math")
+	math.set_process(false)
 	notebook = get_node("Control")
 	notebook.set_process(false)
 	health_bar = get_node("health")
 	stamina_bar = get_node("stamina")
 	main_player = get_parent().get_node("main_player")
 	players = get_parent()
+	
+	first = get_node("math/h/first")
+	second = get_node("math/h/second")
+	equation = get_node("math/h/operand")
+	answer = get_node("math/h/answer")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("notebook"):
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("notebook") and !is_interrupted:
 		if !is_note:
 			is_note = true
 			notebook.set_process(is_note)
@@ -44,6 +61,12 @@ func _process(delta: float) -> void:
 			notebook.set_process(is_note)
 			main_player.disable_control(is_note)
 			players.pause_health_timer(is_note)
+	
+func _process(delta: float) -> void:
+	if is_interrupted:
+		is_note = false
+		notebook.set_process(false)
+		
 	
 	if is_note:
 		if Input.is_action_just_pressed("ui_right"):
@@ -66,9 +89,36 @@ func _process(delta: float) -> void:
 					anime.queue("close_front")
 				else:
 					anime.queue("flip_left")
+	
 
 func set_health(val: int):
 	health_bar.value = val
 
 func set_stamina(val: int):
 	stamina_bar.value = val 
+
+func set_interrupted(val: bool):
+	is_interrupted = val
+
+func set_first_text(val: int):
+	first.text = str(val)
+
+func set_second_text(val: int):
+	second.text = str(val)
+	
+func set_equation_text(val: int):
+	equation.text = str(val)
+	
+func math_success():
+	anime.play("math_success")
+	is_interrupted = false
+
+func math_failure():
+	anime.play("math_failure")
+	is_interrupted = false
+
+func math_enter():
+	math.set_process(true)
+	anime.play("math_enter")
+	is_interrupted = true	
+	

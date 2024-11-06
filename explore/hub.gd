@@ -31,3 +31,7 @@ func set_cutscene(scene: bool):
 
 func collected(collectible: Node3D):
 	print(collectible.name)
+
+
+func _on_button_pressed() -> void:
+	emit_signal("math_signal",0)
