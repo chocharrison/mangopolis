@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=3 uid="uid://clo6cck334no3"]
+[gd_scene load_steps=160 format=3 uid="uid://clo6cck334no3"]
 
 [ext_resource type="Script" path="res://explore/players/scripts/main_player.gd" id="1_kyxrf"]
 [ext_resource type="Script" path="res://explore/players/scripts/player_controller.gd" id="1_x3i8c"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://explore/players/scripts/sub_player.gd" id="3_xaldi"]
 [ext_resource type="Texture2D" uid="uid://p78b3cvyjbw3" path="res://explore/players/sprites/Root_Idle.png" id="5_5tr63"]
 [ext_resource type="Texture2D" uid="uid://dk7m04yi5av8r" path="res://explore/players/sprites/Root_Walk.png" id="6_gy85l"]
+[ext_resource type="PackedScene" uid="uid://db8fgquaqo5fn" path="res://explore/ui/explore_ui.tscn" id="7_go3iu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w6cc5"]
 
@@ -2007,6 +2008,8 @@ parameters/idle/BlendSpace2D/blend_position = Vector2(0, -0.0265486)
 parameters/jump/BlendSpace2D/blend_position = Vector2(-0.00105375, -0.0088495)
 parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
 
+[node name="sprint_cooldown" type="Timer" parent="main_player"]
+
 [node name="sub_player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114949, 0, -1.47561)
 collision_layer = 2
@@ -2042,6 +2045,14 @@ parameters/jump/BlendSpace2D/blend_position = Vector2(-0.00105375, -0.0088495)
 parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
 
 [node name="health_deplete" type="Timer" parent="."]
-autostart = true
 
+[node name="ExploreUi" parent="." instance=ExtResource("7_go3iu")]
+
+[node name="AnimatedSprite2D" parent="ExploreUi" index="5"]
+animation = &"default"
+frame_progress = 0.0
+
+[connection signal="timeout" from="main_player/sprint_cooldown" to="main_player" method="_on_sprint_cooldown_timeout"]
 [connection signal="timeout" from="health_deplete" to="." method="_on_health_deplete_timeout"]
+
+[editable path="ExploreUi"]

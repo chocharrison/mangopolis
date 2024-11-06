@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://db8fgquaqo5fn"]
+[gd_scene load_steps=100 format=3 uid="uid://db8fgquaqo5fn"]
 
 [ext_resource type="Script" path="res://explore/ui/explore_ui.gd" id="1_08obe"]
 [ext_resource type="Texture2D" uid="uid://bkw6ed0jp5fhn" path="res://explore/ui/sprites/buttons.png" id="1_setnc"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b6evtwt6wvlvh" path="res://explore/ui/sprites/sprint_bar.png" id="11_122lb"]
 [ext_resource type="Texture2D" uid="uid://cilp1c0o66y28" path="res://explore/ui/sprites/health_ui.png" id="12_7uekd"]
 [ext_resource type="Texture2D" uid="uid://fiij47sb266t" path="res://explore/ui/sprites/health_bar.png" id="13_p8puu"]
+[ext_resource type="Shader" path="res://explore/ui/book_text.gdshader" id="15_b0li1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6maao"]
 atlas = ExtResource("1_setnc")
@@ -249,34 +250,6 @@ tracks/7/keys = {
 "values": [Vector2(902, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_dra8b"]
-resource_name = "open_back"
-length = 0.66667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/notebook_inventory:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"open_back"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/notebook_inventory:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-
 [sub_resource type="Animation" id="Animation_oou47"]
 resource_name = "close_back"
 length = 0.66667
@@ -303,34 +276,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_tn4nq"]
-resource_name = "open_front"
-length = 0.66667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/notebook_inventory:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"open_front"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/notebook_inventory:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_x8mqa"]
@@ -403,6 +348,62 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"flip_right"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/notebook_inventory:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_dra8b"]
+resource_name = "open_back"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/notebook_inventory:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"open_back"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/notebook_inventory:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_tn4nq"]
+resource_name = "open_front"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/notebook_inventory:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"open_front"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -610,6 +611,10 @@ _data = {
 atlas = ExtResource("7_jij0h")
 region = Rect2(0, 0, 100, 100)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_60v8v"]
+atlas = ExtResource("8_owwp1")
+region = Rect2(700, 0, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0nj3"]
 atlas = ExtResource("8_owwp1")
 region = Rect2(0, 0, 100, 100)
@@ -702,6 +707,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60v8v")
+}],
+"loop": true,
+"name": &"glad",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1011,6 +1024,16 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cqw3n"]
+shader = ExtResource("15_b0li1")
+shader_parameter/fov = 41.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 12.135
+shader_parameter/x_rot = 23.97
+shader_parameter/inset = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_aosbp"]
+
 [node name="ExploreUi" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1105,8 +1128,8 @@ horizontal_alignment = 1
 position = Vector2(1064, 561)
 scale = Vector2(1.66, 1.66)
 sprite_frames = SubResource("SpriteFrames_e23gy")
-animation = &"happy"
-frame_progress = 0.695119
+animation = &"scared"
+frame_progress = 0.850458
 flip_h = true
 
 [node name="stamina" type="TextureProgressBar" parent="."]
@@ -1138,15 +1161,48 @@ offset_right = 1153.0
 offset_bottom = 648.0
 
 [node name="notebook_inventory" type="AnimatedSprite2D" parent="Control"]
-position = Vector2(578, 378)
-scale = Vector2(6, 6)
+position = Vector2(578, 321)
+scale = Vector2(6.88, 7.52)
 sprite_frames = SubResource("SpriteFrames_svm21")
 animation = &"open_back"
 frame = 9
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = 217.0
-offset_top = 149.0
-offset_right = 257.0
-offset_bottom = 189.0
+[node name="Node2D2" type="Node2D" parent="Control"]
+rotation = 1.5708
+skew = 0.0593412
+
+[node name="Node2D" type="Node2D" parent="Control/Node2D2"]
+rotation = -1.5708
+skew = -0.0296706
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/Node2D2/Node2D"]
+material = SubResource("ShaderMaterial_cqw3n")
+offset_left = 145.363
+offset_top = -3.61618
+offset_right = 657.363
+offset_bottom = 508.384
+rotation = 0.123855
+scale = Vector2(1.1395, 1.16691)
+
+[node name="SubViewport" type="SubViewport" parent="Control/Node2D2/Node2D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Node2D2/Node2D/SubViewportContainer/SubViewport"]
+offset_right = 402.0
+offset_bottom = 429.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_cuuiu")
+theme_override_font_sizes/normal_font_size = 30
+text = "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Control"]
+position = Vector2(360, 298)
+scale = Vector2(417, 571)
+mesh = SubResource("QuadMesh_aosbp")

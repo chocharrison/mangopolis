@@ -2,33 +2,48 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
+const SPRINT = 7.0
 const JUMP_VELOCITY = 4.5
 const BREAD_CRUMB_INTERVAL = 0.05
 const ARRAY_SIZE = 2
 const DISTANCE = 2
 const VERTICAL_DISTANCE = 2
 
+var sprint_meter = 100
+const MAX_SPRINT = 100
+
 var bread_crumbs_array = []
 #var bread_crumbs_timer = 0.0
 
 var sub: CharacterBody3D = null
 var anime: AnimationTree = null
+var UI: Control = null
+var Sprint_timer: Timer = null
 
-var is_ded = false
-var is_pause = false
+@onready var is_ded = false
+@onready var is_disable = false
+@onready var is_cooldown = false
+@onready var is_timer_active = false
+@onready var is_tired = false
+@onready var is_sprinted = false
+
+@onready var speed = SPEED
 
 func _ready() -> void:
+	sprint_meter = MAX_SPRINT
 	sub = get_parent().get_node("sub_player")
 	anime = get_node("AnimationTree")
+	UI = get_parent().get_node("ExploreUi")
 	bread_crumbs_array.append(position)
-	is_ded = false
-
+	Sprint_timer = get_node("sprint_cooldown")
+	
+	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 
-	if !is_ded and !is_pause:
+	if !is_ded and !is_disable:
 		player_move(delta)
 	else:
 		anime.get("parameters/playback").travel("fall")
@@ -41,12 +56,44 @@ func player_move(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	if sprint_meter == 0:
+		speed = 0
+		is_tired = true
+	elif !is_tired:
+		speed = SPEED
+
+	print(sprint_meter)
+
+	if Input.is_action_pressed("sprint") and is_on_floor() and !is_tired and !is_sprinted:
+	# Sprinting: reduce the sprint meter, set sprint speed, stop cooldown timer
+		sprint_meter -= 1
+		sprint_meter = max(sprint_meter, 0)
+		speed = SPRINT
+		Sprint_timer.stop()
+		is_timer_active = false
+	else:
+	# Not sprinting: handle sprint meter recharge and cooldown
+		if sprint_meter < MAX_SPRINT:
+			if !is_timer_active:
+				Sprint_timer.start(1)  # Start cooldown timer if not active
+				is_timer_active = true
+				is_cooldown = true
+			if !is_cooldown:
+				sprint_meter += 1
+		else:
+			is_tired = false
+			is_sprinted = false
 	
+	if Input.is_action_just_released("sprint"):
+		is_sprinted = true
+			
+	UI.set_stamina(sprint_meter)
+		
 	
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if(direction == Vector3.ZERO):
+	if(direction == Vector3.ZERO or sprint_meter==0):
 		anime.get("parameters/playback").travel("idle")
 	else:
 		anime.get("parameters/playback").travel("walk")
@@ -69,8 +116,8 @@ func player_move(delta: float) -> void:
 		position.y = sub.position.y + 2
 		position.z = sub.position.z
 	elif direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -87,6 +134,11 @@ func player_move(delta: float) -> void:
 func get_bread_crumbs() -> Array:
 	return bread_crumbs_array
 
+func get_sprint() -> float:
+	return speed
+
+func disable_control(val: bool):
+	is_disable = val
 
 #var input_mappings = [
 #	["ui_left", "ui_right", "ui_up", "ui_down"],  # Default
@@ -98,3 +150,7 @@ func get_bread_crumbs() -> Array:
 #func set_disorientation(i: int):
 #	input_index = i
 #	var current_mapping = input_mappings[input_index]
+
+
+func _on_sprint_cooldown_timeout() -> void:
+	is_cooldown = false

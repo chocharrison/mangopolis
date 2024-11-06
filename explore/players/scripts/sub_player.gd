@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
+const SPRINT = 7.0
 const JUMP_VELOCITY = 4.5
 const DISTANCE = 1.5
 const VERTICAL_DISTANCE = 2
@@ -10,15 +11,18 @@ var bread_crumbs_index = 0
 
 var anime: AnimationTree = null
 
+var speed = SPEED
+
 func _ready() -> void:
 	master = get_parent().get_node("main_player")
 	anime = get_node("AnimationTree")
-	
+	speed = SPEED
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 
+	speed = max(SPEED,master.get_sprint())
 	# Handle jump.
 	if Input.is_action_just_pressed("jump_2") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -36,8 +40,8 @@ func _physics_process(delta: float) -> void:
 		
 			if distance_to_target > DISTANCE:
 				var bread_direction = (Vector3(target_position.x,0,target_position.z) - Vector3(position.x,0,position.z)).normalized()
-				velocity.x = bread_direction.x * SPEED
-				velocity.z = bread_direction.z * SPEED
+				velocity.x = bread_direction.x * speed
+				velocity.z = bread_direction.z * speed
 
 			else:
 				bread_crumbs_index += 1

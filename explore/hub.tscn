@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://drhokc7i58eqa"]
+[gd_scene load_steps=9 format=3 uid="uid://drhokc7i58eqa"]
 
 [ext_resource type="PackedScene" uid="uid://clo6cck334no3" path="res://explore/players/players.tscn" id="1_gqk4c"]
 [ext_resource type="Script" path="res://explore/hub.gd" id="1_op7ef"]
-[ext_resource type="PackedScene" uid="uid://db8fgquaqo5fn" path="res://explore/ui/explore_ui.tscn" id="3_huarg"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://explore/collectibles/collectible.tscn" id="5_dt7mg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y15db"]
@@ -71,8 +70,6 @@ shape = SubResource("BoxShape3D_t6kdy")
 transform = Transform3D(1, 0, 0, 0, 0.967999, 0.250954, 0, -0.250954, 0.967999, 0, 2.10661, 3.82248)
 
 [node name="Camera3D" type="Camera3D" parent="camera_controller/camera_target"]
-
-[node name="ExploreUi" parent="." instance=ExtResource("3_huarg")]
 
 [node name="Collectibles" type="Node3D" parent="."]
 
