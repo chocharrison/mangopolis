@@ -2052,40 +2052,17 @@ parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
 animation = &"default"
 frame_progress = 0.0
 
-[node name="math" parent="ExploreUi" index="9"]
-visible = true
-
-[node name="second" parent="ExploreUi/math" index="1"]
-layout_mode = 0
+[node name="h" parent="ExploreUi/math" index="0"]
 offset_left = 0.0
 offset_top = 0.0
-offset_right = 172.0
-offset_bottom = 123.0
-
-[node name="answer" parent="ExploreUi/math" index="2"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 172.0
-offset_bottom = 123.0
-
-[node name="operand" parent="ExploreUi/math" index="3"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 172.0
-offset_bottom = 123.0
-
-[node name="equal" parent="ExploreUi/math" index="4"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 172.0
-offset_bottom = 123.0
+offset_right = 858.0
+offset_bottom = 152.0
 
 [node name="math_timer" type="Timer" parent="."]
 
 [connection signal="timeout" from="main_player/sprint_cooldown" to="main_player" method="_on_sprint_cooldown_timeout"]
 [connection signal="timeout" from="health_deplete" to="." method="_on_health_deplete_timeout"]
+[connection signal="text_submitted" from="ExploreUi/math/h/answer" to="." method="_on_answer_text_submitted"]
+[connection signal="timeout" from="math_timer" to="." method="_on_math_timer_timeout"]
 
 [editable path="ExploreUi"]

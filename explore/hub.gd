@@ -8,6 +8,8 @@ var sub_player: CharacterBody3D
 signal set_cutscene_signal(name: String)
 
 signal collectible_signal(collectible: Node3D)
+
+signal math_signal(level: int)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera_controller = get_node("camera_controller")
@@ -34,4 +36,5 @@ func collected(collectible: Node3D):
 
 
 func _on_button_pressed() -> void:
-	emit_signal("math_signal",0)
+	emit_signal("math_signal",2)
+	print("pressed")

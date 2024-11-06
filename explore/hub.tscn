@@ -68,11 +68,13 @@ transform = Transform3D(1, 0, 0, 0, 0.967999, 0.250954, 0, -0.250954, 0.967999, 
 
 [node name="Camera3D" type="Camera3D" parent="camera_controller/camera_target"]
 
+[node name="Players" parent="." instance=ExtResource("1_gqk4c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84848, 0)
+
 [node name="Collectibles" type="Node3D" parent="."]
 
 [node name="despacito" parent="Collectibles" instance=ExtResource("5_dt7mg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82048, 1.39782, 0.827633)
-message = "despacito"
 
 [node name="Button" type="Button" parent="."]
 offset_left = 988.0
@@ -81,12 +83,7 @@ offset_right = 996.0
 offset_bottom = 165.0
 scale = Vector2(15.5646, 10.3329)
 
-[node name="Players" parent="." instance=ExtResource("1_gqk4c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84848, 0)
-
-[node name="h" parent="Players/ExploreUi/math" index="0"]
-layout_mode = 0
-
+[connection signal="math_signal" from="." to="Players" method="_on_hub_math_signal"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 
 [editable path="Players"]

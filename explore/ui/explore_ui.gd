@@ -14,6 +14,7 @@ const MAX_PAGE = 10
 
 var health_bar: TextureProgressBar
 var stamina_bar: TextureProgressBar
+var timer_bar: ProgressBar
 
 var main_player: CharacterBody3D
 var players: Node3D
@@ -28,10 +29,13 @@ func _ready() -> void:
 	anime = get_node("AnimationPlayer")
 	math = get_node("math")
 	math.set_process(false)
+	math.visible = false
 	notebook = get_node("Control")
 	notebook.set_process(false)
 	health_bar = get_node("health")
 	stamina_bar = get_node("stamina")
+	timer_bar = get_node("math/timer")
+	
 	main_player = get_parent().get_node("main_player")
 	players = get_parent()
 	
@@ -66,7 +70,7 @@ func _process(delta: float) -> void:
 	if is_interrupted:
 		is_note = false
 		notebook.set_process(false)
-		
+		notebook.visible = false
 	
 	if is_note:
 		if Input.is_action_just_pressed("ui_right"):
@@ -100,25 +104,32 @@ func set_stamina(val: int):
 func set_interrupted(val: bool):
 	is_interrupted = val
 
-func set_first_text(val: int):
+func set_first(val: int):
 	first.text = str(val)
 
-func set_second_text(val: int):
+func set_second(val: int):
 	second.text = str(val)
 	
-func set_equation_text(val: int):
+func set_equation(val: String):
 	equation.text = str(val)
 	
 func math_success():
+	answer.release_focus()
 	anime.play("math_success")
 	is_interrupted = false
 
 func math_failure():
+	answer.release_focus()
 	anime.play("math_failure")
 	is_interrupted = false
 
 func math_enter():
+	answer.clear()
 	math.set_process(true)
 	anime.play("math_enter")
-	is_interrupted = true	
+	is_interrupted = true
+	answer.grab_focus()
+
+func set_timer(val: int):
+	timer_bar.value = val
 	
