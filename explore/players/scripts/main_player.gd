@@ -8,6 +8,7 @@ const BREAD_CRUMB_INTERVAL = 0.05
 const ARRAY_SIZE = 2
 const DISTANCE = 2
 const VERTICAL_DISTANCE = 2
+const PETTING_DISTANCE = 1
 
 var sprint_meter = 100
 const MAX_SPRINT = 100
@@ -26,6 +27,7 @@ var Sprint_timer: Timer = null
 @onready var is_timer_active = false
 @onready var is_tired = false
 @onready var is_sprinted = false
+@onready var is_petting = false
 
 @onready var speed = SPEED
 
@@ -50,22 +52,31 @@ func _physics_process(delta: float) -> void:
 		anime.get("parameters/playback").travel("idle")
 	else:
 		player_move(delta)
-	# Handle jump.
-
 
 func player_move(delta: float) -> void:
 	if Input.is_action_just_pressed("jump_1") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		set_pet(false)
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	if Input.is_action_just_pressed("pet") and is_on_floor() and position.distance_to(sub.position) <= PETTING_DISTANCE:
+		var facing_pet = (Vector3(sub.position.x,0,sub.position.z)-Vector3(position.x,0,position.z)).normalized()
+		anime.set("parameters/walk/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
+		set_pet(true)
+	
+	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
 	if sprint_meter == 0:
 		speed = 0
 		is_tired = true
 	elif !is_tired:
 		speed = SPEED
-
-	if Input.is_action_pressed("sprint") and is_on_floor() and !is_tired and !is_sprinted:
+	
+	if Input.is_action_pressed("sprint") and is_on_floor() and !is_tired and !is_sprinted and direction != Vector3.ZERO:
 	# Sprinting: reduce the sprint meter, set sprint speed, stop cooldown timer
+		set_pet(false)
 		sprint_meter -= 1
 		sprint_meter = max(sprint_meter, 0)
 		speed = SPRINT
@@ -88,14 +99,14 @@ func player_move(delta: float) -> void:
 		is_sprinted = true
 			
 	UI.set_stamina(sprint_meter)
-		
-	
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if(direction == Vector3.ZERO):
-		anime.get("parameters/playback").travel("idle")
+		if !is_petting:
+			anime.get("parameters/playback").travel("idle")
+		else:
+			anime.get("parameters/playback").travel("walk")
 	else:
+		set_pet(false)
 		anime.get("parameters/playback").travel("walk")
 		anime.set("parameters/idle/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 		anime.set("parameters/jump/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
@@ -130,7 +141,7 @@ func player_move(delta: float) -> void:
 			bread_crumbs_array.append(position)
 			if bread_crumbs_array.size() > ARRAY_SIZE:
 				bread_crumbs_array.pop_front()
-	#print(bread_crumbs_array.size())
+
 func get_bread_crumbs() -> Array:
 	return bread_crumbs_array
 
@@ -140,8 +151,15 @@ func get_sprint() -> float:
 func disable_control(val: bool):
 	is_disable = val
 
-func ded():
+func set_ded():
 	is_ded = true
+
+func set_pet(val: bool):
+	is_petting = val
+	if !is_petting:
+		UI.set_coco("default")
+	else:
+		UI.set_coco("glad")
 
 func _on_sprint_cooldown_timeout() -> void:
 	is_cooldown = false

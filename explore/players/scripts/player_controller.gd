@@ -5,6 +5,7 @@ extends Node3D
 var health = 100
 const MAX_HEALTH = 100
 var health_potion = 3
+var health_damage = 20
 
 var health_timer: Timer
 var math_timer: Timer
@@ -37,17 +38,6 @@ func _ready() -> void:
 	UI.set_notebook_array(page_array.size()-1,MAX_PAGE)
 	#_set_random_timer_interval()
 	
-func _on_health_deplete_timeout() -> void:
-	if health > 0:
-		var health_decrease = randi_range(3, 7) # Randomly decrease health between 5 and 20 points
-		health -= health_decrease
-		health = max(0, health) # Ensure health doesn't drop below 0
-		if(health <= 0):
-			main_player.ded()
-		print("Health decreased by ", health_decrease, " - Current health: ", health)
-		UI.set_health(health)
-		is_health_timer = false
-
 func _input(event: InputEvent) -> void:
 	if !is_interrupted:
 		if Input.is_action_just_pressed("health") and health_potion > 0 and !is_note:
@@ -71,7 +61,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if is_interrupted:
 		health_timer.stop()
-		is_health_timer = false
+		set_health_timer(false)
 		if is_math:
 			var percent_time = (math_timer.get_time_left()/math_timer.get_wait_time())*100
 			UI.set_timer(percent_time)
@@ -80,14 +70,15 @@ func _physics_process(delta: float) -> void:
 		if !is_health_timer:
 			health_timer.wait_time = randi_range(5, 15)
 			health_timer.start()
-			is_health_timer = true
+			set_health_timer(true)
 
 func pause_health_timer(val: bool):
 	health_timer.paused = val
 
-func start_math(level: int):
+func start_math(level: int,damage: int = 20,iter: int = 0):
 	var first = 0
 	var second = 0
+	health_damage = damage
 	set_interrupted(true)
 	match level:
 		0:
@@ -123,14 +114,14 @@ func start_math(level: int):
 	UI.set_second(second)
 	UI.math_enter()
 	is_math = true
-	math_timer.wait_time = max(MIN_MATH_TIMER,MATH_TIMER * pow(0.9,iterations))
+	math_timer.wait_time = max(MIN_MATH_TIMER,MATH_TIMER * pow(0.9,iterations+iter))
 	iterations+=1
 	math_timer.start()
 	
 func failed():
 		UI.math_failure()
 		iterations = max(iterations-5,0)
-		health= max(0,health - 20)
+		health= max(0,health - health_damage)
 		UI.set_health(health)	
 		if(health <= 0):
 			main_player.ded()
@@ -151,11 +142,24 @@ func math_operations(first: int, second: int,equation: int) -> int:
 func set_interrupted(val: bool):
 	is_interrupted = val
 	main_player.disable_control(val)
-	
 
-func _on_hub_math_signal(level: int) -> void:
+func add_health_potion(val:int):
+	health_potion+=val
+	UI.health_picked(health_potion)
+
+func set_health_timer(val: bool):
+	is_health_timer = val
+
+func update_array(val: int):
+	page_array.append(val)
+	UI.set_notebook_array(page_array.size()-1,MAX_PAGE)
+	
+func give_main_player_position() -> Vector3:
+	return main_player.position
+	
+func _on_hub_math_signal(level: int,damage: int, iter: int) -> void:
 	print("here")
-	start_math(level)
+	start_math(level,damage,iter)
 
 
 func _on_answer_text_submitted(new_text: String) -> void:
@@ -166,22 +170,24 @@ func _on_answer_text_submitted(new_text: String) -> void:
 		failed()
 	math_timer.stop()
 	set_interrupted(false)
-		
 
 func _on_math_timer_timeout() -> void:
 	failed()
 	set_interrupted(false)
 
-func add_health_potion(val:int):
-	health_potion+=val
-	UI.health_picked(health_potion)
-
-func update_array(val: int):
-	page_array.append(val)
-	UI.set_notebook_array(page_array.size()-1,MAX_PAGE)
-
 func _on_notebook_collected_notebook_signal(val:int) -> void:
 	update_array(val)
 
-func _on_health_potion_collected_healthpotions_signal() -> void:
-	add_health_potion(1)
+func _on_health_potion_collected_healthpotions_signal(val: int) -> void:
+	add_health_potion(val)
+
+func _on_health_deplete_timeout() -> void:
+	if health > 0:
+		var health_decrease = randi_range(3, 7) # Randomly decrease health between 5 and 20 points
+		health -= health_decrease
+		health = max(0, health) # Ensure health doesn't drop below 0
+		if(health <= 0):
+			main_player.ded()
+		print("Health decreased by ", health_decrease, " - Current health: ", health)
+		UI.set_health(health)
+		is_health_timer = false

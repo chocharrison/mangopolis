@@ -35,6 +35,7 @@ var viewport: SubViewport
 var text: RichTextLabel
 var images: TextureRect
 
+var coco: AnimatedSprite2D
 
 func _ready() -> void:
 	notebook_anime_play = get_node("notebook_player")
@@ -69,6 +70,7 @@ func _ready() -> void:
 	text = get_node("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel")
 	images = get_node("Control/image_x/image_y/TextureRect")
 	
+	coco = get_node("coco")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
@@ -215,4 +217,7 @@ func health_exhaust(val: int):
 
 func health_used(val: int):
 	health_potion.text = str(val)
-	health_animation.play("health_used")	
+	health_animation.play("health_used")
+
+func set_coco(coco_ui: String):
+	coco.play(coco_ui)

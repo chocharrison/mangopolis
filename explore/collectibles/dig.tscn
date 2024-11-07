@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://4iks27a67iex"]
+
+[ext_resource type="Script" path="res://explore/collectibles/dig.gd" id="1_sooej"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5nfil"]
+radius = 0.844553
+
+[node name="dig" type="Node3D"]
+script = ExtResource("1_sooej")
+
+[node name="collect" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00514279, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collect"]
+shape = SubResource("SphereShape3D_5nfil")
+
+[node name="detect" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00514279, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detect"]
+shape = SubResource("SphereShape3D_5nfil")
+
+[connection signal="body_entered" from="collect" to="." method="_on_collect_body_entered"]
+[connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]
