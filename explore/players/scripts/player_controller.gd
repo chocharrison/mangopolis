@@ -1,7 +1,10 @@
 extends Node3D
 
+@export var page_array = [0,2]
+
 var health = 100
 const MAX_HEALTH = 100
+var health_potion = 3
 
 var health_timer: Timer
 var math_timer: Timer
@@ -11,6 +14,8 @@ var UI: Control
 
 const MATH_TIMER = 30
 const MIN_MATH_TIMER = 6
+
+const MAX_PAGE = 10
 
 @onready var answer = 0
 
@@ -27,6 +32,8 @@ func _ready() -> void:
 	sub_player = get_node("sub_player")
 	UI = get_node("ExploreUi")
 	UI.set_health(health)
+	UI.set_health_potion(health_potion)
+	UI.set_notebook_array(page_array.size(),MAX_PAGE)
 	#_set_random_timer_interval()
 	
 func _on_health_deplete_timeout() -> void:
@@ -45,8 +52,15 @@ func _physics_process(delta: float) -> void:
 		if is_math:
 			var percent_time = (math_timer.get_time_left()/math_timer.get_wait_time())*100
 			UI.set_timer(percent_time)
-		
+
 	else:
+		if Input.is_action_just_pressed("health") and health_potion > 0:
+			health = min(health + 20,MAX_HEALTH)
+			health_potion -= 1
+			print("healed: "+str(health_potion))
+			UI.set_health(health)
+			UI.set_health_potion(health_potion)
+			
 		if !is_health_timer:
 			health_timer.wait_time = randi_range(5, 15)
 			health_timer.start()
@@ -66,31 +80,31 @@ func start_math(level: int):
 		0:
 			first = 0
 			second = randi_range(0,10)
-			answer = equation(first,second,2)
+			answer = math_operations(first,second,2)
 		1:
 			first = randi_range(0, 10)
 			second = randi_range(0,10)
-			answer = equation(first,second,0)
+			answer = math_operations(first,second,0)
 		2:
 			first = randi_range(0, 10)
 			second = randi_range(0,10)
-			answer = equation(first,second,1)
+			answer = math_operations(first,second,1)
 		3:
 			first = randi_range(10, 100)
 			second = randi_range(10,100)
-			answer = equation(first,second,randi_range(0,1))
+			answer = math_operations(first,second,randi_range(0,1))
 		4:
 			first = randi_range(1, 10)
 			second = randi_range(1,10)
-			answer = equation(first,second,2)
+			answer = math_operations(first,second,2)
 		5:
 			first = randi_range(1, 20)
 			second = randi_range(1,10)
-			answer = equation(first,second,2)
+			answer = math_operations(first,second,2)
 		6:
 			first = randi_range(50, 100)
 			second = randi_range(50,100)
-			answer = equation(first,second,2)
+			answer = math_operations(first,second,2)
 	print(first,second,answer)
 	UI.set_first(first)
 	UI.set_second(second)
@@ -101,10 +115,7 @@ func start_math(level: int):
 	math_timer.start()
 	
 	
-		
-	
-func equation(first: int, second: int,equation: int) -> int:
-	var answer = 0
+func math_operations(first: int, second: int,equation: int) -> int:
 	match equation:
 		0:
 			answer = first + second
@@ -117,38 +128,13 @@ func equation(first: int, second: int,equation: int) -> int:
 			UI.set_equation("x")
 	return answer
 	
-
-
-
-
-
-
-
-
-
-
-
-
-#if Input.is_action_just_pressed("turn_left"):
-#			angle+=90
-#			i+=1
-#			if(i>3):
-#				i = 0
-#			main_player.set_disorientation(i)
-#		elif Input.is_action_just_pressed("turn_right"):
-#			angle-=90
-#			i-=1
-#			if(i<0):
-#				i = 3
-#			main_player.set_disorientation(i)
-#		camera_controller.rotation.y = lerp_angle(camera_controller.rotation.y,deg_to_rad(angle),0.1)
-		
 func set_interrupted(val: bool):
 	is_interrupted = val
 	main_player.disable_control(val)
 	
 
 func _on_hub_math_signal(level: int) -> void:
+	print("here")
 	start_math(level)
 
 
@@ -164,9 +150,21 @@ func _on_answer_text_submitted(new_text: String) -> void:
 	set_interrupted(false)
 		
 
-
 func _on_math_timer_timeout() -> void:
 	UI.math_failure()
 	is_interrupted = false
 	main_player.disable_control(false)
 	iterations = max(iterations-5,0)
+	health-=20
+	UI.set_health(health)
+
+func add_health_potion(val:int):
+	health_potion+=val
+	UI.set_health_potion(health_potion)
+
+func update_array(val: int):
+	page_array.append(val)
+	UI.set_notebook_array(page_array.size(),MAX_PAGE)
+
+func get_array() -> Array:
+	return page_array

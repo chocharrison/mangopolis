@@ -2048,10 +2048,6 @@ parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
 
 [node name="ExploreUi" parent="." instance=ExtResource("7_go3iu")]
 
-[node name="AnimatedSprite2D" parent="ExploreUi" index="5"]
-animation = &"default"
-frame_progress = 0.0
-
 [node name="h" parent="ExploreUi/math" index="0"]
 offset_left = 0.0
 offset_top = 0.0

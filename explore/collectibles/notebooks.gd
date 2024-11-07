@@ -1,12 +1,9 @@
 extends Node3D
 
-signal collectible_signal(collectible_node: Node)
-
-@export var message_id: String
+@export var message_id: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	connect("collectible_signal", Callable(self, "collectible"))
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -15,6 +12,6 @@ func _process(delta: float) -> void:
 
 func _on_collect_body_entered(body: Node) -> void:
 	if(body.name=="main_player"):
-		collectible_signal.emit(self)
 		print(message_id)
+		#the player updates collectibles goes here
 		queue_free()

@@ -141,16 +141,5 @@ func disable_control(val: bool):
 func ded():
 	is_ded = true
 
-#var input_mappings = [
-#	["ui_left", "ui_right", "ui_up", "ui_down"],  # Default
-#	["ui_up", "ui_down", "ui_right", "ui_left"],  # Inverted Y-axis
-#	["ui_right", "ui_left", "ui_down", "ui_up"],  # Rotated 90 degrees clockwise
-#	["ui_down", "ui_up", "ui_left", "ui_right"]   # Inverted X-axis
-#]
-#var input_index = 0
-#func set_disorientation(i: int):
-#	input_index = i
-#	var current_mapping = input_mappings[input_index]
-
 func _on_sprint_cooldown_timeout() -> void:
 	is_cooldown = false

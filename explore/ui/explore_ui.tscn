@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://db8fgquaqo5fn"]
+[gd_scene load_steps=107 format=3 uid="uid://db8fgquaqo5fn"]
 
 [ext_resource type="Script" path="res://explore/ui/explore_ui.gd" id="1_08obe"]
 [ext_resource type="Texture2D" uid="uid://bkw6ed0jp5fhn" path="res://explore/ui/sprites/buttons.png" id="1_setnc"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cilp1c0o66y28" path="res://explore/ui/sprites/health_ui.png" id="12_7uekd"]
 [ext_resource type="Texture2D" uid="uid://fiij47sb266t" path="res://explore/ui/sprites/health_bar.png" id="13_p8puu"]
 [ext_resource type="Shader" path="res://explore/ui/book_text.gdshader" id="15_b0li1"]
-[ext_resource type="Script" path="res://explore/ui/mesh_instance_2d.gd" id="16_y8qxx"]
+[ext_resource type="Texture2D" uid="uid://5gh6cgbf5mbg" path="res://explore/notebooks/nuggets.png" id="16_y8vyw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6maao"]
 atlas = ExtResource("1_setnc")
@@ -260,7 +260,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -358,10 +358,46 @@ tracks/16/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Control/image_x/image_y/TextureRect:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("icon:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_oou47"]
 resource_name = "close_back"
-length = 0.66667
+length = 0.400003
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -381,15 +417,39 @@ tracks/1/path = NodePath("Control/notebook_inventory:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.066667, 0.133334, 0.2, 0.266667, 0.333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+"values": [7, 6, 5, 4, 3, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/image_x/image_y/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_x8mqa"]
 resource_name = "close_front"
-length = 0.66667
+length = 0.46667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -409,15 +469,39 @@ tracks/1/path = NodePath("Control/notebook_inventory:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.066667, 0.133334, 0.2, 0.266667, 0.333334, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+"values": [7, 6, 5, 4, 3, 2, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/image_x/image_y/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ihm18"]
 resource_name = "flip_left"
-length = 0.66667
+length = 0.400003
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -437,15 +521,39 @@ tracks/1/path = NodePath("Control/notebook_inventory:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.57628e-07, 0.0666663, 0.133333, 0.2, 0.266666, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+"values": [5, 4, 3, 2, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/image_x/image_y/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_2fpc8"]
 resource_name = "flip_right"
-length = 0.66667
+length = 0.400003
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -465,10 +573,34 @@ tracks/1/path = NodePath("Control/notebook_inventory:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.066667, 0.133334, 0.2, 0.266667, 0.333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+"values": [2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/image_x/image_y/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_6r1x0"]
@@ -810,6 +942,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/image_x/image_y/TextureRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_tn4nq"]
 resource_name = "open_front"
@@ -837,6 +993,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/image_x/image_y/TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_c8xbm"]
@@ -1015,6 +1195,46 @@ tracks/6/keys = {
 "values": [Vector2(902, -115), Vector2(902, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ajhf2"]
+resource_name = "update_notebook"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("icon:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(89, 146), Vector2(89, 185), Vector2(131, 166), Vector2(89, 146)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("icon:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1056, -30), Vector2(1014, -30), Vector2(1056, -30)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("icon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qfbgr"]
 _data = {
 "RESET": SubResource("Animation_lwr56"),
@@ -1028,7 +1248,8 @@ _data = {
 "open_back": SubResource("Animation_dra8b"),
 "open_front": SubResource("Animation_tn4nq"),
 "read": SubResource("Animation_c8xbm"),
-"unread": SubResource("Animation_2we5q")
+"unread": SubResource("Animation_2we5q"),
+"update_notebook": SubResource("Animation_ajhf2")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h8ih"]
@@ -1456,7 +1677,13 @@ shader_parameter/y_rot = 12.135
 shader_parameter/x_rot = 23.97
 shader_parameter/inset = 0.0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_pf757"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6kwk"]
+shader = ExtResource("15_b0li1")
+shader_parameter/fov = 30.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = -16.18
+shader_parameter/x_rot = 16.18
+shader_parameter/inset = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rugh"]
 
@@ -1552,12 +1779,11 @@ theme_override_font_sizes/font_size = 60
 text = "0"
 horizontal_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="coco" type="AnimatedSprite2D" parent="."]
 position = Vector2(1064, 561)
 scale = Vector2(1.66, 1.66)
 sprite_frames = SubResource("SpriteFrames_e23gy")
-animation = &"scared"
-frame_progress = 0.850458
+autoplay = "default"
 flip_h = true
 
 [node name="stamina" type="TextureProgressBar" parent="."]
@@ -1595,29 +1821,30 @@ sprite_frames = SubResource("SpriteFrames_svm21")
 animation = &"open_back"
 frame = 9
 
-[node name="Node2D2" type="Node2D" parent="Control"]
+[node name="text_x" type="Node2D" parent="Control"]
 rotation = 1.5708
-skew = 0.0593412
+skew = 0.118682
 
-[node name="Node2D" type="Node2D" parent="Control/Node2D2"]
+[node name="text_y" type="Node2D" parent="Control/text_x"]
 rotation = -1.5708
 skew = -0.0296706
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/Node2D2/Node2D"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/text_x/text_y"]
 material = SubResource("ShaderMaterial_cqw3n")
-offset_left = 145.363
-offset_top = -3.61618
-offset_right = 657.363
-offset_bottom = 508.384
+offset_left = 140.299
+offset_top = -10.5794
+offset_right = 652.299
+offset_bottom = 501.421
 rotation = 0.123855
 scale = Vector2(1.1395, 1.16691)
 
-[node name="SubViewport" type="SubViewport" parent="Control/Node2D2/Node2D/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="Control/text_x/text_y/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/Node2D2/Node2D/SubViewportContainer/SubViewport"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/text_x/text_y/SubViewportContainer/SubViewport"]
+visible = false
 offset_right = 402.0
 offset_bottom = 429.0
 size_flags_horizontal = 4
@@ -1628,15 +1855,51 @@ theme_override_colors/selection_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_cuuiu")
 theme_override_font_sizes/normal_font_size = 30
-text = "ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+text = "the quick brown fox jumps over the lazy dog
+THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Control"]
-position = Vector2(360, 298)
-scale = Vector2(417, 571)
-mesh = SubResource("ArrayMesh_pf757")
-script = ExtResource("16_y8qxx")
+MOM! MOM! MOMMY! MOMMY! MA! MA! MAAAAAAAA!.....I peed. 
+
+BECAUSE IT'S YOUR BIRTHDAY OMGGGGGGG :D 
+
+Happy Birthday Mangooooo, I love you so heccing much and I hope today is an amazing day full of love, laughter, and yummers ❤️ Our friendship means the world to me and I hope one day we can celebrate the silliest party pupper's special day irl by being absolute gremlins 🙏
+
+
+MOM! MOM! MOMMY! MOMMY! MA! MA! MAAAAAAAA!.....I peed. 
+
+BECAUSE IT'S YOUR BIRTHDAY OMGGGGGGG :D 
+
+Happy Birthday Mangooooo, I love you so heccing much and I hope today is an amazing day full of love, laughter, and yummers ❤️ Our friendship means the world to me and I hope one day we can celebrate the silliest party pupper's special day irl by being absolute gremlins 🙏
+
+
+MOM! MOM! MOMMY! MOMMY! MA! MA! MAAAAAAAA!.....I peed. 
+
+BECAUSE IT'S YOUR BIRTHDAY OMGGGGGGG :D 
+
+Happy Birthday Mangooooo, I love you so heccing much and I hope today is an amazing day full of love, laughter, and yummers ❤️ Our friendship means the world to me and I hope one day we can celebrate the silliest party pupper's special day irl by being absolute gremlins 🙏"
+
+[node name="image_x" type="Node2D" parent="Control"]
+position = Vector2(562, 157)
+rotation = 1.5708
+skew = -0.329867
+
+[node name="image_y" type="Node2D" parent="Control/image_x"]
+position = Vector2(52.9443, -36.7484)
+rotation = -1.5708
+skew = -0.179769
+
+[node name="TextureRect" type="TextureRect" parent="Control/image_x/image_y"]
+visible = false
+material = SubResource("ShaderMaterial_b6kwk")
+offset_left = -30.2349
+offset_top = -12.7807
+offset_right = 432.765
+offset_bottom = 303.219
+rotation = 0.0718426
+texture = ExtResource("16_y8vyw")
 
 [node name="math" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 182.0
 offset_top = 351.0
