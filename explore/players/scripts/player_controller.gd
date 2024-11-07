@@ -111,14 +111,14 @@ func start_math(level: int):
 			second = randi_range(1,10)
 			answer = math_operations(first,second,2)
 		5:
-			first = randi_range(1, 20)
+			first = randi_range(10, 20)
 			second = randi_range(1,10)
 			answer = math_operations(first,second,2)
 		6:
 			first = randi_range(50, 100)
 			second = randi_range(50,100)
 			answer = math_operations(first,second,2)
-	print(first,second,answer)
+	#print(first,second,answer)
 	UI.set_first(first)
 	UI.set_second(second)
 	UI.math_enter()
