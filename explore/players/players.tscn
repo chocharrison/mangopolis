@@ -2044,6 +2044,8 @@ parameters/idle/BlendSpace2D/blend_position = Vector2(0, -0.0088495)
 parameters/jump/BlendSpace2D/blend_position = Vector2(-0.00105375, -0.0088495)
 parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
 
+[node name="panic_timer" type="Timer" parent="sub_player"]
+
 [node name="health_deplete" type="Timer" parent="."]
 
 [node name="ExploreUi" parent="." instance=ExtResource("7_go3iu")]

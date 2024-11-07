@@ -10,5 +10,10 @@
 		{
 		"name":"yes",
 		"message":"res://explore/notebooks/despacito.txt",
+		},
+	"3":
+		{
+		"name":"no",
+		"message":"res://explore/notebooks/test.txt",
 		}
 }

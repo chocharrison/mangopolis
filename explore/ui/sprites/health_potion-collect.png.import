@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgedjad4jjwja"
-path="res://.godot/imported/mango_ui.png-801bf466e5d46d828e67157385da9c4e.ctex"
+uid="uid://c0d1fik26lrxm"
+path="res://.godot/imported/health_potion-collect.png-e382a89a631e42045c5be74870b89c44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://backlog/battle/ui/sprite/mango_ui.png"
-dest_files=["res://.godot/imported/mango_ui.png-801bf466e5d46d828e67157385da9c4e.ctex"]
+source_file="res://explore/ui/sprites/health_potion-collect.png"
+dest_files=["res://.godot/imported/health_potion-collect.png-e382a89a631e42045c5be74870b89c44.ctex"]
 
 [params]
 

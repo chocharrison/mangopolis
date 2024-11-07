@@ -43,11 +43,13 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 
-	if !is_ded and !is_disable:
-		player_move(delta)
+	if is_ded:
+		anime.get("parameters/playback").travel("idle")
+		print("dead")
+	elif is_disable:
+		anime.get("parameters/playback").travel("idle")
 	else:
-		anime.get("parameters/playback").travel("fall")
-	
+		player_move(delta)
 	# Handle jump.
 
 

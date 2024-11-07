@@ -11,6 +11,8 @@ var bread_crumbs_index = 0
 
 var anime: AnimationTree = null
 
+var is_panic = false
+var is_far = false
 var speed = SPEED
 
 func _ready() -> void:

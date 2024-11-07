@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var page_array = [0,2]
+@export var page_array = [0,3]
 
 var health = 100
 const MAX_HEALTH = 100
@@ -22,6 +22,7 @@ const MAX_PAGE = 10
 @onready var is_health_timer = false
 @onready var is_interrupted = false
 @onready var is_math = false
+@onready var is_note = false
 
 @onready var iterations = 0
 
@@ -32,8 +33,8 @@ func _ready() -> void:
 	sub_player = get_node("sub_player")
 	UI = get_node("ExploreUi")
 	UI.set_health(health)
-	UI.set_health_potion(health_potion)
-	UI.set_notebook_array(page_array.size(),MAX_PAGE)
+	UI.health_picked(health_potion)
+	UI.set_notebook_array(page_array.size()-1,MAX_PAGE)
 	#_set_random_timer_interval()
 	
 func _on_health_deplete_timeout() -> void:
@@ -41,10 +42,32 @@ func _on_health_deplete_timeout() -> void:
 		var health_decrease = randi_range(3, 7) # Randomly decrease health between 5 and 20 points
 		health -= health_decrease
 		health = max(0, health) # Ensure health doesn't drop below 0
+		if(health <= 0):
+			main_player.ded()
 		print("Health decreased by ", health_decrease, " - Current health: ", health)
 		UI.set_health(health)
 		is_health_timer = false
 
+func _input(event: InputEvent) -> void:
+	if !is_interrupted:
+		if Input.is_action_just_pressed("health") and health_potion > 0 and !is_note:
+			health = min(health + 20,MAX_HEALTH)
+			health_potion -= 1
+			is_health_timer = false
+			print("healed: "+str(health_potion))
+			UI.set_health(health)
+			UI.health_used(health_potion)
+			if(health_potion <= 0):
+				UI.health_exhaust(health_potion)
+		
+		if Input.is_action_just_pressed("notebook"):
+			is_note = !is_note
+			UI.set_note(is_note)
+			main_player.disable_control(is_note)
+			pause_health_timer(is_note)
+			if is_note:
+				UI.set_array(page_array)
+		
 func _physics_process(delta: float) -> void:
 	if is_interrupted:
 		health_timer.stop()
@@ -53,21 +76,11 @@ func _physics_process(delta: float) -> void:
 			var percent_time = (math_timer.get_time_left()/math_timer.get_wait_time())*100
 			UI.set_timer(percent_time)
 
-	else:
-		if Input.is_action_just_pressed("health") and health_potion > 0:
-			health = min(health + 20,MAX_HEALTH)
-			health_potion -= 1
-			print("healed: "+str(health_potion))
-			UI.set_health(health)
-			UI.set_health_potion(health_potion)
-			
+	else:	
 		if !is_health_timer:
 			health_timer.wait_time = randi_range(5, 15)
 			health_timer.start()
 			is_health_timer = true
-	
-	if(health <= 0):
-		main_player.ded()
 
 func pause_health_timer(val: bool):
 	health_timer.paused = val
@@ -114,7 +127,14 @@ func start_math(level: int):
 	iterations+=1
 	math_timer.start()
 	
-	
+func failed():
+		UI.math_failure()
+		iterations = max(iterations-5,0)
+		health= max(0,health - 20)
+		UI.set_health(health)	
+		if(health <= 0):
+			main_player.ded()
+
 func math_operations(first: int, second: int,equation: int) -> int:
 	match equation:
 		0:
@@ -143,28 +163,25 @@ func _on_answer_text_submitted(new_text: String) -> void:
 	if(get_answer == answer):
 		UI.math_success()
 	else:
-		UI.math_failure()
-		iterations = max(iterations-5,0)
-		health-=20
-		UI.set_health(health)
+		failed()
+	math_timer.stop()
 	set_interrupted(false)
 		
 
 func _on_math_timer_timeout() -> void:
-	UI.math_failure()
-	is_interrupted = false
-	main_player.disable_control(false)
-	iterations = max(iterations-5,0)
-	health-=20
-	UI.set_health(health)
+	failed()
+	set_interrupted(false)
 
 func add_health_potion(val:int):
 	health_potion+=val
-	UI.set_health_potion(health_potion)
+	UI.health_picked(health_potion)
 
 func update_array(val: int):
 	page_array.append(val)
-	UI.set_notebook_array(page_array.size(),MAX_PAGE)
+	UI.set_notebook_array(page_array.size()-1,MAX_PAGE)
 
-func get_array() -> Array:
-	return page_array
+func _on_notebook_collected_notebook_signal(val:int) -> void:
+	update_array(val)
+
+func _on_health_potion_collected_healthpotions_signal() -> void:
+	add_health_potion(1)

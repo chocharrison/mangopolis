@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://db8fgquaqo5fn"]
+[gd_scene load_steps=114 format=3 uid="uid://db8fgquaqo5fn"]
 
 [ext_resource type="Script" path="res://explore/ui/explore_ui.gd" id="1_08obe"]
 [ext_resource type="Texture2D" uid="uid://bkw6ed0jp5fhn" path="res://explore/ui/sprites/buttons.png" id="1_setnc"]
@@ -17,141 +17,6 @@
 [ext_resource type="Shader" path="res://explore/ui/book_text.gdshader" id="15_b0li1"]
 [ext_resource type="Texture2D" uid="uid://5gh6cgbf5mbg" path="res://explore/notebooks/nuggets.png" id="16_y8vyw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6maao"]
-atlas = ExtResource("1_setnc")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8bki1"]
-atlas = ExtResource("1_setnc")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qd8yt"]
-atlas = ExtResource("1_setnc")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rscnd"]
-atlas = ExtResource("1_setnc")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhvyn"]
-atlas = ExtResource("1_setnc")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjyf5"]
-atlas = ExtResource("1_setnc")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ajfrs"]
-atlas = ExtResource("1_setnc")
-region = Rect2(32, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x5lb5"]
-atlas = ExtResource("1_setnc")
-region = Rect2(48, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2l5ib"]
-atlas = ExtResource("1_setnc")
-region = Rect2(0, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a81es"]
-atlas = ExtResource("1_setnc")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b060p"]
-atlas = ExtResource("1_setnc")
-region = Rect2(32, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pn2d4"]
-atlas = ExtResource("1_setnc")
-region = Rect2(48, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f7g05"]
-atlas = ExtResource("1_setnc")
-region = Rect2(0, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2uiuw"]
-atlas = ExtResource("1_setnc")
-region = Rect2(16, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_84t52"]
-atlas = ExtResource("1_setnc")
-region = Rect2(32, 48, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2vip4"]
-atlas = ExtResource("1_setnc")
-region = Rect2(48, 48, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4dcyx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6maao")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8bki1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qd8yt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rscnd")
-}],
-"loop": true,
-"name": &"interact_master",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bhvyn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xjyf5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ajfrs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x5lb5")
-}],
-"loop": true,
-"name": &"interact_sub",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2l5ib")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a81es")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b060p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pn2d4")
-}],
-"loop": true,
-"name": &"jump_master",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f7g05")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2uiuw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_84t52")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2vip4")
-}],
-"loop": true,
-"name": &"jump_sub",
-"speed": 5.0
-}]
-
 [sub_resource type="Animation" id="Animation_lwr56"]
 length = 0.001
 tracks/0/type = "value"
@@ -164,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"open_back"]
+"values": [&"book"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -176,7 +41,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [9]
+"values": [0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -253,7 +118,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("math:visible")
+tracks/8/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -265,130 +130,22 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("math:modulate")
+tracks/9/path = NodePath("Control/image_x/image_y/TextureRect:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("math:position")
+tracks/10/path = NodePath("icon:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(182, 351)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("math:scale")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("math/h/answer:theme_override_colors/font_color")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("math/h/equal:theme_override_colors/font_color")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("math/h/second:theme_override_colors/font_color")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("math/h/operand:theme_override_colors/font_color")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("math/h/first:theme_override_colors/font_color")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel:visible")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("Control/image_x/image_y/TextureRect:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("icon:modulate")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -601,318 +358,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_6r1x0"]
-resource_name = "math_enter"
-length = 0.200003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("math:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("math:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("math:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(182, 407), Vector2(182, 351)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("math/h/answer:theme_override_colors/font_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("math/h/equal:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("math/h/second:theme_override_colors/font_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("math/h/operand:theme_override_colors/font_color")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("math/h/first:theme_override_colors/font_color")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_xwuhs"]
-resource_name = "math_failure"
-length = 0.333337
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("math:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("math:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("math:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.133333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(182, 351), Vector2(171, 351), Vector2(193, 351), Vector2(182, 351), Vector2(182, 407)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("math/h/first:theme_override_colors/font_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("math/h/operand:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("math/h/second:theme_override_colors/font_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("math/h/equal:theme_override_colors/font_color")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("math/h/answer:theme_override_colors/font_color")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_i1sf2"]
-resource_name = "math_success"
-length = 0.333337
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("math:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("math:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("math:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(182, 351), Vector2(144, 317), Vector2(182, 351), Vector2(182, 407)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("math:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("math/h/answer:theme_override_colors/font_color")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 0, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("math/h/equal:theme_override_colors/font_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 0, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("math/h/second:theme_override_colors/font_color")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 0, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("math/h/operand:theme_override_colors/font_color")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 0, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("math/h/first:theme_override_colors/font_color")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dra8b"]
@@ -1242,9 +687,6 @@ _data = {
 "close_front": SubResource("Animation_x8mqa"),
 "flip_left": SubResource("Animation_ihm18"),
 "flip_right": SubResource("Animation_2fpc8"),
-"math_enter": SubResource("Animation_6r1x0"),
-"math_failure": SubResource("Animation_xwuhs"),
-"math_success": SubResource("Animation_i1sf2"),
 "open_back": SubResource("Animation_dra8b"),
 "open_front": SubResource("Animation_tn4nq"),
 "read": SubResource("Animation_c8xbm"),
@@ -1436,131 +878,131 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e8y2h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea8lv"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1600, 0, 200, 300)
+region = Rect2(0, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3r4pw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqn5k"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(0, 300, 200, 300)
+region = Rect2(0, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rcriy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q37uy"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(200, 300, 200, 300)
+region = Rect2(200, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xdgld"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8bhx"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(400, 300, 200, 300)
+region = Rect2(400, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8mpk7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv4l7"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(600, 300, 200, 300)
+region = Rect2(600, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xlswj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq0p1"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(800, 300, 200, 300)
+region = Rect2(800, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnluk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nw0a"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1000, 300, 200, 300)
+region = Rect2(1000, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0c8mi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkmao"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1200, 300, 200, 300)
+region = Rect2(1200, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uvfpa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0ty1"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1400, 300, 200, 300)
+region = Rect2(1400, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_h6ga1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c65j0"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1600, 300, 200, 300)
+region = Rect2(1600, 150, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vfhlq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cmlx"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1800, 600, 200, 300)
+region = Rect2(1800, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5x4aa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_58k3b"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1600, 600, 200, 300)
+region = Rect2(1600, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ouifv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1flu"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1400, 600, 200, 300)
+region = Rect2(1400, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v8poj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5fl2"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1200, 600, 200, 300)
+region = Rect2(1200, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgp1u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj4s3"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1000, 600, 200, 300)
+region = Rect2(1000, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_05txb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mqi3"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(800, 600, 200, 300)
+region = Rect2(800, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d0813"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpdbm"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(600, 600, 200, 300)
+region = Rect2(600, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e2mkh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c22bn"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(400, 600, 200, 300)
+region = Rect2(400, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hc4f7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3v4b"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(200, 600, 200, 300)
+region = Rect2(200, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_72dcy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_svub6"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(0, 600, 200, 300)
+region = Rect2(0, 300, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_327gg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nalp"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(0, 0, 200, 300)
+region = Rect2(0, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w405u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ti3p"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(200, 0, 200, 300)
+region = Rect2(200, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m0ymo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0pbn"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(400, 0, 200, 300)
+region = Rect2(400, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kvfo5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vste"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(600, 0, 200, 300)
+region = Rect2(600, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xn21r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5duk5"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(800, 0, 200, 300)
+region = Rect2(800, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ceucp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_upanp"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1000, 0, 200, 300)
+region = Rect2(1000, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_da13i"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6u1i"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1200, 0, 200, 300)
+region = Rect2(1200, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thmxr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b0qj"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1400, 0, 200, 300)
+region = Rect2(1400, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3ugr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qobbb"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1600, 0, 200, 300)
+region = Rect2(1600, 0, 200, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hboc0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1akc"]
 atlas = ExtResource("5_lsfcm")
-region = Rect2(1800, 0, 200, 300)
+region = Rect2(1800, 0, 200, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_svm21"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e8y2h")
+"texture": SubResource("AtlasTexture_ea8lv")
 }],
 "loop": false,
 "name": &"book",
@@ -1568,31 +1010,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3r4pw")
+"texture": SubResource("AtlasTexture_xqn5k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcriy")
+"texture": SubResource("AtlasTexture_q37uy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xdgld")
+"texture": SubResource("AtlasTexture_f8bhx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8mpk7")
+"texture": SubResource("AtlasTexture_kv4l7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xlswj")
+"texture": SubResource("AtlasTexture_oq0p1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rnluk")
+"texture": SubResource("AtlasTexture_6nw0a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0c8mi")
+"texture": SubResource("AtlasTexture_kkmao")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uvfpa")
+"texture": SubResource("AtlasTexture_g0ty1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h6ga1")
+"texture": SubResource("AtlasTexture_c65j0")
 }],
 "loop": false,
 "name": &"flip_right",
@@ -1600,34 +1042,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vfhlq")
+"texture": SubResource("AtlasTexture_6cmlx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5x4aa")
+"texture": SubResource("AtlasTexture_58k3b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ouifv")
+"texture": SubResource("AtlasTexture_b1flu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v8poj")
+"texture": SubResource("AtlasTexture_c5fl2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qgp1u")
+"texture": SubResource("AtlasTexture_yj4s3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_05txb")
+"texture": SubResource("AtlasTexture_2mqi3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d0813")
+"texture": SubResource("AtlasTexture_cpdbm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e2mkh")
+"texture": SubResource("AtlasTexture_c22bn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hc4f7")
+"texture": SubResource("AtlasTexture_c3v4b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_72dcy")
+"texture": SubResource("AtlasTexture_svub6")
 }],
 "loop": false,
 "name": &"open_back",
@@ -1635,34 +1077,34 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_327gg")
+"texture": SubResource("AtlasTexture_6nalp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w405u")
+"texture": SubResource("AtlasTexture_6ti3p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m0ymo")
+"texture": SubResource("AtlasTexture_j0pbn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kvfo5")
+"texture": SubResource("AtlasTexture_1vste")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xn21r")
+"texture": SubResource("AtlasTexture_5duk5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ceucp")
+"texture": SubResource("AtlasTexture_upanp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_da13i")
+"texture": SubResource("AtlasTexture_d6u1i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thmxr")
+"texture": SubResource("AtlasTexture_1b0qj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p3ugr")
+"texture": SubResource("AtlasTexture_qobbb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hboc0")
+"texture": SubResource("AtlasTexture_q1akc")
 }],
 "loop": false,
 "name": &"open_front",
@@ -1688,6 +1130,739 @@ shader_parameter/inset = 0.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rugh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0sadt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6maao"]
+atlas = ExtResource("1_setnc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bki1"]
+atlas = ExtResource("1_setnc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd8yt"]
+atlas = ExtResource("1_setnc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rscnd"]
+atlas = ExtResource("1_setnc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhvyn"]
+atlas = ExtResource("1_setnc")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjyf5"]
+atlas = ExtResource("1_setnc")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajfrs"]
+atlas = ExtResource("1_setnc")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5lb5"]
+atlas = ExtResource("1_setnc")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l5ib"]
+atlas = ExtResource("1_setnc")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a81es"]
+atlas = ExtResource("1_setnc")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b060p"]
+atlas = ExtResource("1_setnc")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn2d4"]
+atlas = ExtResource("1_setnc")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7g05"]
+atlas = ExtResource("1_setnc")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uiuw"]
+atlas = ExtResource("1_setnc")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84t52"]
+atlas = ExtResource("1_setnc")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vip4"]
+atlas = ExtResource("1_setnc")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4dcyx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6maao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bki1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd8yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rscnd")
+}],
+"loop": true,
+"name": &"interact_master",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhvyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjyf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajfrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5lb5")
+}],
+"loop": true,
+"name": &"interact_sub",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2l5ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a81es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b060p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn2d4")
+}],
+"loop": true,
+"name": &"jump_master",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7g05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uiuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84t52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vip4")
+}],
+"loop": true,
+"name": &"jump_sub",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_3pcj0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../math:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../math:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../math:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(182, 351)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../math/h/first:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../math/h/operand:theme_override_colors/font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../math/h/second:theme_override_colors/font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../math/h/equal:theme_override_colors/font_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../math/h/answer:theme_override_colors/font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../math:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a13b0"]
+resource_name = "math_failure"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../math:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../math:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../math:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(182, 351), Vector2(135, 351), Vector2(229, 351), Vector2(182, 351), Vector2(182, 667)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../math/h/first:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../math/h/operand:theme_override_colors/font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../math/h/second:theme_override_colors/font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../math/h/equal:theme_override_colors/font_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../math/h/answer:theme_override_colors/font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8r718"]
+resource_name = "math_enter"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../math:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../math:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../math:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(182, 667), Vector2(182, 351)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../math/h/first:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../math/h/operand:theme_override_colors/font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../math/h/second:theme_override_colors/font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../math/h/equal:theme_override_colors/font_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../math/h/answer:theme_override_colors/font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j453s"]
+resource_name = "math_success"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../math:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../math:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../math:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(182, 351), Vector2(115, 281), Vector2(182, 351), Vector2(182, 667)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../math/h/first:theme_override_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../math/h/operand:theme_override_colors/font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../math/h/second:theme_override_colors/font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../math/h/equal:theme_override_colors/font_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../math/h/answer:theme_override_colors/font_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../math:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.18504, 1.34189), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gpov"]
+_data = {
+"RESET": SubResource("Animation_3pcj0"),
+"math_enter": SubResource("Animation_8r718"),
+"math_failure": SubResource("Animation_a13b0"),
+"math_success": SubResource("Animation_j453s")
+}
+
+[sub_resource type="Animation" id="Animation_mns2j"]
+resource_name = "health_picked"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("health_potion/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.53595, 1.14914), Vector2(1.22293, 1.17858), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("health_potion/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(6, -117), Vector2(2, -145), Vector2(3, -148), Vector2(6, -117)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("health_potion/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1elcs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("health_potion/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("health_potion/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, -117)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("health_potion/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pyheh"]
+resource_name = "health_used"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("health_potion/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.56), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("health_potion/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, -117), Vector2(4, -34), Vector2(6, -117)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("health_potion/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.129558, 0.129558, 0.129558, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b0s8x"]
+resource_name = "health_exhaust"
+length = 0.200003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("health_potion/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.56), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("health_potion/TextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(6, -117), Vector2(4, -34), Vector2(6, -117)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("health_potion/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.129558, 0.129558, 0.129558, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cd5dr"]
+_data = {
+"RESET": SubResource("Animation_1elcs"),
+"health_exhaust": SubResource("Animation_b0s8x"),
+"health_picked": SubResource("Animation_mns2j"),
+"health_used": SubResource("Animation_pyheh")
+}
 
 [node name="ExploreUi" type="Control"]
 layout_mode = 3
@@ -1726,20 +1901,7 @@ theme_override_font_sizes/font_size = 70
 text = "0/10"
 horizontal_alignment = 1
 
-[node name="button_press" type="Panel" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 87.0
-offset_bottom = 82.0
-
-[node name="interact_master" type="AnimatedSprite2D" parent="button_press"]
-position = Vector2(577, 609)
-scale = Vector2(5.0625, 4.40625)
-sprite_frames = SubResource("SpriteFrames_4dcyx")
-animation = &"interact_master"
-autoplay = "interact_master"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="notebook_player" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_qfbgr")
 }
@@ -1768,12 +1930,12 @@ offset_right = 121.0
 offset_bottom = 87.0
 texture = ExtResource("7_4s2qx")
 
-[node name="Label" type="Label" parent="health_potion"]
+[node name="Label" type="Label" parent="health_potion/TextureRect"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 13.0
-offset_right = 100.0
-offset_bottom = 63.0
+offset_left = 22.0
+offset_top = 130.0
+offset_right = 94.0
+offset_bottom = 180.0
 theme_override_fonts/font = ExtResource("3_cuuiu")
 theme_override_font_sizes/font_size = 60
 text = "0"
@@ -1808,6 +1970,18 @@ value = 50.0
 texture_under = ExtResource("12_7uekd")
 texture_progress = ExtResource("13_p8puu")
 
+[node name="Label" type="Label" parent="health"]
+layout_mode = 0
+offset_left = 53.0026
+offset_top = 3.66972
+offset_right = 93.0026
+offset_bottom = 36.6697
+theme_override_fonts/font = ExtResource("3_cuuiu")
+theme_override_font_sizes/font_size = 30
+text = "50"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Control" type="Control" parent="."]
 visible = false
 anchors_preset = 0
@@ -1818,8 +1992,7 @@ offset_bottom = 648.0
 position = Vector2(578, 321)
 scale = Vector2(6.88, 7.52)
 sprite_frames = SubResource("SpriteFrames_svm21")
-animation = &"open_back"
-frame = 9
+animation = &"book"
 
 [node name="text_x" type="Node2D" parent="Control"]
 rotation = 1.5708
@@ -1959,3 +2132,21 @@ offset_right = 787.0
 offset_bottom = 154.0
 value = 50.0
 show_percentage = false
+
+[node name="interact_master" type="AnimatedSprite2D" parent="."]
+position = Vector2(577, 609)
+scale = Vector2(5.0625, 4.40625)
+sprite_frames = SubResource("SpriteFrames_4dcyx")
+animation = &"interact_master"
+autoplay = "interact_master"
+
+[node name="math_animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../notebook_player")
+libraries = {
+"": SubResource("AnimationLibrary_5gpov")
+}
+
+[node name="health_potion_animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cd5dr")
+}

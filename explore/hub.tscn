@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://drhokc7i58eqa"]
+[gd_scene load_steps=10 format=3 uid="uid://drhokc7i58eqa"]
 
 [ext_resource type="PackedScene" uid="uid://clo6cck334no3" path="res://explore/players/players.tscn" id="1_gqk4c"]
 [ext_resource type="Script" path="res://explore/hub.gd" id="1_op7ef"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://explore/collectibles/notebooks.tscn" id="5_dt7mg"]
+[ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://explore/collectibles/health_potions.tscn" id="5_yo538"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y15db"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -71,10 +72,10 @@ transform = Transform3D(1, 0, 0, 0, 0.967999, 0.250954, 0, -0.250954, 0.967999, 
 [node name="Players" parent="." instance=ExtResource("1_gqk4c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84848, 0)
 
-[node name="Collectibles" type="Node3D" parent="."]
+[node name="notebooks" type="Node3D" parent="."]
 
-[node name="despacito" parent="Collectibles" instance=ExtResource("5_dt7mg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82048, 1.39782, 0.827633)
+[node name="notebook" parent="notebooks" instance=ExtResource("5_dt7mg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1716, 1.57938, 0)
 
 [node name="Button" type="Button" parent="."]
 offset_left = 988.0
@@ -83,8 +84,23 @@ offset_right = 996.0
 offset_bottom = 165.0
 scale = Vector2(15.5646, 10.3329)
 
+[node name="health_potions" type="Node3D" parent="."]
+
+[node name="health_potion" parent="health_potions" instance=ExtResource("5_yo538")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21601, 1.34092, 5.00097)
+
+[node name="health_potion2" parent="health_potions" instance=ExtResource("5_yo538")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50637, 1.34092, 5.00097)
+
+[node name="health_potion3" parent="health_potions" instance=ExtResource("5_yo538")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255708, 1.34092, 8.46803)
+
 [connection signal="math_signal" from="." to="Players" method="_on_hub_math_signal"]
+[connection signal="collected_notebook_signal" from="notebooks/notebook" to="Players" method="_on_notebook_collected_notebook_signal"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="collected_healthpotions_signal" from="health_potions/health_potion" to="Players" method="_on_health_potion_collected_healthpotions_signal"]
+[connection signal="collected_healthpotions_signal" from="health_potions/health_potion2" to="Players" method="_on_health_potion_collected_healthpotions_signal"]
+[connection signal="collected_healthpotions_signal" from="health_potions/health_potion3" to="Players" method="_on_health_potion_collected_healthpotions_signal"]
 
 [editable path="Players"]
 [editable path="Players/ExploreUi"]
