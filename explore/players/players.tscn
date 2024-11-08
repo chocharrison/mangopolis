@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://clo6cck334no3"]
+[gd_scene load_steps=161 format=3 uid="uid://clo6cck334no3"]
 
 [ext_resource type="Script" path="res://explore/players/scripts/main_player.gd" id="1_kyxrf"]
 [ext_resource type="Script" path="res://explore/players/scripts/player_controller.gd" id="1_x3i8c"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://p78b3cvyjbw3" path="res://explore/players/sprites/Root_Idle.png" id="5_5tr63"]
 [ext_resource type="Texture2D" uid="uid://dk7m04yi5av8r" path="res://explore/players/sprites/Root_Walk.png" id="6_gy85l"]
 [ext_resource type="PackedScene" uid="uid://db8fgquaqo5fn" path="res://explore/ui/explore_ui.tscn" id="7_go3iu"]
+[ext_resource type="PackedScene" uid="uid://bw81lcgn4o03j" path="res://explore/ui/math_ui.tscn" id="8_oduhw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w6cc5"]
 
@@ -2054,11 +2055,11 @@ parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
 
 [node name="math_timer" type="Timer" parent="."]
 
+[node name="math_ui" parent="." instance=ExtResource("8_oduhw")]
+
 [connection signal="timeout" from="main_player/sprint_cooldown" to="main_player" method="_on_sprint_cooldown_timeout"]
 [connection signal="timeout" from="main_player/panic_timer" to="main_player" method="_on_panic_timer_timeout"]
 [connection signal="timeout" from="main_player/far_timer" to="main_player" method="_on_far_timer_timeout"]
 [connection signal="timeout" from="health_deplete" to="." method="_on_health_deplete_timeout"]
-[connection signal="text_submitted" from="ExploreUi/math_ui/math/h/answer" to="." method="_on_answer_text_submitted"]
 [connection signal="timeout" from="math_timer" to="." method="_on_math_timer_timeout"]
-
-[editable path="ExploreUi"]
+[connection signal="submitted_math_answer" from="math_ui" to="." method="_on_math_ui_submitted_math_answer"]

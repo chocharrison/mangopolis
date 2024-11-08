@@ -13,6 +13,7 @@ signal dig_notebook_or_health
 func _ready() -> void:
 	pass # Replace with function body.
 
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and is_interactive and is_near_coco:
 		print("digged")
@@ -25,24 +26,28 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	pass
 
+# Detects when the main player enters the collection zone
 func _on_collect_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and is_near_coco:
 		print("interact")
 		emit_signal("found_dig",true)
 		is_interactive = true
 
+# Detects when the main player exits the collection zone
 func _on_collect_body_exited(body: Node3D) -> void:
 	if body.name == "main_player":
 		print("not interact")
 		emit_signal("found_dig",false)
 		is_interactive = false
 
+# Detects when the sub-player (Coco) enters the detection zone
 func _on_detect_body_entered(body: Node3D) -> void:
 	if(body.name=="sub_player"):
 		print("coco is in")
 		emit_signal("coco_in_range",true)
 		is_near_coco = true
 
+# Detects when the sub-player (Coco) exits the detection zone
 func _on_detect_body_exited(body: Node3D) -> void:
 	if(body.name=="sub_player"):
 		print("coco is out")

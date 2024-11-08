@@ -11,10 +11,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+#collected notebook if player
 func _on_collect_body_entered(body: Node) -> void:
 	if(body.name=="main_player"):
 		print(message_id)
 		emit_signal("collected_notebook_signal",message_id)
-		#the player updates collectibles goes here
 		queue_free()

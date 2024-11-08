@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=3 uid="uid://db8fgquaqo5fn"]
+[gd_scene load_steps=107 format=3 uid="uid://db8fgquaqo5fn"]
 
 [ext_resource type="Script" path="res://explore/ui/explore_ui.gd" id="1_08obe"]
 [ext_resource type="Texture2D" uid="uid://bkw6ed0jp5fhn" path="res://explore/ui/sprites/buttons.png" id="1_setnc"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://fiij47sb266t" path="res://explore/ui/sprites/health_bar.png" id="13_p8puu"]
 [ext_resource type="Shader" path="res://explore/ui/book_text.gdshader" id="15_b0li1"]
 [ext_resource type="Texture2D" uid="uid://5gh6cgbf5mbg" path="res://explore/notebooks/nuggets.png" id="16_y8vyw"]
-[ext_resource type="PackedScene" uid="uid://bw81lcgn4o03j" path="res://explore/ui/math_ui.tscn" id="17_an6ki"]
 
 [sub_resource type="Animation" id="Animation_lwr56"]
 length = 0.001
@@ -1649,5 +1648,3 @@ texture = ExtResource("16_y8vyw")
 libraries = {
 "": SubResource("AnimationLibrary_cd5dr")
 }
-
-[node name="math_ui" parent="." instance=ExtResource("17_an6ki")]
