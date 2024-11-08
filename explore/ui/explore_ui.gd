@@ -17,19 +17,11 @@ var health_potion: Label
 var health_animation: AnimationPlayer
 
 var stamina_bar: TextureProgressBar
-var timer_bar: ProgressBar
 
 var notebook_collect: Label
 
 var main_player: CharacterBody3D
 var players: Node3D
-
-var math:Panel
-var first:Label
-var second:Label
-var equation:Label
-var answer:LineEdit
-var math_anime:AnimationPlayer
 
 var viewport: SubViewport
 var text: RichTextLabel
@@ -43,27 +35,16 @@ func _ready() -> void:
 	notebook = get_node("Control")
 	notebook.set_process(false)
 	
-	math = get_node("math_ui/math")
-	math.set_process(false)
-	math.visible = false
-	math_anime = get_node("math_ui/math_animation")
-	
 	health_bar = get_node("health")
 	health_label = get_node("health/Label")
 	health_animation = get_node("health_potion_animation")
 	
 	stamina_bar = get_node("stamina")
-	timer_bar = get_node("math_ui/math/timer")
 	health_potion = get_node("health_potion/TextureRect/Label")
 	notebook_collect = get_node("notebooks/Label")
 	
 	main_player = get_parent().get_node("main_player")
 	players = get_parent()
-	
-	first = get_node("math_ui/math/h/first")
-	second = get_node("math_ui/math/h/second")
-	equation = get_node("math_ui/math/h/operand")
-	answer = get_node("math_ui/math/h/answer")
 	
 	viewport = get_node("Control/text_x/text_y/SubViewportContainer/SubViewport")
 	viewport.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
@@ -117,6 +98,8 @@ func _input(event: InputEvent) -> void:
 			
 			
 func _process(delta: float) -> void:
+	print("interrupt "+str(is_interrupted))
+	print("note "+str(is_note))
 	if is_interrupted:
 		is_note = false
 		notebook.set_process(false)
@@ -172,35 +155,6 @@ func set_stamina(val: int):
 
 func set_interrupted(val: bool):
 	is_interrupted = val
-
-func set_first(val: int):
-	first.text = str(val)
-
-func set_second(val: int):
-	second.text = str(val)
-	
-func set_equation(val: String):
-	equation.text = str(val)
-	
-func math_success():
-	answer.release_focus()
-	math_anime.play("math_success")
-	is_interrupted = false
-
-func math_failure():
-	answer.release_focus()
-	math_anime.play("math_failure")
-	is_interrupted = false
-
-func math_enter():
-	answer.clear()
-	math.set_process(true)
-	math_anime.play("math_enter")
-	is_interrupted = true
-	answer.grab_focus()
-
-func set_timer(val: int):
-	timer_bar.value = val
 	
 func set_notebook_array(val:int,maxim:int):
 	notebook_collect.text = str(val)+"/"+str(maxim)

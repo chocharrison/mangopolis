@@ -12,6 +12,7 @@ var math_timer: Timer
 var main_player:CharacterBody3D
 var sub_player:CharacterBody3D
 var UI: Control
+var math_ui: Control
 
 const MATH_TIMER = 30
 const MIN_MATH_TIMER = 6
@@ -33,6 +34,7 @@ func _ready() -> void:
 	main_player = get_node("main_player")
 	sub_player = get_node("sub_player")
 	UI = get_node("ExploreUi")
+	math_ui = get_node("ExploreUi/math_ui")
 	UI.set_health(health)
 	UI.health_picked(health_potion)
 	UI.set_notebook_array(page_array.size()-1,MAX_PAGE)
@@ -64,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		set_health_timer(false)
 		if is_math:
 			var percent_time = (math_timer.get_time_left()/math_timer.get_wait_time())*100
-			UI.set_timer(percent_time)
+			math_ui.set_timer(percent_time)
 
 	else:	
 		if !is_health_timer:
@@ -110,33 +112,33 @@ func start_math(level: int,damage: int = 20,iter: int = 0):
 			second = randi_range(50,100)
 			answer = math_operations(first,second,2)
 	#print(first,second,answer)
-	UI.set_first(first)
-	UI.set_second(second)
-	UI.math_enter()
+	math_ui.set_first(first)
+	math_ui.set_second(second)
+	math_ui.math_enter()
 	is_math = true
 	math_timer.wait_time = max(MIN_MATH_TIMER,MATH_TIMER * pow(0.9,iterations+iter))
 	iterations+=1
 	math_timer.start()
 	
 func failed():
-		UI.math_failure()
+		math_ui.math_failure()
 		iterations = max(iterations-5,0)
 		health= max(0,health - health_damage)
 		UI.set_health(health)	
-		if(health <= 0):
+		if(health <= 0):	
 			main_player.set_ded()
 
 func math_operations(first: int, second: int,equation: int) -> int:
 	match equation:
 		0:
 			answer = first + second
-			UI.set_equation("+")
+			math_ui.set_equation("+")
 		1:
 			answer = first - second
-			UI.set_equation("-")
+			math_ui.set_equation("-")
 		2:
 			answer = first * second
-			UI.set_equation("x")
+			math_ui.set_equation("x")
 	return answer
 
 
@@ -147,6 +149,7 @@ func pause_health_timer(val: bool):
 func set_interrupted(val: bool):
 	is_interrupted = val
 	main_player.disable_control(val)
+	UI.set_interrupted(val)
 
 func add_health_potion(val:int):
 	health_potion+=val
@@ -190,7 +193,7 @@ func give_main_player_position() -> Vector3:
 func _on_answer_text_submitted(new_text: String) -> void:
 	var get_answer = int(new_text)
 	if(get_answer == answer):
-		UI.math_success()
+		math_ui.math_success()
 	else:
 		failed()
 	math_timer.stop()
