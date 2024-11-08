@@ -72,8 +72,8 @@ func _physics_process(delta: float) -> void:
 			health_timer.start()
 			set_health_timer(true)
 
-func pause_health_timer(val: bool):
-	health_timer.paused = val
+
+
 
 func start_math(level: int,damage: int = 20,iter: int = 0):
 	var first = 0
@@ -124,7 +124,7 @@ func failed():
 		health= max(0,health - health_damage)
 		UI.set_health(health)	
 		if(health <= 0):
-			main_player.ded()
+			main_player.set_ded()
 
 func math_operations(first: int, second: int,equation: int) -> int:
 	match equation:
@@ -138,6 +138,11 @@ func math_operations(first: int, second: int,equation: int) -> int:
 			answer = first * second
 			UI.set_equation("x")
 	return answer
+
+
+
+func pause_health_timer(val: bool):
+	health_timer.paused = val
 	
 func set_interrupted(val: bool):
 	is_interrupted = val
@@ -154,14 +159,34 @@ func update_array(val: int):
 	page_array.append(val)
 	UI.set_notebook_array(page_array.size()-1,MAX_PAGE)
 	
+func set_coco_range_dig(val:bool):
+	if !main_player.get_panic_status():
+		if val:
+			main_player.set_coco_dig(1)
+		else:
+			main_player.set_coco_dig(0)
+
+func set_player_interact(val:bool):
+	UI.set_interact(val)
+	
+func digged_up(val: bool,id: int,pos: Vector3):
+	if val:
+		update_array(id)
+	else:
+		add_health_potion(id)
+	sub_player.set_dig_position(pos)
+
+
+
+
+
 func give_main_player_position() -> Vector3:
 	return main_player.position
 	
-func _on_hub_math_signal(level: int,damage: int, iter: int) -> void:
-	print("here")
-	start_math(level,damage,iter)
 
 
+
+	
 func _on_answer_text_submitted(new_text: String) -> void:
 	var get_answer = int(new_text)
 	if(get_answer == answer):
@@ -174,12 +199,7 @@ func _on_answer_text_submitted(new_text: String) -> void:
 func _on_math_timer_timeout() -> void:
 	failed()
 	set_interrupted(false)
-
-func _on_notebook_collected_notebook_signal(val:int) -> void:
-	update_array(val)
-
-func _on_health_potion_collected_healthpotions_signal(val: int) -> void:
-	add_health_potion(val)
+	math_timer.stop()
 
 func _on_health_deplete_timeout() -> void:
 	if health > 0:
@@ -191,3 +211,22 @@ func _on_health_deplete_timeout() -> void:
 		print("Health decreased by ", health_decrease, " - Current health: ", health)
 		UI.set_health(health)
 		is_health_timer = false
+
+func _on_notebook_collected_notebook_signal(val:int) -> void:
+	update_array(val)
+
+func _on_health_potion_collected_healthpotions_signal(val: int) -> void:
+	add_health_potion(val)
+
+func _on_dig_coco_in_range(val: bool) -> void:
+	set_coco_range_dig(val)
+
+func _on_hub_math_signal(level: int,damage: int, iter: int) -> void:
+	print("here")
+	start_math(level,damage,iter)
+
+func _on_dig_found_dig(val: bool) -> void:
+	set_player_interact(val)
+
+func _on_dig_dig_notebook_or_health(val: bool,id: int,pos: Vector3) -> void:
+	digged_up(val,id,pos)

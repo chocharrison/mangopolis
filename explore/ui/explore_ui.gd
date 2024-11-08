@@ -36,33 +36,34 @@ var text: RichTextLabel
 var images: TextureRect
 
 var coco: AnimatedSprite2D
+var interact: AnimatedSprite2D
 
 func _ready() -> void:
 	notebook_anime_play = get_node("notebook_player")
 	notebook = get_node("Control")
 	notebook.set_process(false)
 	
-	math = get_node("math")
+	math = get_node("math_ui/math")
 	math.set_process(false)
 	math.visible = false
-	math_anime = get_node("math_animation")
+	math_anime = get_node("math_ui/math_animation")
 	
 	health_bar = get_node("health")
 	health_label = get_node("health/Label")
 	health_animation = get_node("health_potion_animation")
 	
 	stamina_bar = get_node("stamina")
-	timer_bar = get_node("math/timer")
+	timer_bar = get_node("math_ui/math/timer")
 	health_potion = get_node("health_potion/TextureRect/Label")
 	notebook_collect = get_node("notebooks/Label")
 	
 	main_player = get_parent().get_node("main_player")
 	players = get_parent()
 	
-	first = get_node("math/h/first")
-	second = get_node("math/h/second")
-	equation = get_node("math/h/operand")
-	answer = get_node("math/h/answer")
+	first = get_node("math_ui/math/h/first")
+	second = get_node("math_ui/math/h/second")
+	equation = get_node("math_ui/math/h/operand")
+	answer = get_node("math_ui/math/h/answer")
 	
 	viewport = get_node("Control/text_x/text_y/SubViewportContainer/SubViewport")
 	viewport.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
@@ -71,7 +72,8 @@ func _ready() -> void:
 	images = get_node("Control/image_x/image_y/TextureRect")
 	
 	coco = get_node("coco")
-	
+	interact = get_node("interact_master")
+	interact.visible = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func _input(event: InputEvent) -> void:
@@ -221,3 +223,6 @@ func health_used(val: int):
 
 func set_coco(coco_ui: String):
 	coco.play(coco_ui)
+
+func set_interact(val: bool):
+	interact.visible = val
