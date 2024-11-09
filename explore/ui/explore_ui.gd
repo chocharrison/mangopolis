@@ -2,6 +2,7 @@ extends Control
 
 
 const hurt_audios = 4
+
 ##################################### nodes
 var notebook_anime_play:AnimationPlayer
 var notebook:Control
@@ -25,6 +26,7 @@ var images: TextureRect
 
 var coco: AnimatedSprite2D
 var interact: AnimatedSprite2D
+var coco_pointer: Sprite2D
 
 ##################################### flags
 @onready var is_interrupted = false
@@ -66,6 +68,7 @@ func _ready() -> void:
 	
 	coco = get_node("coco")
 	interact = get_node("interact_master")
+	coco_pointer = get_node("coco_pointer")
 	
 	interact.visible = false
 	
@@ -238,3 +241,9 @@ func play_notebook():
 func flip_notebook():
 	soundeffects.stream = load("res://explore/sound_effects/flip.mp3")
 	soundeffects.play()
+
+func set_coco_pointer(val: bool,pointer: Vector2 = Vector2(0,0)):
+	if val:
+		coco_pointer.visible = true
+	else:
+		coco_pointer.visible = false

@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://drhokc7i58eqa"]
 
-[ext_resource type="PackedScene" uid="uid://clo6cck334no3" path="res://explore/players/players.tscn" id="1_gqk4c"]
 [ext_resource type="Script" path="res://explore/hub.gd" id="1_op7ef"]
 [ext_resource type="PackedScene" uid="uid://dl0757nohnrx0" path="res://explore/camera/camera.tscn" id="2_uybsr"]
 [ext_resource type="Script" path="res://explore/camera/camera.gd" id="3_aloaj"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://explore/collectibles/notebooks.tscn" id="5_dt7mg"]
 [ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://explore/collectibles/health_potions.tscn" id="5_yo538"]
 [ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://explore/collectibles/dig.tscn" id="7_1bo0x"]
+[ext_resource type="PackedScene" uid="uid://djpyj0boiv5rr" path="res://explore/fsm_players/main_player.tscn" id="7_jc7py"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y15db"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -37,7 +37,6 @@ environment = SubResource("Environment_hroyq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-visible = false
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -83,9 +82,6 @@ shape = SubResource("BoxShape3D_yk1vx")
 [node name="camera_controller" parent="." instance=ExtResource("2_uybsr")]
 script = ExtResource("3_aloaj")
 
-[node name="Players" parent="." instance=ExtResource("1_gqk4c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84848, 0)
-
 [node name="notebooks" type="Node3D" parent="."]
 
 [node name="notebook" parent="notebooks" instance=ExtResource("5_dt7mg")]
@@ -122,5 +118,7 @@ is_notebook = true
 [node name="dig2" parent="pits_health_potions" instance=ExtResource("7_1bo0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37316, -0.686187, 18.0661)
 
-[connection signal="math_signal" from="." to="Players" method="_on_hub_math_signal"]
+[node name="main_player" parent="." instance=ExtResource("7_jc7py")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81512, 0)
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1653,6 +1653,7 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="coco_pointer" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(576, 275)
 scale = Vector2(3.82813, 3.57813)
 texture = ExtResource("17_w1mas")

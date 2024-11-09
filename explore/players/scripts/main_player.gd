@@ -13,9 +13,6 @@ const DISTANCE = 2
 const VERTICAL_DISTANCE = 2
 
 const PETTING_DISTANCE = 1
-const PANIC_DISTANCE = 6
-const FAR_TIME = 5
-const PANIC_TIME = 20
 
 const MAX_SPRINT = 100
 
@@ -26,8 +23,6 @@ var anime: AnimationTree = null
 var UI: Control = null
 var Sprint_timer: Timer = null
 
-var panic_timer: Timer = null
-var far_timer: Timer = null
 
 
 ##################################### flags
@@ -41,18 +36,17 @@ var far_timer: Timer = null
 @onready var is_sprinting = false
 
 @onready var is_petting = false
-@onready var is_far_timer = false
-@onready var is_panic = false
 
 ##################################### variables
 @onready var speed = SPEED
 
-@onready var coco_ui = ["default","happy","scared","glad"]
-@onready var coco_set = 0
 @onready var sprint_meter = MAX_SPRINT
 @onready var bread_crumbs_array = []
 
 ##################################### default functions
+func _input(event):
+	pass
+
 func _ready() -> void:
 	sprint_meter = MAX_SPRINT
 	sub = get_parent().get_node("sub_player")
@@ -60,8 +54,6 @@ func _ready() -> void:
 	UI = get_parent().get_node("ExploreUi")
 	bread_crumbs_array.append(position)
 	Sprint_timer = get_node("sprint_cooldown")
-	far_timer = get_node("far_timer")
-	panic_timer = get_node("panic_timer")
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -77,6 +69,7 @@ func _physics_process(delta: float) -> void:
 
 ##################################### custom functions
 
+
 # Measure distance to the sub player and start/stop far timer based on distance.
 # Handle jumping action if on the ground.
 # Handle petting interaction if within petting distance of the sub player.
@@ -84,29 +77,16 @@ func _physics_process(delta: float) -> void:
 # Update stamina UI and handle player movement, adjusting position and velocity.
 # Call function to manage breadcrumbs for movement tracking.
 func default_player(delta: float) -> void:
-	var distance_to_sub = Vector3(position.x, 0, position.z).distance_to(Vector3(sub.position.x, 0, sub.position.z))
-	if !is_panic:
-		if(distance_to_sub > PANIC_DISTANCE):
-			if !is_far_timer:
-				far_timer.wait_time = FAR_TIME
-				far_timer.start()
-				is_far_timer = true
-				print("timer start")
-		else:
-			far_timer.stop()
-			is_far_timer = false
 	
 	if Input.is_action_just_pressed("jump_1") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		set_pet(false)
 	
 	if Input.is_action_just_pressed("pet") and is_on_floor() and position.distance_to(sub.position) <= PETTING_DISTANCE:
-		
+		SignalManager.petting_signal.emit()
+		var facing_pet = (Vector3(sub.position.x,0,sub.position.z)-Vector3(position.x,0,position.z)).normalized()
+		anime.set("parameters/walk/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
 		set_pet(true)
-		sub.set_panic(false)
-		panic_timer.stop()
-		is_panic = false
-		coco_set = 0
 		
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -219,42 +199,15 @@ func bread_crumbing():
 # Disable player controls and pause timers when needed.
 func disable_control(val: bool):
 	is_disable = val
-	panic_timer.set_paused(val)
-	far_timer.set_paused(val)
+
 
 # Set the player to dead and stop all timers.
 func set_ded():
 	is_ded = true
-	far_timer.stop()
-	panic_timer.stop()
 
-# Set the petting interaction flag, update UI, and adjust animations for petting interaction.
+# Set the player petting.
 func set_pet(val: bool):
 	is_petting = val
-	if !is_petting:
-		UI.set_coco(coco_ui[coco_set])
-	else:
-		UI.set_coco(coco_ui[3])
-		var facing_pet = (Vector3(sub.position.x,0,sub.position.z)-Vector3(position.x,0,position.z)).normalized()
-		anime.set("parameters/walk/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
-
-# Update the coco UI state based on a value.
-func set_coco_dig(val: int):
-	coco_set = val
-
-# Trigger panic mode, start the panic timer, stop the far timer, and update the sub player to be in panic mode.
-func set_panic():
-	far_timer.stop()
-	panic_timer.wait_time = PANIC_TIME
-	panic_timer.start()
-	set_pet(false)
-	print("panic!!!!")
-	sub.set_panic(true)
-	is_far_timer = false
-	is_panic = true
-	coco_set = 2
-
-
 ##################################### get functions
 # Return the array of breadcrumbs.
 func get_bread_crumbs() -> Array:
@@ -263,22 +216,9 @@ func get_bread_crumbs() -> Array:
 # Return the current sprint speed.
 func get_sprint() -> float:
 	return speed
-	
-# Return whether the player is in panic mode.
-func get_panic_status() -> bool:
-	return is_panic
 
 ##################################### signal triggered functions
 # Reset the cooldown flag when the sprint cooldown timer expires.
 func _on_sprint_cooldown_timeout() -> void:
 	is_cooldown = false
 	Sprint_timer.stop()
-
-# Set the player to dead if the panic timer expires.
-func _on_panic_timer_timeout() -> void:
-	print("TOO LATE")
-	set_ded()
-
-# Trigger panic mode when the far timer expires.
-func _on_far_timer_timeout() -> void:
-	set_panic()

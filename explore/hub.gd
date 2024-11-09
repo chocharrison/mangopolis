@@ -7,7 +7,7 @@ signal math_signal(level: int,damage: int,iteration: int)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera_controller = get_node("camera_controller")
-	players = get_node("Players")
+	#players = get_node("Players")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

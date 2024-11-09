@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdghitkvcdl88"]
+
+[ext_resource type="Script" path="res://explore/players/scripts/player_controller.gd" id="1_v7a1k"]
+[ext_resource type="PackedScene" uid="uid://djpyj0boiv5rr" path="res://explore/fsm_players/main_player.tscn" id="2_i30p1"]
+[ext_resource type="PackedScene" uid="uid://3ouucm7x5oan" path="res://explore/fsm_players/sub_player.tscn" id="3_edamp"]
+[ext_resource type="PackedScene" uid="uid://db8fgquaqo5fn" path="res://explore/ui/explore_ui.tscn" id="7_jwkot"]
+[ext_resource type="PackedScene" uid="uid://bw81lcgn4o03j" path="res://explore/ui/math_ui.tscn" id="8_ekv83"]
+
+[node name="Players" type="Node3D"]
+script = ExtResource("1_v7a1k")
+
+[node name="main_player" parent="." instance=ExtResource("2_i30p1")]
+
+[node name="sub_player" parent="." instance=ExtResource("3_edamp")]
+
+[node name="health_deplete" type="Timer" parent="."]
+
+[node name="ExploreUi" parent="." instance=ExtResource("7_jwkot")]
+
+[node name="math_timer" type="Timer" parent="."]
+
+[node name="math_ui" parent="." instance=ExtResource("8_ekv83")]
+
+[node name="panic_timer" type="Timer" parent="."]
+
+[node name="far_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="health_deplete" to="." method="_on_health_deplete_timeout"]
+[connection signal="timeout" from="math_timer" to="." method="_on_math_timer_timeout"]
+[connection signal="submitted_math_answer" from="math_ui" to="." method="_on_math_ui_submitted_math_answer"]
+[connection signal="timeout" from="panic_timer" to="." method="_on_panic_timer_timeout"]
+[connection signal="timeout" from="far_timer" to="." method="_on_far_timer_timeout"]

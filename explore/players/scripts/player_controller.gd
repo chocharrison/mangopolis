@@ -10,9 +10,16 @@ const MIN_MATH_TIMER = 6
 const MAX_HEALTH = 100
 const MAX_PAGE = 10
 
+const PANIC_DISTANCE = 6
+const FAR_TIME = 5
+const PANIC_TIME = 20
+
 ##################################### nodes
 var health_timer: Timer
 var math_timer: Timer
+var panic_timer: Timer
+var far_timer: Timer
+
 var main_player:CharacterBody3D
 var sub_player:CharacterBody3D
 var UI: Control
@@ -23,19 +30,27 @@ var math_ui: Control
 @onready var is_interrupted = false
 @onready var is_math = false
 @onready var is_note = false
+@onready var is_far_timer = false
+@onready var is_panic = false
 
 ##################################### variables
 @onready var iterations = 0
 @onready var answer = 0
+
 @onready var health = MAX_HEALTH
 @onready var health_potion = 3
 @onready var health_damage = 20
 
+@onready var coco_ui = ["default","happy","scared","glad"]
+@onready var coco_index = 0
 ##################################### default functions
 # Setup nodes and initialize the UI with health, health potions, and notebook page count.
 func _ready() -> void:
 	health_timer = get_node("health_deplete")
 	math_timer = get_node("math_timer")
+	panic_timer = get_node("panic_timer")
+	far_timer = get_node("far_timer")
+	
 	main_player = get_node("main_player")
 	sub_player = get_node("sub_player")
 	UI = get_node("ExploreUi")
@@ -48,6 +63,8 @@ func _ready() -> void:
 	SignalManager.dig_result_signal.connect(_on_digresult_signal)
 	
 	SignalManager.show_interact_button_signal.connect(_on_show_interact_button_signal)
+	
+	SignalManager.petting_signal.connect(_on_petting_signal)
 	
 	UI.set_health(health)
 	UI.health_picked(health_potion)
@@ -67,12 +84,25 @@ func _physics_process(delta: float) -> void:
 			var percent_time = (math_timer.get_time_left()/math_timer.get_wait_time())*100
 			math_ui.set_timer(percent_time)
 
-	else:	
+	else:
 		if !is_health_timer:
 			health_timer.wait_time = randi_range(5, 15)
 			health_timer.start()
 			set_health_timer(true)
-
+		
+		var distance_to_sub = Vector3(main_player.position.x, 0, main_player.position.z).distance_to(Vector3(sub_player.position.x, 0, sub_player.position.z))
+		if !is_panic:
+			if(distance_to_sub > PANIC_DISTANCE):
+				if !is_far_timer:
+					far_timer.wait_time = FAR_TIME
+					far_timer.start()
+					set_far_timer(true)
+					print("timer start")
+			else:
+				far_timer.stop()
+				set_far_timer(false)
+			
+			
 ##################################### custom functions
 
 
@@ -94,6 +124,8 @@ func Inventory_inputs():
 		UI.set_note(is_note)
 		main_player.disable_control(is_note)
 		pause_health_timer(is_note)
+		panic_timer.set_paused(is_note)
+		far_timer.set_paused(is_note)
 		if is_note:
 			UI.set_array(page_array)
 
@@ -171,7 +203,20 @@ func health_lost(is_not_timer: bool,damage: int):
 	if(health <= 0):
 		UI.play_ded()
 		main_player.set_ded()
-	
+		far_timer.stop()
+		panic_timer.stop()
+
+func set_panic():
+	far_timer.stop()
+	panic_timer.wait_time = PANIC_TIME
+	panic_timer.start()
+	set_coco_ui(2)
+	print("panic!!!!")
+	sub_player.set_panic(true)
+	is_far_timer = false
+	is_panic = true
+
+
 ##################################### set functions
 # Pause or unpause the health depletion timer.
 func pause_health_timer(val: bool):
@@ -192,6 +237,10 @@ func add_health_potion(val:int):
 func set_health_timer(val: bool):
 	is_health_timer = val
 
+# Set the flag to track if the far timer is active.
+func set_far_timer(val:bool):
+	is_far_timer = val
+
 # Add a new page to the notebook and update the UI with the updated page count.
 func update_array(val: int):
 	page_array.append(val)
@@ -199,11 +248,11 @@ func update_array(val: int):
 	
 # If the player is not panicking, control the digging interaction state for "coco."
 func set_coco_range_dig(val:bool):
-	if !main_player.get_panic_status():
+	if !is_panic:
 		if val:
-			main_player.set_coco_dig(1)
+			set_coco_ui(1)
 		else:
-			main_player.set_coco_dig(0)
+			set_coco_ui(0)
 
 # Show or hide the interact icon in the UI.
 func set_player_interact(val:bool):
@@ -217,6 +266,10 @@ func digged_up(val: bool,id: int,pos: Vector3):
 		add_health_potion(id)
 	sub_player.set_dig_position(pos)
 
+# Set the petting interaction flag, update UI, and adjust animations for petting interaction.
+func set_coco_ui(val: int):
+	UI.set_coco(coco_ui[val])
+
 
 ##################################### get functions
 # Return the main player's current position.
@@ -225,6 +278,14 @@ func give_main_player_position() -> Vector3:
 	
 
 ##################################### signals functions internal
+
+func _on_petting_signal():
+	panic_timer.stop()
+	is_panic = false
+	sub_player.set_panic(false)
+	set_coco_ui(3)
+
+
 # Check if the player's submitted answer is correct and handle success or failure accordingly. Stop the math timer and resume normal gameplay.
 func _on_math_ui_submitted_math_answer(text: String) -> void:
 	var get_answer = int(text)
@@ -249,6 +310,15 @@ func _on_health_deplete_timeout() -> void:
 		print("Health decreased by ", health_decrease, " - Current health: ", health)
 		UI.set_health(health)
 		is_health_timer = false
+
+# Set the player to dead if the panic timer expires.
+func _on_panic_timer_timeout() -> void:
+	print("TOO LATE")
+	health_lost(true,200)
+	
+# Trigger panic mode when the far timer expires.
+func _on_far_timer_timeout() -> void:
+	set_panic()
 
 
 ##################################### signals functions external

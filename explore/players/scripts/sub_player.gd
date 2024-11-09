@@ -85,7 +85,7 @@ func default_sub_player(delta: float):
 
 #Stops all movement during panic mode.
 func panic_sub_player(delta: float):
-	velocity == Vector3(0,0,0)
+	velocity = Vector3(0,0,0)
 
 #Moves the sub-player towards the dig_position until they reach it. Once there, it exits the digging state.
 func dig_sub_player(delta: float):
