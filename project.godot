@@ -16,6 +16,10 @@ run/main_scene="res://explore/hub.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalManager="*res://explore/signal_manager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

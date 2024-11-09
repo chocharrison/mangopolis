@@ -1,9 +1,11 @@
 extends Control
 
 
+const hurt_audios = 4
 ##################################### nodes
 var notebook_anime_play:AnimationPlayer
 var notebook:Control
+var soundeffects: AudioStreamPlayer
 
 var health_bar: TextureProgressBar
 var health_label:Label
@@ -32,12 +34,13 @@ var interact: AnimatedSprite2D
 @onready var page = 0
 @onready var page_array = []
 
-
 ##################################### default functions
 # Set up references to the notebook's animation player, control, health bars, and other UI elements.
 # Set the viewport's default texture filter for rendering.
 # Hide the interaction sprite initially and disable notebook processing by default.
 func _ready() -> void:
+	
+	
 	notebook_anime_play = get_node("notebook_player")
 	notebook = get_node("Control")
 	notebook.set_process(false)
@@ -59,9 +62,13 @@ func _ready() -> void:
 	text = get_node("Control/text_x/text_y/SubViewportContainer/SubViewport/RichTextLabel")
 	images = get_node("Control/image_x/image_y/TextureRect")
 	
+	soundeffects = get_node("AudioStreamPlayer")
+	
 	coco = get_node("coco")
 	interact = get_node("interact_master")
+	
 	interact.visible = false
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 # Handle input events when the notebook is open, calling a function to control notebook page turning.
@@ -85,6 +92,8 @@ func notebook_control():
 		if(page != page_array.size()):
 			text.get_v_scroll_bar().value = 0
 			page+=1
+			soundeffects.stream = load("res://explore/sound_effects/flip.mp3")
+			soundeffects.play()
 			if(page <= 1):
 				notebook_anime_play.play("open_front")
 				print(page_array[page])
@@ -98,6 +107,8 @@ func notebook_control():
 					
 	elif Input.is_action_just_pressed("ui_left"):
 		if(page != 0):
+			soundeffects.stream = load("res://explore/sound_effects/flip.mp3")
+			soundeffects.play()
 			text.visible = false
 			text.get_v_scroll_bar().value = 0
 			page-=1
@@ -149,14 +160,18 @@ func set_note(val: bool):
 	is_note = val
 	if is_note:
 		notebook.set_process(is_note)
+		play_notebook()
 		notebook_anime_play.play("read")
 	else:
 		notebook_anime_play.stop()
 		if(page != 0):
 			if(page == page_array.size()):
 				notebook_anime_play.play("open_back")
+				flip_notebook()
 			notebook_anime_play.queue("close_front")
+			flip_notebook()
 		notebook_anime_play.queue("unread")
+		play_notebook()
 	page = 0
 	text.visible = false
 	images.visible = false
@@ -206,3 +221,20 @@ func health_exhaust(val: int):
 func health_used(val: int):
 	health_potion.text = str(val)
 	health_animation.play("health_used")
+
+func health_lost():
+	var rand = randi_range(1,4)
+	soundeffects.stream = load("res://explore/sound_effects/mango_hurt_"+str(rand)+".mp3")
+	soundeffects.play()
+
+func play_ded():
+	soundeffects.stream = load("res://explore/sound_effects/mango_ded.mp3")
+	soundeffects.play()
+
+func play_notebook():
+	soundeffects.stream = load("res://explore/sound_effects/get_note.mp3")
+	soundeffects.play()
+
+func flip_notebook():
+	soundeffects.stream = load("res://explore/sound_effects/flip.mp3")
+	soundeffects.play()

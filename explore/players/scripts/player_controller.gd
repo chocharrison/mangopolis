@@ -40,6 +40,15 @@ func _ready() -> void:
 	sub_player = get_node("sub_player")
 	UI = get_node("ExploreUi")
 	math_ui = get_node("math_ui")
+	
+	SignalManager.collected_healthpotions_signal.connect(_on_collected_healthpotions_signal)
+	SignalManager.collected_notebooks_signal.connect(_on_collected_notebooks_signal)
+	
+	SignalManager.coco_in_dig_range_signal.connect(_on_coco_in_dig_range_signal)
+	SignalManager.dig_result_signal.connect(_on_digresult_signal)
+	
+	SignalManager.show_interact_button_signal.connect(_on_show_interact_button_signal)
+	
 	UI.set_health(health)
 	UI.health_picked(health_potion)
 	UI.set_notebook_array(page_array.size()-1,MAX_PAGE)
@@ -65,6 +74,8 @@ func _physics_process(delta: float) -> void:
 			set_health_timer(true)
 
 ##################################### custom functions
+
+
 # If a health potion is used, update health and UI, and manage potion count.
 # Toggle notebook visibility, disabling the main player's controls when the notebook is open.
 func Inventory_inputs():
@@ -135,10 +146,7 @@ func start_math(level: int,damage: int = 20,iter: int = 0):
 func failed():
 		math_ui.math_failure()
 		iterations = max(iterations-5,0)
-		health= max(0,health - health_damage)
-		UI.set_health(health)	
-		if(health <= 0):	
-			main_player.set_ded()
+		health_lost(true,health_damage)
 
 # Perform the specified math operation (addition, subtraction, or multiplication) and return the result, updating the UI with the equation symbol.
 func math_operations(first: int, second: int,equation: int) -> int:
@@ -154,7 +162,16 @@ func math_operations(first: int, second: int,equation: int) -> int:
 			math_ui.set_equation("x")
 	return answer
 
+func health_lost(is_not_timer: bool,damage: int):
+	health= max(0,health - damage)
+	UI.set_health(health)
+	if(is_not_timer):
+		UI.health_lost()
 
+	if(health <= 0):
+		UI.play_ded()
+		main_player.set_ded()
+	
 ##################################### set functions
 # Pause or unpause the health depletion timer.
 func pause_health_timer(val: bool):
@@ -207,7 +224,7 @@ func give_main_player_position() -> Vector3:
 	return main_player.position
 	
 
-##################################### signals functions
+##################################### signals functions internal
 # Check if the player's submitted answer is correct and handle success or failure accordingly. Stop the math timer and resume normal gameplay.
 func _on_math_ui_submitted_math_answer(text: String) -> void:
 	var get_answer = int(text)
@@ -228,24 +245,23 @@ func _on_math_timer_timeout() -> void:
 func _on_health_deplete_timeout() -> void:
 	if health > 0:
 		var health_decrease = randi_range(3, 7) # Randomly decrease health between 5 and 20 points
-		health -= health_decrease
-		health = max(0, health) # Ensure health doesn't drop below 0
-		if(health <= 0):
-			main_player.ded()
+		health_lost(false,health_decrease)
 		print("Health decreased by ", health_decrease, " - Current health: ", health)
 		UI.set_health(health)
 		is_health_timer = false
 
+
+##################################### signals functions external
 # Update the notebook array when a new notebook is collected.
-func _on_notebook_collected_notebook_signal(val:int) -> void:
+func _on_collected_notebooks_signal(val:int) -> void:
 	update_array(val)
 
 # Add health potions when collected.
-func _on_health_potion_collected_healthpotions_signal(val: int) -> void:
+func _on_collected_healthpotions_signal(val: int) -> void:
 	add_health_potion(val)
 
 # Handle the player entering or exiting digging range.
-func _on_dig_coco_in_range(val: bool) -> void:
+func _on_coco_in_dig_range_signal(val: bool) -> void:
 	set_coco_range_dig(val)
 
 # Start a new math puzzle with the given difficulty level, damage, and iteration count.
@@ -254,9 +270,12 @@ func _on_hub_math_signal(level: int,damage: int, iter: int) -> void:
 	start_math(level,damage,iter)
 
 # Handle digging interaction, enabling player interaction UI.
-func _on_dig_found_dig(val: bool) -> void:
+func _on_show_interact_button_signal(val: bool) -> void:
 	set_player_interact(val)
 
 # Process the result of digging, either finding a notebook or health potion, and update the sub player's position.
-func _on_dig_dig_notebook_or_health(val: bool,id: int,pos: Vector3) -> void:
+func _on_digresult_signal(val: bool,id: int,pos: Vector3) -> void:
 	digged_up(val,id,pos)
+
+func _on_health_lost_signal(damage: int):
+	health_lost(true,damage)

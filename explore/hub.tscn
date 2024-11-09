@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://drhokc7i58eqa"]
+[gd_scene load_steps=15 format=3 uid="uid://drhokc7i58eqa"]
 
 [ext_resource type="PackedScene" uid="uid://clo6cck334no3" path="res://explore/players/players.tscn" id="1_gqk4c"]
 [ext_resource type="Script" path="res://explore/hub.gd" id="1_op7ef"]
@@ -25,6 +25,10 @@ glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6kdy"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_60jc8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yk1vx"]
+
 [node name="Hub" type="Node3D"]
 script = ExtResource("1_op7ef")
 
@@ -33,6 +37,7 @@ environment = SubResource("Environment_hroyq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -64,6 +69,16 @@ collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
 shape = SubResource("BoxShape3D_t6kdy")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29831, 0, 16.3986)
+mesh = SubResource("BoxMesh_60jc8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D"]
+shape = SubResource("BoxShape3D_yk1vx")
 
 [node name="camera_controller" parent="." instance=ExtResource("2_uybsr")]
 script = ExtResource("3_aloaj")
@@ -108,14 +123,4 @@ is_notebook = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37316, -0.686187, 18.0661)
 
 [connection signal="math_signal" from="." to="Players" method="_on_hub_math_signal"]
-[connection signal="collected_notebook_signal" from="notebooks/notebook" to="Players" method="_on_notebook_collected_notebook_signal"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="collected_healthpotions_signal" from="health_potions/health_potion" to="Players" method="_on_health_potion_collected_healthpotions_signal"]
-[connection signal="collected_healthpotions_signal" from="health_potions/health_potion2" to="Players" method="_on_health_potion_collected_healthpotions_signal"]
-[connection signal="collected_healthpotions_signal" from="health_potions/health_potion3" to="Players" method="_on_health_potion_collected_healthpotions_signal"]
-[connection signal="coco_in_range" from="pits_notebooks/dig" to="Players" method="_on_dig_coco_in_range"]
-[connection signal="dig_notebook_or_health" from="pits_notebooks/dig" to="Players" method="_on_dig_dig_notebook_or_health"]
-[connection signal="found_dig" from="pits_notebooks/dig" to="Players" method="_on_dig_found_dig"]
-[connection signal="coco_in_range" from="pits_health_potions/dig2" to="Players" method="_on_dig_coco_in_range"]
-[connection signal="dig_notebook_or_health" from="pits_health_potions/dig2" to="Players" method="_on_dig_dig_notebook_or_health"]
-[connection signal="found_dig" from="pits_health_potions/dig2" to="Players" method="_on_dig_found_dig"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://db8fgquaqo5fn"]
+[gd_scene load_steps=108 format=3 uid="uid://db8fgquaqo5fn"]
 
 [ext_resource type="Script" path="res://explore/ui/explore_ui.gd" id="1_08obe"]
 [ext_resource type="Texture2D" uid="uid://bkw6ed0jp5fhn" path="res://explore/ui/sprites/buttons.png" id="1_setnc"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://fiij47sb266t" path="res://explore/ui/sprites/health_bar.png" id="13_p8puu"]
 [ext_resource type="Shader" path="res://explore/ui/book_text.gdshader" id="15_b0li1"]
 [ext_resource type="Texture2D" uid="uid://5gh6cgbf5mbg" path="res://explore/notebooks/nuggets.png" id="16_y8vyw"]
+[ext_resource type="Texture2D" uid="uid://c6rfnyv8hxnlt" path="res://explore/ui/sprites/coco_direction.png" id="17_w1mas"]
 
 [sub_resource type="Animation" id="Animation_lwr56"]
 length = 0.001
@@ -1648,3 +1649,10 @@ texture = ExtResource("16_y8vyw")
 libraries = {
 "": SubResource("AnimationLibrary_cd5dr")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="coco_pointer" type="Sprite2D" parent="."]
+position = Vector2(576, 275)
+scale = Vector2(3.82813, 3.57813)
+texture = ExtResource("17_w1mas")

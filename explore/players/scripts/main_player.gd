@@ -101,6 +101,7 @@ func default_player(delta: float) -> void:
 		set_pet(false)
 	
 	if Input.is_action_just_pressed("pet") and is_on_floor() and position.distance_to(sub.position) <= PETTING_DISTANCE:
+		
 		set_pet(true)
 		sub.set_panic(false)
 		panic_timer.stop()
