@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://explore/collectibles/notebooks.tscn" id="5_dt7mg"]
 [ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://explore/collectibles/health_potions.tscn" id="5_yo538"]
 [ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://explore/collectibles/dig.tscn" id="7_1bo0x"]
-[ext_resource type="PackedScene" uid="uid://djpyj0boiv5rr" path="res://explore/fsm_players/main_player.tscn" id="7_jc7py"]
+[ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://explore/fsm_players/scenes/fsm_players.tscn" id="7_5vhd5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y15db"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -118,7 +118,7 @@ is_notebook = true
 [node name="dig2" parent="pits_health_potions" instance=ExtResource("7_1bo0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37316, -0.686187, 18.0661)
 
-[node name="main_player" parent="." instance=ExtResource("7_jc7py")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81512, 0)
+[node name="FSM_Players" parent="." instance=ExtResource("7_5vhd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0351598, 1.39734, 0.00186372)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

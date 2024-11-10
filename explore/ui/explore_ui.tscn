@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://5gh6cgbf5mbg" path="res://explore/notebooks/nuggets.png" id="16_y8vyw"]
 [ext_resource type="Texture2D" uid="uid://c6rfnyv8hxnlt" path="res://explore/ui/sprites/coco_direction.png" id="17_w1mas"]
 
-[sub_resource type="Animation" id="Animation_lwr56"]
+[sub_resource type="Animation" id="Animation_qap6x"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -153,7 +153,7 @@ tracks/10/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_oou47"]
+[sub_resource type="Animation" id="Animation_unbly"]
 resource_name = "close_back"
 length = 0.400003
 tracks/0/type = "value"
@@ -205,7 +205,7 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_x8mqa"]
+[sub_resource type="Animation" id="Animation_f2fls"]
 resource_name = "close_front"
 length = 0.46667
 tracks/0/type = "value"
@@ -257,7 +257,7 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_ihm18"]
+[sub_resource type="Animation" id="Animation_esc6o"]
 resource_name = "flip_left"
 length = 0.400003
 tracks/0/type = "value"
@@ -309,7 +309,7 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_2fpc8"]
+[sub_resource type="Animation" id="Animation_q4dfq"]
 resource_name = "flip_right"
 length = 0.400003
 tracks/0/type = "value"
@@ -361,7 +361,7 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_dra8b"]
+[sub_resource type="Animation" id="Animation_atn5a"]
 resource_name = "open_back"
 length = 0.66667
 tracks/0/type = "value"
@@ -413,7 +413,7 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_tn4nq"]
+[sub_resource type="Animation" id="Animation_4san4"]
 resource_name = "open_front"
 length = 0.66667
 tracks/0/type = "value"
@@ -465,7 +465,7 @@ tracks/3/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_c8xbm"]
+[sub_resource type="Animation" id="Animation_55edc"]
 resource_name = "read"
 length = 0.200003
 tracks/0/type = "value"
@@ -553,7 +553,7 @@ tracks/6/keys = {
 "values": [Vector2(902, 0), Vector2(902, -115)]
 }
 
-[sub_resource type="Animation" id="Animation_2we5q"]
+[sub_resource type="Animation" id="Animation_gwl4c"]
 resource_name = "unread"
 length = 0.200003
 tracks/0/type = "value"
@@ -641,7 +641,7 @@ tracks/6/keys = {
 "values": [Vector2(902, -115), Vector2(902, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ajhf2"]
+[sub_resource type="Animation" id="Animation_o82gp"]
 resource_name = "update_notebook"
 length = 0.200003
 tracks/0/type = "value"
@@ -681,18 +681,18 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qfbgr"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7jh6"]
 _data = {
-"RESET": SubResource("Animation_lwr56"),
-"close_back": SubResource("Animation_oou47"),
-"close_front": SubResource("Animation_x8mqa"),
-"flip_left": SubResource("Animation_ihm18"),
-"flip_right": SubResource("Animation_2fpc8"),
-"open_back": SubResource("Animation_dra8b"),
-"open_front": SubResource("Animation_tn4nq"),
-"read": SubResource("Animation_c8xbm"),
-"unread": SubResource("Animation_2we5q"),
-"update_notebook": SubResource("Animation_ajhf2")
+"RESET": SubResource("Animation_qap6x"),
+"close_back": SubResource("Animation_unbly"),
+"close_front": SubResource("Animation_f2fls"),
+"flip_left": SubResource("Animation_esc6o"),
+"flip_right": SubResource("Animation_q4dfq"),
+"open_back": SubResource("Animation_atn5a"),
+"open_front": SubResource("Animation_4san4"),
+"read": SubResource("Animation_55edc"),
+"unread": SubResource("Animation_gwl4c"),
+"update_notebook": SubResource("Animation_o82gp")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8h8ih"]
@@ -1469,7 +1469,7 @@ horizontal_alignment = 1
 
 [node name="notebook_player" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_qfbgr")
+"": SubResource("AnimationLibrary_k7jh6")
 }
 
 [node name="icon" type="TextureRect" parent="."]

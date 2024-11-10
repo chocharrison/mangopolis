@@ -40,6 +40,7 @@ const MAX_SPRINT = 100
 @onready var sprint_meter = MAX_SPRINT
 @onready var bread_crumbs_array = [position]
 @onready var direction = Vector3(0,0,0)
+@onready var speed = SPEED
 
 ##################################### States
 enum STATE {IDLE,JUMP,WALK,SPRINT,TIRED, PET, DISABLED, ENABLED, DED}
@@ -58,33 +59,6 @@ func _physics_process(delta: float) -> void:
 	perform_state_actions(delta)
 	move_and_slide()
 
-func handle_state_transitions():
-	if state == STATE.DISABLED or state == STATE.DED or state == STATE.TIRED:
-		return
-	if Input.is_action_just_pressed("jump_1") and is_on_floor():
-		state = STATE.JUMP
-	
-	elif Input.is_action_just_pressed("pet") and is_on_floor() and check_sub_distance():
-		var facing_pet = (Vector3(sub.position.x,0,sub.position.z)-Vector3(position.x,0,position.z)).normalized()
-		anime.set("parameters/pet/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
-		state = STATE.PET
-	
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if Input.is_action_pressed("sprint") and is_on_floor() and !is_sprinted and sprint_meter > 0:
-		set_sprite_direction(direction)
-		state = STATE.SPRINT
-	
-	elif direction != Vector3.ZERO:
-		set_sprite_direction(direction)
-		state = STATE.WALK
-	else:
-		state = STATE.IDLE
-			
-	if Input.is_action_just_released("sprint"):
-		is_sprinted = true
-
-	bread_crumbing()
 func perform_state_actions(delta):
 	match state:
 		STATE.TIRED:
@@ -113,6 +87,46 @@ func perform_state_actions(delta):
 			is_sprinted = false
 			is_sprint_timer_active = false
 	
+	if state != STATE.PET:
+		is_petting = false
+		sub.set_pet(false)
+
+
+func handle_state_transitions():
+	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	bread_crumbing()
+	if state == STATE.DISABLED or state == STATE.DED or state == STATE.TIRED or state == STATE.JUMP:
+		return
+
+	if Input.is_action_just_pressed("jump_1") and is_on_floor():
+		print("here")
+		velocity.y = JUMP_VELOCITY
+		state = STATE.JUMP
+		return
+	
+	elif Input.is_action_just_pressed("pet") and is_on_floor() and check_sub_distance():
+		var facing_pet = (Vector3(sub.position.x,0,sub.position.z)-Vector3(position.x,0,position.z)).normalized()
+		anime.set("parameters/pet/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
+		state = STATE.PET
+		is_petting = true
+		return
+		
+	if Input.is_action_pressed("sprint") and is_on_floor() and !is_sprinted and sprint_meter > 0:
+		set_sprite_direction()
+		state = STATE.SPRINT
+		return
+	elif direction != Vector3.ZERO:
+		set_sprite_direction()
+		state = STATE.WALK
+		return
+	else:
+		if !is_petting:
+			state = STATE.IDLE
+
+	if Input.is_action_just_released("sprint"):
+		is_sprinted = true
+	
 ##################################### state functions
 func state_idle():
 	anime.get("parameters/playback").travel("idle")
@@ -121,9 +135,9 @@ func state_idle():
 
 func state_pet():
 	anime.get("parameters/playback").travel("pet")
+	sub.set_pet(true)
 
 func state_tired():
-	print("yes")
 	anime.get("parameters/playback").travel("tired")
 	velocity.x = move_toward(velocity.x, 0, SPEED)
 	velocity.z = move_toward(velocity.z, 0, SPEED)
@@ -131,18 +145,25 @@ func state_tired():
 		state = STATE.IDLE
 
 func state_jump():
+	print(direction)
 	var jump_norm = velocity.normalized()
+	velocity.x = direction.x * SPEED
+	velocity.z = direction.z * SPEED
 	if(jump_norm.y > 0):
 		anime.get("parameters/playback").travel("jump")
-	if(jump_norm.y < 0):
+	elif(jump_norm.y < 0):
 		anime.get("parameters/playback").travel("fall")
+	else:
+		state = STATE.IDLE
 
 func state_walk():
+	speed = SPEED
 	anime.get("parameters/playback").travel("walk")
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
 
 func state_sprint():
+	speed = SPRINT
 	anime.get("parameters/playback").travel("sprint")
 	velocity.x = direction.x * SPRINT
 	velocity.z = direction.z * SPRINT
@@ -156,7 +177,7 @@ func state_sprint():
 
 ##################################### support functions
 
-func set_sprite_direction(direction: Vector3):
+func set_sprite_direction():
 		anime.set("parameters/idle/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 		anime.set("parameters/jump/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 		anime.set("parameters/walk/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
@@ -199,7 +220,9 @@ func set_pet(val: bool):
 func get_bread_crumbs() -> Array:
 	return bread_crumbs_array
 
+# Return the current sprint speed.
+func get_sprint() -> float:
+	return speed
 
 func _on_sprint_cooldown_timeout() -> void:
 	is_cooldown = false
-	print("here")
