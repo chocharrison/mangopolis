@@ -16,13 +16,13 @@ const PET_DISTANCE = 0.5
 
 ##################################### flags
 @onready var is_petting = false
-@onready var is_dig = false
+@onready var found_digging = false
 
 ##################################### variables
 @onready var dig_position: Vector3 = Vector3(0,0,0)
 @onready var bread_crumbs_index = 0
 @onready var direction = Vector3(0,0,0)
-
+@onready var save_state = null
 ##################################### States
 enum STATE {IDLE, FOLLOW, PANIC, PETTED, DIG, DISABLED, ENABLED}
 @onready var state = STATE.FOLLOW
@@ -33,35 +33,37 @@ enum STATE {IDLE, FOLLOW, PANIC, PETTED, DIG, DISABLED, ENABLED}
 func _ready() -> void:
 	pass
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += get_gravity().y * delta
+		velocity.y += get_gravity().y * _delta
 
 	handle_state_transitions()
-	perform_state_actions(delta)
+	perform_state_actions(_delta)
 	move_and_slide()
 
-func perform_state_actions(delta):
+func perform_state_actions(_delta):
 	match state:
 		STATE.IDLE:
 			state_idle()
 		STATE.FOLLOW:
-			state_follow(delta)
+			state_follow(_delta)
 		STATE.PANIC:
-			state_panic(delta)
+			state_panic(_delta)
 		STATE.PETTED:
 			state_petted()
 		STATE.DIG:
-			state_dig(delta)
+			state_dig(_delta)
 			
 func handle_state_transitions():
-	
-	if state == STATE.DISABLED or state == STATE.DIG or state == STATE.PANIC or state == STATE.IDLE:
+	if state == STATE.DISABLED or state == STATE.DIG:
 		return
 	
 	if is_petting:
 		state = STATE.PETTED
+		return
+	
+	if state == STATE.PANIC or state == STATE.IDLE:
 		return
 	
 	if Input.is_action_just_pressed("jump_2") and is_on_floor():
@@ -76,7 +78,7 @@ func state_idle():
 	anime.get("parameters/playback").travel("idle")
 	
 
-func state_follow(delta):
+func state_follow(_delta):
 	var speed = max(SPEED,master.get_sprint())
 	var bread_crumbs_array = master.get_bread_crumbs()
 	
@@ -110,7 +112,7 @@ func state_follow(delta):
 	else:
 		anime.get("parameters/playback").travel("walk")
 	
-func state_panic(delta):
+func state_panic(_delta):
 	anime.get("parameters/playback").travel("panic")
 	velocity = Vector3(0,0,0)
 	position = position
@@ -120,20 +122,22 @@ func state_petted():
 	direction = (Vector3(master.position.x,0,master.position.z) - Vector3(position.x,0,position.z)).normalized()
 	var target = master.position - direction * PET_DISTANCE
 	position = position.lerp(target, 0.1)
-	if position.distance_to(dig_position) >= PET_DISTANCE:
+	if position.distance_to(target) >= PET_DISTANCE:
 		anime.get("parameters/playback").travel("pet")
 	else:
 		anime.get("parameters/playback").travel("walk")
 	
 func state_dig(delta):
-	position = position.lerp(dig_position, 0.1)
-	set_sprite_direction(dig_position)
-	if position.distance_to(dig_position) <= DIG_DISTANCE:
-		anime.get("parameters/playback").travel("dig")
-		await Animated_sprite.animation_finished
-		state = STATE.FOLLOW
-	else:
-		anime.get("parameters/playback").travel("walk")
+	if !found_digging:
+		position = position.lerp(dig_position, SPEED * delta)
+		set_sprite_direction(dig_position)
+		print(dig_position)
+		if position.distance_to(dig_position) <= DIG_DISTANCE:
+			anime.get("parameters/playback").travel("dig")
+			found_digging = true
+		else:
+			anime.get("parameters/playback").travel("walk")
+			print("despacito")
 	
 ##################################### custom functions
 func set_sprite_direction(target_position: Vector3):
@@ -152,8 +156,16 @@ func disable_controls():
 
 func enable_controls():
 	state = STATE.ENABLED
+
+func pause_controls():
+	save_state = state
+	state = STATE.DISABLED
+	
+func unpause_controls():
+	state = save_state
 	
 func set_dig_position(val: Vector3):
+	print(val)
 	dig_position = val
 	state = STATE.DIG
 
@@ -168,3 +180,20 @@ func set_idle():
 
 func set_follow():
 	state = STATE.FOLLOW
+
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	print(anim_name)
+	match anim_name:
+		"dig_left":
+			found_digging = false
+			state = STATE.FOLLOW
+		"dig_right":
+			found_digging = false
+			state = STATE.FOLLOW
+		"dig_up":
+			found_digging = false
+			state = STATE.FOLLOW
+		"dig_down":
+			found_digging = false
+			state = STATE.FOLLOW

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://ddhg1b3xoppy5"]
 
 [ext_resource type="Script" path="res://explore/collectibles/health_potions.gd" id="1_mxq5a"]
-[ext_resource type="Texture2D" uid="uid://c0d1fik26lrxm" path="res://explore/ui/sprites/health_potion-collect.png" id="2_qvuom"]
+[ext_resource type="Texture2D" uid="uid://c0d1fik26lrxm" path="res://explore/fsm_players/ui/sprites/health_potion-collect.png" id="2_qvuom"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5nfil"]
 radius = 0.359029

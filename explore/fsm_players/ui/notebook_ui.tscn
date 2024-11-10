@@ -1,14 +1,15 @@
-[gd_scene load_steps=54 format=3 uid="uid://byb7rnewwt58q"]
+[gd_scene load_steps=55 format=3 uid="uid://byb7rnewwt58q"]
 
-[ext_resource type="Texture2D" uid="uid://hw16k2kihmj1" path="res://explore/ui/sprites/note_ui.png" id="1_7luoq"]
+[ext_resource type="Texture2D" uid="uid://hw16k2kihmj1" path="res://explore/fsm_players/ui/sprites/note_ui.png" id="1_7luoq"]
 [ext_resource type="Script" path="res://explore/fsm_players/ui/scripts/notebook_ui.gd" id="1_fdkw5"]
 [ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="2_qtcdi"]
-[ext_resource type="Texture2D" uid="uid://b6fuf5i32324i" path="res://explore/ui/sprites/notebook.png" id="3_nnk4o"]
-[ext_resource type="Texture2D" uid="uid://baievmp5h2ojb" path="res://explore/ui/sprites/bday-card.png" id="4_4tei3"]
-[ext_resource type="Shader" path="res://explore/ui/book_text.gdshader" id="5_2uwri"]
+[ext_resource type="Texture2D" uid="uid://b6fuf5i32324i" path="res://explore/fsm_players/ui/sprites/notebook.png" id="3_nnk4o"]
+[ext_resource type="Texture2D" uid="uid://baievmp5h2ojb" path="res://explore/fsm_players/ui/sprites/bday-card.png" id="4_4tei3"]
+[ext_resource type="Shader" path="res://explore/fsm_players/ui/scripts/book_text.gdshader" id="6_mm7j5"]
 [ext_resource type="Texture2D" uid="uid://5gh6cgbf5mbg" path="res://explore/notebooks/nuggets.png" id="6_xkpfo"]
 [ext_resource type="AudioStream" uid="uid://drno22ackkjt1" path="res://explore/fsm_players/ui/sounds/flip.mp3" id="8_8cxym"]
 [ext_resource type="AudioStream" uid="uid://cft7ynxtpo3hv" path="res://explore/fsm_players/ui/sounds/get_note.mp3" id="9_48mdn"]
+[ext_resource type="AudioStream" uid="uid://qocg45xqnvsk" path="res://explore/fsm_players/ui/sounds/collect.mp3" id="10_6tug4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ea8lv"]
 atlas = ExtResource("4_4tei3")
@@ -244,20 +245,20 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxlda"]
-shader = ExtResource("5_2uwri")
-shader_parameter/fov = 41.0
+shader = ExtResource("6_mm7j5")
+shader_parameter/fov = 36.0
 shader_parameter/cull_back = true
-shader_parameter/y_rot = 12.135
-shader_parameter/x_rot = 23.97
+shader_parameter/y_rot = 10.0
+shader_parameter/x_rot = 24.27
 shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uup4d"]
-shader = ExtResource("5_2uwri")
-shader_parameter/fov = 30.0
-shader_parameter/cull_back = true
+shader = ExtResource("6_mm7j5")
+shader_parameter/fov = 28.0
+shader_parameter/cull_back = false
 shader_parameter/y_rot = -16.18
 shader_parameter/x_rot = 16.18
-shader_parameter/inset = 0.0
+shader_parameter/inset = 0.337
 
 [sub_resource type="Animation" id="Animation_gh02h"]
 length = 0.001
@@ -572,6 +573,82 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [5, 4, 3, 2, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/image_x:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/text_x:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_8cxym")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lt8w1"]
+resource_name = "flip_right"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/notebook_inventory:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"flip_right"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/notebook_inventory:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266666, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 1, 0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1073,77 +1150,25 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_lt8w1"]
-resource_name = "flip_right"
-length = 0.400003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/notebook_inventory:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"flip_right"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/notebook_inventory:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266666, 0.333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [2, 3, 4, 5, 1, 0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control/image_x:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Control/text_x:visible")
+tracks/3/path = NodePath("AudioStreamPlayer:stream")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [ExtResource("10_6tug4")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer:stream")
+tracks/4/path = NodePath("AudioStreamPlayer:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("8_8cxym")]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1280,8 +1305,8 @@ Happy Birthday Mangooooo, I love you so heccing much and I hope today is an amaz
 
 [node name="image_x" type="Node2D" parent="Control"]
 visible = false
-position = Vector2(562, 157)
-rotation = 1.5708
+position = Vector2(549, 157)
+rotation = 1.54459
 skew = -0.329867
 
 [node name="image_y" type="Node2D" parent="Control/image_x"]

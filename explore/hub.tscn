@@ -39,6 +39,9 @@ environment = SubResource("Environment_hroyq")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
+[node name="FSM_Players" parent="." instance=ExtResource("7_5vhd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0351598, 1.39734, 0.00186372)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(27.5346, 0, 0, 0, 0.0823554, 0, 0, 0, 24.7579, 0, 0, 0)
 mesh = SubResource("BoxMesh_cxilj")
@@ -117,8 +120,5 @@ is_notebook = true
 
 [node name="dig2" parent="pits_health_potions" instance=ExtResource("7_1bo0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37316, -0.686187, 18.0661)
-
-[node name="FSM_Players" parent="." instance=ExtResource("7_5vhd5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0351598, 1.39734, 0.00186372)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

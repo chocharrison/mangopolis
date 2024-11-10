@@ -21,7 +21,7 @@ func _ready() -> void:
 		health.get_parent().add_child(health2)
 		health.get_parent().add_child(health3)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 

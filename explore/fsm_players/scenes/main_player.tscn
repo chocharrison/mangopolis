@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=3 uid="uid://djpyj0boiv5rr"]
+[gd_scene load_steps=196 format=3 uid="uid://djpyj0boiv5rr"]
 
 [ext_resource type="Script" path="res://explore/fsm_players/scripts/new_main_player.gd" id="1_0ahfy"]
 [ext_resource type="Texture2D" uid="uid://ckkram1jmrlly" path="res://explore/fsm_players/sprites/char_a_p1_0bas_humn_v01.png" id="2_h63o6"]
@@ -900,6 +900,9 @@ _data = {
 "walk_up": SubResource("Animation_1bagi")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h5whw"]
+animation = &"ded"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f4sxv"]
 animation = &"fall_left"
 
@@ -1142,8 +1145,13 @@ advance_mode = 0
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qntxd"]
 advance_mode = 0
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q8ipv"]
+advance_mode = 0
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3oiev"]
 states/Start/position = Vector2(81, 132)
+states/ded/node = SubResource("AnimationNodeAnimation_h5whw")
+states/ded/position = Vector2(259, 44)
 states/fall/node = SubResource("AnimationNodeBlendTree_yce1w")
 states/fall/position = Vector2(453, 197)
 states/idle/node = SubResource("AnimationNodeBlendTree_txq2o")
@@ -1158,7 +1166,7 @@ states/tired/node = SubResource("AnimationNodeBlendTree_ci27q")
 states/tired/position = Vector2(711, 124)
 states/walk/node = SubResource("AnimationNodeBlendTree_2bqgq")
 states/walk/position = Vector2(416, 21)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_50akw"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_na248"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_cgnno"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_kx5wn"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_acyje"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_sis5y"), "idle", "sprint", SubResource("AnimationNodeStateMachineTransition_evvu5"), "sprint", "idle", SubResource("AnimationNodeStateMachineTransition_m2na0"), "walk", "sprint", SubResource("AnimationNodeStateMachineTransition_qvqn8"), "idle", "tired", SubResource("AnimationNodeStateMachineTransition_j38dq"), "tired", "idle", SubResource("AnimationNodeStateMachineTransition_et3ga"), "idle", "pet", SubResource("AnimationNodeStateMachineTransition_x03uf"), "pet", "idle", SubResource("AnimationNodeStateMachineTransition_qntxd")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_50akw"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_na248"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_cgnno"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_kx5wn"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_acyje"), "fall", "idle", SubResource("AnimationNodeStateMachineTransition_sis5y"), "idle", "sprint", SubResource("AnimationNodeStateMachineTransition_evvu5"), "sprint", "idle", SubResource("AnimationNodeStateMachineTransition_m2na0"), "walk", "sprint", SubResource("AnimationNodeStateMachineTransition_qvqn8"), "idle", "tired", SubResource("AnimationNodeStateMachineTransition_j38dq"), "tired", "idle", SubResource("AnimationNodeStateMachineTransition_et3ga"), "idle", "pet", SubResource("AnimationNodeStateMachineTransition_x03uf"), "pet", "idle", SubResource("AnimationNodeStateMachineTransition_qntxd"), "idle", "ded", SubResource("AnimationNodeStateMachineTransition_q8ipv")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_agv48"]
 atlas = ExtResource("2_h63o6")

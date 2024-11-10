@@ -7,20 +7,18 @@ extends Node3D
 @onready var is_near_coco = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalManager.interracted.connect(_on_interact)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
 	pass
 
-
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact") and is_interactive and is_near_coco:
+func _on_interact(panicked):
+	if is_interactive and is_near_coco and !panicked:
 		print("digged")
 		SignalManager.show_interact_button_signal.emit(false)
 		SignalManager.coco_in_dig_range_signal.emit(false)
 		SignalManager.dig_result_signal.emit(is_notebook,id_or_quantity,position)
 		queue_free()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 # Detects when the main player enters the collection zone
 func _on_collect_body_entered(body: Node3D) -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://explore/fsm_players/scripts/fsm_players.gd" id="1_w5l0r"]
 [ext_resource type="PackedScene" uid="uid://djpyj0boiv5rr" path="res://explore/fsm_players/scenes/main_player.tscn" id="2_i30p1"]
 [ext_resource type="PackedScene" uid="uid://3ouucm7x5oan" path="res://explore/fsm_players/scenes/sub_player.tscn" id="3_edamp"]
-[ext_resource type="PackedScene" uid="uid://byb7rnewwt58q" path="res://explore/fsm_players/ui/notebook_ui.tscn" id="4_1e240"]
+[ext_resource type="PackedScene" uid="uid://8bt8axo5kfv1" path="res://explore/fsm_players/ui/UI.tscn" id="4_4v27d"]
 
 [node name="FSM_Players" type="Node3D"]
 script = ExtResource("1_w5l0r")
@@ -13,11 +13,14 @@ script = ExtResource("1_w5l0r")
 [node name="sub_player" parent="." instance=ExtResource("3_edamp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.37963)
 
-[node name="Explore_ui" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Ui" parent="." instance=ExtResource("4_4v27d")]
 
-[node name="NotebookUi" parent="Explore_ui" instance=ExtResource("4_1e240")]
-layout_mode = 1
+[node name="health" type="Timer" parent="."]
+
+[node name="math" type="Timer" parent="."]
+
+[node name="panic" type="Timer" parent="."]
+
+[connection signal="timeout" from="health" to="." method="_on_health_timeout"]
+[connection signal="timeout" from="math" to="." method="_on_math_timeout"]
+[connection signal="timeout" from="panic" to="." method="_on_panic_timeout"]

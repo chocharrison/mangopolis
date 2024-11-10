@@ -13,7 +13,12 @@ signal dig_result_signal(val: bool,id: int,pos: Vector3)
 
 #interact signal
 signal show_interact_button_signal(val: bool)
-
+signal interracted()
 
 #player signal
 signal petting_signal(val: bool)
+
+signal submitted_math_answer(text: String)
+signal signal_math(val: int, val2: int, val3: int)
+
+signal trigger_panic()

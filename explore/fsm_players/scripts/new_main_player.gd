@@ -20,10 +20,8 @@ const MAX_SPRINT = 100
 ##################################### node assignments
 @onready var sub: CharacterBody3D = get_parent().get_node_or_null("sub_player")
 @onready var anime: AnimationTree = get_node_or_null("AnimationTree")
-@onready var UI: Control = get_parent().get_node_or_null("ExploreUi")
+@onready var UI: Control = get_parent().get_node_or_null("UI")
 @onready var Sprint_timer: Timer = get_node("sprint_cooldown")
-
-
 
 ##################################### flags
 @onready var is_ded = false
@@ -41,6 +39,7 @@ const MAX_SPRINT = 100
 @onready var bread_crumbs_array = [position]
 @onready var direction = Vector3(0,0,0)
 @onready var speed = SPEED
+@onready var save_state = null
 
 ##################################### States
 enum STATE {IDLE,JUMP,WALK,SPRINT,TIRED, PET, DISABLED, ENABLED, DED}
@@ -59,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	perform_state_actions(delta)
 	move_and_slide()
 
-func perform_state_actions(delta):
+func perform_state_actions(_delta):
 	match state:
 		STATE.TIRED:
 			state_tired()
@@ -90,6 +89,7 @@ func perform_state_actions(delta):
 	if state != STATE.PET:
 		is_petting = false
 		sub.set_pet(false)
+		SignalManager.petting_signal.emit(false)
 
 
 func handle_state_transitions():
@@ -136,6 +136,7 @@ func state_idle():
 func state_pet():
 	anime.get("parameters/playback").travel("pet")
 	sub.set_pet(true)
+	SignalManager.petting_signal.emit(true)
 
 func state_tired():
 	anime.get("parameters/playback").travel("tired")
@@ -145,7 +146,6 @@ func state_tired():
 		state = STATE.IDLE
 
 func state_jump():
-	print(direction)
 	var jump_norm = velocity.normalized()
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
@@ -207,6 +207,14 @@ func disable_controls():
 
 func enable_controls():
 	state = STATE.ENABLED
+	
+func pause_controls():
+	save_state = state
+	state = STATE.DISABLED
+	
+func unpause_controls():
+	state = save_state
+	
 # Set the player to dead and stop all timers.
 func kill_player():
 	state = STATE.DED

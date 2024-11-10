@@ -39,6 +39,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_l6nxn"]
 resource_name = "dig_down"
+length = 1.06667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,6 +67,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_8ss5e"]
 resource_name = "dig_left"
+length = 1.06667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -93,6 +95,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_74oou"]
 resource_name = "dig_right"
+length = 1.06667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -120,6 +123,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ibua2"]
 resource_name = "dig_up"
+length = 1.06667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1572,3 +1576,5 @@ transform = Transform3D(2.66588, 0, 0, 0, 2.9925, 0, 0, 0, 1, 0, -0.479891, 0)
 sprite_frames = SubResource("SpriteFrames_rc2wx")
 animation = &"idle_down"
 frame = 1
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

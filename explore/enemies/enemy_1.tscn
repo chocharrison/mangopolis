@@ -1,6 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://b6k24a7tsyakp"]
-
-[ext_resource type="Texture2D" uid="uid://cqjl1dm3qhsx5" path="res://explore/players/sprites/char_a_p1_0bas_humn_v01.png" id="1_oywpg"]
+[gd_scene load_steps=50 format=3 uid="uid://b6k24a7tsyakp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ys604"]
 
@@ -9,179 +7,135 @@ radius = 1.23716
 height = 2.47433
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_148ay"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1mvm"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(448, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1cct"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(448, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0jo1r"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2v21"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur51y"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(0, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5m7l8"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8taxc"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cnoyn"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwkph"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymvoi"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4j3o8"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(320, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mm8yy"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(384, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cshqr"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(448, 192, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5t3l"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(320, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bysau"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(384, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yax3r"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(448, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwbds"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(320, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xgsoh"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(384, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gv8vo"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmuc0"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(0, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ei2ly"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(64, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygm35"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(128, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2rxh"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(192, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xekpk"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(256, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8lqe"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(320, 256, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ne38v"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(0, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnnsy"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(64, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_753ck"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(128, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bawah"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(192, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_plycd"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(256, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ug3ps"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(320, 448, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u55vr"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(0, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ff2q"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(64, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qpcgu"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(128, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fsu6k"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(192, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xegkw"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(256, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl8na"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(320, 384, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3s345"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(0, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h73ll"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(64, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o75tn"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(128, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqrqw"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(192, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ncae"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(256, 320, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ehpj0"]
-atlas = ExtResource("1_oywpg")
 region = Rect2(320, 320, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gffoo"]
@@ -426,7 +380,7 @@ billboard = 2
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gffoo")
-animation = &"idle_down"
+animation = &"fall_down"
 
 [node name="close" type="Area3D" parent="."]
 

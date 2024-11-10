@@ -9,7 +9,7 @@ func _ready() -> void:
 	players = get_parent().get_node("FSM_Players")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !is_cutscene:
 		var camera_position = position
 		var main_player_position = players.give_main_player_position()

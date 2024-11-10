@@ -10,9 +10,9 @@ func _ready() -> void:
 	#players = get_node("Players")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
-	
+
 func _on_button_pressed() -> void:
-	emit_signal("math_signal",2,50,50)
-	print("pressed")
+	print("no")
+	SignalManager.signal_math.emit(5,30,0)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cj25w7sydtjmw"
+path="res://.godot/imported/mango_ded.mp3-5e6ffb096b460ea29a2e38bde9564225.mp3str"
+
+[deps]
+
+source_file="res://explore/fsm_players/sound effects/mango_ded.mp3"
+dest_files=["res://.godot/imported/mango_ded.mp3-5e6ffb096b460ea29a2e38bde9564225.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
