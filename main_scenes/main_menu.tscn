@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo70wutnad4xt"]
+
+[ext_resource type="Texture2D" uid="uid://bq8u0oe7by33a" path="res://explore/ui/menu_ui/Sprites/button.png" id="1_k5l00"]
+[ext_resource type="Texture2D" uid="uid://cm6vvkcuq6q2p" path="res://explore/ui/menu_ui/Sprites/selected.png" id="2_4g8yn"]
+[ext_resource type="Texture2D" uid="uid://qs4escgbtplx" path="res://explore/ui/menu_ui/Sprites/highlight.png" id="3_nximl"]
+[ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="4_6ohk8"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ui" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 362.0
+offset_top = 204.0
+offset_right = 826.0
+offset_bottom = 626.0
+
+[node name="resume" type="TextureButton" parent="ui"]
+process_mode = 3
+layout_mode = 0
+offset_left = 105.0
+offset_top = 93.0
+offset_right = 150.0
+offset_bottom = 106.0
+scale = Vector2(5.70208, 5.83775)
+texture_normal = ExtResource("1_k5l00")
+texture_pressed = ExtResource("2_4g8yn")
+texture_hover = ExtResource("3_nximl")
+
+[node name="Label" type="Label" parent="ui/resume"]
+layout_mode = 0
+offset_left = 12.627
+offset_top = 2.56947
+offset_right = 74.627
+offset_bottom = 25.5695
+scale = Vector2(0.312169, 0.280678)
+theme_override_colors/font_color = Color(0.188235, 0.172549, 0.12549, 1)
+theme_override_fonts/font = ExtResource("4_6ohk8")
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="settings" type="TextureButton" parent="ui"]
+process_mode = 3
+layout_mode = 0
+offset_left = 104.0
+offset_top = 180.0
+offset_right = 149.0
+offset_bottom = 193.0
+scale = Vector2(5.70208, 5.83775)
+texture_normal = ExtResource("1_k5l00")
+texture_pressed = ExtResource("2_4g8yn")
+texture_hover = ExtResource("3_nximl")
+
+[node name="Label" type="Label" parent="ui/settings"]
+layout_mode = 0
+offset_left = 12.627
+offset_top = 2.56947
+offset_right = 74.627
+offset_bottom = 25.5695
+scale = Vector2(0.312169, 0.280678)
+theme_override_colors/font_color = Color(0.188235, 0.172549, 0.12549, 1)
+theme_override_fonts/font = ExtResource("4_6ohk8")
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="quit" type="TextureButton" parent="ui"]
+process_mode = 3
+layout_mode = 0
+offset_left = 104.0
+offset_top = 268.0
+offset_right = 149.0
+offset_bottom = 281.0
+scale = Vector2(5.70208, 5.83775)
+texture_normal = ExtResource("1_k5l00")
+texture_pressed = ExtResource("2_4g8yn")
+texture_hover = ExtResource("3_nximl")
+
+[node name="Label" type="Label" parent="ui/quit"]
+layout_mode = 0
+offset_left = 12.627
+offset_top = 2.56947
+offset_right = 74.627
+offset_bottom = 25.5695
+scale = Vector2(0.312169, 0.280678)
+theme_override_colors/font_color = Color(0.188235, 0.172549, 0.12549, 1)
+theme_override_fonts/font = ExtResource("4_6ohk8")
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1

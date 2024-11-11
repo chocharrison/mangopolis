@@ -1,0 +1,247 @@
+[gd_scene load_steps=34 format=3 uid="uid://b6k24a7tsyakp"]
+
+[ext_resource type="Script" path="res://explore/enemies/scripts/enemy_base.gd" id="1_r7am3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ys604"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q6v32"]
+radius = 1.07871
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2v21"]
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur51y"]
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m7l8"]
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8taxc"]
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmuc0"]
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei2ly"]
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygm35"]
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2rxh"]
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xekpk"]
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8lqe"]
+region = Rect2(320, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne38v"]
+region = Rect2(0, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnnsy"]
+region = Rect2(64, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_753ck"]
+region = Rect2(128, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bawah"]
+region = Rect2(192, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plycd"]
+region = Rect2(256, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug3ps"]
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u55vr"]
+region = Rect2(0, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ff2q"]
+region = Rect2(64, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpcgu"]
+region = Rect2(128, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsu6k"]
+region = Rect2(192, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xegkw"]
+region = Rect2(256, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8na"]
+region = Rect2(320, 384, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s345"]
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h73ll"]
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o75tn"]
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqrqw"]
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ncae"]
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehpj0"]
+region = Rect2(320, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gffoo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2v21")
+}],
+"loop": false,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur51y")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m7l8")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8taxc")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmuc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei2ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygm35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2rxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xekpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8lqe")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne38v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnnsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_753ck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bawah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ug3ps")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u55vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ff2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpcgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsu6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xegkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl8na")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s345")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h73ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o75tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqrqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ncae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehpj0")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ltwsj"]
+radius = 8.47598
+
+[node name="Enemy1" type="CharacterBody3D"]
+script = ExtResource("1_r7am3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ys604")
+
+[node name="collide" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_q6v32")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="collide"]
+transform = Transform3D(4.88612, 0, 0, 0, 4.23976, 0, 0, 0, 1, 0, -0.481845, 0)
+billboard = 2
+alpha_cut = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_gffoo")
+animation = &"walk_down"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
+
+[node name="detect" type="Area3D" parent="."]
+
+[node name="detect" type="CollisionShape3D" parent="detect"]
+shape = SubResource("CylinderShape3D_ltwsj")

@@ -1,0 +1,122 @@
+[gd_scene load_steps=14 format=3 uid="uid://drhokc7i58eqa"]
+
+[ext_resource type="Script" path="res://main_scenes/hub.gd" id="1_luoly"]
+[ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://explore/players/scenes/fsm_players.tscn" id="2_j0of5"]
+[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://explore/collectibles/notebooks.tscn" id="3_7ti6y"]
+[ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://explore/collectibles/health_potions.tscn" id="4_1i37l"]
+[ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://explore/collectibles/dig.tscn" id="5_c3w28"]
+[ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://explore/ui/menu_ui/pause_ui.tscn" id="6_mlnw6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y15db"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_8p428"]
+sky_material = SubResource("ProceduralSkyMaterial_y15db")
+
+[sub_resource type="Environment" id="Environment_hroyq"]
+background_mode = 2
+sky = SubResource("Sky_8p428")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cxilj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t6kdy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_60jc8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yk1vx"]
+
+[node name="Hub" type="Node3D"]
+script = ExtResource("1_luoly")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hroyq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="FSM_Players" parent="." instance=ExtResource("2_j0of5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0351598, 1.39734, 0.00186372)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(27.5346, 0, 0, 0, 0.0823554, 0, 0, 0, 24.7579, 0, 0, 0)
+mesh = SubResource("BoxMesh_cxilj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_t6kdy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(27.5346, 0, 0, 0, 0.0823554, 0, 0, 0, 24.7579, 0, -0.56379, 24.7316)
+mesh = SubResource("BoxMesh_cxilj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_t6kdy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(27.5346, 0, 0, 0, 0.0823554, 0, 0, 0, 24.7579, 0, -9.85714, 24.7216)
+mesh = SubResource("BoxMesh_cxilj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_t6kdy")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.29831, 0, 16.3986)
+mesh = SubResource("BoxMesh_60jc8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D"]
+shape = SubResource("BoxShape3D_yk1vx")
+
+[node name="notebooks" type="Node3D" parent="."]
+
+[node name="notebook" parent="notebooks" instance=ExtResource("3_7ti6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1716, 1.57938, 0)
+
+[node name="health_potions" type="Node3D" parent="."]
+
+[node name="health_potion" parent="health_potions" instance=ExtResource("4_1i37l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21601, 1.34092, 5.00097)
+quantity = 3
+
+[node name="health_potion2" parent="health_potions" instance=ExtResource("4_1i37l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50637, 1.34092, 5.00097)
+quantity = 2
+
+[node name="health_potion3" parent="health_potions" instance=ExtResource("4_1i37l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255708, 1.34092, 8.46803)
+
+[node name="pits_notebooks" type="Node3D" parent="."]
+
+[node name="dig" parent="pits_notebooks" instance=ExtResource("5_c3w28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37316, -0.0180383, 5.32613)
+is_notebook = true
+
+[node name="pits_health_potions" type="Node3D" parent="."]
+
+[node name="dig2" parent="pits_health_potions" instance=ExtResource("5_c3w28")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37316, -0.686187, 18.0661)
+
+[node name="PauseUi" parent="." instance=ExtResource("6_mlnw6")]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 988.0
+offset_top = 157.0
+offset_right = 996.0
+offset_bottom = 165.0
+scale = Vector2(15.5646, 10.3329)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

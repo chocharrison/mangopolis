@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bnsnfl6d56wj"]
 
 [ext_resource type="Script" path="res://explore/collectibles/notebooks.gd" id="1_6uc0y"]
-[ext_resource type="Texture2D" uid="uid://davrrt6vm4w7h" path="res://explore/fsm_players/ui/sprites/notebook-collect.png" id="1_iml7w"]
+[ext_resource type="Texture2D" uid="uid://davrrt6vm4w7h" path="res://explore/ui/player_ui/sprites/notebook-collect.png" id="1_iml7w"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5nfil"]
 radius = 0.359029
