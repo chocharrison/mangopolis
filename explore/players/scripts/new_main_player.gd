@@ -22,6 +22,7 @@ const MAX_SPRINT = 100
 @onready var anime: AnimationTree = get_node_or_null("AnimationTree")
 @onready var UI: Control = get_parent().get_node_or_null("UI")
 @onready var Sprint_timer: Timer = get_node("sprint_cooldown")
+@onready var collision = get_node("CollisionShape3D")
 
 ##################################### flags
 @onready var is_cooldown = false
@@ -48,11 +49,8 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += get_gravity().y * delta
 
-	handle_state_transitions()
+	handle_state_transitions(delta)
 	perform_state_actions(delta)
 	move_and_slide()
 
@@ -90,13 +88,18 @@ func perform_state_actions(_delta):
 		SignalManager.petting_signal.emit(false)
 
 
-func handle_state_transitions():
+func handle_state_transitions(delta):
+	if state == STATE.DISABLED or state == STATE.DED:
+		return
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if not is_on_floor():
+		velocity.y += get_gravity().y * delta
+	
 	bread_crumbing()
-	if state == STATE.DISABLED or state == STATE.DED or state == STATE.TIRED or state == STATE.JUMP:
+	if state == STATE.TIRED or state == STATE.JUMP:
 		return
-
+	
 	if Input.is_action_just_pressed("jump_1") and is_on_floor():
 		print("here")
 		velocity.y = JUMP_VELOCITY
@@ -110,14 +113,16 @@ func handle_state_transitions():
 		is_petting = true
 		return
 		
-	if Input.is_action_pressed("sprint") and is_on_floor() and !is_sprinted and sprint_meter > 0:
-		set_sprite_direction()
-		state = STATE.SPRINT
-		return
-	elif direction != Vector3.ZERO:
-		set_sprite_direction()
-		state = STATE.WALK
-		return
+
+	if direction != Vector3.ZERO:
+		if Input.is_action_pressed("sprint") and is_on_floor() and !is_sprinted and sprint_meter > 0:
+			set_sprite_direction()
+			state = STATE.SPRINT
+			return
+		else:
+			set_sprite_direction()
+			state = STATE.WALK
+			return
 	else:
 		if !is_petting:
 			state = STATE.IDLE
@@ -202,9 +207,13 @@ func bread_crumbing():
 # Disable player controls and pause timers when needed.
 func disable_controls():
 	state = STATE.DISABLED
+	collision.disabled = true
 	velocity = Vector3(0,0,0)
+	
 func enable_controls():
+	collision.disabled = false
 	state = STATE.ENABLED
+	
 	
 func pause_controls():
 	save_state = state
@@ -219,6 +228,7 @@ func unpause_controls():
 # Set the player to dead and stop all timers.
 func kill_player():
 	state = STATE.DED
+	collision.disabled = true
 	anime.get("parameters/playback").travel("ded")
 
 # Set the player petting.

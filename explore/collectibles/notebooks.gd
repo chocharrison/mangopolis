@@ -15,4 +15,5 @@ func _on_collect_body_entered(body: Node) -> void:
 	if(body.name=="main_player"):
 		print(message_id)
 		SignalManager.collected_notebooks_signal.emit(message_id)
+		
 		queue_free()

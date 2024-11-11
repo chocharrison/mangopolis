@@ -26,11 +26,11 @@ func set_coco(coco: String):
 	
 func health_lost():
 	var rand = randi_range(1,4)
-	soundeffects.stream = load("res://explore/fsm_players/sound effects/mango_hurt_"+str(rand)+".mp3")
+	soundeffects.stream = load("res://explore/players/sound effects/mango_hurt_"+str(rand)+".mp3")
 	soundeffects.play()
 
 func play_ded():
-	soundeffects.stream = load("res://explore/fsm_players/sound effects/mango_ded.mp3")
+	soundeffects.stream = load("res://explore/players/sound effects/mango_ded.mp3")
 	soundeffects.play()
 	
 	

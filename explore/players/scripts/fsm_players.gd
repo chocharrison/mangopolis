@@ -237,6 +237,7 @@ func paused():
 
 func unpaused():
 	print("unpasued")
+	state = STATE.ENABLE
 	main_player.unpause_controls()
 	sub_player.unpause_controls()
 	camera.set_state_unpaused()
@@ -247,6 +248,7 @@ func unlock():
 	state = STATE.ENABLE
 	main_player.enable_controls()
 	sub_player.enable_controls()
+	camera.set_state_unpaused()
 	state_health_timer_unpaused()
 	state_panic_timer_unpaused()
 
