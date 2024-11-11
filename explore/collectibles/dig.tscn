@@ -13,11 +13,11 @@ radius = 1.95772
 [node name="dig" type="Node3D"]
 script = ExtResource("1_sooej")
 
-[node name="collect" type="Area3D" parent="."]
+[node name="dug" type="Area3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00514279, 0)
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="collect"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dug"]
 shape = SubResource("SphereShape3D_gjsxy")
 
 [node name="detect" type="Area3D" parent="."]
@@ -31,7 +31,7 @@ shape = SubResource("SphereShape3D_5nfil")
 visible = false
 mesh = SubResource("CapsuleMesh_pvjif")
 
-[connection signal="body_entered" from="collect" to="." method="_on_collect_body_entered"]
-[connection signal="body_exited" from="collect" to="." method="_on_collect_body_exited"]
+[connection signal="body_entered" from="dug" to="." method="_on_collect_body_entered"]
+[connection signal="body_exited" from="dug" to="." method="_on_collect_body_exited"]
 [connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]
 [connection signal="body_exited" from="detect" to="." method="_on_detect_body_exited"]

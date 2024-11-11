@@ -18,6 +18,7 @@ const PANIC_TIME = 20# 20
 @onready var sub_player = $sub_player
 
 @onready var ui = $Ui
+@onready var camera = $camera_controller
 
 @onready var health_timer = $health
 @onready var math_timer = $math
@@ -191,6 +192,7 @@ func state_inputs():
 	if Input.is_action_just_pressed("interact"):
 		var panicked = panic_timer_state == TIMER_STATE.PANIC
 		SignalManager.interracted.emit(panicked)
+		
 	if Input.is_action_just_pressed("health") and health_potion > 0:
 		health = min(health + 20,MAX_HEALTH)
 		health_potion -= 1
@@ -202,8 +204,8 @@ func state_inputs():
 			ui.health_exhaust(health_potion)
 
 	if Input.is_action_just_pressed("notebook"):
-		ui.notebook_ui_open_book(page_array)
 		paused()
+		ui.notebook_ui_open_book(page_array)
 		state = STATE.NOTE
 
 func state_note():
@@ -228,12 +230,16 @@ func disable():
 func paused():
 	main_player.pause_controls()
 	sub_player.pause_controls()
+	camera.set_state_paused()
 	state_health_timer_paused()
 	state_panic_timer_paused()
+	ui.interrupted()
 
 func unpaused():
+	print("unpasued")
 	main_player.unpause_controls()
 	sub_player.unpause_controls()
+	camera.set_state_unpaused()
 	state_health_timer_unpaused()
 	state_panic_timer_unpaused()
 
@@ -335,6 +341,7 @@ func math_operations(first: int, second: int,equation: int) -> int:
 			answer = first * second
 			operand = "x"
 	ui.math_ui_set(first, second, operand)
+	camera.set_state_math()
 	return answer
 
 func _on_math_ui_submitted_math_answer(text: String) -> void:
@@ -345,7 +352,7 @@ func _on_math_ui_submitted_math_answer(text: String) -> void:
 	else:
 		failed()
 	math_timer.stop()
-	
+	camera.set_state_player()
 	
 func _on_math_timeout() -> void:
 	math_timer.stop()
@@ -355,6 +362,8 @@ func _on_math_timeout() -> void:
 ##################################### get functions
 func give_main_player_position():
 	return main_player.position
+
+
 
 ##################################### signals functions
 func _on_collected_notebooks_signal(val:int) -> void:

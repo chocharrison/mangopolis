@@ -1,22 +1,10 @@
-[gd_scene load_steps=50 format=3 uid="uid://b6k24a7tsyakp"]
+[gd_scene load_steps=34 format=3 uid="uid://b6k24a7tsyakp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ys604"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5v534"]
 radius = 1.23716
 height = 2.47433
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_148ay"]
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1mvm"]
-region = Rect2(448, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r1cct"]
-region = Rect2(448, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0jo1r"]
-region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2v21"]
 region = Rect2(0, 0, 64, 64)
@@ -29,42 +17,6 @@ region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8taxc"]
 region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cnoyn"]
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fwkph"]
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ymvoi"]
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4j3o8"]
-region = Rect2(320, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mm8yy"]
-region = Rect2(384, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cshqr"]
-region = Rect2(448, 192, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5t3l"]
-region = Rect2(320, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bysau"]
-region = Rect2(384, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yax3r"]
-region = Rect2(448, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwbds"]
-region = Rect2(320, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgsoh"]
-region = Rect2(384, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gv8vo"]
-region = Rect2(448, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmuc0"]
 region = Rect2(0, 256, 64, 64)
@@ -142,38 +94,6 @@ region = Rect2(320, 320, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_148ay")
-}],
-"loop": true,
-"name": &"fall_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m1mvm")
-}],
-"loop": true,
-"name": &"fall_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r1cct")
-}],
-"loop": true,
-"name": &"fall_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0jo1r")
-}],
-"loop": true,
-"name": &"fall_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_t2v21")
 }],
 "loop": false,
@@ -202,67 +122,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cnoyn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fwkph")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ymvoi")
-}],
-"loop": true,
-"name": &"jump_down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4j3o8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mm8yy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cshqr")
-}],
-"loop": true,
-"name": &"jump_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n5t3l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bysau")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yax3r")
-}],
-"loop": true,
-"name": &"jump_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uwbds")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xgsoh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gv8vo")
-}],
-"loop": true,
-"name": &"jump_up",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
 "speed": 5.0
 }, {
 "frames": [{
@@ -374,13 +233,13 @@ shape = SubResource("CapsuleShape3D_5v534")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(4.88612, 0, 0, 0, 4.23976, 0, 0, 0, 1, 0, -0.481845, 0)
 billboard = 2
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gffoo")
-animation = &"fall_down"
+animation = &"idle_down"
 
 [node name="close" type="Area3D" parent="."]
 

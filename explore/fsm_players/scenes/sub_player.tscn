@@ -1573,8 +1573,8 @@ parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(2.66588, 0, 0, 0, 2.9925, 0, 0, 0, 1, 0, -0.479891, 0)
+alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_rc2wx")
 animation = &"idle_down"
-frame = 1
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]

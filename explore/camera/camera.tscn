@@ -1,8 +1,27 @@
-[gd_scene format=3 uid="uid://dl0757nohnrx0"]
+[gd_scene load_steps=3 format=3 uid="uid://dl0757nohnrx0"]
+
+[ext_resource type="Script" path="res://explore/camera/camera.gd" id="1_3l68r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gctrk"]
+size = Vector3(4.72009, 3.19775, 5.2168)
 
 [node name="camera_controller" type="Node3D"]
+script = ExtResource("1_3l68r")
 
 [node name="camera_target" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.967999, 0.250954, 0, -0.250954, 0.967999, 0, 2.10661, 3.82248)
+transform = Transform3D(1, 0, 0, 0, 0.967999, 0.250954, 0, -0.250954, 0.967999, 0, 2.10661, 7.10225)
 
 [node name="Camera3D" type="Camera3D" parent="camera_target"]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.107, 7.102)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.429993, -1.09888, -2.1084)
+shape = SubResource("BoxShape3D_gctrk")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -44,6 +44,7 @@ func close_book():
 	page = 0
 
 func interrupted():
+	print("interrupted")
 	if state == STATE.OPEN:
 		notebook_anime_play.play("send_note")
 		page = 0

@@ -153,15 +153,19 @@ func set_sprite_direction(target_position: Vector3):
 # Disable player controls and pause timers when needed.
 func disable_controls():
 	state = STATE.DISABLED
-
+	velocity = Vector3(0,0,0)
+	
 func enable_controls():
 	state = STATE.ENABLED
 
 func pause_controls():
 	save_state = state
 	state = STATE.DISABLED
+	velocity = Vector3(0,0,0)
 	
 func unpause_controls():
+	if save_state == STATE.DISABLED:
+		save_state = STATE.ENABLED
 	state = save_state
 	
 func set_dig_position(val: Vector3):

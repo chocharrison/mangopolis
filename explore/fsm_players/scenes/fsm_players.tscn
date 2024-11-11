@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdghitkvcdl88"]
+[gd_scene load_steps=6 format=3 uid="uid://bdghitkvcdl88"]
 
 [ext_resource type="Script" path="res://explore/fsm_players/scripts/fsm_players.gd" id="1_w5l0r"]
 [ext_resource type="PackedScene" uid="uid://djpyj0boiv5rr" path="res://explore/fsm_players/scenes/main_player.tscn" id="2_i30p1"]
 [ext_resource type="PackedScene" uid="uid://3ouucm7x5oan" path="res://explore/fsm_players/scenes/sub_player.tscn" id="3_edamp"]
 [ext_resource type="PackedScene" uid="uid://8bt8axo5kfv1" path="res://explore/fsm_players/ui/UI.tscn" id="4_4v27d"]
+[ext_resource type="PackedScene" uid="uid://dl0757nohnrx0" path="res://explore/camera/camera.tscn" id="5_vogdt"]
 
 [node name="FSM_Players" type="Node3D"]
 script = ExtResource("1_w5l0r")
@@ -21,6 +22,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.37963)
 
 [node name="panic" type="Timer" parent="."]
 
+[node name="camera_controller" parent="." instance=ExtResource("5_vogdt")]
+
 [connection signal="timeout" from="health" to="." method="_on_health_timeout"]
 [connection signal="timeout" from="math" to="." method="_on_math_timeout"]
 [connection signal="timeout" from="panic" to="." method="_on_panic_timeout"]
+
+[editable path="camera_controller"]

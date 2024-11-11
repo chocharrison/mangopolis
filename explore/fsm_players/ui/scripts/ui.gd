@@ -74,4 +74,5 @@ func notebook_ui_close_book():
 	notebook_ui.close_book()
 
 func interrupted():
+	print("inteerupted ui")
 	notebook_ui.interrupted()

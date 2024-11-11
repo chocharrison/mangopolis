@@ -1,8 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://drhokc7i58eqa"]
+[gd_scene load_steps=13 format=3 uid="uid://drhokc7i58eqa"]
 
 [ext_resource type="Script" path="res://explore/hub.gd" id="1_op7ef"]
-[ext_resource type="PackedScene" uid="uid://dl0757nohnrx0" path="res://explore/camera/camera.tscn" id="2_uybsr"]
-[ext_resource type="Script" path="res://explore/camera/camera.gd" id="3_aloaj"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://explore/collectibles/notebooks.tscn" id="5_dt7mg"]
 [ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://explore/collectibles/health_potions.tscn" id="5_yo538"]
 [ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://explore/collectibles/dig.tscn" id="7_1bo0x"]
@@ -81,9 +79,6 @@ collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D"]
 shape = SubResource("BoxShape3D_yk1vx")
-
-[node name="camera_controller" parent="." instance=ExtResource("2_uybsr")]
-script = ExtResource("3_aloaj")
 
 [node name="notebooks" type="Node3D" parent="."]
 

@@ -342,6 +342,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i4uhj")
 
+[node name="screen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 646.0
+
 [node name="health_potion" parent="." instance=ExtResource("2_t6bca")]
 layout_mode = 0
 offset_left = 0.0
@@ -404,3 +410,5 @@ vertical_alignment = 1
 layout_mode = 1
 
 [node name="math_ui" parent="." instance=ExtResource("3_wsxkh")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

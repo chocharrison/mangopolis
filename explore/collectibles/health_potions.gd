@@ -3,10 +3,9 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 @export var quantity = 1
 
-var health: AnimatedSprite3D
+@onready var health = get_node("collect/AnimatedSprite3D")
 
 func _ready() -> void:
-	health = get_node("collect/health")
 	if(quantity == 2):
 		var health2 = health.duplicate()
 		health.position = Vector3(health.position.x + 0.07,health.position.y,health.position.z)
@@ -26,6 +25,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_collect_body_entered(body: Node) -> void:
+	print(body.name)
 	if(body.name=="main_player"):
 		SignalManager.collected_healthpotions_signal.emit(quantity)
 		queue_free()
