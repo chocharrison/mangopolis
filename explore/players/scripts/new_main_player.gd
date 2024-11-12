@@ -216,7 +216,8 @@ func enable_controls():
 	
 	
 func pause_controls():
-	save_state = state
+	if save_state != STATE.DISABLED:
+		save_state = state
 	state = STATE.DISABLED
 	velocity = Vector3(0,0,0)
 	

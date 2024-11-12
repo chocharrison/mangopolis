@@ -9,7 +9,8 @@ extends Control
 @onready var health_ui = $health
 @onready var health_text_ui = $health/Label
 @onready var soundeffects = $AudioStreamPlayer
-
+@onready var anime = $ui
+@onready var hurt = $hurt
 #misc ui
 func set_health(val: int):
 	health_ui.value = val
@@ -28,10 +29,11 @@ func health_lost():
 	var rand = randi_range(1,4)
 	soundeffects.stream = load("res://explore/players/sound effects/mango_hurt_"+str(rand)+".mp3")
 	soundeffects.play()
+	hurt.play("hurt")
 
 func play_ded():
-	soundeffects.stream = load("res://explore/players/sound effects/mango_ded.mp3")
-	soundeffects.play()
+	anime.play("interrupted")
+	hurt.play("death")
 	
 	
 #health potions ui
@@ -56,10 +58,12 @@ func math_ui_set_timer(val: int):
 
 func math_ui_success():
 	math_ui.math_success()
-
+	anime.play("back")
+	
 func math_ui_failure():
 	math_ui.math_failure()
-
+	anime.play("back")
+	
 func math_ui_enter():
 	math_ui.math_enter()
 	
@@ -68,11 +72,19 @@ func notebook_ui_set_array(val:int,maxim:int):
 	notebook_ui.set_notebook_array(val,maxim)
 
 func notebook_ui_open_book(array: Array):
+	anime.play("interrupted_notebook")
 	notebook_ui.open_book(array)
 
 func notebook_ui_close_book():
+	anime.play("back_notebook")
 	notebook_ui.close_book()
 
 func interrupted():
 	print("inteerupted ui")
+	anime.play("interrupted")
 	notebook_ui.interrupted()
+
+func _on_hurt_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		"death":
+			get_tree().change_scene_to_file("res://main_scenes/hub.tscn")

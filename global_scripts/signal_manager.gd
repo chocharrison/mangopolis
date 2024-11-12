@@ -24,3 +24,5 @@ signal signal_math(val: int, val2: int, val3: int)
 signal trigger_panic()
 
 signal math_in_session(val: bool)
+
+signal hurt_signal(val: int)

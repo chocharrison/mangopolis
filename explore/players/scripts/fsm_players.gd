@@ -54,6 +54,7 @@ func _ready() -> void:
 	
 	SignalManager.submitted_math_answer.connect(_on_math_ui_submitted_math_answer)	
 	SignalManager.signal_math.connect(_on_signal_math)
+	SignalManager.hurt_signal.connect(_on_health_lost_signal)
 	
 	SignalManager.coco_in_dig_range_signal.connect(_on_coco_in_dig_range_signal)
 	SignalManager.dig_result_signal.connect(_on_digresult_signal)
@@ -138,12 +139,15 @@ func state_panic_timer_active():
 		panic_timer_state = TIMER_STATE.INACTIVE
 		
 func state_panic_timer_paused():
-	save_timer_state = panic_timer_state
+	if panic_timer_state != TIMER_STATE.PAUSED and panic_timer_state != TIMER_STATE.DISABLED: 
+		save_timer_state = panic_timer_state
 	panic_timer_state = TIMER_STATE.PAUSED
 	panic_timer.paused = true
 	print("panic_timer paused")
 
 func state_panic_timer_unpaused():
+	if save_timer_state == TIMER_STATE.PAUSED or save_timer_state == TIMER_STATE.DISABLED: 
+		save_timer_state = TIMER_STATE.INACTIVE
 	panic_timer_state = save_timer_state
 	panic_timer.paused = false
 	print("panic_timer unpaused")
@@ -257,14 +261,20 @@ func update_array(val: int):
 	ui.notebook_ui_set_array(page_array.size()-1,MAX_PAGE)
 	
 func health_lost(is_not_timer: bool,damage: int):
-	health= max(0,health - damage)
+	health = max(0,health - damage)
+	if state == STATE.NOTE:
+		ui.notebook_ui_close_book()
+		unpaused()
+		
 	ui.set_health(health)
-	if(is_not_timer):
-		ui.health_lost()
 
 	if(health <= 0):
 		ui.play_ded()
 		main_player.kill_player()
+	
+	else:
+		if(is_not_timer):
+			ui.health_lost()
 
 func add_health_potion(val:int):
 	health_potion+=val

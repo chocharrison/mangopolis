@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SignalManager="*res://explore/signal_manager.gd"
+SignalManager="*res://global_scripts/signal_manager.gd"
+SaveStates="*res://global_scripts/save_states.gd"
 
 [display]
 
