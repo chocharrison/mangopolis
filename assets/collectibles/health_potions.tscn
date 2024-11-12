@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://ddhg1b3xoppy5"]
+
+[ext_resource type="Script" path="res://assets/collectibles/health_potions.gd" id="1_mxq5a"]
+[ext_resource type="Texture2D" uid="uid://c0d1fik26lrxm" path="res://assets/ui/player_ui/sprites/health_potion-collect.png" id="2_qvuom"]
+
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5nfil"]
+radius = 0.359029
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob4c0"]
+atlas = ExtResource("2_qvuom")
+region = Rect2(0, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duke2"]
+atlas = ExtResource("2_qvuom")
+region = Rect2(30, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2plpj"]
+atlas = ExtResource("2_qvuom")
+region = Rect2(60, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kf8m"]
+atlas = ExtResource("2_qvuom")
+region = Rect2(90, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04xe6"]
+atlas = ExtResource("2_qvuom")
+region = Rect2(120, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umwln"]
+atlas = ExtResource("2_qvuom")
+region = Rect2(150, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0b56g"]
+atlas = ExtResource("2_qvuom")
+region = Rect2(180, 0, 30, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syx5s"]
+atlas = ExtResource("2_qvuom")
+region = Rect2(210, 0, 30, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hhcyj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob4c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duke2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2plpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kf8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04xe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umwln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0b56g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syx5s")
+}],
+"loop": true,
+"name": &"collect",
+"speed": 5.0
+}]
+
+[node name="health_potion" type="Node3D"]
+script = ExtResource("1_mxq5a")
+
+[node name="collect" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.228186, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="collect"]
+shape = SubResource("SphereShape3D_5nfil")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="collect"]
+transform = Transform3D(1.53964, 0, 0, 0, 1.22237, 0, 0, 0, 1, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_hhcyj")
+animation = &"collect"
+autoplay = "collect"
+frame_progress = 0.588614
+
+[connection signal="body_entered" from="collect" to="." method="_on_collect_body_entered"]

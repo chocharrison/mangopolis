@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://drhokc7i58eqa"]
+[gd_scene load_steps=16 format=3 uid="uid://drhokc7i58eqa"]
 
 [ext_resource type="Script" path="res://main_scenes/hub.gd" id="1_luoly"]
-[ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://explore/players/scenes/fsm_players.tscn" id="2_j0of5"]
-[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://explore/collectibles/notebooks.tscn" id="3_7ti6y"]
-[ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://explore/collectibles/health_potions.tscn" id="4_1i37l"]
-[ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://explore/collectibles/dig.tscn" id="5_c3w28"]
-[ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://explore/ui/menu_ui/pause_ui.tscn" id="6_mlnw6"]
+[ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="2_j0of5"]
+[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="3_7ti6y"]
+[ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://assets/collectibles/health_potions.tscn" id="4_1i37l"]
+[ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://assets/interactives/dig.tscn" id="5_c3w28"]
+[ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="6_mlnw6"]
+[ext_resource type="PackedScene" uid="uid://cu7oyvmamh43i" path="res://assets/interactives/checkpoint.tscn" id="7_te1oj"]
+[ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="8_pu8t7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y15db"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -86,6 +88,10 @@ shape = SubResource("BoxShape3D_yk1vx")
 [node name="notebook" parent="notebooks" instance=ExtResource("3_7ti6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1716, 1.57938, 0)
 
+[node name="notebook2" parent="notebooks" instance=ExtResource("3_7ti6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.58265, 0.676773, 19.2672)
+message_id = 4
+
 [node name="health_potions" type="Node3D" parent="."]
 
 [node name="health_potion" parent="health_potions" instance=ExtResource("4_1i37l")]
@@ -104,6 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.255708, 1.34092, 8.46803)
 [node name="dig" parent="pits_notebooks" instance=ExtResource("5_c3w28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37316, -0.0180383, 5.32613)
 is_notebook = true
+id_or_quantity = 2
 
 [node name="pits_health_potions" type="Node3D" parent="."]
 
@@ -118,5 +125,15 @@ offset_top = 157.0
 offset_right = 996.0
 offset_bottom = 165.0
 scale = Vector2(15.5646, 10.3329)
+
+[node name="checkpoint" parent="." instance=ExtResource("7_te1oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.68185, 0.0411777, 9.24469)
+
+[node name="checkpoint2" parent="." instance=ExtResource("7_te1oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.07708, -0.515924, 27.12)
+
+[node name="door" parent="." instance=ExtResource("8_pu8t7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.074, 0, 26.3646)
+scene = "res://main_scenes/hub2.tscn"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

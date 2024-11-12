@@ -1,0 +1,19 @@
+
+{
+	"1":
+		{
+		"name":"8BITNUGGETZ",
+		"message":"res://notebooks/nuggets.txt",
+		"image":"res://notebooks/nuggets.png",
+		},
+	"2":
+		{
+		"name":"yes",
+		"message":"res://notebooks/despacito.txt",
+		},
+	"3":
+		{
+		"name":"no",
+		"message":"res://notebooks/test.txt",
+		}
+}

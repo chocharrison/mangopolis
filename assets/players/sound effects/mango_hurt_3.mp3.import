@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://rupef2rwdao"
+path="res://.godot/imported/mango_hurt_3.mp3-15646b35697779a6715d5c06f8128a59.mp3str"
+
+[deps]
+
+source_file="res://assets/players/sound effects/mango_hurt_3.mp3"
+dest_files=["res://.godot/imported/mango_hurt_3.mp3-15646b35697779a6715d5c06f8128a59.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

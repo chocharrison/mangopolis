@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0xuh8dw81cb4"]
+
+[ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_ue8tm"]
+[ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="2_82wqn"]
+[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="3_6v0qp"]
+[ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="4_vl1v3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_se3cs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_522k5"]
+
+[node name="Hub2" type="Node3D"]
+
+[node name="FSM_Players" parent="." instance=ExtResource("1_ue8tm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08068, 0, 1.4001)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(27.5346, 0, 0, 0, 0.0823554, 0, 0, 0, 24.7579, 0, -1.75915, 0)
+mesh = SubResource("BoxMesh_se3cs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_522k5")
+
+[node name="door" parent="." instance=ExtResource("2_82wqn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.46198, -1.16769, 3.27475)
+scene = "res://main_scenes/hub.tscn"
+
+[node name="notebooks" parent="." instance=ExtResource("3_6v0qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82726, -0.152995, 1.00805)
+message_id = 3
+
+[node name="PauseUi" parent="." instance=ExtResource("4_vl1v3")]

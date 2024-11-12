@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://beigr16w85pqw" path="res://main_scenes/Sprites/highlight.png" id="3_y6ntl"]
 [ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="4_6ohk8"]
 [ext_resource type="Texture2D" uid="uid://dcc6jwdv62qjn" path="res://main_scenes/Sprites/title.png" id="5_6ue78"]
-[ext_resource type="Texture2D" uid="uid://dnqgvl4jjlhon" path="res://explore/ui/menu_ui/Sprites/pause.png" id="6_m8ag0"]
+[ext_resource type="Texture2D" uid="uid://dnqgvl4jjlhon" path="res://assets/ui/menu_ui/Sprites/pause.png" id="6_m8ag0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyh5c"]
 atlas = ExtResource("5_6ue78")
@@ -325,8 +325,9 @@ sprite_frames = SubResource("SpriteFrames_f0nur")
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
+offset_top = -678.0
 offset_right = 1154.0
-offset_bottom = 647.0
+offset_bottom = -31.0
 
 [node name="TextureRect" type="TextureRect" parent="settings"]
 layout_mode = 0

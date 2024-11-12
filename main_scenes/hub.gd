@@ -1,6 +1,7 @@
 extends Node3D
 
 signal math_signal(level: int,damage: int,iteration: int)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -10,5 +11,5 @@ func _physics_process(_delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	print("no")
-	#SignalManager.hurt_signal.emit(20)
-	SignalManager.signal_math.emit(5,30,0)
+	SignalManager.hurt_signal.emit(20)
+	#SignalManager.signal_math.emit(5,30,0)
