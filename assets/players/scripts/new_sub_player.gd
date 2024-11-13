@@ -122,7 +122,7 @@ func state_petted():
 	direction = (Vector3(master.position.x,0,master.position.z) - Vector3(position.x,0,position.z)).normalized()
 	var target = master.position - direction * PET_DISTANCE
 	position = position.lerp(target, 0.1)
-	if position.distance_to(target) >= PET_DISTANCE:
+	if position.distance_to(target) < PET_DISTANCE:
 		anime.get("parameters/playback").travel("pet")
 	else:
 		anime.get("parameters/playback").travel("walk")
