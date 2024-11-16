@@ -128,7 +128,8 @@ func _on_health_timeout() -> void:
 	
 	
 func state_panic_timer_inactive():
-	var distance_to_sub = Vector3(main_player.position.x, 0, main_player.position.z).distance_to(Vector3(sub_player.position.x, 0, sub_player.position.z))
+	var distance_to_sub = main_player.global_position.distance_to(sub_player.global_position)
+		#Vector3(main_player.position.x, 0, main_player.position.z).distance_to(Vector3(sub_player.position.x, 0, sub_player.position.z))
 	if(distance_to_sub > PANIC_DISTANCE):
 		panic_timer.wait_time = FAR_TIME
 		panic_timer.start()
@@ -136,7 +137,8 @@ func state_panic_timer_inactive():
 		panic_timer_state = TIMER_STATE.ACTIVE
 
 func state_panic_timer_active():
-	var distance_to_sub = Vector3(main_player.position.x, 0, main_player.position.z).distance_to(Vector3(sub_player.position.x, 0, sub_player.position.z))
+	var distance_to_sub = main_player.global_position.distance_to(sub_player.global_position)
+	#Vector3(main_player.position.x, 0, main_player.position.z).distance_to(Vector3(sub_player.position.x, 0, sub_player.position.z))
 	if(distance_to_sub <= PANIC_DISTANCE):
 		panic_timer.stop()
 		panic_timer_state = TIMER_STATE.INACTIVE

@@ -6,7 +6,7 @@ const JUMP_VELOCITY = 4.5
 const DISTANCE = 1.5
 const VERTICAL_DISTANCE = 2
 const DIG_DISTANCE = 1
-const PET_DISTANCE = 0.5
+const PET_DISTANCE = 1
 
 ##################################### node assignments
 @onready var master: CharacterBody3D = get_parent().get_node("main_player")
@@ -74,7 +74,7 @@ func handle_state_transitions():
 
 ##################################### state functions
 func state_idle():
-	set_sprite_direction(master.position)
+	set_sprite_direction(master.global_position)
 	anime.get("parameters/playback").travel("idle")
 	
 
@@ -82,15 +82,15 @@ func state_follow(_delta):
 	var speed = max(SPEED,master.get_sprint())
 	var bread_crumbs_array = master.get_bread_crumbs()
 	
-	var vertical_distance = position.y - master.position.y
+	var vertical_distance = global_position.y - master.global_position.y
 	#print(velocity)
 	if vertical_distance < VERTICAL_DISTANCE:
 		if bread_crumbs_index < bread_crumbs_array.size():
 			var target_position = bread_crumbs_array[bread_crumbs_index]
-			var distance_to_target = Vector3(position.x,0,position.z).distance_to(Vector3(target_position.x,0,target_position.z))
+			var distance_to_target = Vector3(global_position.x,0,global_position.z).distance_to(Vector3(target_position.x,0,target_position.z))
 		
 			if distance_to_target > DISTANCE:
-				var bread_direction = (Vector3(target_position.x,0,target_position.z) - Vector3(position.x,0,position.z)).normalized()
+				var bread_direction = (Vector3(target_position.x,0,target_position.z) - Vector3(global_position.x,0,global_position.z)).normalized()
 				velocity.x = bread_direction.x * speed
 				velocity.z = bread_direction.z * speed
 
@@ -102,11 +102,11 @@ func state_follow(_delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 	else:
-		position.x = master.position.x
-		position.y = master.position.y+2
-		position.z = master.position.z
+		global_position.x = master.global_position.x
+		global_position.y = master.global_position.y+2
+		global_position.z = master.global_position.z
 	
-	set_sprite_direction(master.position)
+	set_sprite_direction(master.global_position)
 	if(velocity == Vector3(0,0,0)):
 		anime.get("parameters/playback").travel("idle")
 	else:
@@ -115,24 +115,27 @@ func state_follow(_delta):
 func state_panic(_delta):
 	anime.get("parameters/playback").travel("panic")
 	velocity = Vector3(0,0,0)
-	position = position
+	global_position = global_position
 	
 func state_petted():
-	set_sprite_direction(master.position)
-	direction = (Vector3(master.position.x,0,master.position.z) - Vector3(position.x,0,position.z)).normalized()
-	var target = master.position - direction * PET_DISTANCE
-	position = position.lerp(target, 0.1)
-	if position.distance_to(target) < PET_DISTANCE:
+	set_sprite_direction(master.global_position)
+	direction = (Vector3(master.global_position.x,0,master.global_position.z) - Vector3(global_position.x,0,global_position.z)).normalized()
+	var target = master.global_position - direction * PET_DISTANCE
+	print( position.distance_to(target))
+	global_position = global_position.lerp(target, 0.1)
+	if global_position.distance_to(target) <= PET_DISTANCE:
 		anime.get("parameters/playback").travel("pet")
 	else:
 		anime.get("parameters/playback").travel("walk")
 	
 func state_dig(delta):
 	if !found_digging:
-		position = position.lerp(dig_position, SPEED * delta)
+		print(dig_position)
+		print(global_position)
+		global_position = global_position.lerp(dig_position, SPEED * delta)
 		set_sprite_direction(dig_position)
 		print(dig_position)
-		if position.distance_to(dig_position) <= DIG_DISTANCE:
+		if global_position.distance_to(dig_position) <= DIG_DISTANCE:
 			anime.get("parameters/playback").travel("dig")
 			found_digging = true
 		else:
@@ -141,7 +144,7 @@ func state_dig(delta):
 	
 ##################################### custom functions
 func set_sprite_direction(target_position: Vector3):
-	direction = (Vector3(target_position.x,0,target_position.z) - Vector3(position.x,0,position.z)).normalized()
+	direction = (Vector3(target_position.x,0,target_position.z) - Vector3(global_position.x,0,global_position.z)).normalized()
 	anime.set("parameters/idle/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 	anime.set("parameters/panic/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 	anime.set("parameters/walk/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))

@@ -1,3 +1,39 @@
-[gd_scene format=3 uid="uid://dh7bxcgx5mv24"]
+[gd_scene load_steps=4 format=3 uid="uid://dh7bxcgx5mv24"]
 
-[node name="Tiles" type="Node2D"]
+[ext_resource type="ArrayMesh" uid="uid://2emr8f577gar" path="res://assets/tiles/grass1.vox" id="1_upntv"]
+[ext_resource type="ArrayMesh" uid="uid://b3rqrhbl6mhgc" path="res://assets/tiles/sand.vox" id="2_511h4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_awxoi"]
+size = Vector3(4.01304, 1.19431, 3.99318)
+
+[node name="Tiles" type="Node3D"]
+
+[node name="grass1" type="Node3D" parent="."]
+
+[node name="Grass1" type="MeshInstance3D" parent="grass1"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.30432, 0)
+mesh = ExtResource("1_upntv")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="grass1/Grass1"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="grass1/Grass1/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605183, 0)
+shape = SubResource("BoxShape3D_awxoi")
+
+[node name="sand" type="Node3D" parent="."]
+
+[node name="Sand" type="MeshInstance3D" parent="sand"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, -0.30432, 0)
+mesh = ExtResource("2_511h4")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="sand/Sand"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sand/Sand/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605183, 0)
+shape = SubResource("BoxShape3D_awxoi")

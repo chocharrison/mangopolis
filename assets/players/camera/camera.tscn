@@ -9,7 +9,7 @@ radius = 2.70155
 script = ExtResource("1_3l68r")
 
 [node name="camera_target" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.967999, 0.250954, 0, -0.250954, 0.967999, 0, 2.10661, 7.10225)
+transform = Transform3D(1, 0, 0, 0, 0.989181, 0.146704, 0, -0.146704, 0.989181, 0, 1.37847, 7.10225)
 
 [node name="Camera3D" type="Camera3D" parent="camera_target"]
 

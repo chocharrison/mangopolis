@@ -25,7 +25,7 @@ func _on_interact(panicked):
 			SignalManager.collected_notebooks_signal.emit()
 		else:
 			SignalManager.collected_healthpotions_signal.emit(id_or_quantity)
-		SignalManager.dig_result_signal.emit(position)
+		SignalManager.dig_result_signal.emit(global_position)
 		queue_free()
 
 # Detects when the main player enters the collection zone

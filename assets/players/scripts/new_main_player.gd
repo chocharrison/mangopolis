@@ -20,7 +20,7 @@ const MAX_SPRINT = 100
 ##################################### node assignments
 @onready var sub: CharacterBody3D = get_parent().get_node_or_null("sub_player")
 @onready var anime: AnimationTree = get_node_or_null("AnimationTree")
-@onready var UI: Control = get_parent().get_node_or_null("UI")
+@onready var UI: Control = get_parent().get_node_or_null("Ui")
 @onready var Sprint_timer: Timer = get_node("sprint_cooldown")
 @onready var collision = get_node("CollisionShape3D")
 
@@ -35,7 +35,7 @@ const MAX_SPRINT = 100
 ##################################### variables
 
 @onready var sprint_meter = MAX_SPRINT
-@onready var bread_crumbs_array = [position]
+@onready var bread_crumbs_array = [global_position]
 @onready var direction = Vector3(0,0,0)
 @onready var speed = SPEED
 @onready var save_state = null
@@ -76,6 +76,7 @@ func perform_state_actions(_delta):
 				is_sprint_timer_active = true
 				is_cooldown = true
 			if !is_cooldown:
+				UI.set_stamina(sprint_meter)
 				sprint_meter += 1
 				Sprint_timer.stop()
 		else:
@@ -107,7 +108,7 @@ func handle_state_transitions(delta):
 		return
 	
 	elif Input.is_action_just_pressed("pet") and is_on_floor() and check_sub_distance():
-		var facing_pet = (Vector3(sub.position.x,0,sub.position.z)-Vector3(position.x,0,position.z)).normalized()
+		var facing_pet = (Vector3(sub.global_position.x,0,sub.global_position.z)-Vector3(global_position.x,0,global_position.z)).normalized()
 		anime.set("parameters/pet/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
 		state = STATE.PET
 		is_petting = true
@@ -173,6 +174,7 @@ func state_sprint():
 	
 	sprint_meter -= 1
 	sprint_meter = max(sprint_meter, 0)
+	UI.set_stamina(sprint_meter)
 	
 	if sprint_meter == 0:
 		state = STATE.TIRED
@@ -190,16 +192,16 @@ func set_sprite_direction():
 
 
 func check_sub_distance() -> bool:
-	if sub and position.distance_to(sub.position) <= PETTING_DISTANCE:
+	if sub and global_position.distance_to(sub.global_position) <= PETTING_DISTANCE:
 		return true
 	return false
 
 func bread_crumbing():
 	var temp = bread_crumbs_array.back()
-	var distance_moved = position.distance_to(Vector3(temp.x,0,temp.z))
+	var distance_moved = global_position.distance_to(Vector3(temp.x,0,temp.z))
 	if distance_moved - BREAD_CRUMB_INTERVAL:
-		if bread_crumbs_array.size() == 0 or bread_crumbs_array.back() != position:
-			bread_crumbs_array.append(position)
+		if bread_crumbs_array.size() == 0 or bread_crumbs_array.back() != global_position:
+			bread_crumbs_array.append(global_position)
 			if bread_crumbs_array.size() > ARRAY_SIZE:
 				bread_crumbs_array.pop_front()
 				
