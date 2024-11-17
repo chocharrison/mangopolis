@@ -52,5 +52,3 @@ func set_sprite_direction(target_position: Vector3):
 	anime.set("parameters/idle/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 	anime.set("parameters/math/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 	anime.set("parameters/chase/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
-	anime.set("parameters/dig/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
-	anime.set("parameters/pet/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))

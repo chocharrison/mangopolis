@@ -2350,6 +2350,7 @@ animations = [{
 }]
 
 [node name="sub_player" type="CharacterBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_gq1dc")
@@ -2378,7 +2379,7 @@ parameters/pet/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/walk/BlendSpace2D/blend_position = Vector2(-0.00105375, 0.00884962)
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.120954, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108486, 0)
 billboard = 2
 alpha_cut = 2
 texture_filter = 0

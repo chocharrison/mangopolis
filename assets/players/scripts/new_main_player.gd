@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 ##################################### constants
-const SPEED = 5.0
-const SPRINT = 7.0
+const SPEED = 15
+const SPRINT = 30
 const JUMP_VELOCITY = 4.5
 
 const BREAD_CRUMB_INTERVAL = 0.05
@@ -12,7 +12,7 @@ const DISTANCE = 2
 
 const VERTICAL_DISTANCE = 2
 
-const PETTING_DISTANCE = 1
+const PET_DISTANCE = 5
 
 const MAX_SPRINT = 100
 
@@ -101,11 +101,11 @@ func handle_state_transitions(delta):
 	if state == STATE.TIRED or state == STATE.JUMP:
 		return
 	
-	if Input.is_action_just_pressed("jump_1") and is_on_floor():
-		print("here")
-		velocity.y = JUMP_VELOCITY
-		state = STATE.JUMP
-		return
+#	if Input.is_action_just_pressed("jump_1") and is_on_floor():
+#		print("here")
+#		velocity.y = JUMP_VELOCITY
+#		state = STATE.JUMP
+#		return
 	
 	elif Input.is_action_just_pressed("pet") and is_on_floor() and check_sub_distance():
 		var facing_pet = (Vector3(sub.global_position.x,0,sub.global_position.z)-Vector3(global_position.x,0,global_position.z)).normalized()
@@ -192,7 +192,8 @@ func set_sprite_direction():
 
 
 func check_sub_distance() -> bool:
-	if sub and global_position.distance_to(sub.global_position) <= PETTING_DISTANCE:
+	var dis = abs(Vector3(global_position.x,0,global_position.z) - Vector3(sub.global_position.x,0,sub.global_position.z))
+	if sub and dis.x <= PET_DISTANCE and dis.z <= PET_DISTANCE:
 		return true
 	return false
 

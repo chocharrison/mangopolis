@@ -12,7 +12,7 @@ script = ExtResource("1_w5l0r")
 [node name="main_player" parent="." instance=ExtResource("2_i30p1")]
 
 [node name="sub_player" parent="." instance=ExtResource("3_edamp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.37963)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.82868, -7.37963)
 
 [node name="Ui" parent="." instance=ExtResource("4_4v27d")]
 
@@ -23,6 +23,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.37963)
 [node name="panic" type="Timer" parent="."]
 
 [node name="camera_controller" parent="." instance=ExtResource("5_vogdt")]
+
+[node name="camera_target" parent="camera_controller" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.989181, 0.146704, 0, -0.146704, 0.989181, 0, 7.03078, 17.7053)
+
+[node name="Area3D" parent="camera_controller" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.107, 15.8123)
 
 [connection signal="timeout" from="health" to="." method="_on_health_timeout"]
 [connection signal="timeout" from="math" to="." method="_on_math_timeout"]

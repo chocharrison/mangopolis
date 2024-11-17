@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj3bh68pyx31w"]
+
+[ext_resource type="PackedScene" uid="uid://c7grpk14rcx1k" path="res://assets/tiles/assets.blend" id="1_4ikev"]
+
+[node name="Tiles" type="Node3D"]
+
+[node name="assets" parent="." instance=ExtResource("1_4ikev")]
+
+[node name="bed_001" parent="assets" index="1"]
+visible = false
+
+[node name="previewRootNode_001" parent="assets" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.413539)
+
+[node name="wall" parent="assets/previewRootNode_001" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00262487)
+
+[node name="wall_bed" parent="assets/previewRootNode_001/wall" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50612, -0.462872)
+
+[node name="previewRootNode_002" parent="assets" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00586903, 0, -0.600144)
+
+[node name="pl0" parent="assets/previewRootNode_002/po0" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50486, 0.177645)
+
+[editable path="assets"]

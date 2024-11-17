@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
 ##################################### constants
-const SPEED = 5.0
+const SPEED = 15
 const JUMP_VELOCITY = 4.5
-const DISTANCE = 1.5
-const VERTICAL_DISTANCE = 2
-const DIG_DISTANCE = 1
+const DISTANCE = 10
+const VERTICAL_DISTANCE = 20
+const DIG_DISTANCE = 4
 const PET_DISTANCE = 1
 
 ##################################### node assignments
@@ -66,8 +66,8 @@ func handle_state_transitions():
 	if state == STATE.PANIC or state == STATE.IDLE:
 		return
 	
-	if Input.is_action_just_pressed("jump_2") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+#	if Input.is_action_just_pressed("jump_2") and is_on_floor():
+#		velocity.y = JUMP_VELOCITY
 	
 	
 	state = STATE.FOLLOW
@@ -122,17 +122,18 @@ func state_petted():
 	direction = (Vector3(master.global_position.x,0,master.global_position.z) - Vector3(global_position.x,0,global_position.z)).normalized()
 	var target = master.global_position - direction * PET_DISTANCE
 	print( position.distance_to(target))
-	global_position = global_position.lerp(target, 0.1)
-	if global_position.distance_to(target) <= PET_DISTANCE:
+	var distance = abs(Vector3(target.x,0,target.z) - Vector3(global_position.x,0,global_position.z))
+	if distance.x <= PET_DISTANCE and distance.z <= PET_DISTANCE:
 		anime.get("parameters/playback").travel("pet")
 	else:
+		global_position = global_position.lerp(target, 0.1)
 		anime.get("parameters/playback").travel("walk")
 	
 func state_dig(delta):
 	if !found_digging:
 		print(dig_position)
 		print(global_position)
-		global_position = global_position.lerp(dig_position, SPEED * delta)
+		global_position = global_position.lerp(dig_position, 1 * delta)
 		set_sprite_direction(dig_position)
 		print(dig_position)
 		if global_position.distance_to(dig_position) <= DIG_DISTANCE:

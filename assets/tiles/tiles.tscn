@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh7bxcgx5mv24"]
+[gd_scene load_steps=6 format=3 uid="uid://dh7bxcgx5mv24"]
 
 [ext_resource type="ArrayMesh" uid="uid://2emr8f577gar" path="res://assets/tiles/grass1.vox" id="1_upntv"]
 [ext_resource type="ArrayMesh" uid="uid://b3rqrhbl6mhgc" path="res://assets/tiles/sand.vox" id="2_511h4"]
+[ext_resource type="PackedScene" uid="uid://b323tlwbs6hy4" path="res://assets/tiles/Floor_bed.glb" id="3_4n87g"]
+[ext_resource type="PackedScene" uid="uid://xmuai0hw8nx8" path="res://assets/tiles/Bed.glb" id="4_biqrm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_awxoi"]
 size = Vector3(4.01304, 1.19431, 3.99318)
@@ -37,3 +39,9 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sand/Sand/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605183, 0)
 shape = SubResource("BoxShape3D_awxoi")
+
+[node name="Floor_bed" parent="." instance=ExtResource("3_4n87g")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="Bed" parent="." instance=ExtResource("4_biqrm")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)

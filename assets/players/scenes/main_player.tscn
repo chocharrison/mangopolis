@@ -2054,6 +2054,7 @@ animations = [{
 }]
 
 [node name="main_player" type="CharacterBody3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_0ahfy")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

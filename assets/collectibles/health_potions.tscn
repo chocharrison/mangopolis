@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://assets/collectibles/health_potions.gd" id="1_mxq5a"]
 [ext_resource type="Texture2D" uid="uid://c0d1fik26lrxm" path="res://assets/ui/player_ui/sprites/health_potion-collect.png" id="2_qvuom"]
 
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_5nfil"]
 radius = 0.359029
 
@@ -72,6 +71,7 @@ animations = [{
 }]
 
 [node name="health_potion" type="Node3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_mxq5a")
 
 [node name="collect" type="Area3D" parent="."]

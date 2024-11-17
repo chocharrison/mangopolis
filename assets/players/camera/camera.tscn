@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://assets/players/camera/camera.gd" id="1_3l68r"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pinnh"]
-radius = 2.70155
+height = 14.7598
+radius = 6.2828
 
 [node name="camera_controller" type="Node3D"]
 script = ExtResource("1_3l68r")

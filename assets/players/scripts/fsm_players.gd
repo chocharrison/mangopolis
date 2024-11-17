@@ -6,7 +6,7 @@ const MIN_MATH_TIMER = 6
 const MAX_HEALTH = 100
 const MAX_PAGE = 10
 
-const PANIC_DISTANCE = 6
+const PANIC_DISTANCE = 100
 const FAR_TIME = 5
 const PANIC_TIME = 20# 20
 

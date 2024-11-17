@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 func _on_collect_body_entered(body: Node) -> void:
 	if(body.name=="main_player"):
 		print(name)
+	
 		SaveStates.get_notebook(message_id)
 		print(self)
 		SignalManager.collected_notebooks_signal.emit()
