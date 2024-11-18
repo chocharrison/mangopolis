@@ -1000,6 +1000,7 @@ vertical_alignment = 1
 layout_mode = 1
 
 [node name="math_ui" parent="." instance=ExtResource("3_wsxkh")]
+mouse_filter = 2
 
 [node name="ui" type="AnimationPlayer" parent="."]
 libraries = {

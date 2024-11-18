@@ -34,5 +34,17 @@
 		"name":"Coyote",
 		"message":"res://notebooks/Coyote.txt",
 		"image":"res://notebooks/Coyote.png",
-		}
+		},
+	"7":
+		{
+		"name":"Miki",
+		"message":"res://notebooks/Miki.txt",
+		"image":"res://notebooks/Miki.png",
+		},
+	"8":
+		{
+		"name":"Jujulion",
+		"message":"res://notebooks/Jujulion.txt",
+		"link":"res://notebooks/Jujulion_link.txt",
+		},
 }

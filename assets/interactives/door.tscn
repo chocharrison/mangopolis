@@ -1,121 +1,53 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1dntipj4iict"]
+[gd_scene load_steps=10 format=3 uid="uid://b1dntipj4iict"]
 
 [ext_resource type="Script" path="res://assets/interactives/scripts/door.gd" id="1_4bb12"]
-[ext_resource type="Texture2D" uid="uid://7nii52prlhr6" path="res://assets/interactives/Sprites/checkpoint_lit.png" id="2_cfjwv"]
-[ext_resource type="Texture2D" uid="uid://c37p4phjkjnpj" path="res://assets/interactives/Sprites/checkpoint_unlit.png" id="3_ab2lg"]
+[ext_resource type="PackedScene" uid="uid://b6ufmycyw27k6" path="res://assets/interactives/Sprites/door.blend" id="2_2mg06"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gjsxy"]
-radius = 0.611988
+radius = 2.44785
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5nfil"]
-radius = 1.95772
+radius = 6.73266
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pvjif"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sdoxu"]
-atlas = ExtResource("2_cfjwv")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gppca"]
-atlas = ExtResource("2_cfjwv")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7wuua"]
-atlas = ExtResource("2_cfjwv")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m1bg2"]
-atlas = ExtResource("2_cfjwv")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k8ay7"]
-atlas = ExtResource("2_cfjwv")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l42kl"]
-atlas = ExtResource("3_ab2lg")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_h3tod"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sdoxu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gppca")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7wuua")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m1bg2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k8ay7")
-}],
-"loop": true,
-"name": &"lit",
-"speed": 20.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l42kl")
-}],
-"loop": true,
-"name": &"unlit",
-"speed": 30.0
-}]
 
 [sub_resource type="Animation" id="Animation_2fayw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/path = NodePath("ColorRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"lit"]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/path = NodePath("ColorRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/path = NodePath("hinge:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dj538"]
@@ -124,50 +56,38 @@ length = 0.66667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/path = NodePath("ColorRect:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"lit"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite3D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.333333, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.40681, 0), Vector3(0, 1.5708, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbc3m"]
@@ -176,8 +96,10 @@ _data = {
 "door": SubResource("Animation_dj538")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ga5vx"]
+size = Vector3(6.46588, 12.8541, 1)
+
 [node name="door" type="Node3D"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_4bb12")
 
 [node name="clickable" type="Area3D" parent="."]
@@ -198,11 +120,6 @@ shape = SubResource("SphereShape3D_5nfil")
 visible = false
 mesh = SubResource("CapsuleMesh_pvjif")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242622, 0)
-sprite_frames = SubResource("SpriteFrames_h3tod")
-animation = &"lit"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rbc3m")
@@ -213,6 +130,20 @@ visible = false
 offset_right = 1152.0
 offset_bottom = 638.0
 color = Color(0, 0, 0, 1)
+
+[node name="hinge" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.239, 0, 0)
+
+[node name="door2" parent="hinge" instance=ExtResource("2_2mg06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23912, 0, 0)
+
+[node name="ungoable" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ungoable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0277405, 6.41098, 0)
+shape = SubResource("BoxShape3D_ga5vx")
 
 [connection signal="body_entered" from="clickable" to="." method="_on_clickable_body_entered"]
 [connection signal="body_exited" from="clickable" to="." method="_on_clickable_body_exited"]

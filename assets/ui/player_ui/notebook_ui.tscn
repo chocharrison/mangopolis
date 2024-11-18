@@ -1337,6 +1337,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_fdkw5")
 
 [node name="notebooks" type="Panel" parent="."]
@@ -1372,6 +1373,7 @@ offset_left = 1056.0
 offset_top = -30.0
 offset_right = 1145.0
 offset_bottom = 116.0
+mouse_filter = 2
 texture = ExtResource("3_nnk4o")
 
 [node name="Control" type="Control" parent="."]
@@ -1380,6 +1382,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 648.0
+mouse_filter = 1
 
 [node name="notebook_inventory" type="AnimatedSprite2D" parent="Control"]
 position = Vector2(578, 321)
@@ -1415,12 +1418,14 @@ offset_right = 402.0
 offset_bottom = 429.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_colors/selection_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_qtcdi")
 theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
 text = "the quick brown fox jumps over the lazy dog
 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
 
@@ -1462,6 +1467,7 @@ offset_top = -12.7807
 offset_right = 432.765
 offset_bottom = 303.219
 rotation = 0.0718426
+mouse_filter = 2
 texture = ExtResource("7_y83q7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj3bh68pyx31w"]
+[gd_scene load_steps=4 format=3 uid="uid://bj3bh68pyx31w"]
 
 [ext_resource type="PackedScene" uid="uid://c7grpk14rcx1k" path="res://assets/tiles/assets.blend" id="1_4ikev"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5nxvy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n6mit"]
+size = Vector3(3.16095, 6.4281, 6.36987)
 
 [node name="Tiles" type="Node3D"]
 
@@ -21,7 +26,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50612, -0.462872)
 [node name="previewRootNode_002" parent="assets" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00586903, 0, -0.600144)
 
-[node name="pl0" parent="assets/previewRootNode_002/po0" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50486, 0.177645)
+[node name="invisible" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_5nxvy")
+
+[node name="invisible" type="StaticBody3D" parent="invisible"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible/invisible"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62599, 1.53583, -0.596558)
+shape = SubResource("BoxShape3D_n6mit")
 
 [editable path="assets"]

@@ -15,7 +15,7 @@ extends Control
 
 ##################################### variables
 @onready var page = 0
-
+@onready var link = ""
 ##################################### States
 enum STATE {CLOSE,OPEN}
 var state = STATE.CLOSE
@@ -53,6 +53,7 @@ func interrupted():
 func notebook_control():
 	if Input.is_action_just_pressed("ui_right"):
 		if(page != SaveStates.notebooks.size()):
+			link = ""
 			text.get_v_scroll_bar().value = 0
 			page+=1
 			if(page <= 1):
@@ -68,6 +69,7 @@ func notebook_control():
 					
 	elif Input.is_action_just_pressed("ui_left"):
 		if(page != 0):
+			link = ""
 			text.get_v_scroll_bar().value = 0
 			page-=1
 			if(page >= SaveStates.notebooks.size()-1):
@@ -83,9 +85,12 @@ func notebook_control():
 	
 	elif Input.is_action_pressed("ui_down"):
 		text.get_v_scroll_bar().value += 10
+		
 	elif Input.is_action_pressed("ui_up"):
 		text.get_v_scroll_bar().value -= 10
 
+	elif Input.is_action_just_pressed("interact") and link != "":
+		OS.shell_open(link)
 func load_json() -> Dictionary:
 	var json_file = FileAccess.open("res://notebooks/_messages.json",FileAccess.READ)
 	print(json_file)
@@ -100,13 +105,17 @@ func get_json_data(index: int):
 	print(bday_cards[str(index)]["message"])
 	if(bday_cards[str(index)].has("message")):
 		var temp = FileAccess.open(bday_cards[str(index)]["message"],FileAccess.READ).get_as_text()
-		text.text = str(page)+"\n\n"+temp+"\n \t-"+bday_cards[str(index)]["name"]
+		text.bbcode_text = str(page)+"\n\n"+temp+"\n \t-"+bday_cards[str(index)]["name"]
 	else:
 		text.txt = ""
 	if(bday_cards[str(index)].has("image")):
 		images.texture = load(bday_cards[str(index)]["image"])
 	else:
 		images.texture = null
+	if(bday_cards[str(index)].has("link")):
+		link = FileAccess.open(bday_cards[str(index)]["link"],FileAccess.READ).get_as_text()
+	else:
+		link = ""
 
 
 func set_notebook():
