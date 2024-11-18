@@ -87,8 +87,7 @@ func notebook_control():
 		text.get_v_scroll_bar().value -= 10
 
 func load_json() -> Dictionary:
-	print(FileAccess.file_exists("res://notebooks/messages.json"))
-	var json_file = FileAccess.open("res://notebooks/messages.json",FileAccess.READ)
+	var json_file = FileAccess.open("res://notebooks/_messages.json",FileAccess.READ)
 	print(json_file)
 	var content = JSON.parse_string(json_file.get_as_text())
 	print(content)

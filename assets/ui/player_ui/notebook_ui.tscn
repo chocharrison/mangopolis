@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b6fuf5i32324i" path="res://assets/ui/player_ui/sprites/notebook.png" id="3_nnk4o"]
 [ext_resource type="Texture2D" uid="uid://baievmp5h2ojb" path="res://assets/ui/player_ui/sprites/bday-card.png" id="4_4tei3"]
 [ext_resource type="Shader" path="res://assets/ui/player_ui/scripts/book_text.gdshader" id="6_mm7j5"]
-[ext_resource type="Texture2D" uid="uid://5gh6cgbf5mbg" path="res://notebooks/nuggets.png" id="6_xkpfo"]
+[ext_resource type="Texture2D" uid="uid://b2x6hlyhps0f7" path="res://notebooks/Coyote.png" id="7_y83q7"]
 [ext_resource type="AudioStream" uid="uid://drno22ackkjt1" path="res://assets/ui/player_ui/sounds/flip.mp3" id="8_8cxym"]
 [ext_resource type="AudioStream" uid="uid://cft7ynxtpo3hv" path="res://assets/ui/player_ui/sounds/get_note.mp3" id="9_48mdn"]
 [ext_resource type="AudioStream" uid="uid://qocg45xqnvsk" path="res://assets/ui/player_ui/sounds/collect.mp3" id="10_6tug4"]
@@ -254,9 +254,9 @@ shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uup4d"]
 shader = ExtResource("6_mm7j5")
-shader_parameter/fov = 28.0
+shader_parameter/fov = 51.344
 shader_parameter/cull_back = false
-shader_parameter/y_rot = -16.18
+shader_parameter/y_rot = -4.37698
 shader_parameter/x_rot = 16.18
 shader_parameter/inset = 0.337
 
@@ -1446,7 +1446,7 @@ Happy Birthday Mangooooo, I love you so heccing much and I hope today is an amaz
 
 [node name="image_x" type="Node2D" parent="Control"]
 visible = false
-position = Vector2(549, 157)
+position = Vector2(548, 129)
 rotation = 1.54459
 skew = -0.329867
 
@@ -1462,7 +1462,7 @@ offset_top = -12.7807
 offset_right = 432.765
 offset_bottom = 303.219
 rotation = 0.0718426
-texture = ExtResource("6_xkpfo")
+texture = ExtResource("7_y83q7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

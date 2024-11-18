@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="2_82wqn"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="3_6v0qp"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="4_vl1v3"]
-[ext_resource type="MeshLibrary" uid="uid://bgx88pqbk3ymf" path="res://assets/tiles/tiles.tres" id="5_gwfec"]
+[ext_resource type="MeshLibrary" uid="uid://bgx88pqbk3ymf" path="res://assets/tiles/assets.tres" id="5_gwfec"]
 [ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://assets/interactives/dig.tscn" id="6_snbx1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cxsxc"]
@@ -53,5 +53,25 @@ is_notebook = true
 id_or_quantity = 2
 
 [node name="door" parent="." instance=ExtResource("2_82wqn")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 20.2039, 3.7143, 4.64555)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.8367, 3.7143, -15.3395)
 scene = "res://main_scenes/hub.tscn"
+
+[node name="notebooks" parent="." instance=ExtResource("3_6v0qp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -12.6136, 9.33075, 30.4262)
+message_id = 5
+
+[node name="notebooks3" parent="." instance=ExtResource("3_6v0qp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -4.78542, 9.25069, 31.2284)
+message_id = 3
+
+[node name="notebooks4" parent="." instance=ExtResource("3_6v0qp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 4.94382, 9.98316, 32.9644)
+message_id = 4
+
+[node name="notebooks5" parent="." instance=ExtResource("3_6v0qp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -7.65866, 8.44997, 35.0843)
+message_id = 2
+
+[node name="notebooks6" parent="." instance=ExtResource("3_6v0qp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.82849, 8.32686, 44.2716)
+message_id = 6

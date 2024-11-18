@@ -1,0 +1,38 @@
+
+{
+	"1":
+		{
+		"name":"8BITNUGGETZ",
+		"message":"res://notebooks/nuggets.txt",
+		"image":"res://notebooks/nuggets.png",
+		},
+	"2":
+		{
+		"name":"Kira Kuroto",
+		"message":"res://notebooks/kira.txt",
+		},
+	"3":
+		{
+		"name":"Fedelol",
+		"message":"res://notebooks/Fedelol.txt",
+		"image":"res://notebooks/Fedelol.png",
+		},
+	"4":
+		{
+		"name":"Kota",
+		"message":"res://notebooks/Kota.txt",
+		"image":"res://notebooks/Kota.png",
+		},
+	"5":
+		{
+		"name":"Ayaneska",
+		"message":"res://notebooks/Ayaneska.txt",
+		"image":"res://notebooks/Ayaneska.png",
+		},
+	"6":
+		{
+		"name":"Coyote",
+		"message":"res://notebooks/Coyote.txt",
+		"image":"res://notebooks/Coyote.png",
+		}
+}

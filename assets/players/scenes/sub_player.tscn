@@ -148,7 +148,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_eeqyr"]
 resource_name = "mango_idle_down"
-length = 0.133337
+length = 0.533337
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -169,7 +169,7 @@ tracks/1/path = NodePath("AnimatedSprite3D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
+"times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
@@ -177,7 +177,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_jnpya"]
 resource_name = "idle_left"
-length = 0.133337
+length = 0.533337
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -198,7 +198,7 @@ tracks/1/path = NodePath("AnimatedSprite3D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
+"times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
@@ -206,7 +206,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_54y1g"]
 resource_name = "idle_right"
-length = 0.133337
+length = 0.533337
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -227,7 +227,7 @@ tracks/1/path = NodePath("AnimatedSprite3D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
+"times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
@@ -235,7 +235,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_y1r8c"]
 resource_name = "idle_up"
-length = 0.133337
+length = 0.533337
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -256,7 +256,7 @@ tracks/1/path = NodePath("AnimatedSprite3D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
+"times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]

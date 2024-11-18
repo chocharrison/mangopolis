@@ -18,14 +18,14 @@ func _process(_delta: float) -> void:
 func _on_interact(panicked):
 	if is_interactive and is_near_coco and !panicked:
 		print("digged")
-		SignalManager.show_interact_button_signal.emit(false)
-		SignalManager.coco_in_dig_range_signal.emit(false)
 		if is_notebook:
 			SaveStates.get_notebook(id_or_quantity)
 			SignalManager.collected_notebooks_signal.emit()
 		else:
 			SignalManager.collected_healthpotions_signal.emit(id_or_quantity)
 		SignalManager.dig_result_signal.emit(global_position)
+		SignalManager.show_interact_button_signal.emit(false)
+		SignalManager.coco_in_dig_range_signal.emit(false)
 		queue_free()
 
 # Detects when the main player enters the collection zone

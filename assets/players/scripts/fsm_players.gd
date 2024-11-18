@@ -406,6 +406,7 @@ func _on_coco_in_dig_range_signal(val: bool) -> void:
 # Handle digging interaction, enabling player interaction UI.
 func _on_show_interact_button_signal(val: bool) -> void:
 	set_player_interact(val)
+	main_player.set_interact(val)
 
 # Process the result of digging, either finding a notebook or health potion, and update the sub player's position.
 func _on_digresult_signal(pos: Vector3) -> void:

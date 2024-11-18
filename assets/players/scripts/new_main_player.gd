@@ -32,6 +32,8 @@ const MAX_SPRINT = 100
 
 @onready var is_petting = false
 
+@onready var is_interacting = false
+
 ##################################### variables
 
 @onready var sprint_meter = MAX_SPRINT
@@ -107,7 +109,7 @@ func handle_state_transitions(delta):
 #		state = STATE.JUMP
 #		return
 	
-	elif Input.is_action_just_pressed("pet") and is_on_floor() and check_sub_distance():
+	if !is_interacting and Input.is_action_just_pressed("interact") and is_on_floor() and check_sub_distance():
 		var facing_pet = (Vector3(sub.global_position.x,0,sub.global_position.z)-Vector3(global_position.x,0,global_position.z)).normalized()
 		anime.set("parameters/pet/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
 		state = STATE.PET
@@ -238,6 +240,9 @@ func kill_player():
 # Set the player petting.
 func set_pet(val: bool):
 	is_petting = val
+	
+func set_interact(val: bool):
+	is_interacting = val
 ##################################### get functions
 # Return the array of breadcrumbs.
 func get_bread_crumbs() -> Array:
