@@ -7,7 +7,7 @@
 radius = 2.44785
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5nfil"]
-radius = 6.73266
+radius = 11.1929
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pvjif"]
 
@@ -107,6 +107,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00514279, 0)
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="clickable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964141, 0)
 shape = SubResource("SphereShape3D_gjsxy")
 
 [node name="enemy_aware" type="Area3D" parent="."]

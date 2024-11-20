@@ -2387,4 +2387,9 @@ sprite_frames = SubResource("SpriteFrames_rc2wx")
 animation = &"idle_down"
 frame = 1
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+target_desired_distance = 5.0
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

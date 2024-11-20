@@ -11,7 +11,7 @@ const PET_DISTANCE = 1
 ##################################### node assignments
 @onready var master: CharacterBody3D = get_parent().get_node("main_player")
 @onready var anime: AnimationTree = get_node("AnimationTree")
-
+@onready var navi: NavigationAgent3D = get_node("NavigationAgent3D")
 
 ##################################### flags
 @onready var is_petting = false
@@ -79,33 +79,10 @@ func state_idle():
 	
 
 func state_follow(_delta):
-	var speed = max(SPEED,master.get_sprint())
-	var bread_crumbs_array = master.get_bread_crumbs()
 	
-	var vertical_distance = global_position.y - master.global_position.y
-	#print(velocity)
-	if vertical_distance < VERTICAL_DISTANCE:
-		if bread_crumbs_index < bread_crumbs_array.size():
-			var target_position = bread_crumbs_array[bread_crumbs_index]
-			var distance_to_target = Vector3(global_position.x,0,global_position.z).distance_to(Vector3(target_position.x,0,target_position.z))
+#	follow_function_new()
+	follow_function_old()
 		
-			if distance_to_target > DISTANCE:
-				var bread_direction = (Vector3(target_position.x,0,target_position.z) - Vector3(global_position.x,0,global_position.z)).normalized()
-				velocity.x = bread_direction.x * speed
-				velocity.z = bread_direction.z * speed
-
-			else:
-				bread_crumbs_index += 1
-	
-		else:
-			bread_crumbs_index -= 1
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
-	else:
-		global_position.x = master.global_position.x
-		global_position.y = master.global_position.y+2
-		global_position.z = master.global_position.z
-	
 	set_sprite_direction(master.global_position)
 	if(velocity == Vector3(0,0,0)):
 		anime.get("parameters/playback").travel("idle")
@@ -152,7 +129,45 @@ func set_sprite_direction(target_position: Vector3):
 	anime.set("parameters/dig/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 	anime.set("parameters/pet/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 
+func follow_function_old():
+	var speed = max(SPEED,master.get_sprint())
+	var bread_crumbs_array = master.get_bread_crumbs()
+	
+	var vertical_distance = global_position.y - master.global_position.y
+	#print(velocity)
+	if vertical_distance < VERTICAL_DISTANCE:
+		if bread_crumbs_index < bread_crumbs_array.size():
+			var target_position = bread_crumbs_array[bread_crumbs_index]
+			var distance_to_target = Vector3(global_position.x,0,global_position.z).distance_to(Vector3(target_position.x,0,target_position.z))
+		
+			if distance_to_target > DISTANCE:
+				var bread_direction = (Vector3(target_position.x,0,target_position.z) - Vector3(global_position.x,0,global_position.z)).normalized()
+				velocity.x = bread_direction.x * speed
+				velocity.z = bread_direction.z * speed
 
+			else:
+				bread_crumbs_index += 1
+	
+		else:
+			bread_crumbs_index -= 1
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+	else:
+		global_position.x = master.global_position.x
+		global_position.y = master.global_position.y+2
+		global_position.z = master.global_position.z
+
+func follow_function_new():
+	var speed = max(SPEED,master.get_sprint())
+	var current_position = global_position
+	navi.target_position = master.global_position
+	var target_position = navi.get_next_path_position()
+	var new_velocity = (target_position - current_position).normalized() * speed
+	velocity = new_velocity
+	print(new_velocity)
+	print(target_position,current_position)
+	
+	
 ##################################### set functions
 # Disable player controls and pause timers when needed.
 func disable_controls():
@@ -198,3 +213,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			found_digging = false
 			state = STATE.FOLLOW
 			
+
+
+func _on_navigation_agent_3d_target_reached() -> void:
+	print("despacito")

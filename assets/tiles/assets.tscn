@@ -11,6 +11,9 @@ size = Vector3(3.16095, 6.4281, 6.36987)
 
 [node name="assets" parent="." instance=ExtResource("1_4ikev")]
 
+[node name="previewRootNode" parent="assets" index="0"]
+visible = false
+
 [node name="bed_001" parent="assets" index="1"]
 visible = false
 
@@ -25,6 +28,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50612, -0.462872)
 
 [node name="previewRootNode_002" parent="assets" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00586903, 0, -0.600144)
+visible = false
+
+[node name="previewRootNode_003" parent="assets" index="4"]
+visible = false
+
+[node name="house_wall" parent="assets/previewRootNode_004/wall_002" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50612, -0.907704)
+
+[node name="house_corner" parent="assets/previewRootNode_005/po0_001" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50486, -0.894753)
 
 [node name="invisible" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_5nxvy")

@@ -20,10 +20,10 @@ func _process(delta: float) -> void:
 func _on_interact(panicked):
 	if is_interactive and is_near_coco and !panicked and !is_near_enemy:
 		print("door")
-		SignalManager.show_interact_button_signal.emit(false)
 		anime.play("door")
 		SaveStates.set_checkpoint(self.name,player_pos.position,sub_player_pos.position)
-
+		SignalManager.show_interact_button_signal.emit(false)
+		
 func _on_clickable_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and is_near_coco and !is_near_enemy:
 		print("interact")

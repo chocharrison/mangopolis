@@ -44,6 +44,12 @@ _subresources={
 },
 "PATH:previewRootNode_003/floor_bed_001/floor_bed": {
 "generate/physics": true
+},
+"PATH:previewRootNode_004/wall_002/house_wall": {
+"generate/physics": true
+},
+"PATH:previewRootNode_005/po0_001/house_corner": {
+"generate/physics": true
 }
 }
 }
