@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo7rxtvoubx8i"]
+
+[ext_resource type="PackedScene" uid="uid://dn6fx4uc35rx4" path="res://assets/tiles/house/house.blend" id="1_115rq"]
+
+[node name="HouseAssets" type="Node3D"]
+
+[node name="house" parent="." instance=ExtResource("1_115rq")]
+
+[node name="previewRootNode" parent="house" index="0"]
+visible = false
+
+[node name="po0_002" parent="house/previewRootNode_002" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0.607965)
+
+[node name="wall" parent="house/previewRootNode_002/po0_002" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.62791)
+
+[node name="previewRootNode_003" parent="house" index="3"]
+visible = false
+
+[node name="previewRootNode_004" parent="house" index="4"]
+visible = false
+
+[node name="previewRootNode_005" parent="house" index="5"]
+visible = false
+
+[node name="previewRootNode_006" parent="house" index="6"]
+visible = false
+
+[node name="previewRootNode_007" parent="house" index="7"]
+visible = false
+
+[node name="previewRootNode_008" parent="house" index="8"]
+visible = false
+
+[node name="previewRootNode_009" parent="house" index="9"]
+visible = false
+
+[node name="previewRootNode_010" parent="house" index="10"]
+visible = false
+
+[node name="previewRootNode_011" parent="house" index="11"]
+visible = false
+
+[editable path="house"]
