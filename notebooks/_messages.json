@@ -47,4 +47,19 @@
 		"message":"res://notebooks/Jujulion.txt",
 		"link":"res://notebooks/Jujulion_link.txt",
 		},
+
+	"9":
+		{
+		"name":"Noby Grand",
+		"message":"res://notebooks/Noby_Grand.txt",
+		"link":"res://notebooks/Noby_Grand_link.txt",
+		"image":"res://notebooks/Noby_Grand.png",
+		},
+
+	"10":
+		{
+		"name":"Docleton",
+		"message":"res://notebooks/Docleton.txt",
+		"image":"res://notebooks/Docleton.png",
+		},
 }
