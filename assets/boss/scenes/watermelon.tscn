@@ -1,0 +1,676 @@
+[gd_scene load_steps=32 format=3 uid="uid://q1jn1ks15xhi"]
+
+[ext_resource type="Script" path="res://assets/boss/scripts/watermelon.gd" id="1_p30i6"]
+[ext_resource type="Texture2D" uid="uid://dxgflq0db3p3" path="res://assets/boss/sprites/watermelon.png" id="2_3ftdx"]
+[ext_resource type="Texture2D" uid="uid://bmlschotgi4dt" path="res://assets/boss/sprites/circle.png" id="3_jqoy8"]
+[ext_resource type="AudioStream" uid="uid://dwosbri5hs3x4" path="res://assets/boss/sound_effects/lock.mp3" id="4_wygcv"]
+
+[sub_resource type="Animation" id="Animation_ao7vm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("watermelon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.83891, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("circle:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("circle:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("watermelon/watermelon:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("watermelon/watermelon:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("circle:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("watermelon/CollisionShape3D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("circle:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5hfui"]
+resource_name = "fall"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("watermelon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.83891, 0), Vector3(0, 2.83891, 0), Vector3(0, 0.15543, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 0.833333, 1, 1.16667, 1.33333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(1.5708, 3.14159, 0), Vector3(1.5708, 6.28319, 0), Vector3(1.5708, 3.14159, 0), Vector3(1.5708, 0, 0), Vector3(1.5708, -6.28319, 0), Vector3(1.5708, 6.28319, 0), Vector3(1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("circle:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 0.833333, 1, 1.16667, 1.33333, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 1, 0, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("circle:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1), Vector3(1.5, 1.5, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("watermelon/watermelon:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 1.5, 1.53333, 1.6, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2, 0, 1, 0, 0, 5, 3, 4, 6, 7, 8, 9, 10, 11]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("watermelon/watermelon:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.666667, 0.833333, 1, 1.16667, 1.33333, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 6.28319, 0), Vector3(0, 3.14159, 0), Vector3(0, 0, 0), Vector3(0, -6.28319, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("circle:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.66667, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("watermelon/CollisionShape3D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.86667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_smash"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fs4t8"]
+resource_name = "fast_fall"
+length = 0.500003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("watermelon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.83891, 0), Vector3(0, 0.15543, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("circle:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("circle:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("watermelon/watermelon:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666668, 0.133333, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 5, 3, 4, 6, 7, 8, 9, 10, 11]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("watermelon/watermelon:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("circle:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("watermelon/CollisionShape3D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_smash"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_1yt87"]
+resource_name = "spawn"
+length = 0.800003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("watermelon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.83891, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(1.5708, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("watermelon/watermelon:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 1, 2, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("circle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("circle:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ldobt"]
+resource_name = "wait"
+length = 0.800003
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("watermelon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.83891, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(1.5708, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("watermelon/watermelon:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2, 0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("circle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c6a6g"]
+_data = {
+"RESET": SubResource("Animation_ao7vm"),
+"fall": SubResource("Animation_5hfui"),
+"fast_fall": SubResource("Animation_fs4t8"),
+"spawn": SubResource("Animation_1yt87"),
+"wait": SubResource("Animation_ldobt")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw5wy"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(162, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw7aq"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(216, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7dek"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(270, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_payto"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(324, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3iu1"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(378, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utuke"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(432, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxme6"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(486, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwqeq"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(540, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4416p"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(594, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x35s"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(648, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfcq"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(702, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sbu5"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(756, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kty4s"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(0, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4sbu"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(54, 0, 54, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnqjo"]
+atlas = ExtResource("2_3ftdx")
+region = Rect2(108, 0, 54, 54)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l7iy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw5wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw7aq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7dek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_payto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3iu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utuke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxme6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwqeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4416p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x35s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqfcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sbu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kty4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4sbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnqjo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1p3cl"]
+radius = 0.300053
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y5oa"]
+atlas = ExtResource("3_jqoy8")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwkfj"]
+atlas = ExtResource("3_jqoy8")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hodic"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y5oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwkfj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l1qs3"]
+radius = 0.365283
+
+[node name="Watermelon" type="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("1_p30i6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c6a6g")
+}
+autoplay = "wait"
+
+[node name="watermelon" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.83891, 0)
+collision_mask = 5
+
+[node name="watermelon" type="AnimatedSprite3D" parent="watermelon"]
+sprite_frames = SubResource("SpriteFrames_4l7iy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="watermelon"]
+shape = SubResource("SphereShape3D_1p3cl")
+
+[node name="circle" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, -5.42999e-06, -1, 0, 1.5, -3.61999e-06, 0, 0.0235397, 0)
+sprite_frames = SubResource("SpriteFrames_hodic")
+
+[node name="detect" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0238575, 0)
+collision_layer = 0
+
+[node name="detect" type="CollisionShape3D" parent="detect"]
+shape = SubResource("SphereShape3D_l1qs3")
+disabled = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_wygcv")
+max_distance = 405.9
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="watermelon" to="." method="_on_watermelon_body_entered"]
+[connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]

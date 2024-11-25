@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://crigxfsd5fesj"]
+
+[ext_resource type="Script" path="res://assets/boss/scripts/watermelon_manager.gd" id="1_cuwes"]
+[ext_resource type="Script" path="res://assets/boss/scripts/boss_room.gd" id="1_j3ek6"]
+[ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_k1jxg"]
+[ext_resource type="PackedScene" uid="uid://q1jn1ks15xhi" path="res://assets/boss/scenes/watermelon.tscn" id="2_pugrm"]
+[ext_resource type="PackedScene" uid="uid://cvvio41dtfhjm" path="res://assets/boss/scenes/melonkitty.tscn" id="4_k33dl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yjn16"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ed6mx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fyssh"]
+size = Vector3(31.3563, 3.4668, 1)
+
+[node name="BossRoom" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.19892, 48.1184, 0, 54.6675)
+script = ExtResource("1_j3ek6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(97.6295, 0, 0, 0, 0.0823554, 0, 0, 0, 105.746, 0, 0, 7.37148)
+mesh = SubResource("BoxMesh_yjn16")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_ed6mx")
+
+[node name="watermelon_manager" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.7682, 0, -45.0242)
+script = ExtResource("1_cuwes")
+watermelon = ExtResource("2_pugrm")
+
+[node name="FSM_Players" parent="." instance=ExtResource("1_k1jxg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08142, 6.31808, 87.8312)
+
+[node name="Melonkitty" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_k33dl")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 21.8417, -65.4932)
+player = NodePath("../FSM_Players/main_player")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(97.6295, 0, 0, 0, 0.0823554, 0, 0, 0, 37.2057, 0, 16.6878, -67.6238)
+mesh = SubResource("BoxMesh_yjn16")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_ed6mx")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(17.5136, 0, 0, 0, 0.0823554, 0, 0, 0, 105.746, -0.00508881, 0.398214, 113.431)
+mesh = SubResource("BoxMesh_yjn16")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
+shape = SubResource("BoxShape3D_ed6mx")
+
+[node name="cinema" type="Camera3D" parent="."]
+
+[node name="trigger_intro" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 58.9852)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trigger_intro"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.350056, 0.449558, -0.0390549)
+shape = SubResource("BoxShape3D_fyssh")
+
+[connection signal="area_entered" from="trigger_intro" to="." method="_on_trigger_intro_area_entered"]
+
+[editable path="FSM_Players"]
+[editable path="FSM_Players/camera_controller"]
