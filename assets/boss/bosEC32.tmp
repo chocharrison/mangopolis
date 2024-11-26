@@ -66,18 +66,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.350056, 0.449558, -0.03905
 shape = SubResource("BoxShape3D_fyssh")
 
 [node name="Melonkitty" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_k33dl")]
-transform = Transform3D(4.99999, 0, 0, 0, 4.99999, 0, 0, 0, 5, 0, 6.29656, 8.84942)
+transform = Transform3D(4.99999, 0, 0, 0, 4.99999, 0, 0, 0, 5, 0, 11.1703, 8.84942)
 player = NodePath("../FSM_Players/main_player")
-
-[node name="Button" type="Button" parent="."]
-offset_left = 965.0
-offset_top = 248.0
-offset_right = 1090.0
-offset_bottom = 321.0
 
 [connection signal="area_entered" from="trigger_intro" to="." method="_on_trigger_intro_area_entered"]
 [connection signal="body_entered" from="trigger_intro" to="." method="_on_trigger_intro_body_entered"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 
 [editable path="FSM_Players"]
 [editable path="FSM_Players/camera_controller"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k54ubydq6we2"
-path="res://.godot/imported/Image_0.009.png-5b2f3c684a628cc72d5ec8a5c6db73aa.ctex"
+uid="uid://dc7xj15hearx3"
+path="res://.godot/imported/melon_circle.png-706f65b46c328ffc0d944947fe58988a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles/house/textures/Image_0.009.png"
-dest_files=["res://.godot/imported/Image_0.009.png-5b2f3c684a628cc72d5ec8a5c6db73aa.ctex"]
+source_file="res://assets/boss/sprites/melon_circle.png"
+dest_files=["res://.godot/imported/melon_circle.png-706f65b46c328ffc0d944947fe58988a.ctex"]
 
 [params]
 

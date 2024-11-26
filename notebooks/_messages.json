@@ -62,4 +62,11 @@
 		"message":"res://notebooks/Docleton.txt",
 		"image":"res://notebooks/Docleton.png",
 		},
+		
+	"11":
+		{
+		"name":"Kie",
+		"message":"res://notebooks/Kie.txt",
+		"image":"res://notebooks/Kie.png",
+		},
 }
