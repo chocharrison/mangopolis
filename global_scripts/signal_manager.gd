@@ -20,6 +20,8 @@ signal petting_signal(val: bool)
 
 signal submitted_math_answer(text: String)
 signal signal_math(val: int, val2: int, val3: int)
+signal math_success(val: bool)
+
 
 signal trigger_panic()
 

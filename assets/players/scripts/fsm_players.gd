@@ -349,6 +349,7 @@ func failed():
 		iterations = max(iterations-5,0)
 		health_lost(true,health_damage)
 		SignalManager.math_in_session.emit(false)
+		SignalManager.math_success.emit(false)
 		camera.set_state_player()
 
 # Perform the specified math operation (addition, subtraction, or multiplication) and return the result, updating the UI with the equation symbol.
@@ -374,6 +375,7 @@ func _on_math_ui_submitted_math_answer(text: String) -> void:
 	if(get_answer == answer):
 		ui.math_ui_success()
 		SignalManager.math_in_session.emit(false)
+		SignalManager.math_success.emit(true)
 		camera.set_state_player()
 	else:
 		failed()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3 uid="uid://djpyj0boiv5rr"]
+[gd_scene load_steps=208 format=3 uid="uid://djpyj0boiv5rr"]
 
 [ext_resource type="Script" path="res://assets/players/scripts/new_main_player.gd" id="1_0ahfy"]
 [ext_resource type="Texture2D" uid="uid://ckkram1jmrlly" path="res://assets/players/sprites/char_a_p1_0bas_humn_v01.png" id="2_h63o6"]
@@ -1451,10 +1451,6 @@ region = Rect2(400, 1400, 100, 100)
 atlas = ExtResource("3_chkjj")
 region = Rect2(500, 1400, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wpgbt"]
-atlas = ExtResource("3_chkjj")
-region = Rect2(200, 900, 100, 100)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_l8amt"]
 atlas = ExtResource("3_chkjj")
 region = Rect2(0, 1300, 100, 100)
@@ -1949,9 +1945,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wpgbt")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l8amt")
 }, {

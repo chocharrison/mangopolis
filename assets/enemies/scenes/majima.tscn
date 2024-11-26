@@ -1,0 +1,769 @@
+[gd_scene load_steps=51 format=3 uid="uid://c2je26hi30b0j"]
+
+[ext_resource type="Script" path="res://assets/enemies/scripts/majima.gd" id="1_ofnwy"]
+[ext_resource type="Texture2D" uid="uid://des4sxh20x7xa" path="res://assets/enemies/sprites/Smoke.png" id="2_5cuyd"]
+[ext_resource type="Texture2D" uid="uid://mpay2avnf45v" path="res://assets/enemies/sprites/Majima.png" id="3_jknr6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6rvhu"]
+radius = 7.53677
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ricvp"]
+atlas = ExtResource("2_5cuyd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iugc"]
+atlas = ExtResource("2_5cuyd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65a3q"]
+atlas = ExtResource("2_5cuyd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjy3r"]
+atlas = ExtResource("2_5cuyd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72tpq"]
+atlas = ExtResource("2_5cuyd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slljq"]
+atlas = ExtResource("2_5cuyd")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqwl6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ricvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iugc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65a3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjy3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72tpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slljq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_as4ed"]
+radius = 0.658773
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rd2u"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4fiq"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f73yt"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfp3c"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djl1a"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5i21"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2ikx"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgy57"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mes6"]
+atlas = ExtResource("3_jknr6")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqp53"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rd2u")
+}],
+"loop": true,
+"name": &"chase_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4fiq")
+}],
+"loop": true,
+"name": &"chase_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f73yt")
+}],
+"loop": true,
+"name": &"chase_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfp3c")
+}],
+"loop": true,
+"name": &"chase_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djl1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5i21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2ikx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgy57")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mes6")
+}],
+"loop": true,
+"name": &"failed",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_i1xry"]
+resource_name = "default"
+length = 0.16667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_71gqm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("smoke:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("majima:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uudnv"]
+resource_name = "chase_up"
+length = 0.16667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"chase_up"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l8rwa"]
+resource_name = "chase_left"
+length = 0.16667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"chase_left"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_agpy8"]
+resource_name = "chase_right"
+length = 0.16667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"chase_right"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_xg7gq"]
+resource_name = "chase_down"
+length = 0.16667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"chase_down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_gxxuq"]
+resource_name = "hurt"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"failed"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("smoke:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("majima:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kr20b"]
+resource_name = "found"
+length = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 1, 0, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_chase"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7xt1x"]
+resource_name = "leave"
+length = 0.400003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("majima:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"chase_down"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("majima:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("smoke:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("majima:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3egb0"]
+_data = {
+"RESET": SubResource("Animation_71gqm"),
+"chase_down": SubResource("Animation_xg7gq"),
+"chase_left": SubResource("Animation_l8rwa"),
+"chase_right": SubResource("Animation_agpy8"),
+"chase_up": SubResource("Animation_uudnv"),
+"default": SubResource("Animation_i1xry"),
+"found": SubResource("Animation_kr20b"),
+"hurt": SubResource("Animation_gxxuq"),
+"leave": SubResource("Animation_7xt1x")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6uh7k"]
+animation = &"chase_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mm544"]
+animation = &"chase_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eakwj"]
+animation = &"chase_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_trmjy"]
+animation = &"chase_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kj7ip"]
+animation = &"chase_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_712ci"]
+animation = &"chase_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_x1fo0"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6uh7k")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_mm544")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_eakwj")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_trmjy")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_kj7ip")
+blend_point_4/pos = Vector2(-1, 0)
+blend_point_5/node = SubResource("AnimationNodeAnimation_712ci")
+blend_point_5/pos = Vector2(0, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_v5372"]
+graph_offset = Vector2(-31.2727, -14.0909)
+nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_x1fo0")
+nodes/BlendSpace2D/position = Vector2(320, 40)
+nodes/output/position = Vector2(780, 80)
+node_connections = [&"output", 0, &"BlendSpace2D"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fu1nm"]
+animation = &"default"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_in5lu"]
+animation = &"found"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_obwwo"]
+animation = &"hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s5bxy"]
+animation = &"leave"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cw515"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g24sx"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d58e4"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7i1q6"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wcgry"]
+advance_mode = 0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7eqnb"]
+states/Start/position = Vector2(145, 77)
+states/chase/node = SubResource("AnimationNodeBlendTree_v5372")
+states/chase/position = Vector2(582, 112)
+states/default/node = SubResource("AnimationNodeAnimation_fu1nm")
+states/default/position = Vector2(327, 127)
+states/found/node = SubResource("AnimationNodeAnimation_in5lu")
+states/found/position = Vector2(467, 59)
+states/hurt/node = SubResource("AnimationNodeAnimation_obwwo")
+states/hurt/position = Vector2(549, 190)
+states/leave/node = SubResource("AnimationNodeAnimation_s5bxy")
+states/leave/position = Vector2(737, 132)
+transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_cw515"), "default", "found", SubResource("AnimationNodeStateMachineTransition_g24sx"), "found", "chase", SubResource("AnimationNodeStateMachineTransition_d58e4"), "chase", "hurt", SubResource("AnimationNodeStateMachineTransition_7i1q6"), "chase", "leave", SubResource("AnimationNodeStateMachineTransition_wcgry")]
+
+[node name="Majima" type="Node3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_ofnwy")
+
+[node name="detect" type="Area3D" parent="."]
+
+[node name="detect" type="CollisionShape3D" parent="detect"]
+shape = SubResource("CylinderShape3D_6rvhu")
+
+[node name="smoke" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0.398367)
+visible = false
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_aqwl6")
+frame = 5
+
+[node name="stab" type="Area3D" parent="."]
+
+[node name="collide" type="CollisionShape3D" parent="stab"]
+shape = SubResource("CylinderShape3D_as4ed")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="majima" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.415257, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_mqp53")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3egb0")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_7eqnb")
+anim_player = NodePath("../AnimationPlayer")
+parameters/chase/BlendSpace2D/blend_position = Vector2(0, 0)
+
+[connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]
+[connection signal="body_entered" from="stab" to="." method="_on_stab_body_entered"]

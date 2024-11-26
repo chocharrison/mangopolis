@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0xuh8dw81cb4"]
+[gd_scene load_steps=8 format=3 uid="uid://c0xuh8dw81cb4"]
 
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_i6cxh"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="2_bjof1"]
@@ -6,12 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="4_kdjqe"]
 [ext_resource type="PackedScene" uid="uid://6qvmo5hbku7i" path="res://assets/interactives/plushie.tscn" id="5_bq4e1"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="6_a00gr"]
+[ext_resource type="PackedScene" uid="uid://c2je26hi30b0j" path="res://assets/enemies/scenes/majima.tscn" id="7_hq3cx"]
 
 [node name="bedroom" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0576439, -1.90735e-06, 0.0284271)
 
 [node name="FSM_Players" parent="." instance=ExtResource("1_i6cxh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3739, 8.3177, 29.4717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.196, 8.3177, 29.4717)
+
+[node name="main_player" parent="FSM_Players" index="0" groups=["players"]]
 
 [node name="PauseUi" parent="." instance=ExtResource("2_bjof1")]
 
@@ -47,3 +50,9 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 [node name="notebooks" parent="." instance=ExtResource("6_a00gr")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 7.57279, 0)
 message_id = 11
+
+[node name="Majima" parent="." instance=ExtResource("7_hq3cx")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -24.6137, 9.68763, 21.2241)
+
+[editable path="FSM_Players"]
+[editable path="FSM_Players/camera_controller"]

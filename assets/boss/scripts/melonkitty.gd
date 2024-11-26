@@ -17,7 +17,7 @@ var locked_in = false
 
 @onready var stab: CollisionShape3D = $stab/stab
 @onready var cooldown: Timer = $Timer
-@export var player: CharacterBody3D
+@onready var player = get_tree().get_nodes_in_group("players")[0]
 
 
 func _physics_process(delta: float) -> void:

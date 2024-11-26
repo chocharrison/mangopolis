@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Mangopolis"
 config/tags=PackedStringArray("main_project")
-run/main_scene="res://assets/boss/boss_room.tscn"
+run/main_scene="res://main_scenes/bedroom.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,10 @@ SaveStates="*res://global_scripts/save_states.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+players=""
 
 [importer_defaults]
 
