@@ -4,7 +4,8 @@ const SPEED = 4.0
 
 @onready var anime = get_node("AnimationTree")
 @onready var soundeffects = get_node("AudioStreamPlayer")
-
+@onready var stab = $stab/collide
+@onready var detect = $detect/detect
 
 
 enum STATE {IDLE, CHASE, MATH, DISABLED, ENABLED}
@@ -42,6 +43,7 @@ func handle_state_transitions():
 
 func state_idle():
 	anime.get("parameters/playback").travel("default")
+	stab.disabled = true
 
 func state_chase(_delta):
 	anime.get("parameters/playback").travel("chase")
@@ -52,8 +54,15 @@ func set_chase():
 	state = STATE.CHASE
 	anime.get("parameters/playback").travel("chase")
 
+func set_disabled():
+	state = STATE.DISABLED
+	anime.get("parameters/playback").travel("default")
+	stab.disabled = true
+	detect.disable = true
+
 func set_found():
 	state = STATE.DISABLED
+	stab.disabled = false
 	anime.get("parameters/playback").travel("found")
 	soundeffects.stream = load("res://assets/enemies/sound/majima.mp3")
 	soundeffects.play()
@@ -77,9 +86,11 @@ func _on_result(val: bool):
 func _on_stab_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and !player_contact:
 		player_contact = true
+		stab.disabled = true
 		set_math()
 
 func _on_detect_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and !player_found:
 		player_found = true
+		detect.disabled = true
 		set_found()

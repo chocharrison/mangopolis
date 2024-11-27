@@ -24,7 +24,7 @@ enum STATE {IDLE, CHASE, DISABLED, ENABLED}
 
 func _ready() -> void:
 	set_enter()
-	
+	SignalManager.math_in_session.connect(_in_math)
 
 func _physics_process(_delta: float) -> void:
 	# Add the gravity.
@@ -77,6 +77,10 @@ func set_exit():
 	soundeffects.stop()
 	soundeffects.stream = load("res://assets/enemies/sound/smoke.mp3")
 	soundeffects.play()
+
+func _in_math(val: bool):
+	if(val):
+		set_exit()
 
 func set_idle():
 	state = STATE.IDLE
