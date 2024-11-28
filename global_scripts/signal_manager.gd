@@ -28,3 +28,5 @@ signal trigger_panic()
 signal math_in_session(val: bool)
 
 signal hurt_signal(val: int)
+
+signal do_lobster()

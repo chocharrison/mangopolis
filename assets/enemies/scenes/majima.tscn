@@ -726,7 +726,7 @@ states/leave/node = SubResource("AnimationNodeAnimation_s5bxy")
 states/leave/position = Vector2(737, 132)
 transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_cw515"), "default", "found", SubResource("AnimationNodeStateMachineTransition_g24sx"), "found", "chase", SubResource("AnimationNodeStateMachineTransition_d58e4"), "chase", "hurt", SubResource("AnimationNodeStateMachineTransition_7i1q6"), "chase", "leave", SubResource("AnimationNodeStateMachineTransition_wcgry")]
 
-[node name="Majima" type="Node3D"]
+[node name="Majima" type="Node3D" groups=["items"]]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_ofnwy")
 
@@ -742,7 +742,7 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_aqwl6")
 frame = 5
 
-[node name="stab" type="Area3D" parent="."]
+[node name="stab" type="Area3D" parent="." groups=["items"]]
 
 [node name="collide" type="CollisionShape3D" parent="stab"]
 shape = SubResource("CylinderShape3D_as4ed")

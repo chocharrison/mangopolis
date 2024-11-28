@@ -58,21 +58,26 @@ func set_state_unpaused():
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print("worked")
-	print(body.name+" entered")
+	print(body.name)
+	if(body.is_in_group("items")):
+		print("yes")
+		var change = body.get_parent().get_node("AnimatedSprite3D")
+		change.modulate.a = 0.25
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
-	print(body.name+" exited")
+	if(body.is_in_group("items")):
+		var change = body.get_parent().get_node("AnimatedSprite3D")
+		change.modulate.a = 1
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
-	if(area.name == "collect"):
+	if(area.is_in_group("items")):
 		var change = area.get_node("AnimatedSprite3D")
 		change.modulate.a = 0.25
 
 
 func _on_area_3d_area_exited(area: Area3D) -> void:
-	if(area.name == "collect"):
+	if(area.is_in_group("items")):
 		var change = area.get_node("AnimatedSprite3D")
 		change.modulate.a = 1

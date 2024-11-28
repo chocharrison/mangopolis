@@ -1,16 +1,18 @@
 [gd_scene load_steps=9 format=3 uid="uid://c0xuh8dw81cb4"]
 
+[ext_resource type="PackedScene" uid="uid://w68b36xgx7bx" path="res://assets/enemies/scenes/lobster.tscn" id="1_d5ig2"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_i6cxh"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="2_bjof1"]
 [ext_resource type="MeshLibrary" uid="uid://bgx88pqbk3ymf" path="res://assets/tiles/assets.tres" id="3_la23a"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="4_kdjqe"]
 [ext_resource type="PackedScene" uid="uid://6qvmo5hbku7i" path="res://assets/interactives/plushie.tscn" id="5_bq4e1"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="6_a00gr"]
-[ext_resource type="PackedScene" uid="uid://c2je26hi30b0j" path="res://assets/enemies/scenes/majima.tscn" id="7_hq3cx"]
-[ext_resource type="PackedScene" uid="uid://b6k24a7tsyakp" path="res://assets/enemies/scenes/unknown.tscn" id="8_awr6l"]
+[ext_resource type="PackedScene" uid="uid://vpkitu33rn0l" path="res://assets/enemies/scenes/locker.tscn" id="7_ysbci"]
 
 [node name="bedroom" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0576439, -1.90735e-06, 0.0284271)
+
+[node name="Lobster" parent="." instance=ExtResource("1_d5ig2")]
 
 [node name="FSM_Players" parent="." instance=ExtResource("1_i6cxh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.196, 8.3177, 44.664)
@@ -52,11 +54,8 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 7.57279, 0)
 message_id = 11
 
-[node name="Majima" parent="." instance=ExtResource("7_hq3cx")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -24.6137, 9.68763, 21.2241)
-
-[node name="unknown" parent="." instance=ExtResource("8_awr6l")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 27.0363, 8.4635, -9.49551)
+[node name="Locker" parent="." instance=ExtResource("7_ysbci")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.44511, 11.185, 39.726)
 
 [editable path="FSM_Players"]
 [editable path="FSM_Players/camera_controller"]

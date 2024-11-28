@@ -14,7 +14,6 @@ enum STATE {IDLE, CHASE, MATH, DISABLED, ENABLED}
 @onready var player = get_tree().get_nodes_in_group("players")[0]
 @onready var player_found = false
 @onready var player_contact = false
-@onready var is_not_timer = false
 @onready var direction = Vector3(0,0,0)
 
 
@@ -49,8 +48,13 @@ func state_chase(_delta):
 	anime.get("parameters/playback").travel("chase")
 	set_sprite_direction(player.global_position)
 	global_position = global_position.lerp(player.global_position, SPEED * _delta)
+	if soundeffects.playing == false:
+		soundeffects.stream = load("res://assets/enemies/sound/stab.mp3")
+		print("no")
+		soundeffects.play()
 
 func set_chase():
+	#await wait(1)
 	state = STATE.CHASE
 	anime.get("parameters/playback").travel("chase")
 
@@ -86,11 +90,12 @@ func _on_result(val: bool):
 func _on_stab_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and !player_contact:
 		player_contact = true
-		stab.disabled = true
 		set_math()
 
 func _on_detect_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and !player_found:
 		player_found = true
-		detect.disabled = true
 		set_found()
+
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout

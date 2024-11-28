@@ -9,7 +9,7 @@
 [node name="FSM_Players" type="Node3D"]
 script = ExtResource("1_w5l0r")
 
-[node name="main_player" parent="." instance=ExtResource("2_i30p1")]
+[node name="main_player" parent="." groups=["players"] instance=ExtResource("2_i30p1")]
 
 [node name="sub_player" parent="." instance=ExtResource("3_edamp")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -2.82868, -7.37963)
