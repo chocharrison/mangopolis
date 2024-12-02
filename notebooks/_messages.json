@@ -69,4 +69,39 @@
 		"message":"res://notebooks/Kie.txt",
 		"image":"res://notebooks/Kie.png",
 		},
+	"12":
+		{
+		"name":"Kai",
+		"message":"res://notebooks/Kai.txt",
+		"image":"res://notebooks/Kai.png",
+		},
+	"13":
+		{
+		"name":"German!",
+		"message":"res://notebooks/German.txt",
+		"image":"res://notebooks/German.png",
+		},
+	"14":
+		{
+		"name":"Kaz",
+		"message":"res://notebooks/Kaz.txt",
+		"image":"res://notebooks/Kaz.png",
+		},
+	"15":
+		{
+		"name":"Sona Stargazer",
+		"message":"res://notebooks/Sona.txt",
+		"image":"res://notebooks/Sona.png",
+		},
+	"16":
+		{
+		"name":"Vee",
+		"message":"res://notebooks/Vee.txt",
+		},
+	"17":
+		{
+		"name":"Vani",
+		"message":"res://notebooks/Vani.txt",
+		"image":"res://notebooks/Vani.png",
+		},
 }

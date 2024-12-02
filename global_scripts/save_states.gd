@@ -1,12 +1,13 @@
 extends Node
 
 
-var notebooks = [0]
+var notebooks = [0,3]
 var is_new_game = true
 var checkpoint = {}
 var checkpoint_name = null
 var saved_scene = null
-
+var is_start = false
+var first_meet = false
 const total_notebooks = 40
 
 

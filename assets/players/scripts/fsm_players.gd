@@ -47,7 +47,7 @@ var panic_timer_state = TIMER_STATE.INACTIVE
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	SignalManager.collected_healthpotions_signal.connect(_on_collected_healthpotions_signal)
+	
 	SignalManager.collected_notebooks_signal.connect(_on_collected_notebooks_signal)
 	
 	SignalManager.submitted_math_answer.connect(_on_math_ui_submitted_math_answer)	
@@ -109,12 +109,14 @@ func state_health_timer_active():
 		health_timer_state = TIMER_STATE.INACTIVE
 		
 func state_health_timer_paused():
-	health_timer_state = TIMER_STATE.PAUSED
-	health_timer.paused = true
+	if health_timer_state != TIMER_STATE.DISABLED:
+		health_timer_state = TIMER_STATE.PAUSED
+		health_timer.paused = true
 
 func state_health_timer_unpaused():
-	health_timer_state = TIMER_STATE.ACTIVE
-	health_timer.paused = false
+	if health_timer_state != TIMER_STATE.DISABLED:
+		health_timer_state = TIMER_STATE.ACTIVE
+		health_timer.paused = false
 
 func state_health_timer_disable():
 	health_timer_state = TIMER_STATE.DISABLED
@@ -264,13 +266,13 @@ func unpaused():
 	state_health_timer_unpaused()
 	state_panic_timer_unpaused()
 
-func unlock():
+func enable():
 	state = STATE.ENABLE
 	main_player.enable_controls()
 	sub_player.enable_controls()
-	camera.set_state_unpaused()
 	state_health_timer_unpaused()
 	state_panic_timer_unpaused()
+	ui.uninterrupted()
 
 func get_notebook():
 	ui.notebook_ui_get_notebook()

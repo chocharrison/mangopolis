@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhexihyy57tq6"]
+
+[ext_resource type="Texture2D" uid="uid://dyobri14tigsy" path="res://assets/interactives/Sprites/Rock.png" id="1_00cu6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2in7m"]
+size = Vector3(0.676819, 0.329102, 0.6474)
+
+[node name="rock" type="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="AnimatedSprite3D" type="Sprite3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.464961, 0)
+texture_filter = 0
+texture = ExtResource("1_00cu6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.073458, 0.151603, 0.00174522)
+shape = SubResource("BoxShape3D_2in7m")

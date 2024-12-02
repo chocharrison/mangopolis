@@ -30,3 +30,9 @@ signal math_in_session(val: bool)
 signal hurt_signal(val: int)
 
 signal do_lobster()
+
+signal increase_pikmin_count()
+
+
+signal hit_kitty()
+signal finish_watermelon()

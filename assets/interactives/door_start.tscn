@@ -1,0 +1,153 @@
+[gd_scene load_steps=10 format=3 uid="uid://iklhcjhyeyl3"]
+
+[ext_resource type="Script" path="res://assets/interactives/scripts/door_start.gd" id="1_4cf6l"]
+[ext_resource type="PackedScene" uid="uid://b6ufmycyw27k6" path="res://assets/interactives/Sprites/door.blend" id="2_adaxt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gjsxy"]
+radius = 2.44785
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5nfil"]
+radius = 11.1929
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pvjif"]
+
+[sub_resource type="Animation" id="Animation_2fayw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dj538"]
+resource_name = "door"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hinge:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.40681, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbc3m"]
+_data = {
+"RESET": SubResource("Animation_2fayw"),
+"door": SubResource("Animation_dj538")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ga5vx"]
+size = Vector3(6.46588, 12.8541, 1)
+
+[node name="door_start" type="Node3D"]
+script = ExtResource("1_4cf6l")
+
+[node name="clickable" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00514279, 0)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="clickable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.964141, 0)
+shape = SubResource("SphereShape3D_gjsxy")
+
+[node name="enemy_aware" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00514279, 0)
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemy_aware"]
+shape = SubResource("SphereShape3D_5nfil")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CapsuleMesh_pvjif")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rbc3m")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1152.0
+offset_bottom = 638.0
+color = Color(0, 0, 0, 1)
+
+[node name="hinge" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.239, 0, 0)
+
+[node name="door2" parent="hinge" instance=ExtResource("2_adaxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23912, 0, 0)
+
+[node name="ungoable" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ungoable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0277405, 6.41098, 0)
+shape = SubResource("BoxShape3D_ga5vx")
+
+[connection signal="body_entered" from="clickable" to="." method="_on_clickable_body_entered"]
+[connection signal="body_exited" from="clickable" to="." method="_on_clickable_body_exited"]
+[connection signal="body_entered" from="enemy_aware" to="." method="_on_enemy_aware_body_entered"]
+[connection signal="body_exited" from="enemy_aware" to="." method="_on_enemy_aware_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

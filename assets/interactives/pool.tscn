@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=3 uid="uid://byueu6gdfpg3b"]
+
+[ext_resource type="Script" path="res://assets/interactives/scripts/pool.gd" id="1_ofcg0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwdtk"]
+albedo_color = Color(0.239216, 0.113725, 0.0705882, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sg0mb"]
+material = SubResource("StandardMaterial3D_qwdtk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oe1qp"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.305882)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dm4af"]
+material = SubResource("StandardMaterial3D_oe1qp")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mdx15"]
+size = Vector3(2.17285, 0.62915, 2.93628)
+
+[sub_resource type="Animation" id="Animation_dk1v4"]
+resource_name = "piss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/MeshInstance3D:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 1, 0.305882), Color(0.98186, 0.88795, 0, 0.305882)]
+}
+
+[sub_resource type="Animation" id="Animation_w7hw8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/MeshInstance3D:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 1, 0.305882)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hs45v"]
+_data = {
+"RESET": SubResource("Animation_w7hw8"),
+"piss": SubResource("Animation_dk1v4")
+}
+
+[node name="Pool" type="Node3D"]
+script = ExtResource("1_ofcg0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+collision_layer = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.451884, -0.0918058, 0, 0.197151, 0.210426, 0, 0, 0, 1.05047, 1.52052, -0.191168, 0)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-1.97481e-08, 4.01762e-09, 1.0669, 0.19738, 0.210379, 0, -0.451784, 0.0919123, -4.66356e-08, 0, -0.191, -1.466)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-0.451784, 0.0919123, -9.18353e-08, 0.19738, 0.210379, 0, 3.94962e-08, -8.03523e-09, -1.05047, -1.52986, -0.191168, 0)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-1.97481e-08, 4.01762e-09, -1.0669, 0.19738, 0.210379, 0, 0.451784, -0.0919123, -4.66356e-08, 0, -0.191, 1.47994)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.274233, -0.0979102, 0.74925, 0.289933, 0.185599, 0.0260177, -0.289487, 0.0931338, 0.735827, 1.15255, -0.280881, -1.28993)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.31946, -0.0649918, -0.742797, 0.19738, 0.210379, 0, 0.31946, -0.0649918, 0.742797, 1.34731, -0.191168, 1.09647)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-0.277031, 0.0986286, -0.742575, 0.289703, 0.185679, 0.0256654, 0.287044, -0.092211, -0.742575, -1.34005, -0.327839, 1.01647)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-0.287044, 0.0922111, 0.742575, 0.289703, 0.185679, 0.0256653, -0.277031, 0.0986286, -0.742575, -1.25279, -0.287221, -1.13906)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1.19329, 0, 0, 0, 0.229581, 0, 0, 0, 1.19119, -0.0111954, -0.404989, -0.0309721)
+mesh = SubResource("PlaneMesh_sg0mb")
+skeleton = NodePath("../..")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.107819)
+depth = 3.0
+polygon = PackedVector2Array(-1.96456, 0.089051, -1.00446, -0.285577, 0.938104, -0.26153, 1.87851, 0.179778, 1.7246, -0.795455, -1.77949, -0.979213)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.122376, -0.0983846, 0.0183606)
+depth = 3.0
+polygon = PackedVector2Array(-1.96456, 0.089051, -1.00446, -0.285577, 0.938104, -0.26153, 1.87851, 0.179778, 1.7246, -0.795455, -1.77949, -0.979213)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 11.8265, 0, 0, 0, 15, 0, -1.4233, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(4.28957, 0, 0, 0, 0.467234, 0, 0, 0, 3.95333, 0.0167178, -0.225752, 0.078856)
+mesh = SubResource("BoxMesh_dm4af")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0408505, -0.176436, 0.260139)
+shape = SubResource("BoxShape3D_mdx15")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hs45v")
+}
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

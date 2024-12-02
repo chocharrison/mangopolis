@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://rvg1yn352jlc"]
+
+[ext_resource type="PackedScene" uid="uid://dk4kji037rden" path="res://assets/tiles/outside/outside.blend" id="1_y6a7y"]
+
+[node name="OutsideAssets" type="Node3D"]
+
+[node name="outside" parent="." instance=ExtResource("1_y6a7y")]
+
+[editable path="outside"]

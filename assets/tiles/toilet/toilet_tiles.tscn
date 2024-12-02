@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://tgt201oiu4r8"]
+
+[ext_resource type="PackedScene" uid="uid://dwln8f2erukcr" path="res://assets/tiles/toilet/untitled.blend" id="1_1wy3i"]
+
+[node name="ToiletTiles" type="Node3D"]
+
+[node name="untitled" parent="." instance=ExtResource("1_1wy3i")]
+
+[editable path="untitled"]

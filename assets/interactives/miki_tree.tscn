@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://bf2vt0s7q84g1"]
+
+[ext_resource type="Script" path="res://assets/interactives/scripts/miki_tree.gd" id="1_kttq0"]
+[ext_resource type="Texture2D" uid="uid://7owi4hfvqvrx" path="res://assets/interactives/Sprites/Tree_miki.png" id="3_lqh6d"]
+[ext_resource type="AudioStream" uid="uid://blgln4afbq3pv" path="res://assets/interactives/sound effects/plushie.mp3" id="3_v0738"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17b23"]
+size = Vector3(0.784546, 1.09473, 0.353673)
+
+[sub_resource type="Animation" id="Animation_5j5oc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D2/AnimatedSprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4me1v"]
+resource_name = "shake"
+length = 0.500003
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D2/AnimatedSprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.211708), Vector3(0, 0, -0.203854), Vector3(0, 0, 0.211708), Vector3(0, 0, -0.203854), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yx8h5"]
+_data = {
+"RESET": SubResource("Animation_5j5oc"),
+"shake": SubResource("Animation_4me1v")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b6m2k"]
+height = 0.993964
+radius = 0.250718
+
+[node name="miki_tree" type="Node3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+script = ExtResource("1_kttq0")
+
+[node name="StaticBody3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0148316, 0.509766, 0.00457717)
+shape = SubResource("BoxShape3D_17b23")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v0738")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yx8h5")
+}
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="AnimatedSprite3D" type="Sprite3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.464961, 0)
+texture_filter = 0
+texture = ExtResource("3_lqh6d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0357688, 0.487052, -0.006464)
+shape = SubResource("CylinderShape3D_b6m2k")
+
+[connection signal="body_entered" from="StaticBody3D" to="." method="_on_static_body_3d_body_entered"]
+[connection signal="body_exited" from="StaticBody3D" to="." method="_on_static_body_3d_body_exited"]

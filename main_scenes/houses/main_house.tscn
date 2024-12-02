@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://crjtqdk1wdbt4"]
+
+[ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="1_nn1ki"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yug4m"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tnlmh"]
+material = SubResource("StandardMaterial3D_yug4m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybg7o"]
+albedo_color = Color(1, 1, 0.121569, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kukbs"]
+material = SubResource("StandardMaterial3D_ybg7o")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nuxn2"]
+
+[node name="MainHouse" type="Node3D"]
+
+[node name="door" parent="." instance=ExtResource("1_nn1ki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280494, 0, -34.8195)
+scene = "res://main_scenes/rooms/house.tscn"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="door"]
+transform = Transform3D(5.70715, 0, 0, 0, 12.2015, 0, 0, 0, 1, 0, 6.40677, -0.147743)
+mesh = SubResource("BoxMesh_tnlmh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(83.7382, 0, 0, 0, 32.1962, 0, 0, 0, 58.1007, 0, 15.9397, -64.4849)
+mesh = SubResource("BoxMesh_kukbs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_nuxn2")

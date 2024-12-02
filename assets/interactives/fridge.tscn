@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dihnlpv7ccmyd"]
+
+[ext_resource type="Script" path="res://assets/interactives/scripts/fridge.gd" id="1_2aqk5"]
+[ext_resource type="PackedScene" uid="uid://bj3itm50iwvx0" path="res://assets/interactives/Sprites/fridge/fridge.blend" id="1_5lwgq"]
+[ext_resource type="Texture2D" uid="uid://3u7ly6w3nwkc" path="res://assets/interactives/Sprites/Fridge_inside.png" id="3_70jk7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8rhp0"]
+size = Vector3(6.29523, 12.6091, 6.45996)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b4iun"]
+size = Vector3(6.35309, 13.2114, 5.40906)
+
+[node name="Fridge" type="Node3D"]
+script = ExtResource("1_2aqk5")
+
+[node name="fridge2" parent="." instance=ExtResource("1_5lwgq")]
+
+[node name="previewRootNode_001" parent="fridge2" index="1"]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="fridge2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fridge2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149536, 6.36755, -3.13991)
+shape = SubResource("BoxShape3D_8rhp0")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.186859, 6.10571, 2.20453)
+shape = SubResource("BoxShape3D_b4iun")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1165.0
+offset_bottom = 650.0
+color = Color(0, 0, 0, 0.152941)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = -3.0
+offset_right = 959.0
+offset_bottom = 649.0
+texture = ExtResource("3_70jk7")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="fridge2"]

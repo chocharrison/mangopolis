@@ -86,10 +86,15 @@ func notebook_ui_close_book():
 
 func notebook_empty():
 	notebook_ui.notebook_empty()
+	
 func interrupted():
 	print("inteerupted ui")
 	anime.play("interrupted")
 	notebook_ui.interrupted()
+
+func uninterrupted():
+	anime.play("back")
+
 
 func activate_notebook():
 	notebook_ui.activate_notebook()

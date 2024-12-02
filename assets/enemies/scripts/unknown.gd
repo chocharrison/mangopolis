@@ -60,7 +60,6 @@ func state_chase(_delta):
 	global_position = global_position.lerp(player.global_position, SPEED * _delta)
 	if soundeffects.playing == false:
 		soundeffects.stream = load("res://assets/enemies/sound/stab.mp3")
-		print("no")
 		soundeffects.play()
 
 func set_enter():
