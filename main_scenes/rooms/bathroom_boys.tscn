@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://dc7bn0y14y4fo"]
+[gd_scene load_steps=12 format=3 uid="uid://dc7bn0y14y4fo"]
 
-[ext_resource type="Script" path="res://main_scenes/rooms/bathroom_boys.gd" id="1_7d86w"]
 [ext_resource type="MeshLibrary" uid="uid://cgw2rfur2y0mr" path="res://assets/tiles/toilet/toilet.tres" id="1_yndyk"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="2_mpl55"]
 [ext_resource type="PackedScene" uid="uid://buwm2vco8ocs2" path="res://assets/interactives/toilet.tscn" id="2_whbi8"]
@@ -12,17 +11,16 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_h3w3a"]
 size = Vector3(222.895, 24.6222, 3.81544)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwbf6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygfv8"]
 albedo_color = Color(0.184314, 0.639216, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_brh33"]
-material = SubResource("StandardMaterial3D_mwbf6")
+material = SubResource("StandardMaterial3D_ygfv8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4n6mk"]
 
 [node name="BathroomBoys" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3631, -0.978978, -3.04742)
-script = ExtResource("1_7d86w")
 
 [node name="Node3D3" type="Node3D" parent="."]
 
@@ -119,7 +117,7 @@ light_size = 0.161
 omni_range = 35.5157
 
 [node name="door" parent="Node3D3" instance=ExtResource("2_mpl55")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 114.479, 4.1108, -5.69986)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 114.479, 4.1108, -5.69986)
 scene = "res://main_scenes/rooms/park.tscn"
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -165,8 +163,6 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 100.075, 2.6, -34.4233)
 [node name="FSM_Players" parent="." instance=ExtResource("4_14eq6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.805, 7.71901, -11.0307)
 
-[node name="PauseUi" parent="." instance=ExtResource("5_aw3lm")]
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 28.4371, 2.99246, -35.078)
 texture = ExtResource("8_5gk1r")
@@ -178,3 +174,5 @@ texture = ExtResource("8_5gk1r")
 [node name="Sprite3D3" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -102.415, 4.26124, -7.05815)
 texture = ExtResource("8_5gk1r")
+
+[node name="PauseUi" parent="." instance=ExtResource("5_aw3lm")]

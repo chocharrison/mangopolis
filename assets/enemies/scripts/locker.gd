@@ -113,6 +113,7 @@ func set_opened_result():
 			SaveStates.get_notebook(id_or_quantity)
 			SignalManager.collected_notebooks_signal.emit()
 		elif is_health:
+			print("here")
 			SignalManager.collected_healthpotions_signal.emit(id_or_quantity)
 		elif is_lobster:
 			SignalManager.do_lobster.emit()

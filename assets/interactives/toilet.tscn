@@ -14,108 +14,6 @@ size = Vector3(12.1599, 9.9982, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_txx2r"]
 size = Vector3(5.62617, 12.9268, 6.7901)
 
-[sub_resource type="Animation" id="Animation_0jeh1"]
-resource_name = "pikmin"
-length = 1.66667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("door:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0.0734712, 1, 1), Vector3(0.3, 1, 1), Vector3(0.0734712, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("door:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.738759, 0), Vector3(-5.25052, -0.738759, 0), Vector3(-4.01747, -0.738759, 0), Vector3(-5.25052, -0.738759, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Node3D/seat:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 1.26667, 1.33333, 1.4, 1.46667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 5.77652, 0), Vector3(0, 4.78735, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Node3D/seat:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 1.26667, 1.33333, 1.4, 1.46667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(9.50323, 12.5423, 1), Vector3(10.5405, 10.5408, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Node3D/seat:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer3D:stream")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.933333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("5_qo802"), ExtResource("6_jtve0")]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AudioStreamPlayer3D:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.533333, 0.933333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(1.66667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play_pikmin"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_b0mrf"]
 length = 0.001
 tracks/0/type = "value"
@@ -201,6 +99,58 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vbhgp"]
+resource_name = "empty"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("door:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.0734712, 1, 1), Vector3(0.3, 1, 1), Vector3(0.0734712, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.233333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.738759, 0), Vector3(-5.25052, -0.738759, 0), Vector3(-4.01747, -0.738759, 0), Vector3(-5.25052, -0.738759, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_qo802")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_0ni6n"]
@@ -305,9 +255,9 @@ tracks/7/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_vbhgp"]
-resource_name = "empty"
-length = 0.66667
+[sub_resource type="Animation" id="Animation_0jeh1"]
+resource_name = "pikmin"
+length = 1.66667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -335,26 +285,76 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/2/path = NodePath("Node3D/seat:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_qo802")]
+"times": PackedFloat32Array(0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 1.26667, 1.33333, 1.4, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 5.77652, 0), Vector3(0, 4.78735, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/3/path = NodePath("Node3D/seat:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.533333),
+"times": PackedFloat32Array(0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 1.26667, 1.33333, 1.4, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(9.50323, 12.5423, 1), Vector3(10.5405, 10.5408, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node3D/seat:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [0, 1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_qo802"), ExtResource("6_jtve0")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.66667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_pikmin"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0kdln"]

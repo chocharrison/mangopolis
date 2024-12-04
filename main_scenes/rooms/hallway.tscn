@@ -40,8 +40,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200.865, 8.0925, 10.5222)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -202, 3.36153, 18.751)
 scene = "res://main_scenes/rooms/bedroom.tscn"
 
-[node name="PauseUi" parent="." instance=ExtResource("1_8jjnp")]
-
 [node name="invisible" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="invisible"]
@@ -202,3 +200,5 @@ plush_num = 4
 [node name="plushie5" parent="plushies" instance=ExtResource("17_rub6h")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 319.417, 3.0545, -5.50687)
 plush_num = 5
+
+[node name="PauseUi" parent="." instance=ExtResource("1_8jjnp")]

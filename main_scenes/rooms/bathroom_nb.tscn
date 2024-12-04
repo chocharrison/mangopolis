@@ -116,7 +116,7 @@ light_size = 0.161
 omni_range = 35.5157
 
 [node name="door" parent="Node3D3" instance=ExtResource("2_et6lc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 114.479, 4.1108, -5.69986)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 114.479, 4.1108, -5.69986)
 scene = "res://main_scenes/rooms/park.tscn"
 
 [node name="Node3D" type="Node3D" parent="."]

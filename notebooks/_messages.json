@@ -104,4 +104,11 @@
 		"message":"res://notebooks/Vani.txt",
 		"image":"res://notebooks/Vani.png",
 		},
+	"18":
+		{
+		"name":"Trix",
+		"message":"res://notebooks/Trix.txt",
+		"image":"res://notebooks/Trix.png",
+		},
+		
 }

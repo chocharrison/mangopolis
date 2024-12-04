@@ -5,7 +5,7 @@ extends Node3D
 @onready var timer = $cool_down
 @onready var player = get_tree().get_nodes_in_group("players")[0]
 
-const offset = Vector3(4,0,4)
+const offset = Vector3(4,0.4,4)
 const maximum = Vector3(24,0,24)
 const multiplier = 4
 const SPEED = 0.1

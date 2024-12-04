@@ -17,8 +17,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0576439, -1.90735e-06, 0.02
 [node name="FSM_Players" parent="." instance=ExtResource("2_an33x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.196, 8.3177, 44.664)
 
-[node name="PauseUi" parent="." instance=ExtResource("3_u3hkx")]
-
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9039, 17.1136, 24.5475)
 light_energy = 16.0
@@ -54,6 +52,8 @@ message_id = 11
 
 [node name="Locker" parent="." instance=ExtResource("8_plsgr")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.44511, 11.185, 39.726)
+
+[node name="PauseUi" parent="." instance=ExtResource("3_u3hkx")]
 
 [editable path="FSM_Players"]
 [editable path="FSM_Players/camera_controller"]

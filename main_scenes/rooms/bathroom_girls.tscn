@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3vmhiqldptuy"]
+[gd_scene load_steps=12 format=3 uid="uid://d3vmhiqldptuy"]
 
+[ext_resource type="Script" path="res://main_scenes/rooms/bathroom_girls.gd" id="1_sbpyc"]
 [ext_resource type="MeshLibrary" uid="uid://cgw2rfur2y0mr" path="res://assets/tiles/toilet/toilet.tres" id="2_ahyqs"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="3_ivr2j"]
 [ext_resource type="PackedScene" uid="uid://buwm2vco8ocs2" path="res://assets/interactives/toilet.tscn" id="4_63jht"]
@@ -20,6 +21,7 @@ material = SubResource("StandardMaterial3D_ke2p7")
 
 [node name="BathroomGirls" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3631, -0.978978, -3.04742)
+script = ExtResource("1_sbpyc")
 
 [node name="Node3D3" type="Node3D" parent="."]
 
@@ -116,7 +118,7 @@ light_size = 0.161
 omni_range = 35.5157
 
 [node name="door" parent="Node3D3" instance=ExtResource("3_ivr2j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 114.479, 4.1108, -5.69986)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 114.479, 4.1108, -5.69986)
 scene = "res://main_scenes/rooms/park.tscn"
 
 [node name="Node3D" type="Node3D" parent="."]

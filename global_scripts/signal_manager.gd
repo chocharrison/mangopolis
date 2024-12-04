@@ -6,6 +6,7 @@ signal collected_notebooks_signal(val: int)
 
 #health_potions_signals
 signal collected_healthpotions_signal(val: int)
+signal heal_signal(val:int)
 
 #dig signals
 signal coco_in_dig_range_signal(val: bool)
@@ -36,3 +37,5 @@ signal increase_pikmin_count()
 
 signal hit_kitty()
 signal finish_watermelon()
+
+signal done_soda()

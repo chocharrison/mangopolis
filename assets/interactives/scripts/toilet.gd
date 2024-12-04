@@ -1,8 +1,6 @@
 extends Node3D
 
 @onready var is_interactive = false
-@export var is_pikmin = false
-@export var is_majima = false
 @onready var detect = $Area3D/CollisionShape3D
 @onready var toilet = $Node3D/seat
 @onready var anime = $AnimationPlayer
@@ -13,41 +11,29 @@ func _ready() -> void:
 	majima.visible = false
 	majima.set_disabled()
 
-func set_toilet(i: int):
-	print(i)
-	if i == 0:
-		is_pikmin = false
-		is_majima = false
-	elif i == 1:
-		is_pikmin = true
-		is_majima = false
-	elif i == 2:
-		is_pikmin = false
-		is_majima = true
-
 func _on_interact(panicked):
 	if is_interactive and !panicked:
 		detect.disabled = true
-		if is_pikmin:
-			anime.play("pikmin")
-		elif is_majima:
-			anime.play("majima")
-		else:
-			anime.play("empty")
+		anime.play("close")
 
+func interuppted_majima():
+	anime.stop()
+
+func suspense_majima():
+	detect.disabled = false
+	anime.play("majima")
+	
 func play_majima():
 	toilet.frame = 0
-	majima.visible = true
-	majima.set_chase()
+	var majima_copy = majima
+	majima_copy.visible = true
+	majima_copy.set_chase()
+	SignalManager.Majima_popped.emit(self.name)
 
-func play_pikmin():
-	SignalManager.increase_pikmin_count.emit()
-	
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "main_player":
 		SignalManager.show_interact_button_signal.emit(true)
 		is_interactive = true
-
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.name == "main_player":

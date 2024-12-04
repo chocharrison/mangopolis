@@ -18,21 +18,6 @@ material = SubResource("StandardMaterial3D_oe1qp")
 [sub_resource type="BoxShape3D" id="BoxShape3D_mdx15"]
 size = Vector3(2.17285, 0.62915, 2.93628)
 
-[sub_resource type="Animation" id="Animation_dk1v4"]
-resource_name = "piss"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area3D/MeshInstance3D:mesh:material:albedo_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 1, 1, 0.305882), Color(0.98186, 0.88795, 0, 0.305882)]
-}
-
 [sub_resource type="Animation" id="Animation_w7hw8"]
 length = 0.001
 tracks/0/type = "value"
@@ -46,6 +31,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 1, 1, 0.305882)]
+}
+
+[sub_resource type="Animation" id="Animation_dk1v4"]
+resource_name = "piss"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/MeshInstance3D:mesh:material:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 1, 0.305882), Color(0.98186, 0.88795, 0, 0.305882)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hs45v"]

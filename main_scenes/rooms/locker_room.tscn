@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ygfbbdd6gh8d"]
+[gd_scene load_steps=10 format=3 uid="uid://ygfbbdd6gh8d"]
 
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="1_sfl6j"]
 [ext_resource type="PackedScene" uid="uid://w68b36xgx7bx" path="res://assets/enemies/scenes/lobster.tscn" id="2_viklr"]
@@ -7,13 +7,12 @@
 [ext_resource type="Script" path="res://main_scenes/rooms/locker_manager.gd" id="5_uiip3"]
 [ext_resource type="PackedScene" uid="uid://vpkitu33rn0l" path="res://assets/enemies/scenes/locker.tscn" id="6_mv6yv"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="7_fniwv"]
+[ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://assets/collectibles/health_potions.tscn" id="8_3ttv8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n7u5m"]
 size = Vector3(6.22658, 26.7289, 284.737)
 
 [node name="LockerRoom" type="Node3D"]
-
-[node name="PauseUi" parent="." instance=ExtResource("1_sfl6j")]
 
 [node name="Lobster" parent="." instance=ExtResource("2_viklr")]
 
@@ -30,7 +29,7 @@ metadata/_editor_floor_ = Vector3(-6, 0, -6)
 
 [node name="door" parent="." instance=ExtResource("4_tf7ot")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.2132, 2.19231, 22.5321)
-scene = "res://main_scenes/bedroom.tscn"
+scene = "res://main_scenes/rooms/entrance.tscn"
 
 [node name="invisible" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 29.2604, 2.19231, 71.5783)
@@ -45,3 +44,8 @@ locker = ExtResource("6_mv6yv")
 
 [node name="FSM_Players" parent="." instance=ExtResource("7_fniwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0734, 8.40646, 24.7753)
+
+[node name="PauseUi" parent="." instance=ExtResource("1_sfl6j")]
+
+[node name="health_potion" parent="." instance=ExtResource("8_3ttv8")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.1106, 8.92479, 33.2681)

@@ -10,7 +10,9 @@ const multiplier = 4
 @onready var fsm_player = $FSM_Players
 @onready var cutscenes = $intro/AnimationPlayer
 @onready var BGM = $AudioStreamPlayer
-@onready var backwall = $stage/back/CollisionShape3D
+@onready var backwall = $stage/MeshInstance3D9/back/CollisionShape3D
+@onready var remove_wall = $stage/Node3D
+
 @onready var health_bar = $Panel/ProgressBar
 @onready var phase_control = $phase_control
 
@@ -18,7 +20,7 @@ enum STATE {PHASE,WAIT,CUTSCENE,INTRO,FINISHED}
 @onready var state = STATE.INTRO
 @onready var is_follow = false
 
-@onready var phase = 5
+@onready var phase = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -103,6 +105,7 @@ func intro_8():
 
 func intro_done():
 	backwall.disabled = false
+	remove_wall.queue_free()
 	cutscenes.play("intro_done")
 	fsm_player.enable()
 	state = STATE.PHASE

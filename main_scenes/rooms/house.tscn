@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://tiplsw5be6rt"]
+[gd_scene load_steps=8 format=3 uid="uid://tiplsw5be6rt"]
 
 [ext_resource type="MeshLibrary" uid="uid://cs2tlvou1di23" path="res://assets/tiles/house/house_assets.tres" id="1_w70bv"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="2_iruf3"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="4_sq110"]
 [ext_resource type="PackedScene" uid="uid://6qvmo5hbku7i" path="res://assets/interactives/plushie.tscn" id="5_fw557"]
 [ext_resource type="PackedScene" uid="uid://dihnlpv7ccmyd" path="res://assets/interactives/fridge.tscn" id="6_p5d1i"]
-[ext_resource type="PackedScene" uid="uid://buwm2vco8ocs2" path="res://assets/interactives/toilet.tscn" id="7_36xux"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hyp5j"]
 size = Vector3(102.768, 24.6222, 3.81544)
@@ -24,7 +23,7 @@ data = {
 metadata/_editor_floor_ = Vector3(-1, 7, 0)
 
 [node name="FSM_Players" parent="." instance=ExtResource("2_iruf3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7483, 6.75974, -43.1307)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55946, 6.75974, -33.3736)
 
 [node name="PauseUi" parent="." instance=ExtResource("3_yyt5j")]
 
@@ -100,7 +99,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0007, 16.6258, -56.4688)
 light_energy = 16.0
 shadow_enabled = true
 omni_range = 28.7301
-
-[node name="Toilet" parent="." instance=ExtResource("7_36xux")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.6228, 0.638063, -36.4042)
-is_pikmin = true

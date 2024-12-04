@@ -49,8 +49,11 @@ func _ready() -> void:
 	
 	
 	SignalManager.collected_notebooks_signal.connect(_on_collected_notebooks_signal)
+	SignalManager.collected_healthpotions_signal.connect(_on_collected_healthpotions_signal)
+	SignalManager.heal_signal.connect(_heal_signal)
 	
-	SignalManager.submitted_math_answer.connect(_on_math_ui_submitted_math_answer)	
+	
+	SignalManager.submitted_math_answer.connect(_on_math_ui_submitted_math_answer)
 	SignalManager.signal_math.connect(_on_signal_math)
 	SignalManager.hurt_signal.connect(_on_health_lost_signal)
 	
@@ -215,7 +218,8 @@ func state_inputs():
 	if Input.is_action_just_pressed("health") and health_potion > 0:
 		health = min(health + 20,MAX_HEALTH)
 		health_potion -= 1
-		state_health_timer_inactive()
+		if health_timer_state != TIMER_STATE.DISABLED:
+			state_health_timer_inactive()
 		print("healed: "+str(health_potion))
 		ui.set_health(health)
 		ui.health_used(health_potion)
@@ -428,3 +432,7 @@ func _on_trigger_panic():
 
 func activate_notebook():
 	ui.activate_notebook()
+
+func _heal_signal(i: int):
+	health = min(health + 20,MAX_HEALTH)
+	ui.set_health(health)

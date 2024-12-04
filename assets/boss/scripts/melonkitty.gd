@@ -150,6 +150,9 @@ func set_tired():
 
 func set_smacked():
 	state = STATE.SMACKED
+	soundeffects.stop()
+	soundeffects.stream = load("res://assets/boss/sound_effects/punch.mp3")
+	soundeffects.play()
 	set_sprite_direction(player.global_position)
 	SignalManager.hit_kitty.emit()
 	
@@ -161,15 +164,24 @@ func set_charge_start():
 	locked_in = false
 	anime.get("parameters/playback").travel("charge_start")
 	state = STATE.CHARGE_START
+	soundeffects.stop()
+	soundeffects.stream = load("res://assets/boss/sound_effects/charge.mp3")
+	soundeffects.play()
 
 func set_exit():
 	anime.get("parameters/playback").travel("exit")
 	state = STATE.ENTER
+	soundeffects.stop()
+	soundeffects.stream = load("res://assets/boss/sound_effects/exit.mp3")
+	soundeffects.play()
 
 func set_enter():
 	anime.get("parameters/playback").travel("entrance")
 	state = STATE.ENTER
-
+	soundeffects.stop()
+	soundeffects.stream = load("res://assets/boss/sound_effects/enter.mp3")
+	soundeffects.play()
+		
 func set_idle():
 	state = STATE.IDLE
 	
@@ -192,8 +204,12 @@ func _on_stab_body_entered(body: Node3D) -> void:
 	if state == STATE.CHARGE or state == STATE.SMACKED:
 		if body.name == "side":
 			direction.x = -1*direction.x
+			soundeffects.stream = load("res://assets/boss/sound_effects/collide.mp3")
+			soundeffects.play()
 		elif body.name == "back":
 			direction.z = -1*direction.z
+			soundeffects.stream = load("res://assets/boss/sound_effects/collide.mp3")
+			soundeffects.play()
 
 func _on_timer_timeout() -> void:
 	cooldown.stop()

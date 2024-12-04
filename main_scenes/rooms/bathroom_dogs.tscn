@@ -84,13 +84,11 @@ collision_layer = 3
 shape = SubResource("BoxShape3D_4n6mk")
 
 [node name="door" parent="Node3D3" instance=ExtResource("3_vc3ma")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 114.479, 4.1108, -5.69986)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 114.479, 4.1108, -5.69986)
 scene = "res://main_scenes/rooms/park.tscn"
 
 [node name="FSM_Players" parent="." instance=ExtResource("6_aqx33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.805, 7.71901, -11.0307)
-
-[node name="PauseUi" parent="." instance=ExtResource("7_dko7k")]
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(134.484, 0, 0, 0, 39.82, 0, 0, 0, 3, 28.4371, 8.47362, -13.8659)
@@ -111,3 +109,5 @@ texture = ExtResource("8_gvsts")
 [node name="notebooks" parent="." instance=ExtResource("6_0cy37")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -55.6355, 11.9173, -16.7454)
 message_id = 4
+
+[node name="PauseUi" parent="." instance=ExtResource("7_dko7k")]

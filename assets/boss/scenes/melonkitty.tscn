@@ -1,10 +1,9 @@
-[gd_scene load_steps=119 format=3 uid="uid://cvvio41dtfhjm"]
+[gd_scene load_steps=118 format=3 uid="uid://cvvio41dtfhjm"]
 
 [ext_resource type="Script" path="res://assets/boss/scripts/melonkitty.gd" id="1_f7nh5"]
 [ext_resource type="Texture2D" uid="uid://br5p61owkn427" path="res://assets/boss/sprites/Melonkitty.png" id="2_2o0n6"]
 [ext_resource type="Texture2D" uid="uid://dmfmn0uhtjqok" path="res://assets/boss/sprites/line.png" id="3_7a71t"]
 [ext_resource type="Texture2D" uid="uid://dc7xj15hearx3" path="res://assets/boss/sprites/melon_circle.png" id="4_jstu5"]
-[ext_resource type="AudioStream" uid="uid://c5uxoqboq4g6m" path="res://assets/enemies/sound/stab.mp3" id="5_pvpto"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0oej6"]
 atlas = ExtResource("2_2o0n6")
@@ -2513,7 +2512,8 @@ frame = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-stream = ExtResource("5_pvpto")
+volume_db = 15.0
+max_distance = 200.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_swino")

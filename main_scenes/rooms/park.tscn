@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://pvs20xjpnh6s"]
+[gd_scene load_steps=17 format=3 uid="uid://pvs20xjpnh6s"]
 
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="1_juruf"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="2_ce57r"]
@@ -8,11 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://byueu6gdfpg3b" path="res://assets/interactives/pool.tscn" id="6_p8a5i"]
 [ext_resource type="PackedScene" uid="uid://bf2vt0s7q84g1" path="res://assets/interactives/miki_tree.tscn" id="7_x5c77"]
 [ext_resource type="PackedScene" uid="uid://drgkvakly7xpw" path="res://assets/interactives/tree.tscn" id="8_x6kle"]
+[ext_resource type="PackedScene" uid="uid://joeirp3dht0x" path="res://main_scenes/houses/bathroom_boys.tscn" id="9_1yna0"]
+[ext_resource type="PackedScene" uid="uid://c42i7lylsy8ym" path="res://main_scenes/houses/bathroom_girls.tscn" id="9_t8dp5"]
+[ext_resource type="PackedScene" uid="uid://cbl4e3ok3aou1" path="res://main_scenes/houses/bathroom_nb.tscn" id="11_d0p6f"]
+[ext_resource type="PackedScene" uid="uid://v5knvreefu2x" path="res://main_scenes/houses/bathroom_dogs.tscn" id="12_dlayt"]
+[ext_resource type="PackedScene" uid="uid://c0qepujyfx1tt" path="res://main_scenes/houses/shed.tscn" id="12_n4gt7"]
+[ext_resource type="PackedScene" uid="uid://bdxql18eunouq" path="res://main_scenes/houses/gamer_house.tscn" id="13_kyt5h"]
+[ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="14_uyu4g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hgw7x"]
+size = Vector3(365.314, 24.6222, 3.81544)
 
 [node name="Park" type="Node3D"]
 
 [node name="FSM_Players" parent="." instance=ExtResource("2_ce57r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 254.722, 5.03181, 23.3569)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.852, 7.26907, 23.3569)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("3_gckft")
@@ -23,36 +33,67 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(114, 0, -22)
 
-[node name="MainHouse" parent="." instance=ExtResource("4_3hl6c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320.733, 1.87188, 45.396)
+[node name="objects" type="Node3D" parent="."]
 
-[node name="MainHouse2" parent="." instance=ExtResource("5_gp716")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.538, 1.8, 193.122)
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="Pool" parent="Node3D" instance=ExtResource("6_p8a5i")]
+[node name="Pool" parent="objects" instance=ExtResource("6_p8a5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.761, 1.86522, 27.3106)
 
-[node name="miki_tree" parent="Node3D" instance=ExtResource("7_x5c77")]
+[node name="miki_tree" parent="objects" instance=ExtResource("7_x5c77")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 96.3597, 1.8, 80.5462)
 
-[node name="tree" parent="Node3D" instance=ExtResource("8_x6kle")]
+[node name="tree" parent="objects" instance=ExtResource("8_x6kle")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 127.51, 1.8, 41.534)
 
-[node name="tree2" parent="Node3D" instance=ExtResource("8_x6kle")]
+[node name="tree2" parent="objects" instance=ExtResource("8_x6kle")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 174.44, 1.8, 95.8453)
 
-[node name="tree3" parent="Node3D" instance=ExtResource("8_x6kle")]
+[node name="tree3" parent="objects" instance=ExtResource("8_x6kle")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 71.0181, 1.90497, 37.3903)
 
-[node name="tree4" parent="Node3D" instance=ExtResource("8_x6kle")]
+[node name="tree4" parent="objects" instance=ExtResource("8_x6kle")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 211.428, 1.90497, 129.738)
 
-[node name="tree5" parent="Node3D" instance=ExtResource("8_x6kle")]
+[node name="tree5" parent="objects" instance=ExtResource("8_x6kle")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 119.747, 1.90497, 101.746)
 
-[node name="tree6" parent="Node3D" instance=ExtResource("8_x6kle")]
+[node name="tree6" parent="objects" instance=ExtResource("8_x6kle")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 74.108, 1.90497, 101.746)
+
+[node name="houses" type="Node3D" parent="."]
+
+[node name="bathroomboys" parent="houses" instance=ExtResource("9_1yna0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0042, 2.01174, 170.326)
+
+[node name="MainHouse" parent="houses" instance=ExtResource("4_3hl6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 320.733, 1.87188, 45.396)
+
+[node name="daycare" parent="houses" instance=ExtResource("5_gp716")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.538, 1.8, 193.122)
+
+[node name="bathroomgirls" parent="houses" instance=ExtResource("9_t8dp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9334, 2.07906, 110.407)
+
+[node name="bathroomnb" parent="houses" instance=ExtResource("11_d0p6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9078, 2.16878, 50.1622)
+
+[node name="bathroomdogs" parent="houses" instance=ExtResource("12_dlayt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.922, 2.04773, -10.3676)
+
+[node name="shed" parent="houses" instance=ExtResource("12_n4gt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.329, 1.8, 2.82334)
+
+[node name="gamerhouse" parent="houses" instance=ExtResource("13_kyt5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.015, 1.79996, 176.714)
+
+[node name="invisible" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 210.979)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
+shape = SubResource("BoxShape3D_hgw7x")
+
+[node name="door" parent="." instance=ExtResource("14_uyu4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.431, 2.0805, 207.6)
+scene = "res://main_scenes/rooms/entrance.tscn"
 
 [node name="PauseUi" parent="." instance=ExtResource("1_juruf")]

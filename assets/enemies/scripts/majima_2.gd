@@ -76,6 +76,7 @@ func _on_result(val: bool):
 			anime.get("parameters/playback").travel("hurt")
 		else:
 			anime.get("parameters/playback").travel("leave")
+	SignalManager.done_soda.emit()
 
 func _on_stab_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and !player_contact:

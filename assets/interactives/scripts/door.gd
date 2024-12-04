@@ -31,8 +31,6 @@ func _on_clickable_body_entered(body: Node3D) -> void:
 		is_interactive = true
 		player_pos = body
 
-	
-
 
 func _on_clickable_body_exited(body: Node3D) -> void:
 	if body.name == "main_player":
@@ -54,8 +52,5 @@ func _on_enemy_aware_body_exited(body: Node3D) -> void:
 	if body.name == "enemy":
 		is_near_enemy = false
 
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	match anim_name:
-		"door":
-			get_tree().change_scene_to_file(scene)
+func change():
+	get_tree().change_scene_to_file(scene)
