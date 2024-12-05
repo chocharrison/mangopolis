@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb3l0k4dw367"]
+[gd_scene load_steps=24 format=3 uid="uid://bb3l0k4dw367"]
 
 [ext_resource type="MeshLibrary" uid="uid://cgw2rfur2y0mr" path="res://assets/tiles/toilet/toilet.tres" id="1_0f22h"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="2_et6lc"]
-[ext_resource type="PackedScene" uid="uid://buwm2vco8ocs2" path="res://assets/interactives/toilet.tscn" id="3_1837h"]
+[ext_resource type="PackedScene" uid="uid://cttb1pdqf2uer" path="res://assets/enemies/scenes/toilet_enemy.tscn" id="3_mvfbs"]
+[ext_resource type="Script" path="res://main_scenes/rooms/boss_majima.gd" id="3_yp753"]
 [ext_resource type="PackedScene" uid="uid://by5fqnjab8tay" path="res://assets/interactives/Sprites/wash/wash.blend" id="4_kbbsg"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="5_vpxl7"]
+[ext_resource type="Texture2D" uid="uid://vic2gn535hsn" path="res://assets/enemies/sprites/majima_title_card.png" id="6_h6axy"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="6_hcubk"]
+[ext_resource type="FontFile" uid="uid://cwbqc3ck1uyrt" path="res://fonts/edosz.ttf" id="7_hmvfn"]
+[ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="8_qf1lj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h3w3a"]
 size = Vector3(222.895, 24.6222, 3.81544)
@@ -18,8 +22,464 @@ material = SubResource("StandardMaterial3D_nh5d1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4n6mk"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_b0kmv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhwrb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27845"]
+size = Vector3(1, 6.00879, 39.3567)
+
+[sub_resource type="Animation" id="Animation_3b1pn"]
+resource_name = "intro"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-63.1549, 12.4477, -4.31986), Vector3(-63.1549, 12.4477, -4.31986), Vector3(-40.7579, 9.88757, -14.3082)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("toilets/Toilet_enemy4")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"intro_majima"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"intro2"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_yof2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:current")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-63.1549, 12.4477, -4.31986)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/Label2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/Label2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(26, 317)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel/Label2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Panel/Label:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Panel/Label:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(261, 201)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Panel/ColorRect:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Panel/ColorRect:color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Panel/Sprite2D:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4.125, 3.21484)]
+}
+
+[sub_resource type="Animation" id="Animation_2amjc"]
+resource_name = "intro2"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-40.7579, 9.88757, -14.3082), Vector3(-40.7579, 7.17254, -18.0217), Vector3(-40.7579, 7.17254, -18.0217), Vector3(-40.7579, 7.17254, -21.0217)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"intro3"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0yb84"]
+resource_name = "intro3"
+length = 6.6667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-40.7579, 7.17254, -21.0217), Vector3(-40.7579, 7.17254, -21.0217)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 5.83333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Panel/Label2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Panel/Label2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.866667, 1.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1733, 121), Vector2(26, 317)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Panel/Label2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.866667, 1.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4.1004, 6.04), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel/Label:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.966667, 1.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.73755, 4.10881), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Panel/Label:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.966667, 1.23333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-223, -72), Vector2(261, 201)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Panel/ColorRect:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Panel/ColorRect:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1.8, 3.1, 5.33333, 5.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.396078), Color(1, 1, 1, 0.0724534), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Panel/Sprite2D:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.3, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(13.169, 7.75499), Vector2(4.125, 3.21484)]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(6.66667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"intro_down"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xw5ht"]
+resource_name = "intro_done"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("toilets/Toilet_enemy4")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"interuppted_majima"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8j06r"]
+_data = {
+"RESET": SubResource("Animation_yof2x"),
+"intro": SubResource("Animation_3b1pn"),
+"intro2": SubResource("Animation_2amjc"),
+"intro3": SubResource("Animation_0yb84"),
+"intro_done": SubResource("Animation_xw5ht")
+}
+
 [node name="BathroomNb" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3631, -0.978978, -3.04742)
+
+[node name="FSM_Players" parent="." instance=ExtResource("5_vpxl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.805, 7.71901, -11.0307)
 
 [node name="Node3D3" type="Node3D" parent="."]
 
@@ -120,30 +580,143 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 114.47
 scene = "res://main_scenes/rooms/park.tscn"
 
 [node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("3_yp753")
 
-[node name="Toilet" parent="Node3D" instance=ExtResource("3_1837h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0554, 2.6, -29.4849)
+[node name="toilets" type="Node3D" parent="Node3D"]
 
-[node name="Toilet2" parent="Node3D" instance=ExtResource("3_1837h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1654, 2.6, -29.4849)
+[node name="Toilet_enemy" parent="Node3D/toilets" instance=ExtResource("3_mvfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32874, 2.60447, -29.0692)
 
-[node name="Toilet3" parent="Node3D" instance=ExtResource("3_1837h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2811, 2.6, -29.4849)
+[node name="Toilet_enemy2" parent="Node3D/toilets" instance=ExtResource("3_mvfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4487, 2.60447, -29.0692)
+toilet_number = 1
 
-[node name="Toilet4" parent="Node3D" instance=ExtResource("3_1837h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.2798, 2.6, -29.4849)
+[node name="Toilet_enemy3" parent="Node3D/toilets" instance=ExtResource("3_mvfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6973, 2.60447, -29.0692)
+toilet_number = 2
 
-[node name="Toilet5" parent="Node3D" instance=ExtResource("3_1837h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.2774, 2.6, -29.4849)
+[node name="Toilet_enemy4" parent="Node3D/toilets" instance=ExtResource("3_mvfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9705, 2.60447, -29.0692)
+toilet_number = 3
 
-[node name="Toilet6" parent="Node3D" instance=ExtResource("3_1837h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.3047, 2.6, -29.4849)
+[node name="Toilet_enemy5" parent="Node3D/toilets" instance=ExtResource("3_mvfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.2212, 2.60447, -29.0692)
+toilet_number = 4
 
-[node name="Toilet7" parent="Node3D" instance=ExtResource("3_1837h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.2859, 2.6, -29.4849)
+[node name="Toilet_enemy6" parent="Node3D/toilets" instance=ExtResource("3_mvfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.8377, 2.60447, -29.0692)
+toilet_number = 5
 
-[node name="Toilet8" parent="Node3D" instance=ExtResource("3_1837h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57411, 2.6, -29.4849)
+[node name="Toilet_enemy7" parent="Node3D/toilets" instance=ExtResource("3_mvfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.7392, 2.60447, -29.0692)
+toilet_number = 6
+
+[node name="Toilet_enemy8" parent="Node3D/toilets" instance=ExtResource("3_mvfbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.8661, 2.60447, -29.0692)
+toilet_number = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 28.3492, 0, 0, 0, 54.1125, 10.4345, 1.92249, -14.0133)
+visible = false
+mesh = SubResource("BoxMesh_b0kmv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_xhwrb")
+
+[node name="Area3D" type="Area3D" parent="Node3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.6392, 2.50439, -7.00332)
+shape = SubResource("BoxShape3D_27845")
+
+[node name="cool_down" type="Timer" parent="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.1549, 12.4477, -4.31986)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D"]
+libraries = {
+"": SubResource("AnimationLibrary_8j06r")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node3D"]
+
+[node name="Panel" type="Panel" parent="Node3D"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Node3D/Panel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.72, 16.24)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node3D/Panel"]
+position = Vector2(593, 300)
+scale = Vector2(4.125, 3.21484)
+texture = ExtResource("6_h6axy")
+
+[node name="Label" type="Label" parent="Node3D/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 261.0
+offset_top = 201.0
+offset_right = 938.0
+offset_bottom = 336.0
+theme_override_colors/font_color = Color(0.92505, 0.758606, 1.15514e-06, 1)
+theme_override_fonts/font = ExtResource("7_hmvfn")
+theme_override_font_sizes/font_size = 120
+text = "GORO MAJIMA"
+
+[node name="Label2" type="Label" parent="Node3D/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 26.0
+offset_top = 317.0
+offset_right = 1163.0
+offset_bottom = 476.0
+theme_override_colors/font_color = Color(0.92549, 0.756863, 0, 1)
+theme_override_fonts/font = ExtResource("7_hmvfn")
+theme_override_font_sizes/font_size = 45
+text = "HE WONT LEAVE YOU UNTIL
+YOU MATHED"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="Node3D"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Node3D/Panel2"]
+self_modulate = Color(0.898813, 0.849331, 0, 1)
+layout_mode = 0
+offset_left = 176.0
+offset_top = 522.0
+offset_right = 980.0
+offset_bottom = 549.0
+max_value = 10.0
+step = 1.0
+value = 4.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Node3D/Panel2"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 486.0
+offset_right = 348.0
+offset_bottom = 528.0
+theme_override_fonts/font = ExtResource("8_qf1lj")
+theme_override_font_sizes/font_size = 50
+text = "Goro Majima"
+
+[node name="burst" type="Timer" parent="Node3D"]
+wait_time = 5.0
 
 [node name="Node3D2" type="Node3D" parent="."]
 
@@ -159,7 +732,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 73.9922, 2.6, -34.4233)
 [node name="wash4" parent="Node3D2" instance=ExtResource("4_kbbsg")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 100.075, 2.6, -34.4233)
 
-[node name="FSM_Players" parent="." instance=ExtResource("5_vpxl7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.805, 7.71901, -11.0307)
-
 [node name="PauseUi" parent="." instance=ExtResource("6_hcubk")]
+
+[connection signal="body_entered" from="Node3D/Area3D" to="Node3D" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Node3D/cool_down" to="Node3D" method="_on_cool_down_timeout"]

@@ -5,7 +5,6 @@ extends Node3D
 @onready var turn_piss = false
 
 @export var notebook1_number = 6
-@export var notebook2_number = 7
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

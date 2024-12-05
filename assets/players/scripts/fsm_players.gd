@@ -66,8 +66,12 @@ func _ready() -> void:
 	
 	SignalManager.trigger_panic.connect(_on_trigger_panic)
 	
+	SignalManager.save_health.connect(_save_health)
+	
+	health = SaveStates.health
+	health_potion = SaveStates.health_potion
 	ui.set_health(health)
-	ui.health_picked(health_potion)
+	ui.health_potion_set(health_potion)
 	
 	if (SaveStates.is_checkpoint()):
 		print("setting player")
@@ -262,7 +266,7 @@ func paused():
 	ui.interrupted()
 
 func unpaused():
-	print("unpasued")
+	#print("unpasued")
 	state = STATE.ENABLE
 	main_player.unpause_controls()
 	sub_player.unpause_controls()
@@ -314,7 +318,7 @@ func start_math(level: int,damage: int = 20,iter: int = 0):
 	health_damage = damage
 	state = STATE.MATH
 	paused()
-	print("start")
+	#print("start")
 	match level:
 		0:
 			first = 0
@@ -424,7 +428,7 @@ func _on_health_lost_signal(damage: int):
 	health_lost(true,damage)
 
 func _on_signal_math(level: int,damage: int, iter: int = 0):
-	print("here")
+	#print("here")
 	start_math(level,damage,iter)
 
 func _on_trigger_panic():
@@ -436,3 +440,7 @@ func activate_notebook():
 func _heal_signal(i: int):
 	health = min(health + 20,MAX_HEALTH)
 	ui.set_health(health)
+
+func _save_health():
+	SaveStates.save_health(health)
+	SaveStates.save_health_potion(health_potion)

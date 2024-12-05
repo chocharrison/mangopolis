@@ -58,6 +58,8 @@ func _physics_process(delta: float) -> void:
 
 func perform_state_actions(_delta):
 	match state:
+		STATE.DISABLED:
+			anime.get("parameters/playback").travel("idle")
 		STATE.TIRED:
 			state_tired()
 		STATE.PET:
@@ -212,11 +214,11 @@ func bread_crumbing():
 # Disable player controls and pause timers when needed.
 func disable_controls():
 	state = STATE.DISABLED
-	collision.disabled = true
+	collision.set_deferred("disabled",true)
 	velocity = Vector3(0,0,0)
 	
 func enable_controls():
-	collision.disabled = false
+	collision.set_deferred("disabled",false)
 	state = STATE.ENABLED
 	
 	

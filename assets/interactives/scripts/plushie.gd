@@ -33,7 +33,6 @@ func _on_interact(panicked):
 
 func _on_static_body_3d_body_entered(body: Node3D) -> void:
 	if body.name == "main_player":
-		print("interact")
 		SignalManager.show_interact_button_signal.emit(true)
 		is_interactive = true
 
@@ -42,6 +41,5 @@ func _on_static_body_3d_body_entered(body: Node3D) -> void:
 
 func _on_static_body_3d_body_exited(body: Node3D) -> void:
 	if body.name == "main_player":
-		print("uninteract")
 		SignalManager.show_interact_button_signal.emit(false)
 		is_interactive = false

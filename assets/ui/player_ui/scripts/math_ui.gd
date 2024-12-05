@@ -31,7 +31,7 @@ func math_failure():
 
 # Initializes the math puzzle UI, clearing the previous input and preparing for a new math question
 func math_enter():
-	print("start")
+	#print("start")
 	answer.clear()
 	math_anime.play("math_enter")
 	answer.grab_focus()

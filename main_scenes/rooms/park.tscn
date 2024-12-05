@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://pvs20xjpnh6s"]
+[gd_scene load_steps=19 format=3 uid="uid://pvs20xjpnh6s"]
 
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="1_juruf"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="2_ce57r"]
 [ext_resource type="MeshLibrary" uid="uid://bc8evx6026mwp" path="res://assets/tiles/outside/outside_assets.tres" id="3_gckft"]
 [ext_resource type="PackedScene" uid="uid://crjtqdk1wdbt4" path="res://main_scenes/houses/main_house.tscn" id="4_3hl6c"]
 [ext_resource type="PackedScene" uid="uid://clf23sxqqtme6" path="res://main_scenes/houses/daycare.tscn" id="5_gp716"]
+[ext_resource type="PackedScene" uid="uid://lnh8b7sohcb4" path="res://assets/interactives/cave.tscn" id="6_1olgr"]
 [ext_resource type="PackedScene" uid="uid://byueu6gdfpg3b" path="res://assets/interactives/pool.tscn" id="6_p8a5i"]
+[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="7_lq3v2"]
 [ext_resource type="PackedScene" uid="uid://bf2vt0s7q84g1" path="res://assets/interactives/miki_tree.tscn" id="7_x5c77"]
 [ext_resource type="PackedScene" uid="uid://drgkvakly7xpw" path="res://assets/interactives/tree.tscn" id="8_x6kle"]
 [ext_resource type="PackedScene" uid="uid://joeirp3dht0x" path="res://main_scenes/houses/bathroom_boys.tscn" id="9_1yna0"]
@@ -37,9 +39,11 @@ metadata/_editor_floor_ = Vector3(114, 0, -22)
 
 [node name="Pool" parent="objects" instance=ExtResource("6_p8a5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.761, 1.86522, 27.3106)
+notebook1_number = 16
 
 [node name="miki_tree" parent="objects" instance=ExtResource("7_x5c77")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 96.3597, 1.8, 80.5462)
+notebook_number = 7
 
 [node name="tree" parent="objects" instance=ExtResource("8_x6kle")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 127.51, 1.8, 41.534)
@@ -58,6 +62,13 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 119.747, 1.90497, 101.746)
 
 [node name="tree6" parent="objects" instance=ExtResource("8_x6kle")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 74.108, 1.90497, 101.746)
+
+[node name="cave" parent="objects" instance=ExtResource("6_1olgr")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 344.908, 0, -61.4756)
+
+[node name="notebooks" parent="objects" instance=ExtResource("7_lq3v2")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 344.673, 8.78015, -64.4793)
+message_id = 11
 
 [node name="houses" type="Node3D" parent="."]
 

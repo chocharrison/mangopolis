@@ -107,7 +107,7 @@ mesh = SubResource("PlaneMesh_sg0mb")
 skeleton = NodePath("../..")
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.107819)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1001, -0.107819)
 depth = 3.0
 polygon = PackedVector2Array(-1.96456, 0.089051, -1.00446, -0.285577, 0.938104, -0.26153, 1.87851, 0.179778, 1.7246, -0.795455, -1.77949, -0.979213)
 

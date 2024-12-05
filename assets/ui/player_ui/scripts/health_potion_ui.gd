@@ -14,6 +14,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func health_set(val: int):
+	health_potion.text = str(val)
+	if val == 0:
+		health_animation.play("health_exhaust")
+
 func health_picked(val: int):
 	health_potion.text = str(val)
 	health_animation.play("health_picked")
@@ -29,5 +34,5 @@ func health_exhaust(val: int):
 func health_used(val: int):
 	health_potion.text = str(val)
 	health_animation.play("health_used")
-	audio.stream = load("res://assets/ui/player_ui/sounds/drink.mp3")
+	audio.stream = load("res://assets/ui/player_ui/sounds/drain.mp3")
 	audio.play()

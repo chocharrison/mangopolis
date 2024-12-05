@@ -1,9 +1,8 @@
 extends Node3D
 
-const SPEED = 6.0
+const SPEED = 4.0
 
 @onready var anime = get_node("AnimationTree")
-@onready var soundeffects = get_node("AudioStreamPlayer")
 @onready var stab = $stab/collide
 
 
@@ -37,29 +36,22 @@ func handle_state_transitions():
 	if state == STATE.DISABLED:
 		return
 
-func state_idle():
-	anime.get("parameters/playback").travel("default")
-	stab.disabled = true
 
 func state_chase(_delta):
 	anime.get("parameters/playback").travel("chase")
 	set_sprite_direction(player.global_position)
 	global_position = global_position.lerp(player.global_position, SPEED * _delta)
-	if soundeffects.playing == false:
-		soundeffects.stream = load("res://assets/enemies/sound/stab.mp3")
-		soundeffects.play()
 
 func set_chase():
 	state = STATE.CHASE
 	anime.get("parameters/playback").travel("chase")
-	soundeffects.stream = load("res://assets/enemies/sound/majima.mp3")
-	soundeffects.play()
-	stab.disabled = false
+	stab.set_deferred("disabled",false)
+	player_contact = false
 		
 func set_disabled():
 	state = STATE.DISABLED
-	anime.get("parameters/playback").travel("default")
-	stab.disabled = true
+	stab.set_deferred("disabled",true)
+	player_contact = false
 
 func set_math():
 	state = STATE.MATH
@@ -76,9 +68,11 @@ func _on_result(val: bool):
 			anime.get("parameters/playback").travel("hurt")
 		else:
 			anime.get("parameters/playback").travel("leave")
-	SignalManager.done_soda.emit()
-
+		SignalManager.done_majima.emit()
+	player_contact = false
+	
 func _on_stab_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and !player_contact:
 		player_contact = true
 		set_math()
+		stab.set_deferred("disabled",true)

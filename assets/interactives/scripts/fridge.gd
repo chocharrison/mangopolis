@@ -3,7 +3,7 @@ extends Node3D
 @onready var is_interactive = false
 @onready var is_open = false
 @onready var obtain_notebook = false
-@onready var notebook_number = 17
+@export var notebook_number = 17
 
 @onready var show_fridge = $Control
 @onready var fridge_open = $fridge2/previewRootNode_001

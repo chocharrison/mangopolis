@@ -1,14 +1,16 @@
 extends Node
 
 
-var notebooks = [0,3]
+@export var notebooks = [0]
 var is_new_game = true
 var checkpoint = {}
 var checkpoint_name = null
 var saved_scene = null
 var is_start = false
 var first_meet = false
-const total_notebooks = 40
+@export var health = 100
+@export var health_potion = 3
+@export var total_notebooks = 21
 
 
 func _ready() -> void:
@@ -16,6 +18,12 @@ func _ready() -> void:
 
 func get_notebook(message_id: int):
 	notebooks.append(message_id)
+
+func save_health(val: int):
+	health = val
+
+func save_health_potion(val: int):
+	health_potion = val
 
 func game_reset():
 	notebooks = [0]

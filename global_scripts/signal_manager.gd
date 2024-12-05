@@ -39,3 +39,9 @@ signal hit_kitty()
 signal finish_watermelon()
 
 signal done_soda()
+
+signal Majima_popped()
+signal done_majima()
+signal closed_majima(val: int)
+
+signal save_health()

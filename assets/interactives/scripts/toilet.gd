@@ -5,6 +5,8 @@ extends Node3D
 @onready var toilet = $Node3D/seat
 @onready var anime = $AnimationPlayer
 @onready var majima = $Majima2
+@onready var setup = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.interracted.connect(_on_interact)
@@ -14,21 +16,23 @@ func _ready() -> void:
 func _on_interact(panicked):
 	if is_interactive and !panicked:
 		detect.disabled = true
-		anime.play("close")
-
-func interuppted_majima():
-	anime.stop()
-
-func suspense_majima():
-	detect.disabled = false
-	anime.play("majima")
+		if setup == 1:
+			anime.play("pikmin")
+		elif setup == 2:
+			anime.play("majima")
+		else:
+			anime.play("empty")
 	
+func set_toilet(val: int):
+	setup = val
+
 func play_majima():
 	toilet.frame = 0
-	var majima_copy = majima
-	majima_copy.visible = true
-	majima_copy.set_chase()
-	SignalManager.Majima_popped.emit(self.name)
+	majima.visible = true
+	majima.set_chase()
+
+func play_pikmin():
+	SignalManager.increase_pikmin_count.emit()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "main_player":

@@ -45,6 +45,9 @@ func play_ded():
 func health_picked(val: int):
 	health_potion_ui.health_picked(val)
 
+func health_potion_set(val: int):
+	health_potion_ui.health_set(val)
+
 func health_exhaust(val: int):
 	health_potion_ui.health_exhaust(val)
 
@@ -88,7 +91,7 @@ func notebook_empty():
 	notebook_ui.notebook_empty()
 	
 func interrupted():
-	print("inteerupted ui")
+	#print("inteerupted ui")
 	anime.play("interrupted")
 	notebook_ui.interrupted()
 

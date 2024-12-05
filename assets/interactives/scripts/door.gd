@@ -53,4 +53,5 @@ func _on_enemy_aware_body_exited(body: Node3D) -> void:
 		is_near_enemy = false
 
 func change():
+	SignalManager.save_health.emit()
 	get_tree().change_scene_to_file(scene)

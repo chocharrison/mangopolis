@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwpx2i0cbxtca"]
+[gd_scene load_steps=10 format=3 uid="uid://cwpx2i0cbxtca"]
 
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_fbtlp"]
 [ext_resource type="MeshLibrary" uid="uid://cs2tlvou1di23" path="res://assets/tiles/house/house_assets.tres" id="2_styyt"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="3_r72lb"]
 [ext_resource type="PackedScene" uid="uid://daov3645d55tu" path="res://assets/interactives/vending_machine.tscn" id="4_qvqdp"]
+[ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="5_khorc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1afwh"]
 size = Vector3(222.895, 24.6222, 3.81544)
@@ -19,7 +20,7 @@ material = SubResource("StandardMaterial3D_dpwy8")
 [node name="BreakRoom" type="Node3D"]
 
 [node name="FSM_Players" parent="." instance=ExtResource("1_fbtlp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.08006, 7.51351, 5.49855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86672, 7.51351, 5.49855)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_styyt")
@@ -82,3 +83,6 @@ shape = SubResource("BoxShape3D_kw57c")
 
 [node name="VendingMachine" parent="." instance=ExtResource("4_qvqdp")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -6.50175, 7.86586, -40.9228)
+
+[node name="door" parent="." instance=ExtResource("5_khorc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.1411, 2.94895, 4.72296)
