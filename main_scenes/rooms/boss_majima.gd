@@ -110,9 +110,13 @@ func finished_boss():
 	interrupt_majima()
 	finished = true
 	collision_wall.set_deferred("disabled",true)
+	anim.play("finish")
+	Engine.time_scale = 0.25
+	await get_tree().create_timer(1).timeout
+	Engine.time_scale = 1
+	audio.stop()
 	SaveStates.get_notebook(notebook_number)
 	SignalManager.collected_notebooks_signal.emit()
-	audio.stop()
 	health_show.visible = false
 
 

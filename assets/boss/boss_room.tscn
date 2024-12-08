@@ -1,9 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://crigxfsd5fesj"]
+[gd_scene load_steps=37 format=3 uid="uid://crigxfsd5fesj"]
 
 [ext_resource type="Script" path="res://assets/boss/scripts/watermelon_manager.gd" id="1_cuwes"]
 [ext_resource type="Script" path="res://assets/boss/scripts/boss_room.gd" id="1_j3ek6"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_k1jxg"]
+[ext_resource type="PackedScene" uid="uid://b6k24a7tsyakp" path="res://assets/enemies/scenes/unknown.tscn" id="2_1oxdh"]
 [ext_resource type="PackedScene" uid="uid://q1jn1ks15xhi" path="res://assets/boss/scenes/watermelon.tscn" id="2_pugrm"]
+[ext_resource type="PackedScene" uid="uid://cffjdydocncdp" path="res://assets/enemies/scenes/unknown_charge.tscn" id="3_u2hi1"]
 [ext_resource type="PackedScene" uid="uid://cvvio41dtfhjm" path="res://assets/boss/scenes/melonkitty.tscn" id="4_k33dl"]
 [ext_resource type="MeshLibrary" uid="uid://bgx88pqbk3ymf" path="res://assets/tiles/assets.tres" id="6_lc85u"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="6_lor2e"]
@@ -12,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://c00p5aqcibmgj" path="res://assets/boss/sound_effects/blank.mp3" id="8_j14ot"]
 [ext_resource type="Texture2D" uid="uid://bn7cjq4toc4gx" path="res://assets/boss/sprites/Title card.png" id="8_onv4e"]
 [ext_resource type="FontFile" uid="uid://cwbqc3ck1uyrt" path="res://fonts/edosz.ttf" id="10_d4jti"]
+[ext_resource type="Script" path="res://assets/boss/lights.gd" id="12_rpv0r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fyssh"]
 size = Vector3(109.904, 3.4668, 7.63965)
@@ -1375,7 +1378,7 @@ tracks/11/keys = {
 
 [sub_resource type="Animation" id="Animation_cs5j3"]
 resource_name = "intro_8"
-length = 1.46667
+length = 1.66667
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1517,7 +1520,7 @@ tracks/11/path = NodePath(".")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(1.46667),
+"times": PackedFloat32Array(1.66667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -1635,8 +1638,92 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_gd1f7"]
+resource_name = "phase_7"
+length = 40.0001
+loop_mode = 1
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 13, 15, 20, 23, 24, 25, 28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [5, 3],
+"method": &"add_unknown_chase"
+}, {
+"args": [16, 8],
+"method": &"add_unknown_chase"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_chase"
+}, {
+"args": [20, 20],
+"method": &"add_unknown_charge"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_chase"
+}, {
+"args": [5, 3],
+"method": &"add_unknown_chase"
+}, {
+"args": [true],
+"method": &"follow_player"
+}, {
+"args": [4, 12],
+"method": &"add_unknown_charge"
+}, {
+"args": [16, 8],
+"method": &"add_unknown_chase"
+}, {
+"args": [false],
+"method": &"follow_player"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lights")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 28),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"turn_switch"
+}, {
+"args": [true],
+"method": &"turn_switch"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Melonkitty")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(29, 31, 39),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_enter"
+}, {
+"args": [],
+"method": &"set_tired"
+}, {
+"args": [],
+"method": &"set_exit"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_dqnah"]
-resource_name = "phase_3"
+resource_name = "phase_2"
 length = 23.0
 step = 1.0
 tracks/0/type = "method"
@@ -1692,7 +1779,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_scjwn"]
-resource_name = "phase_5"
+resource_name = "phase_4"
 length = 30.0
 loop_mode = 1
 step = 1.0
@@ -1751,21 +1838,94 @@ tracks/2/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_vn14p"]
+resource_name = "phase_6"
+length = 20.0001
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [12, 12, false],
+"method": &"set_pos"
+}, {
+"args": [0, 0, false],
+"method": &"set_pos"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Melonkitty")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.7312, 10, 16),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_enter"
+}, {
+"args": [],
+"method": &"set_charge_start"
+}, {
+"args": [],
+"method": &"set_stab_start"
+}, {
+"args": [],
+"method": &"set_tired"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("phase_control")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(19),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [3.0, false, false],
+"method": &"seek"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("watermelon_manager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_follow_player"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1nmb0"]
 _data = {
 "hurt": SubResource("Animation_0awbd"),
 "phase_1": SubResource("Animation_lhxo8"),
-"phase_3": SubResource("Animation_dqnah"),
-"phase_5": SubResource("Animation_scjwn")
+"phase_2": SubResource("Animation_dqnah"),
+"phase_4": SubResource("Animation_scjwn"),
+"phase_6": SubResource("Animation_vn14p"),
+"phase_7": SubResource("Animation_gd1f7")
 }
 
 [node name="BossRoom" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.19892, 48.1184, 0, 54.6675)
 script = ExtResource("1_j3ek6")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
+unknown_1 = ExtResource("2_1oxdh")
+unknown_2 = ExtResource("3_u2hi1")
 
 [node name="watermelon_manager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.7682, 0, -45.0242)
@@ -1774,8 +1934,10 @@ watermelon = ExtResource("2_pugrm")
 
 [node name="cool_down" type="Timer" parent="watermelon_manager"]
 
+[node name="player_timer" type="Timer" parent="watermelon_manager"]
+
 [node name="FSM_Players" parent="." instance=ExtResource("1_k1jxg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31697, 5.69819, 148.077)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31697, 5.69819, 67.1313)
 
 [node name="trigger_intro" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.7536)
@@ -1816,6 +1978,18 @@ collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage/MeshInstance3D5/back"]
 transform = Transform3D(1, 0, 0, 0, 1, -3.63798e-12, 0, -2.77556e-17, 1, 0, -66.6858, 0)
+shape = SubResource("BoxShape3D_ed6mx")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(-1.62683e-06, -0.0823553, 0, 37.2177, -3.59987e-09, 0, 0, 0, 105.746, -52.974, 13.6761, 7.37148)
+mesh = SubResource("BoxMesh_yjn16")
+skeleton = NodePath("../..")
+
+[node name="side" type="StaticBody3D" parent="stage/MeshInstance3D7"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/MeshInstance3D7/side"]
+transform = Transform3D(1, 0, 0, -1.81899e-12, 1, 0, 0, 0, 1, 0, 66.239, 0)
 shape = SubResource("BoxShape3D_ed6mx")
 
 [node name="Node3D" type="Node3D" parent="stage"]
@@ -1911,6 +2085,43 @@ skeleton = NodePath("../..")
 collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage/MeshInstance3D9/back"]
+transform = Transform3D(0.999995, 0, 0, 0, 1, -3.63798e-12, 0, -4.16334e-17, 1, -0.00485206, -56.916, -0.0013186)
+shape = SubResource("BoxShape3D_ed6mx")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(104.646, 0, 0, 0, -3.59986e-09, -33.404, 0, 0.0823553, -1.46015e-06, 2.16431, 15.2376, -48.5227)
+mesh = SubResource("BoxMesh_yjn16")
+skeleton = NodePath("../..")
+
+[node name="back" type="StaticBody3D" parent="stage/MeshInstance3D8"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/MeshInstance3D8/back"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.63798e-12, 0, -2.77556e-17, 1, 0, -66.6858, 0)
+shape = SubResource("BoxShape3D_ed6mx")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(-1.62683e-06, -0.0823553, 0, 37.2177, -3.59987e-09, 0, 0, 0, 105.746, 55.5192, 13.6761, 7.37148)
+mesh = SubResource("BoxMesh_yjn16")
+skeleton = NodePath("../..")
+
+[node name="side" type="StaticBody3D" parent="stage/MeshInstance3D10"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/MeshInstance3D10/side"]
+transform = Transform3D(1, -6.93889e-18, 0, 0, 1, 0, 0, 0, 1, 0, -68.2297, 0)
+shape = SubResource("BoxShape3D_ed6mx")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(104.646, 0, 0, 0, -3.59986e-09, -33.404, 0, 0.0823553, -1.46015e-06, 2.16431, 15.2376, 62.9584)
+visible = false
+mesh = SubResource("BoxMesh_yjn16")
+skeleton = NodePath("../..")
+
+[node name="back" type="StaticBody3D" parent="stage/MeshInstance3D11"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/MeshInstance3D11/back"]
 transform = Transform3D(0.999995, 0, 0, 0, 1, -3.63798e-12, 0, -4.16334e-17, 1, -0.00485206, -56.916, -0.0013186)
 shape = SubResource("BoxShape3D_ed6mx")
 
@@ -2021,12 +2232,44 @@ theme_override_fonts/font = ExtResource("7_fluin")
 theme_override_font_sizes/font_size = 50
 text = "melon kitty"
 
-[node name="PauseUi" parent="." instance=ExtResource("6_lor2e")]
-
 [node name="phase_control" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1nmb0")
 }
+
+[node name="lights" type="Node3D" parent="."]
+script = ExtResource("12_rpv0r")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.834084, -28.7566, 29.8176, 35.5684)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 78.8346
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.834084, 23.6069, 29.8176, 35.5684)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 78.8346
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.834084, 16.5845, 29.8176, -19.4772)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 78.8346
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.834084, -31.9157, 29.8176, -19.4772)
+light_energy = 16.0
+shadow_enabled = true
+omni_range = 78.8346
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="lights"]
+
+[node name="PauseUi" parent="." instance=ExtResource("6_lor2e")]
+
+[node name="spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4431, 0, -45.4791)
 
 [connection signal="body_entered" from="trigger_intro" to="." method="_on_trigger_intro_body_entered"]
 

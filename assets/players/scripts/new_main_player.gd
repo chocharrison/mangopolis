@@ -79,7 +79,7 @@ func perform_state_actions(_delta):
 				Sprint_timer.start(1)  # Start cooldown timer if not active
 				is_sprint_timer_active = true
 				is_cooldown = true
-			if !is_cooldown:
+			elif !is_cooldown:
 				UI.set_stamina(sprint_meter)
 				sprint_meter += 1
 				Sprint_timer.stop()
@@ -91,6 +91,7 @@ func perform_state_actions(_delta):
 		is_petting = false
 		sub.set_pet(false)
 		SignalManager.petting_signal.emit(false)
+		
 
 
 func handle_state_transitions(delta):
@@ -236,7 +237,7 @@ func unpause_controls():
 # Set the player to dead and stop all timers.
 func kill_player():
 	state = STATE.DED
-	collision.disabled = true
+	collision.set_deferred("disabled",true)
 	anime.get("parameters/playback").travel("ded")
 
 # Set the player petting.
@@ -256,3 +257,4 @@ func get_sprint() -> float:
 
 func _on_sprint_cooldown_timeout() -> void:
 	is_cooldown = false
+	Sprint_timer.stop()

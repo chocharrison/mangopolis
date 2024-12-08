@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4i8us5ii6f7a"]
+
+[ext_resource type="Script" path="res://assets/enemies/scripts/spawner.gd" id="1_sawr1"]
+
+[node name="spawner" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4467, 0, -27.7952)
+script = ExtResource("1_sawr1")
+
+[node name="end_point" type="Node3D" parent="."]
+transform = Transform3D(0.999811, -0.0194417, 0, 0.0194417, 0.999811, 0, 0, 0, 1, 214.835, 0, 170.311)
+
+[node name="Timer" type="Timer" parent="."]

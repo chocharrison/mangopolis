@@ -5,19 +5,26 @@ var is_fast_fall = false
 @export var damage = 10
 @onready var anim = $AnimationPlayer
 @onready var detect = $detect/detect
+@onready var collision = $watermelon/CollisionShape3D
+
 @onready var audio = $AudioStreamPlayer3D
 
 func _ready() -> void:
-	anim.play("spawn")
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func setup(fast_fall: bool,index: int):
+func set_hide():
+	visible = false
+
+func set_spawn(fast_fall: bool,index: int):
 	index = damage
 	is_fast_fall = fast_fall
+	visible = true
+	anim.play("spawn")
 	
 func set_fast_fall():
 	anim.play("fast_fall")
@@ -25,12 +32,15 @@ func set_fast_fall():
 func set_fall(speed: float = 1.0):
 	anim.play("fall",-1,speed)
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "fall" or anim_name == "fast_fall":
-		queue_free()
-	elif anim_name == "spawn":
-		detect.disabled = !is_fast_fall
-		anim.play("wait")
+func set_disable():
+	visible = false
+	collision.set_deferred("disabled",true)
+	detect.set_deferred("disabled",true)
+
+func set_wait():
+	detect.disabled = !is_fast_fall
+	anim.play("wait")
+
 
 func _on_watermelon_body_entered(body: Node) -> void:
 	if body.name == "main_player" and !is_hurt:

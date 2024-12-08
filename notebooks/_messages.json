@@ -110,5 +110,16 @@
 		"message":"res://notebooks/Trix.txt",
 		"image":"res://notebooks/Trix.png",
 		},
-		
+	"19":
+		{
+		"name":"La cumpleaños",
+		"message":"res://notebooks/Amber.txt",
+		"image":"res://notebooks/Amber.png",
+		},
+	"20":
+		{
+		"name":"Iantux",
+		"message":"res://notebooks/Iantux.txt",
+		"image":"res://notebooks/Iantux.png",
+		},
 }

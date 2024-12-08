@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 20.0
+const SPEED = 100.0
 
 const waiter = 10
 
@@ -15,7 +15,7 @@ enum STATE {CHARGE, CHARGE_START, DISABLED, ENABLED}
 @onready var state = STATE.ENABLED
 @onready var player = get_tree().get_nodes_in_group("players")[0]
 @onready var player_in_range = false
-@onready var is_not_timer = false
+@onready var is_not_timer = true
 @onready var locked_in = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,7 +47,6 @@ func handle_state_transitions():
 
 func state_charge(delta):
 	anime.play("charge")
-	print(velocity)
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
 	
@@ -98,10 +97,15 @@ func _on_stab_body_entered(body: Node3D) -> void:
 		player_in_range = true
 		cooldown.wait_time = 0.5
 		cooldown.start()
-	elif body.name == "side_wall":
+
+	if body.name == "side":
 		direction.x = -1*direction.x
-	elif body.name == "back_wall":
+		soundeffects.stream = load("res://assets/boss/sound_effects/collide.mp3")
+		soundeffects.play()
+	elif body.name == "back":
 		direction.z = -1*direction.z
+		soundeffects.stream = load("res://assets/boss/sound_effects/collide.mp3")
+		soundeffects.play()
 
 
 func _on_stab_body_exited(body: Node3D) -> void:

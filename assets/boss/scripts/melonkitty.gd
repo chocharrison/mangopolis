@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 60.0
-const STAB = 1.0
+const STAB = 10
 
 enum STATE {IDLE_WAIT,STAB,TIRED,CHARGE,IDLE,SMACKED,DISABLED,DEFAULT,CHARGE_START,ABOVE,STAB_START,ENTER}
 @onready var state = STATE.IDLE
@@ -14,7 +14,6 @@ var locked_in = false
 var is_interactive = false
 
 @onready var anime: AnimationTree = get_node_or_null("AnimationTree")
-@onready var anime_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
 @onready var line: Marker3D = get_node_or_null("line")
 @onready var soundeffects: AudioStreamPlayer3D = get_node_or_null("AudioStreamPlayer")
 
@@ -79,7 +78,8 @@ func state_idle_wait():
 func state_stab(delta):
 	set_sprite_direction(player.global_position)
 	anime.get("parameters/playback").travel("stab")
-	global_position = global_position.lerp(player.global_position, STAB * delta)
+	var direction = (player.global_position - global_position).normalized()
+	global_position += direction * STAB * delta
 	if soundeffects.playing == false:
 		soundeffects.stream = load("res://assets/boss/sound_effects/stab2.mp3")
 		soundeffects.play()
@@ -113,8 +113,8 @@ func set_sprite_direction(target_position: Vector3):
 	anime.set("parameters/stab/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 
 func set_sprite_direction_tired(target_position: Vector3):
-	direction = (Vector3(target_position.x,0,target_position.z) - Vector3(global_position.x,0,global_position.z)).normalized()
-	anime.set("parameters/tired/BlendSpace1D/blend_position",direction.z)
+	var x_direction = (target_position.x - global_position.x)/abs((target_position.x - global_position.x))
+	anime.set("parameters/tired/BlendSpace1D/blend_position",x_direction)
 
 
 func play_intro():
@@ -210,12 +210,16 @@ func _on_stab_body_entered(body: Node3D) -> void:
 			direction.z = -1*direction.z
 			soundeffects.stream = load("res://assets/boss/sound_effects/collide.mp3")
 			soundeffects.play()
+		elif body.name == "main_player":
+			direction = -(Vector3(body.global_position.x,0,body.global_position.z) - Vector3(global_position.x,0,global_position.z)).normalized()
+			soundeffects.stream = load("res://assets/boss/sound_effects/collide.mp3")
+			soundeffects.play()
 
 func _on_timer_timeout() -> void:
 	cooldown.stop()
 	is_not_timer = true
-	SignalManager.show_interact_button_signal.emit(false)
 	is_interactive = false
 
 func _on_stab_body_exited(body: Node3D) -> void:
 	player_in_range = false
+	SignalManager.show_interact_button_signal.emit(false)

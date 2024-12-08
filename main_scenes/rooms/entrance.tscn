@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://g17pta660mjq"]
+[gd_scene load_steps=11 format=3 uid="uid://g17pta660mjq"]
 
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_ctlei"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="2_nwfah"]
 [ext_resource type="MeshLibrary" uid="uid://bc8evx6026mwp" path="res://assets/tiles/outside/outside_assets.tres" id="3_peh51"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="4_n6yty"]
+[ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://assets/interactives/dig.tscn" id="4_nx713"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qj1i1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1b4hs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yug4m"]
 vertex_color_use_as_albedo = true
@@ -15,7 +18,7 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_yug4m")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vglb"]
-size = Vector3(365.314, 24.6222, 3.81544)
+size = Vector3(142.42, 24.6222, 3.81544)
 
 [node name="Entrance" type="Node3D"]
 
@@ -35,6 +38,12 @@ metadata/_editor_floor_ = Vector3(-13, 1, -8)
 transform = Transform3D(69.6815, 0, 0, 0, 22.6285, 0, 0, 0, 64.444, 66.6769, 12.3047, 0)
 mesh = SubResource("BoxMesh_qj1i1")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_1b4hs")
+
 [node name="outside" parent="." instance=ExtResource("4_n6yty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1656, 2.24031, -23.7268)
 scene = "res://main_scenes/rooms/park.tscn"
@@ -48,11 +57,30 @@ transform = Transform3D(5.70715, 0, 0, 0, 12.2015, 0, 0, 0, 1, 0.18005, 6.67565,
 mesh = SubResource("BoxMesh_dlsuh")
 skeleton = NodePath("")
 
-[node name="PauseUi" parent="." instance=ExtResource("2_nwfah")]
-
 [node name="invisible" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.0873, 0, 30.5529)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="invisible"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.577, 11.8111, 1.35509)
+shape = SubResource("BoxShape3D_1vglb")
+
+[node name="dig" parent="." instance=ExtResource("4_nx713")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -31.2968, -0.115788, 16.9644)
+is_notebook = true
+id_or_quantity = 3
+
+[node name="PauseUi" parent="." instance=ExtResource("2_nwfah")]
+
+[node name="invisible2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.0873, 0, -25.862)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.577, 11.8111, 1.35509)
+shape = SubResource("BoxShape3D_1vglb")
+
+[node name="invisible3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.6702, 0, 40.0796)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.577, 11.8111, 1.35509)
 shape = SubResource("BoxShape3D_1vglb")

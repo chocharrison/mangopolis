@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://pvs20xjpnh6s"]
+[gd_scene load_steps=21 format=3 uid="uid://pvs20xjpnh6s"]
 
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="1_juruf"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="2_ce57r"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://c0qepujyfx1tt" path="res://main_scenes/houses/shed.tscn" id="12_n4gt7"]
 [ext_resource type="PackedScene" uid="uid://bdxql18eunouq" path="res://main_scenes/houses/gamer_house.tscn" id="13_kyt5h"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="14_uyu4g"]
+[ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://assets/interactives/dig.tscn" id="18_r8m35"]
+[ext_resource type="PackedScene" uid="uid://d4i8us5ii6f7a" path="res://assets/enemies/scenes/spawner.tscn" id="19_4cyjt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hgw7x"]
 size = Vector3(365.314, 24.6222, 3.81544)
@@ -36,6 +38,9 @@ data = {
 metadata/_editor_floor_ = Vector3(114, 0, -22)
 
 [node name="objects" type="Node3D" parent="."]
+
+[node name="dig" parent="objects" instance=ExtResource("18_r8m35")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 148.856, 1.8, 78.9757)
 
 [node name="Pool" parent="objects" instance=ExtResource("6_p8a5i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.761, 1.86522, 27.3106)
@@ -103,8 +108,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 210.979)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
 shape = SubResource("BoxShape3D_hgw7x")
 
+[node name="invisible2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -71.2933)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
+shape = SubResource("BoxShape3D_hgw7x")
+
+[node name="invisible3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.78762, 0, 291.376)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
+shape = SubResource("BoxShape3D_hgw7x")
+
+[node name="invisible4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 363.391, 0, 291.376)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
+shape = SubResource("BoxShape3D_hgw7x")
+
 [node name="door" parent="." instance=ExtResource("14_uyu4g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 278.431, 2.0805, 207.6)
 scene = "res://main_scenes/rooms/entrance.tscn"
 
 [node name="PauseUi" parent="." instance=ExtResource("1_juruf")]
+
+[node name="spawner" parent="." instance=ExtResource("19_4cyjt")]

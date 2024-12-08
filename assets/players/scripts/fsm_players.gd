@@ -58,7 +58,7 @@ func _ready() -> void:
 	SignalManager.hurt_signal.connect(_on_health_lost_signal)
 	
 	SignalManager.coco_in_dig_range_signal.connect(_on_coco_in_dig_range_signal)
-	SignalManager.dig_result_signal.connect(_on_digresult_signal)
+	SignalManager.dig_result_signal.connect(_on_digging_signal)
 	
 	SignalManager.show_interact_button_signal.connect(_on_show_interact_button_signal)
 	
@@ -308,7 +308,7 @@ func add_health_potion(val:int):
 func set_player_interact(val:bool):
 	ui.set_interact(val)
 	
-func digged_up(pos: Vector3):
+func digging_now(pos: Vector3):
 	sub_player.set_dig_position(pos)
 
 ##########################################################math functions
@@ -421,8 +421,8 @@ func _on_show_interact_button_signal(val: bool) -> void:
 	main_player.set_interact(val)
 
 # Process the result of digging, either finding a notebook or health potion, and update the sub player's position.
-func _on_digresult_signal(pos: Vector3) -> void:
-	digged_up(pos)
+func _on_digging_signal(pos: Vector3) -> void:
+	digging_now(pos)
 
 func _on_health_lost_signal(damage: int):
 	health_lost(true,damage)

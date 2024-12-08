@@ -94,7 +94,7 @@ func set_sprite_direction(target_position: Vector3):
 
 
 func _on_detect_body_entered(body: Node3D) -> void:
-	if body.name == "main_player" and state ==STATE.IDLE:
+	if body.name == "main_player" and state == STATE.IDLE:
 		set_chase()
 
 

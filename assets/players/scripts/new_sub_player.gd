@@ -56,14 +56,14 @@ func perform_state_actions(_delta):
 			state_dig(_delta)
 			
 func handle_state_transitions():
-	if state == STATE.DISABLED or state == STATE.DIG:
+	if state == STATE.DISABLED:
 		return
 	
 	if is_petting:
 		state = STATE.PETTED
 		return
 	
-	if state == STATE.PANIC or state == STATE.IDLE:
+	if state == STATE.PANIC or state == STATE.IDLE or state == STATE.DIG:
 		return
 	
 #	if Input.is_action_just_pressed("jump_2") and is_on_floor():
@@ -105,6 +105,7 @@ func state_petted():
 	else:
 		global_position = global_position.lerp(target, 0.1)
 		anime.get("parameters/playback").travel("walk")
+	SignalManager.digging_interrupt.emit()
 	
 func state_dig(delta):
 	if !found_digging:
@@ -156,6 +157,10 @@ func follow_function_old():
 		global_position.x = master.global_position.x
 		global_position.y = master.global_position.y+2
 		global_position.z = master.global_position.z
+
+func digging_done():
+	SignalManager.after_dig.emit()
+
 
 func follow_function_new():
 	var speed = max(SPEED,master.get_sprint())

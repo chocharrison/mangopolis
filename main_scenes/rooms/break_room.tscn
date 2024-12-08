@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="5_khorc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1afwh"]
-size = Vector3(222.895, 24.6222, 3.81544)
+size = Vector3(40.4696, 24.6222, 3.81544)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpwy8"]
 albedo_color = Color(0.0157105, 0.129704, 0.103958, 1)
@@ -34,11 +34,11 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="PauseUi" parent="." instance=ExtResource("3_r72lb")]
 
 [node name="invisible" type="StaticBody3D" parent="."]
-transform = Transform3D(0.175491, 0, 0, 0, 1, 0, 0, 0, 1, 5.45353, 2.59544, 10.9527)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45353, 2.59544, 10.9527)
 collision_layer = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="invisible"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.96983, 11.8111, 3.42062)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23259, 11.8111, 3.42062)
 shape = SubResource("BoxShape3D_1afwh")
 
 [node name="wall2" type="MeshInstance3D" parent="."]
@@ -85,4 +85,5 @@ shape = SubResource("BoxShape3D_kw57c")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -6.50175, 7.86586, -40.9228)
 
 [node name="door" parent="." instance=ExtResource("5_khorc")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.1411, 2.94895, 4.72296)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.8387, 2.94895, 4.72296)
+scene = "res://main_scenes/rooms/gamer_room.tscn"

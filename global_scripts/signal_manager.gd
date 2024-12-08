@@ -11,7 +11,8 @@ signal heal_signal(val:int)
 #dig signals
 signal coco_in_dig_range_signal(val: bool)
 signal dig_result_signal(pos: Vector3)
-
+signal after_dig()
+signal digging_interrupt()
 #interact signal
 signal show_interact_button_signal(val: bool)
 signal interracted()
@@ -45,3 +46,5 @@ signal done_majima()
 signal closed_majima(val: int)
 
 signal save_health()
+
+signal fred_done(val: int)

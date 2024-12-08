@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b6fuf5i32324i" path="res://assets/ui/player_ui/sprites/notebook.png" id="3_nnk4o"]
 [ext_resource type="Texture2D" uid="uid://baievmp5h2ojb" path="res://assets/ui/player_ui/sprites/bday-card.png" id="4_4tei3"]
 [ext_resource type="Shader" path="res://assets/ui/player_ui/scripts/book_text.gdshader" id="6_mm7j5"]
-[ext_resource type="Texture2D" uid="uid://b2x6hlyhps0f7" path="res://notebooks/Coyote.png" id="7_y83q7"]
+[ext_resource type="Texture2D" uid="uid://ynqpy4bem0cq" path="res://notebooks/Trix.png" id="7_aaab1"]
 [ext_resource type="AudioStream" uid="uid://drno22ackkjt1" path="res://assets/ui/player_ui/sounds/flip.mp3" id="8_8cxym"]
 [ext_resource type="AudioStream" uid="uid://cft7ynxtpo3hv" path="res://assets/ui/player_ui/sounds/get_note.mp3" id="9_48mdn"]
 [ext_resource type="AudioStream" uid="uid://qocg45xqnvsk" path="res://assets/ui/player_ui/sounds/collect.mp3" id="10_6tug4"]
@@ -1462,13 +1462,13 @@ skew = -0.179769
 
 [node name="TextureRect" type="TextureRect" parent="Control/image_x/image_y"]
 material = SubResource("ShaderMaterial_uup4d")
-offset_left = -30.2349
-offset_top = -12.7807
-offset_right = 432.765
-offset_bottom = 303.219
+offset_left = 1.64847
+offset_top = -95.0278
+offset_right = 464.648
+offset_bottom = 490.972
 rotation = 0.0718426
 mouse_filter = 2
-texture = ExtResource("7_y83q7")
+texture = ExtResource("7_aaab1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
