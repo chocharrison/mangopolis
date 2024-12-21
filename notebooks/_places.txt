@@ -1,21 +1,21 @@
 1: pikmin bathroom girls ()
 2: Majima boss ()
-3:
-4:
-5:
-6:
+3: dig entrance ()
+4: Plushies ()
+5: Park ()
+6: Freddy boss ()
 7: Tree park ()
-8:
-9:
-10:
+8: Boys bathroom ()
+9: Math hallway ()
+10: locker ()
 11: Cave park ()
-12:
-13: 
+12: locker ()
+13: Bedroom ()
 14: Bathroom dog ()
-15: claw gamer
+15: gamer ()
 16: pond park ()
 17: Fridge house ()
 18: soda gamer_kitchen ()
-19:
-20:
-tofu: plushie house ()
+19: dig park()
+20: hints ()
+21: toilet_paper ()

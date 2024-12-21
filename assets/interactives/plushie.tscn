@@ -217,12 +217,15 @@ shape = SubResource("BoxShape3D_17b23")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.166683, 0)
+shaded = true
+alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_u6rxo")
 frame = 6
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_h4lox")
+bus = &"sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

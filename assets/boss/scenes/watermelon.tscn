@@ -689,8 +689,10 @@ disabled = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_wygcv")
-volume_db = -13.494
+volume_db = -19.26
+max_db = 2.0
 max_distance = 50.65
+bus = &"sfx"
 
 [connection signal="body_entered" from="watermelon" to="." method="_on_watermelon_body_entered"]
 [connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]

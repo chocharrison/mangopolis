@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bykjakwgswlab"]
+
+[ext_resource type="FontFile" uid="uid://cwbqc3ck1uyrt" path="res://fonts/edosz.ttf" id="1_ffjot"]
+[ext_resource type="Script" path="res://assets/ui/story/complete.gd" id="1_mej5y"]
+[ext_resource type="Texture2D" uid="uid://bxevg2mqcsfng" path="res://assets/ui/story/sprites/final.png" id="2_jjnxp"]
+
+[node name="Complete" type="Node2D"]
+script = ExtResource("1_mej5y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -39.0
+offset_top = -20.0
+offset_right = 1201.0
+offset_bottom = 657.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1.0
+offset_right = 1150.0
+offset_bottom = 504.0
+texture = ExtResource("2_jjnxp")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 324.0
+offset_top = 519.0
+offset_right = 840.0
+offset_bottom = 636.0
+theme_override_fonts/font = ExtResource("1_ffjot")
+theme_override_font_sizes/font_size = 50
+text = "THANK YOU FOR PLAYING
+HAPPY BIRTHDAY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -409,6 +409,8 @@ shape = SubResource("BoxShape3D_mle0p")
 
 [node name="door" type="Sprite3D" parent="door"]
 transform = Transform3D(12.45, 0, 0, 0, 7.8408, 0, 0, 0, 1, 0, 8, 6)
+shaded = true
+alpha_cut = 2
 texture = ExtResource("4_ddcjm")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -426,6 +428,7 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.63874, 0)
 volume_db = 26.988
 max_distance = 197.4
+bus = &"sfx"
 
 [node name="Majima2" parent="." instance=ExtResource("7_mnykg")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 6.63874, 0)
@@ -435,6 +438,8 @@ transform = Transform3D(0.67017, 0, 0, 0, 0.650041, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="seat" type="AnimatedSprite3D" parent="Node3D"]
 transform = Transform3D(10.5405, 0, 0, 0, 11.1197, 0, 0, 0, 1, 0, 5.0572, 0)
+shaded = true
+alpha_cut = 2
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_yokos")
 

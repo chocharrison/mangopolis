@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dc7bn0y14y4fo"]
+[gd_scene load_steps=14 format=3 uid="uid://dc7bn0y14y4fo"]
 
 [ext_resource type="MeshLibrary" uid="uid://cgw2rfur2y0mr" path="res://assets/tiles/toilet/toilet.tres" id="1_yndyk"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="2_mpl55"]
 [ext_resource type="PackedScene" uid="uid://buwm2vco8ocs2" path="res://assets/interactives/toilet.tscn" id="2_whbi8"]
 [ext_resource type="PackedScene" uid="uid://by5fqnjab8tay" path="res://assets/interactives/Sprites/wash/wash.blend" id="3_jp61j"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="4_14eq6"]
+[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="4_j8ji1"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="5_aw3lm"]
 [ext_resource type="Texture2D" uid="uid://dgw564gv1bwus" path="res://assets/interactives/Sprites/Poo.png" id="8_5gk1r"]
+[ext_resource type="PackedScene" uid="uid://7tireusjdeel" path="res://assets/enemies/scenes/Richard.tscn" id="9_w5cpc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h3w3a"]
 size = Vector3(222.895, 24.6222, 3.81544)
@@ -146,6 +148,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.2859, 2.6, -29.4849)
 [node name="Toilet8" parent="Node3D" instance=ExtResource("2_whbi8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57411, 2.6, -29.4849)
 
+[node name="notebooks" parent="Node3D" instance=ExtResource("4_j8ji1")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -84.2325, 8.70077, -7.3957)
+message_id = 8
+
 [node name="Node3D2" type="Node3D" parent="."]
 
 [node name="wash" parent="Node3D2" instance=ExtResource("3_jp61j")]
@@ -176,3 +182,17 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -102.415, 4.26124, -7.05815)
 texture = ExtResource("8_5gk1r")
 
 [node name="PauseUi" parent="." instance=ExtResource("5_aw3lm")]
+
+[node name="Node3D4" type="Node3D" parent="."]
+
+[node name="Richard" parent="Node3D4" instance=ExtResource("9_w5cpc")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -12.384, 11.0558, 0)
+
+[node name="Richard2" parent="Node3D4" instance=ExtResource("9_w5cpc")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -41.749, 11.0558, 0)
+
+[node name="Richard3" parent="Node3D4" instance=ExtResource("9_w5cpc")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 12.48, 11.0558, 0)
+
+[node name="Richard4" parent="Node3D4" instance=ExtResource("9_w5cpc")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -14.3934, 10.9636, -26.1754)

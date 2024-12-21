@@ -403,6 +403,7 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ywtb0")
 volume_db = 21.301
+bus = &"sfx"
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(578, 356)

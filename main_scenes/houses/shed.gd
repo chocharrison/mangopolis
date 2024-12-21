@@ -16,3 +16,4 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if not_entered:
 			not_entered = false
 			anim.play("change")
+			SignalManager.grunt_inactive.emit()

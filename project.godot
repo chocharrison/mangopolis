@@ -12,8 +12,9 @@ config_version=5
 
 config/name="Mangopolis"
 config/tags=PackedStringArray("main_project")
-run/main_scene="res://assets/freddy_boss/daycare_room.tscn"
+run/main_scene="res://main_scenes/rooms/house.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

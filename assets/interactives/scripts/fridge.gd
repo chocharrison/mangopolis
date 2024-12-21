@@ -8,11 +8,13 @@ extends Node3D
 @onready var show_fridge = $Control
 @onready var fridge_open = $fridge2/previewRootNode_001
 @onready var fridge_close = $fridge2/previewRootNode
+@onready var audio = $AudioStreamPlayer3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.interracted.connect(_on_interact)
 	if notebook_number in SaveStates.notebooks:
 		obtain_notebook = true
+	audio.stream = load("res://assets/enemies/sound/metal.mp3")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,6 +28,7 @@ func _on_interact(panicked):
 			fridge_unshow()
 	
 func fridge_show():
+	audio.play()
 	fridge_open.visible = true
 	fridge_close.visible = false
 	is_open = true
@@ -36,6 +39,7 @@ func fridge_show():
 		SignalManager.collected_notebooks_signal.emit()
 
 func fridge_unshow():
+	audio.play()
 	fridge_open.visible = false
 	fridge_close.visible = true
 	is_open = false

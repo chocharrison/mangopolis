@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://cvvio41dtfhjm"]
+[gd_scene load_steps=126 format=3 uid="uid://cvvio41dtfhjm"]
 
 [ext_resource type="Script" path="res://assets/boss/scripts/melonkitty.gd" id="1_f7nh5"]
 [ext_resource type="Texture2D" uid="uid://br5p61owkn427" path="res://assets/boss/sprites/Melonkitty.png" id="2_2o0n6"]
@@ -64,6 +64,30 @@ region = Rect2(0, 200, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4l5x"]
 atlas = ExtResource("2_2o0n6")
 region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffcpc"]
+atlas = ExtResource("2_2o0n6")
+region = Rect2(200, 900, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb8mo"]
+atlas = ExtResource("2_2o0n6")
+region = Rect2(300, 900, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpcnm"]
+atlas = ExtResource("2_2o0n6")
+region = Rect2(400, 900, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lbhd"]
+atlas = ExtResource("2_2o0n6")
+region = Rect2(500, 900, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o46n2"]
+atlas = ExtResource("2_2o0n6")
+region = Rect2(600, 900, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tubre"]
+atlas = ExtResource("2_2o0n6")
+region = Rect2(700, 900, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejlw4"]
 atlas = ExtResource("2_2o0n6")
@@ -255,6 +279,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"charge_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffcpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb8mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpcnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lbhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o46n2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tubre")
+}],
+"loop": true,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [],
@@ -843,6 +890,82 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_emxn6"]
+resource_name = "dead"
+length = 0.533337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"dead"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite3D:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite3D:billboard")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("stab/stab:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimatedSprite3D:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_kvuff"]
@@ -2259,6 +2382,7 @@ _data = {
 "above": SubResource("Animation_hucn2"),
 "charge": SubResource("Animation_pg0lt"),
 "charge_start": SubResource("Animation_85oey"),
+"dead": SubResource("Animation_emxn6"),
 "disabled": SubResource("Animation_kvuff"),
 "entrance": SubResource("Animation_jqey3"),
 "exit": SubResource("Animation_aj0ma"),
@@ -2290,6 +2414,9 @@ animation = &"charge"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jy3fc"]
 animation = &"charge_start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2jndk"]
+animation = &"dead"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4msuq"]
 animation = &"disabled"
@@ -2414,6 +2541,8 @@ states/charge/node = SubResource("AnimationNodeAnimation_non1g")
 states/charge/position = Vector2(550, 219)
 states/charge_start/node = SubResource("AnimationNodeAnimation_jy3fc")
 states/charge_start/position = Vector2(770, 100)
+states/dead/node = SubResource("AnimationNodeAnimation_2jndk")
+states/dead/position = Vector2(845, 228)
 states/disabled/node = SubResource("AnimationNodeAnimation_4msuq")
 states/disabled/position = Vector2(715, 53)
 states/entrance/node = SubResource("AnimationNodeAnimation_d5ns3")
@@ -2516,6 +2645,7 @@ frame = 1
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 volume_db = 15.0
 max_distance = 200.0
+bus = &"sfx"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_swino")

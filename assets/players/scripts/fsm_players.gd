@@ -103,7 +103,7 @@ func _process(_delta: float) -> void:
 
 ##################################### TIMER State functions
 func state_health_timer_inactive():
-	health_timer.wait_time = randi_range(5, 15)
+	health_timer.wait_time = randi_range(10, 15)
 	health_timer.start()
 	health_timer_state = TIMER_STATE.ACTIVE
 		
@@ -111,7 +111,7 @@ func state_health_timer_active():
 	if health > 0:
 		var health_decrease = randi_range(3, 7)
 		health_lost(false,health_decrease)
-		print("Health decreased by ", health_decrease, " - Current health: ", health)
+		#print("Health decreased by ", health_decrease, " - Current health: ", health)
 		ui.set_health(health)
 		health_timer_state = TIMER_STATE.INACTIVE
 		
@@ -220,7 +220,7 @@ func state_inputs():
 		SignalManager.interracted.emit(panicked)
 		
 	if Input.is_action_just_pressed("health") and health_potion > 0:
-		health = min(health + 20,MAX_HEALTH)
+		health = min(health + 40,MAX_HEALTH)
 		health_potion -= 1
 		if health_timer_state != TIMER_STATE.DISABLED:
 			state_health_timer_inactive()
@@ -286,6 +286,8 @@ func get_notebook():
 	ui.notebook_ui_get_notebook()
 	
 func health_lost(is_not_timer: bool,damage: int):
+	if SaveStates.baby_mode and is_not_timer:
+		damage = damage/2
 	health = max(0,health - damage)
 	if state == STATE.NOTE:
 		ui.notebook_ui_close_book()
@@ -296,10 +298,12 @@ func health_lost(is_not_timer: bool,damage: int):
 	if(health <= 0):
 		ui.play_ded()
 		main_player.kill_player()
+		sub_player.trigger_panic()
 	
 	else:
 		if(is_not_timer):
 			ui.health_lost()
+			main_player.set_hurt()
 
 func add_health_potion(val:int):
 	health_potion+=val
@@ -318,7 +322,8 @@ func start_math(level: int,damage: int = 20,iter: int = 0):
 	health_damage = damage
 	state = STATE.MATH
 	paused()
-	#print("start")
+	if SaveStates.baby_mode:
+		level = 0
 	match level:
 		0:
 			first = 0
@@ -406,6 +411,7 @@ func give_main_player_position():
 ##################################### signals functions
 func _on_collected_notebooks_signal() -> void:
 	get_notebook()
+	SignalManager.hint_update.emit(SaveStates.notebooks[1])
 
 # Add health potions when collected.
 func _on_collected_healthpotions_signal(val: int) -> void:

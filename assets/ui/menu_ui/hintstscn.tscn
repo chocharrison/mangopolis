@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c74bvkkolyp7u"]
+
+[ext_resource type="Texture2D" uid="uid://b6fuf5i32324i" path="res://assets/ui/player_ui/sprites/notebook.png" id="1_hyku0"]
+[ext_resource type="Script" path="res://assets/ui/menu_ui/hints.gd" id="1_iyvxb"]
+[ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="2_hyvar"]
+
+[node name="PanelContainer" type="ColorRect"]
+self_modulate = Color(1, 1, 1, 0.192157)
+offset_right = 798.0
+offset_bottom = 139.0
+script = ExtResource("1_iyvxb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_top = -35.0
+offset_right = 30.0
+offset_bottom = 25.0
+scale = Vector2(3, 3)
+texture = ExtResource("1_hyku0")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 102.0
+offset_top = 24.0
+offset_right = 733.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0.256966, 0.237044, 0.177273, 1)
+theme_override_fonts/font = ExtResource("2_hyvar")
+theme_override_font_sizes/font_size = 40
+text = "Despacito"
+vertical_alignment = 1
+autowrap_mode = 3

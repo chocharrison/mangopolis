@@ -47,11 +47,16 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "main_player":
+		audio.stream = load("res://assets/enemies/sound/majima-sensor.mp3")
+		audio.play()
 		intro_start()
 		trigger.queue_free()
 
 func intro_start():
 	player.disable()
+	anim.play("intro_start")
+
+func intro():
 	anim.play("intro")
 
 func intro2():
@@ -103,14 +108,15 @@ func closed_door(val: int):
 				toilet_arrays[i].suspense_majima()
 			burst_timer.start()
 		elif health <= 0:
-			finished_boss()
+			finished_boss(val)
 
 
-func finished_boss():
+func finished_boss(val: int):
 	interrupt_majima()
 	finished = true
 	collision_wall.set_deferred("disabled",true)
 	anim.play("finish")
+	toilet_arrays[val].defeat()
 	Engine.time_scale = 0.25
 	await get_tree().create_timer(1).timeout
 	Engine.time_scale = 1

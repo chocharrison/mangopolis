@@ -540,6 +540,7 @@ spot_angle = 60.43
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Node3D"]
 stream = ExtResource("3_e1td4")
 max_distance = 532.11
+bus = &"sfx"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.153643, 0, 0, -0.249539)

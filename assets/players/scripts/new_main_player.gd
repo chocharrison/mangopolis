@@ -23,6 +23,7 @@ const MAX_SPRINT = 100
 @onready var UI: Control = get_parent().get_node_or_null("Ui")
 @onready var Sprint_timer: Timer = get_node("sprint_cooldown")
 @onready var collision = get_node("CollisionShape3D")
+@onready var audio = $AudioStreamPlayer
 
 ##################################### flags
 @onready var is_cooldown = false
@@ -34,6 +35,9 @@ const MAX_SPRINT = 100
 
 @onready var is_interacting = false
 
+@onready var hurt = false
+@onready var punch = false
+@onready var cooldown = false
 ##################################### variables
 
 @onready var sprint_meter = MAX_SPRINT
@@ -54,12 +58,11 @@ func _physics_process(delta: float) -> void:
 
 	handle_state_transitions(delta)
 	perform_state_actions(delta)
+	handle_animation_state()
 	move_and_slide()
 
 func perform_state_actions(_delta):
 	match state:
-		STATE.DISABLED:
-			anime.get("parameters/playback").travel("idle")
 		STATE.TIRED:
 			state_tired()
 		STATE.PET:
@@ -112,13 +115,16 @@ func handle_state_transitions(delta):
 #		state = STATE.JUMP
 #		return
 	
-	if !is_interacting and Input.is_action_just_pressed("interact") and is_on_floor() and check_sub_distance():
-		var facing_pet = (Vector3(sub.global_position.x,0,sub.global_position.z)-Vector3(global_position.x,0,global_position.z)).normalized()
-		anime.set("parameters/pet/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
-		state = STATE.PET
-		is_petting = true
-		return
-		
+	if  Input.is_action_just_pressed("interact"):
+		if !is_interacting and is_on_floor() and check_sub_distance():
+			var facing_pet = (Vector3(sub.global_position.x,0,sub.global_position.z)-Vector3(global_position.x,0,global_position.z)).normalized()
+			anime.set("parameters/pet/BlendSpace2D/blend_position",Vector2(facing_pet.x,-facing_pet.z))
+			state = STATE.PET
+			is_petting = true
+			return
+		elif !cooldown:
+			set_punch()
+	
 
 	if direction != Vector3.ZERO:
 		if Input.is_action_pressed("sprint") and is_on_floor() and !is_sprinted and sprint_meter > 0:
@@ -135,20 +141,58 @@ func handle_state_transitions(delta):
 
 	if Input.is_action_just_released("sprint"):
 		is_sprinted = true
+
+
+func handle_animation_state():
+	if punch:
+		anime.get("parameters/playback").travel("punch")
+	elif hurt:
+		anime.get("parameters/playback").travel("hurt")
+	else:
+		match state:
+			STATE.DISABLED:
+				anime.get("parameters/playback").travel("idle")
+				if audio.is_playing():
+					audio.stop()
+			STATE.TIRED:
+				anime.get("parameters/playback").travel("tired")
+			STATE.PET:
+				anime.get("parameters/playback").travel("pet")
+			STATE.IDLE:
+				anime.get("parameters/playback").travel("idle")
+				if audio.is_playing():
+					audio.stop()
+			STATE.WALK:
+				anime.get("parameters/playback").travel("walk")
+				if !audio.is_playing():
+					audio.stream = load("res://assets/players/sound effects/walk.mp3")
+					audio.play()
+				if audio.stream.resource_path.get_file() != "walk.mp3":
+					audio.stream = load("res://assets/players/sound effects/walk.mp3")
+					audio.play()
+			STATE.SPRINT:
+				anime.get("parameters/playback").travel("sprint")
+				if !audio.is_playing():
+					audio.stream = load("res://assets/players/sound effects/sprint.mp3")
+					audio.play()
+				if audio.stream.resource_path.get_file() != "sprint.mp3":
+					audio.stream = load("res://assets/players/sound effects/sprint.mp3")
+					audio.play()
+
 	
 ##################################### state functions
 func state_idle():
-	anime.get("parameters/playback").travel("idle")
+	#anime.get("parameters/playback").travel("idle")
 	velocity.x = move_toward(velocity.x, 0, SPEED)
 	velocity.z = move_toward(velocity.z, 0, SPEED)
 
 func state_pet():
-	anime.get("parameters/playback").travel("pet")
+	#anime.get("parameters/playback").travel("pet")
 	sub.set_pet(true)
 	SignalManager.petting_signal.emit(true)
 
 func state_tired():
-	anime.get("parameters/playback").travel("tired")
+	#anime.get("parameters/playback").travel("tired")
 	velocity.x = move_toward(velocity.x, 0, SPEED)
 	velocity.z = move_toward(velocity.z, 0, SPEED)
 	if(sprint_meter == MAX_SPRINT):
@@ -167,13 +211,13 @@ func state_jump():
 
 func state_walk():
 	speed = SPEED
-	anime.get("parameters/playback").travel("walk")
+	#anime.get("parameters/playback").travel("walk")
 	velocity.x = direction.x * SPEED
 	velocity.z = direction.z * SPEED
 
 func state_sprint():
 	speed = SPRINT
-	anime.get("parameters/playback").travel("sprint")
+	#anime.get("parameters/playback").travel("sprint")
 	velocity.x = direction.x * SPRINT
 	velocity.z = direction.z * SPRINT
 	
@@ -194,6 +238,7 @@ func set_sprite_direction():
 		anime.set("parameters/fall/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 		anime.set("parameters/sprint/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 		anime.set("parameters/tired/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
+		anime.set("parameters/punch/BlendSpace2D/blend_position",Vector2(direction.x,-direction.z))
 
 
 func check_sub_distance() -> bool:
@@ -238,14 +283,41 @@ func unpause_controls():
 func kill_player():
 	state = STATE.DED
 	collision.set_deferred("disabled",true)
+	velocity = Vector3(0,0,0)
 	anime.get("parameters/playback").travel("ded")
 
 # Set the player petting.
 func set_pet(val: bool):
 	is_petting = val
+	velocity = Vector3(0,0,0)
 	
 func set_interact(val: bool):
 	is_interacting = val
+
+func set_punch():
+	punch = true
+	$punch.start(0.5)
+	finish_hurt()
+	if audio.is_playing():
+		audio.stop()
+	audio.stream = load("res://assets/players/sound effects/punch.mp3")
+	audio.play()
+	cooldown = true
+	$cooldown.start(0.5)
+
+func set_hurt():
+	hurt = true
+	$hurt.start(0.5)
+	finish_punch()
+
+func finish_punch():
+	punch = false
+	$punch.stop()
+
+func finish_hurt():
+	hurt = false
+	$hurt.stop()
+	
 ##################################### get functions
 # Return the array of breadcrumbs.
 func get_bread_crumbs() -> Array:
@@ -258,3 +330,17 @@ func get_sprint() -> float:
 func _on_sprint_cooldown_timeout() -> void:
 	is_cooldown = false
 	Sprint_timer.stop()
+
+
+func _on_punch_timeout() -> void:
+	finish_punch()
+
+
+func _on_hurt_timeout() -> void:
+	finish_hurt()
+
+
+
+func _on_cooldown_timeout() -> void:
+	$cooldown.stop()
+	cooldown = false

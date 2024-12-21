@@ -1,6 +1,6 @@
 extends Node3D
 
-const SPEED = 4.0
+const SPEED = 20
 
 @onready var anime = get_node("AnimationTree")
 @onready var stab = $stab/collide

@@ -6,6 +6,7 @@ const multiplier = 4
 
 @export var unknown_1: PackedScene
 @export var unknown_2: PackedScene
+@export var ending: String
 
 @onready var melon_control = $watermelon_manager
 @onready var melonkitty = $Melonkitty
@@ -27,12 +28,12 @@ enum STATE {PHASE,WAIT,CUTSCENE,INTRO,FINISHED}
 @onready var state = STATE.INTRO
 @onready var is_follow = false
 
-@onready var phase = 7
-const max_phase = 15
+@onready var phase = 1
+const max_phase = 13
 
-@onready var melon_phases = [3,5,8]
-@onready var kitty_phases = [1,2,4,6,7]
-#1,2,4,6,7
+@onready var melon_phases = [3,5,8,10]
+@onready var kitty_phases = [1,2,4,6,7,9,11,12,13]
+#1,2,4,6,7,9
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,7 +46,8 @@ func _ready() -> void:
 		melonkitty.set_show_off()
 	backwall.disabled = true
 	backwall2.disabled = true
-	health_bar.value = 7
+	health_bar.max_value = len(kitty_phases)
+	health_bar.value = health_bar.max_value
 	lights.turn_switch(false)
 
 
@@ -121,11 +123,29 @@ func intro_done():
 	state = STATE.PHASE
 
 
+func boss_over():
+	#cutscenes.play("finish")
+	state = STATE.FINISHED
+	phase_control.stop()
+	melon_control.flag = false
+	melon_control.clear_watermelons()
+	for i in spawn.get_children():
+		i.set_exit()
+	melonkitty.set_ded()
+	cutscenes.play("finish")
+	health_bar.visible = false
+	Engine.time_scale = 0.25
+	await get_tree().create_timer(1).timeout
+	Engine.time_scale = 1
+	BGM.stop()
+	$Ending_timer.wait_time = 5
+	$Ending_timer.start()
+
 func add_unknown_chase(x: int,z: int):
 	var setup_unknown = unknown_1.instantiate()
 	setup_unknown.position = offset+Vector3(multiplier*x,0,multiplier*z)
 	spawn.add_child(setup_unknown)
-	setup_unknown.set_chase()
+	setup_unknown.set_enter(true)
 
 func add_unknown_charge(x: int,z: int):
 	var setup_unknown = unknown_2.instantiate()
@@ -145,18 +165,21 @@ func follow_player(val: bool):
 func next_phase():
 	phase+=1
 	state = STATE.PHASE
+	if !lights.is_on:
+		lights.turn_switch(true)
 	phase_control.stop()
 	melon_control.set_follow_player(false)
 
 
 
-func _on_hurt_kitty():	
-	phase_control.stop()
-	if max_phase <= phase:
-		phase = STATE.FINISHED
-	else:
-		phase_control.play("hurt")
+func _on_hurt_kitty():
 	health_bar.value -= 1
+	phase_control.stop()
+	if max_phase == phase:
+		phase+=1
+		boss_over()
+	elif max_phase > phase:
+		phase_control.play("hurt")
 	
 func _on_watermelon_finish():
 	next_phase()
@@ -166,6 +189,8 @@ func phases(i: int):
 	state = STATE.WAIT
 	
 	if i in kitty_phases:
+		if i == max_phase:
+			lights.turn_switch(false)
 		phase_control.play("phase_"+str(i))
 	if i in melon_phases:
 		melon_control.watermelon_phase(i)
@@ -177,3 +202,10 @@ func _on_trigger_intro_body_entered(body: Node3D) -> void:
 	if(body.name == "main_player"):
 		set_cutscene()
 		$trigger_intro.queue_free()
+
+func change_scene():
+	get_tree().change_scene_to_file(ending)
+
+
+func _on_ending_timer_timeout() -> void:
+	cutscenes.play("End")

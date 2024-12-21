@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crcwert6nxp2g"]
+[gd_scene load_steps=14 format=3 uid="uid://crcwert6nxp2g"]
 
 [ext_resource type="Script" path="res://assets/ui/menu_ui/pause_ui.gd" id="1_ep1w7"]
 [ext_resource type="Texture2D" uid="uid://dnqgvl4jjlhon" path="res://assets/ui/menu_ui/Sprites/pause.png" id="2_a5slh"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cm6vvkcuq6q2p" path="res://assets/ui/menu_ui/Sprites/selected.png" id="4_kwaf5"]
 [ext_resource type="Texture2D" uid="uid://qs4escgbtplx" path="res://assets/ui/menu_ui/Sprites/highlight.png" id="5_en7xp"]
 [ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="6_oo8hn"]
+[ext_resource type="PackedScene" uid="uid://d3fefj61clhik" path="res://assets/ui/menu_ui/volume.tscn" id="7_tect6"]
+[ext_resource type="PackedScene" uid="uid://b30ut57b2b3ea" path="res://assets/ui/menu_ui/hint_ui.tscn" id="8_q48tw"]
 
 [sub_resource type="Animation" id="Animation_2rcsh"]
 length = 0.001
@@ -83,7 +85,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.266667, 0.333333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(344, -453), Vector2(344, 166), Vector2(344, 111)]
+"values": [Vector2(344, -586), Vector2(344, 166), Vector2(344, 111)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -162,7 +164,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(344, 111), Vector2(344, -453)]
+"values": [Vector2(344, 111), Vector2(344, -586)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -218,7 +220,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ep1w7")
-metadata/_edit_vertical_guides_ = [576.0]
+metadata/_edit_vertical_guides_ = [576.0, 453.0]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -238,18 +240,19 @@ offset_bottom = 533.0
 
 [node name="TextureRect" type="TextureRect" parent="ui"]
 layout_mode = 0
-offset_left = -55.0
+offset_left = -138.0
 offset_top = -68.0
-offset_right = 521.0
+offset_right = 438.0
 offset_bottom = 499.0
+scale = Vector2(1.28, 1.2)
 texture = ExtResource("2_a5slh")
 
 [node name="resume" type="TextureButton" parent="ui"]
 process_mode = 3
 layout_mode = 0
-offset_left = 105.0
+offset_left = 103.0
 offset_top = 93.0
-offset_right = 150.0
+offset_right = 148.0
 offset_bottom = 106.0
 scale = Vector2(5.70208, 5.83775)
 texture_normal = ExtResource("3_b1guo")
@@ -269,19 +272,19 @@ text = "Resume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="settings" type="TextureButton" parent="ui"]
+[node name="hints" type="TextureButton" parent="ui"]
 process_mode = 3
 layout_mode = 0
-offset_left = 104.0
+offset_left = 103.0
 offset_top = 180.0
-offset_right = 149.0
+offset_right = 148.0
 offset_bottom = 193.0
 scale = Vector2(5.70208, 5.83775)
 texture_normal = ExtResource("3_b1guo")
 texture_pressed = ExtResource("4_kwaf5")
 texture_hover = ExtResource("5_en7xp")
 
-[node name="Label" type="Label" parent="ui/settings"]
+[node name="Label" type="Label" parent="ui/hints"]
 layout_mode = 0
 offset_left = 12.627
 offset_top = 2.56947
@@ -290,17 +293,17 @@ offset_bottom = 25.5695
 scale = Vector2(0.312169, 0.280678)
 theme_override_colors/font_color = Color(0.188235, 0.172549, 0.12549, 1)
 theme_override_fonts/font = ExtResource("6_oo8hn")
-text = "Settings"
+text = "Hints"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="quit" type="TextureButton" parent="ui"]
 process_mode = 3
 layout_mode = 0
-offset_left = 104.0
-offset_top = 268.0
-offset_right = 149.0
-offset_bottom = 281.0
+offset_left = 103.0
+offset_top = 375.0
+offset_right = 148.0
+offset_bottom = 388.0
 scale = Vector2(5.70208, 5.83775)
 texture_normal = ExtResource("3_b1guo")
 texture_pressed = ExtResource("4_kwaf5")
@@ -319,12 +322,76 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="volume" type="PanelContainer" parent="ui"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 46.0
+offset_top = 272.0
+offset_right = 419.0
+offset_bottom = 366.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/volume"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ui/volume/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Music" type="Label" parent="ui/volume/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.188235, 0.172549, 0.12549, 1)
+theme_override_fonts/font = ExtResource("6_oo8hn")
+theme_override_font_sizes/font_size = 30
+text = "Music"
+horizontal_alignment = 1
+
+[node name="Volume2" parent="ui/volume/VBoxContainer/HBoxContainer2" instance=ExtResource("7_tect6")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/volume/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 27
+
+[node name="sfx" type="Label" parent="ui/volume/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_oo8hn")
+theme_override_font_sizes/font_size = 30
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="Volume" parent="ui/volume/VBoxContainer/HBoxContainer" instance=ExtResource("7_tect6")]
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ui/volume/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Music" type="Label" parent="ui/volume/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.188235, 0.172549, 0.12549, 1)
+theme_override_fonts/font = ExtResource("6_oo8hn")
+theme_override_font_sizes/font_size = 30
+text = "????"
+horizontal_alignment = 1
+
+[node name="Volume2" parent="ui/volume/VBoxContainer/HBoxContainer3" instance=ExtResource("7_tect6")]
+layout_mode = 2
+bus_name = "hurt"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_erkps")
 }
 
+[node name="HintUi" parent="." instance=ExtResource("8_q48tw")]
+layout_mode = 1
+
 [connection signal="pressed" from="ui/resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="ui/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ui/hints" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="ui/quit" to="." method="_on_quit_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -7,6 +7,7 @@ extends Node3D
 @onready var body = $StaticBody3D
 @onready var anim = $AnimationPlayer
 @onready var majima = $Majima2
+@onready var audio = $AudioStreamPlayer3D
 
 @onready var x_velo = 0
 @onready var z_velo = 0
@@ -22,6 +23,7 @@ func _ready() -> void:
 	z_velo = randf_range(10,20)
 	majima.visible = false
 	majima.set_disabled()
+	audio.stream = load("res://assets/enemies/sound/majima-sensor.mp3")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -47,6 +49,7 @@ func drink():
 			SignalManager.hurt_signal.emit(10)
 		queue_free()
 	else:
+		audio.play()
 		anim.play("majima")
 	print("drink")
 

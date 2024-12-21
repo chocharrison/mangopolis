@@ -1,12 +1,11 @@
-[gd_scene load_steps=57 format=3 uid="uid://byb7rnewwt58q"]
+[gd_scene load_steps=54 format=3 uid="uid://byb7rnewwt58q"]
 
 [ext_resource type="Texture2D" uid="uid://hw16k2kihmj1" path="res://assets/ui/player_ui/sprites/note_ui.png" id="1_7luoq"]
 [ext_resource type="Script" path="res://assets/ui/player_ui/scripts/notebook_ui.gd" id="1_fdkw5"]
 [ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="2_qtcdi"]
 [ext_resource type="Texture2D" uid="uid://b6fuf5i32324i" path="res://assets/ui/player_ui/sprites/notebook.png" id="3_nnk4o"]
 [ext_resource type="Texture2D" uid="uid://baievmp5h2ojb" path="res://assets/ui/player_ui/sprites/bday-card.png" id="4_4tei3"]
-[ext_resource type="Shader" path="res://assets/ui/player_ui/scripts/book_text.gdshader" id="6_mm7j5"]
-[ext_resource type="Texture2D" uid="uid://ynqpy4bem0cq" path="res://notebooks/Trix.png" id="7_aaab1"]
+[ext_resource type="Texture2D" uid="uid://ynqpy4bem0cq" path="res://notebooks/Trix.png" id="6_1r41o"]
 [ext_resource type="AudioStream" uid="uid://drno22ackkjt1" path="res://assets/ui/player_ui/sounds/flip.mp3" id="8_8cxym"]
 [ext_resource type="AudioStream" uid="uid://cft7ynxtpo3hv" path="res://assets/ui/player_ui/sounds/get_note.mp3" id="9_48mdn"]
 [ext_resource type="AudioStream" uid="uid://qocg45xqnvsk" path="res://assets/ui/player_ui/sounds/collect.mp3" id="10_6tug4"]
@@ -243,22 +242,6 @@ animations = [{
 "name": &"open_front",
 "speed": 20.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxlda"]
-shader = ExtResource("6_mm7j5")
-shader_parameter/fov = 36.0
-shader_parameter/cull_back = true
-shader_parameter/y_rot = 10.0
-shader_parameter/x_rot = 24.27
-shader_parameter/inset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uup4d"]
-shader = ExtResource("6_mm7j5")
-shader_parameter/fov = 51.344
-shader_parameter/cull_back = false
-shader_parameter/y_rot = -4.37698
-shader_parameter/x_rot = 16.18
-shader_parameter/inset = 0.337
 
 [sub_resource type="Animation" id="Animation_gh02h"]
 length = 0.001
@@ -1393,20 +1376,19 @@ animation = &"open_front"
 [node name="text_x" type="Node2D" parent="Control"]
 visible = false
 rotation = 1.5708
-skew = 0.118682
+skew = 0.280998
 
 [node name="text_y" type="Node2D" parent="Control/text_x"]
 rotation = -1.5708
-skew = -0.0296706
+skew = 0.010472
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control/text_x/text_y"]
-material = SubResource("ShaderMaterial_uxlda")
-offset_left = 140.299
-offset_top = -10.5794
-offset_right = 652.299
-offset_bottom = 501.421
+offset_left = 164.213
+offset_top = -22.6056
+offset_right = 676.213
+offset_bottom = 489.395
 rotation = 0.123855
-scale = Vector2(1.1395, 1.16691)
+scale = Vector2(1.05357, 0.992737)
 
 [node name="SubViewport" type="SubViewport" parent="Control/text_x/text_y/SubViewportContainer"]
 transparent_bg = true
@@ -1426,49 +1408,27 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_qtcdi")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "the quick brown fox jumps over the lazy dog
-THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
-
-MOM! MOM! MOMMY! MOMMY! MA! MA! MAAAAAAAA!.....I peed. 
-
-BECAUSE IT'S YOUR BIRTHDAY OMGGGGGGG :D 
-
-Happy Birthday Mangooooo, I love you so heccing much and I hope today is an amazing day full of love, laughter, and yummers ❤️ Our friendship means the world to me and I hope one day we can celebrate the silliest party pupper's special day irl by being absolute gremlins 🙏
-
-
-MOM! MOM! MOMMY! MOMMY! MA! MA! MAAAAAAAA!.....I peed. 
-
-BECAUSE IT'S YOUR BIRTHDAY OMGGGGGGG :D 
-
-Happy Birthday Mangooooo, I love you so heccing much and I hope today is an amazing day full of love, laughter, and yummers ❤️ Our friendship means the world to me and I hope one day we can celebrate the silliest party pupper's special day irl by being absolute gremlins 🙏
-
-
-MOM! MOM! MOMMY! MOMMY! MA! MA! MAAAAAAAA!.....I peed. 
-
-BECAUSE IT'S YOUR BIRTHDAY OMGGGGGGG :D 
-
-Happy Birthday Mangooooo, I love you so heccing much and I hope today is an amazing day full of love, laughter, and yummers ❤️ Our friendship means the world to me and I hope one day we can celebrate the silliest party pupper's special day irl by being absolute gremlins 🙏"
+text = "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
 
 [node name="image_x" type="Node2D" parent="Control"]
 visible = false
 position = Vector2(548, 129)
 rotation = 1.54459
-skew = -0.329867
+skew = -0.410152
 
 [node name="image_y" type="Node2D" parent="Control/image_x"]
 position = Vector2(52.9443, -36.7484)
 rotation = -1.5708
-skew = -0.179769
+skew = -0.219911
 
 [node name="TextureRect" type="TextureRect" parent="Control/image_x/image_y"]
-material = SubResource("ShaderMaterial_uup4d")
-offset_left = 1.64847
-offset_top = -95.0278
-offset_right = 464.648
-offset_bottom = 490.972
+offset_left = 17.8328
+offset_top = 45.4413
+offset_right = 412.833
+offset_bottom = 465.441
 rotation = 0.0718426
 mouse_filter = 2
-texture = ExtResource("7_aaab1")
+texture = ExtResource("6_1r41o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1476,3 +1436,4 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"

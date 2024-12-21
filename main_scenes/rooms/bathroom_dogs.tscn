@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://4eb1u7gf2tmg"]
+[gd_scene load_steps=12 format=3 uid="uid://4eb1u7gf2tmg"]
 
 [ext_resource type="MeshLibrary" uid="uid://cgw2rfur2y0mr" path="res://assets/tiles/toilet/toilet.tres" id="2_ofvb6"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="3_vc3ma"]
 [ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="6_0cy37"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="6_aqx33"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="7_dko7k"]
+[ext_resource type="PackedScene" uid="uid://7tireusjdeel" path="res://assets/enemies/scenes/Richard.tscn" id="7_h1e71"]
 [ext_resource type="Texture2D" uid="uid://dgw564gv1bwus" path="res://assets/interactives/Sprites/Poo.png" id="8_gvsts"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h3w3a"]
@@ -92,18 +93,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.805, 7.71901, -11.0307)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(134.484, 0, 0, 0, 39.82, 0, 0, 0, 3, 28.4371, 8.47362, -13.8659)
+alpha_cut = 2
 texture = ExtResource("8_gvsts")
 
 [node name="Sprite3D2" type="Sprite3D" parent="."]
 transform = Transform3D(134.484, 0, 0, 0, 39.82, 0, 0, 0, 3, -40.4632, 8.47362, -0.339296)
+alpha_cut = 2
 texture = ExtResource("8_gvsts")
 
 [node name="Sprite3D3" type="Sprite3D" parent="."]
 transform = Transform3D(134.484, 0, 0, 0, 39.82, 0, 0, 0, 3, -33.5767, 8.47362, -11.0943)
+alpha_cut = 2
 texture = ExtResource("8_gvsts")
 
 [node name="Sprite3D4" type="Sprite3D" parent="."]
 transform = Transform3D(134.484, 0, 0, 0, 39.82, 0, 0, 0, 3, 45.4725, 9.32723, -33.5205)
+alpha_cut = 2
 texture = ExtResource("8_gvsts")
 
 [node name="notebooks" parent="." instance=ExtResource("6_0cy37")]
@@ -111,3 +116,12 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -55.6355, 11.9173, -16.7454)
 message_id = 14
 
 [node name="PauseUi" parent="." instance=ExtResource("7_dko7k")]
+
+[node name="Richard" parent="." instance=ExtResource("7_h1e71")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 52.1912, 13.6962, 7.06202)
+
+[node name="Richard2" parent="." instance=ExtResource("7_h1e71")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 6.2458, 13.6962, -2.1365)
+
+[node name="Richard3" parent="." instance=ExtResource("7_h1e71")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -44.3291, 13.6962, -2.1365)

@@ -1,5 +1,6 @@
 extends Control
 
+@export var notebooks = 20
 @onready var anime = get_node("AnimationPlayer")
 @onready var is_math = false
 @onready var pause = false
@@ -14,6 +15,8 @@ func _input(event: InputEvent) -> void:
 		if !pause:
 			paused()
 		else:
+			if $HintUi.visible:
+				$HintUi.disappear()
 			unpaused()
 
 func _is_math_in_session(val: bool):
@@ -31,7 +34,7 @@ func unpaused():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		"resume":
-			get_tree().paused = false 
+			get_tree().paused = false
 		"quit":
 			SaveStates.set_scene()
 			get_tree().change_scene_to_file("res://main_scenes/main_menu.tscn")
@@ -42,7 +45,10 @@ func _on_resume_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	print("boo")
+	if notebooks not in SaveStates.notebooks:
+		SaveStates.get_notebook(notebooks)
+		SignalManager.collected_notebooks_signal.emit()
+	$HintUi.appear()
 
 
 func _on_quit_pressed() -> void:

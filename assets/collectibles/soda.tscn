@@ -191,6 +191,8 @@ shape = SubResource("BoxShape3D_jw3ki")
 autostart = true
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="StaticBody3D"]
+shaded = true
+alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_jsnvn")
 frame = 4
 
@@ -206,6 +208,9 @@ libraries = {
 [node name="Majima2" parent="." instance=ExtResource("3_pdr08")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3751, 0)
 visible = false
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"sfx"
 
 [connection signal="body_entered" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="StaticBody3D/Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b3h62j5ibletg"
+path="res://.godot/imported/tree.mp3-d819a1146028944bcc5bdc1110ea3242.mp3str"
+
+[deps]
+
+source_file="res://assets/interactives/sound effects/tree.mp3"
+dest_files=["res://.godot/imported/tree.mp3-d819a1146028944bcc5bdc1110ea3242.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://pvs20xjpnh6s"]
+[gd_scene load_steps=29 format=3 uid="uid://pvs20xjpnh6s"]
 
+[ext_resource type="Script" path="res://main_scenes/rooms/park.gd" id="1_3bybw"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="1_juruf"]
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="2_ce57r"]
 [ext_resource type="MeshLibrary" uid="uid://bc8evx6026mwp" path="res://assets/tiles/outside/outside_assets.tres" id="3_gckft"]
@@ -11,19 +12,29 @@
 [ext_resource type="PackedScene" uid="uid://bf2vt0s7q84g1" path="res://assets/interactives/miki_tree.tscn" id="7_x5c77"]
 [ext_resource type="PackedScene" uid="uid://drgkvakly7xpw" path="res://assets/interactives/tree.tscn" id="8_x6kle"]
 [ext_resource type="PackedScene" uid="uid://joeirp3dht0x" path="res://main_scenes/houses/bathroom_boys.tscn" id="9_1yna0"]
+[ext_resource type="PackedScene" uid="uid://dhexihyy57tq6" path="res://assets/interactives/rock.tscn" id="9_10cid"]
 [ext_resource type="PackedScene" uid="uid://c42i7lylsy8ym" path="res://main_scenes/houses/bathroom_girls.tscn" id="9_t8dp5"]
+[ext_resource type="PackedScene" uid="uid://bjcg3y32pe2rc" path="res://assets/interactives/tire.tscn" id="10_1vg5o"]
 [ext_resource type="PackedScene" uid="uid://cbl4e3ok3aou1" path="res://main_scenes/houses/bathroom_nb.tscn" id="11_d0p6f"]
+[ext_resource type="Script" path="res://assets/interactives/scripts/toilet_paper.gd" id="12_0rcqn"]
 [ext_resource type="PackedScene" uid="uid://v5knvreefu2x" path="res://main_scenes/houses/bathroom_dogs.tscn" id="12_dlayt"]
 [ext_resource type="PackedScene" uid="uid://c0qepujyfx1tt" path="res://main_scenes/houses/shed.tscn" id="12_n4gt7"]
 [ext_resource type="PackedScene" uid="uid://bdxql18eunouq" path="res://main_scenes/houses/gamer_house.tscn" id="13_kyt5h"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="14_uyu4g"]
 [ext_resource type="PackedScene" uid="uid://4iks27a67iex" path="res://assets/interactives/dig.tscn" id="18_r8m35"]
 [ext_resource type="PackedScene" uid="uid://d4i8us5ii6f7a" path="res://assets/enemies/scenes/spawner.tscn" id="19_4cyjt"]
+[ext_resource type="PackedScene" uid="uid://c2je26hi30b0j" path="res://assets/enemies/scenes/majima.tscn" id="22_vkg4e"]
+[ext_resource type="PackedScene" uid="uid://ddhg1b3xoppy5" path="res://assets/collectibles/health_potions.tscn" id="23_fg35o"]
+[ext_resource type="PackedScene" uid="uid://7tireusjdeel" path="res://assets/enemies/scenes/Richard.tscn" id="26_yvw2u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4exh4"]
+size = Vector3(13.384, 14.5112, 17.8486)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hgw7x"]
-size = Vector3(365.314, 24.6222, 3.81544)
+size = Vector3(365.314, 24.6222, 12.0272)
 
 [node name="Park" type="Node3D"]
+script = ExtResource("1_3bybw")
 
 [node name="FSM_Players" parent="." instance=ExtResource("2_ce57r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.852, 7.26907, 23.3569)
@@ -72,8 +83,27 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 74.108, 1.90497, 101.746)
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 344.908, 0, -61.4756)
 
 [node name="notebooks" parent="objects" instance=ExtResource("7_lq3v2")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 344.673, 8.78015, -64.4793)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 344.673, 8.78015, -58.561)
 message_id = 11
+
+[node name="tree7" parent="objects" instance=ExtResource("8_x6kle")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 200.857, 1.8, -28.8094)
+
+[node name="rock" parent="objects" instance=ExtResource("9_10cid")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 223.233, 1.8, 59.1456)
+
+[node name="rock2" parent="objects" instance=ExtResource("9_10cid")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 101.538, 1.8, 22.5528)
+
+[node name="tire" parent="objects" instance=ExtResource("10_1vg5o")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 150.543, 2.34503, 111.978)
+
+[node name="toilet" type="Area3D" parent="objects"]
+script = ExtResource("12_0rcqn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="objects/toilet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.5714, 4.60083, -55.876)
+shape = SubResource("BoxShape3D_4exh4")
 
 [node name="houses" type="Node3D" parent="."]
 
@@ -101,32 +131,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.329, 1.8, 2.82334)
 [node name="gamerhouse" parent="houses" instance=ExtResource("13_kyt5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161.015, 1.79996, 176.714)
 
-[node name="invisible" type="StaticBody3D" parent="."]
+[node name="back" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 210.979)
+collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="back"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
 shape = SubResource("BoxShape3D_hgw7x")
 
-[node name="invisible2" type="StaticBody3D" parent="."]
+[node name="back2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -71.2933)
+collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="back2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.20305)
 shape = SubResource("BoxShape3D_hgw7x")
 
-[node name="invisible3" type="StaticBody3D" parent="."]
+[node name="side" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.78762, 0, 291.376)
+collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="side"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
 shape = SubResource("BoxShape3D_hgw7x")
 
-[node name="invisible4" type="StaticBody3D" parent="."]
+[node name="side2" type="StaticBody3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 363.391, 0, 291.376)
+collision_layer = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, 1.35509)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="side2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.834, 11.8111, -2.90286)
 shape = SubResource("BoxShape3D_hgw7x")
 
 [node name="door" parent="." instance=ExtResource("14_uyu4g")]
@@ -136,3 +170,61 @@ scene = "res://main_scenes/rooms/entrance.tscn"
 [node name="PauseUi" parent="." instance=ExtResource("1_juruf")]
 
 [node name="spawner" parent="." instance=ExtResource("19_4cyjt")]
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Majima" parent="Node3D" instance=ExtResource("22_vkg4e")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 239.966, 8.05928, -34.9528)
+
+[node name="Majima2" parent="Node3D" instance=ExtResource("22_vkg4e")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 75.1953, 8.05928, -63.5828)
+
+[node name="Majima3" parent="Node3D" instance=ExtResource("22_vkg4e")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 142.882, 8.05928, 45.2962)
+
+[node name="Majima4" parent="Node3D" instance=ExtResource("22_vkg4e")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 100.769, 8.05928, 121.714)
+
+[node name="pickups" type="Node3D" parent="."]
+
+[node name="dig" parent="pickups" instance=ExtResource("18_r8m35")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 203.862, 1.8, 98.2402)
+
+[node name="health_potion" parent="pickups" instance=ExtResource("23_fg35o")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 18.6825, 9.80608, 204.301)
+quantity = 3
+
+[node name="dig2" parent="pickups" instance=ExtResource("18_r8m35")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 346.001, 1.8, 197.807)
+
+[node name="dig_notebook" parent="pickups" instance=ExtResource("18_r8m35")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 88.7704, 1.8, 25.7043)
+is_notebook = true
+id_or_quantity = 19
+
+[node name="notebooks" parent="pickups" instance=ExtResource("7_lq3v2")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 14.8184, 4.39243, -57.3105)
+message_id = 5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.979, 21.6248, 7.50935)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="enemies" type="Node3D" parent="."]
+
+[node name="Richard" parent="enemies" instance=ExtResource("26_yvw2u")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 225.716, 7.92709, 69.0888)
+
+[node name="Richard2" parent="enemies" instance=ExtResource("26_yvw2u")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 160.771, 7.92709, 83.4192)
+
+[node name="Richard3" parent="enemies" instance=ExtResource("26_yvw2u")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 99.3515, 7.92709, 23.6969)
+
+[node name="Richard4" parent="enemies" instance=ExtResource("26_yvw2u")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 237.243, 7.92709, 112.413)
+
+[connection signal="body_entered" from="objects/toilet" to="objects/toilet" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://b6k24a7tsyakp"]
+[gd_scene load_steps=81 format=3 uid="uid://b6k24a7tsyakp"]
 
 [ext_resource type="Script" path="res://assets/enemies/scripts/unknown.gd" id="1_i414b"]
 [ext_resource type="Texture2D" uid="uid://c8qgg5ysa1e11" path="res://assets/enemies/sprites/unknown.png" id="2_4emou"]
@@ -41,6 +41,9 @@ node_connections = [&"output", 0, &"BlendSpace2D"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u76ju"]
 animation = &"enter"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2mrvf"]
+animation = &"enter_2"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rxefc"]
 animation = &"exit"
@@ -88,6 +91,8 @@ states/chase/node = SubResource("AnimationNodeBlendTree_p5ubj")
 states/chase/position = Vector2(590, 118)
 states/enter/node = SubResource("AnimationNodeAnimation_u76ju")
 states/enter/position = Vector2(384, 173)
+states/enter_2/node = SubResource("AnimationNodeAnimation_2mrvf")
+states/enter_2/position = Vector2(688, 162)
 states/exit/node = SubResource("AnimationNodeAnimation_rxefc")
 states/exit/position = Vector2(508, 161)
 states/idle/node = SubResource("AnimationNodeBlendTree_j1qy0")
@@ -401,6 +406,84 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_8mbol"]
+resource_name = "enter_2"
+length = 0.46667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("stab/collide/AnimatedSprite3D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle_right"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("stab/collide/AnimatedSprite3D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("smoke:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("smoke:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("stab/collide/AnimatedSprite3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_chase"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_47bn4"]
 resource_name = "exit"
 length = 0.46667
@@ -603,6 +686,7 @@ _data = {
 "chase_right": SubResource("Animation_2aak8"),
 "chase_up": SubResource("Animation_kikrb"),
 "enter": SubResource("Animation_5gele"),
+"enter_2": SubResource("Animation_8mbol"),
 "exit": SubResource("Animation_47bn4"),
 "idle_down": SubResource("Animation_mqhsx"),
 "idle_left": SubResource("Animation_e72yc"),
@@ -929,6 +1013,7 @@ alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_gffoo")
 animation = &"chase_left"
+frame = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_g1l2k")
@@ -937,6 +1022,7 @@ shape = SubResource("CapsuleShape3D_g1l2k")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_k7onv")
+bus = &"sfx"
 
 [connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

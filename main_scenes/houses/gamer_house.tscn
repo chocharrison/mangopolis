@@ -21,7 +21,7 @@ material = SubResource("StandardMaterial3D_xwfit")
 
 [node name="door" parent="." instance=ExtResource("1_klqy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.983, 0, -24.9189)
-scene = "res://main_scenes/rooms/house.tscn"
+scene = "res://main_scenes/rooms/gamer_room.tscn"
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="door"]
 transform = Transform3D(5.70715, 0, 0, 0, 12.2015, 0, 0, 0, 1, 0, 6.40677, 0.463196)

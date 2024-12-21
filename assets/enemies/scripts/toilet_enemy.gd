@@ -22,6 +22,10 @@ func _on_interact(panicked):
 		anime.play("close")
 		SignalManager.closed_majima.emit(toilet_number)
 
+func defeat():
+	
+	anime.play("defeat")
+
 func interuppted_majima():
 	anime.stop()
 	detect.set_deferred("disabled",true)

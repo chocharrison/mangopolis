@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4cpa187r6nqo"
+path="res://.godot/imported/punch.mp3-0b38c4daed7c4640d61a6794156cefed.mp3str"
+
+[deps]
+
+source_file="res://assets/players/sound effects/punch.mp3"
+dest_files=["res://.godot/imported/punch.mp3-0b38c4daed7c4640d61a6794156cefed.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,171 @@
+[gd_scene load_steps=12 format=3 uid="uid://b30ut57b2b3ea"]
+
+[ext_resource type="Script" path="res://assets/ui/menu_ui/hint_ui.gd" id="1_jw6q4"]
+[ext_resource type="Texture2D" uid="uid://c1bmkm3pt7csr" path="res://assets/ui/menu_ui/Sprites/hint_ui.png" id="1_pivpm"]
+[ext_resource type="Texture2D" uid="uid://bq8u0oe7by33a" path="res://assets/ui/menu_ui/Sprites/button.png" id="2_pj0g5"]
+[ext_resource type="Texture2D" uid="uid://cm6vvkcuq6q2p" path="res://assets/ui/menu_ui/Sprites/selected.png" id="3_b8bky"]
+[ext_resource type="Texture2D" uid="uid://qs4escgbtplx" path="res://assets/ui/menu_ui/Sprites/highlight.png" id="4_x1lbt"]
+[ext_resource type="FontFile" uid="uid://15y6dlwjteos" path="res://fonts/rpg-font.ttf" id="5_awgdd"]
+[ext_resource type="PackedScene" uid="uid://c74bvkkolyp7u" path="res://assets/ui/menu_ui/hintstscn.tscn" id="7_p34tg"]
+
+[sub_resource type="Animation" id="Animation_kgjxb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 647)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_smf0w"]
+resource_name = "appear"
+length = 0.16667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 647), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_ndxhn"]
+resource_name = "disappear"
+length = 0.16667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 647)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l0b5j"]
+_data = {
+"RESET": SubResource("Animation_kgjxb"),
+"appear": SubResource("Animation_smf0w"),
+"disappear": SubResource("Animation_ndxhn")
+}
+
+[node name="HintUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jw6q4")
+hint = ExtResource("7_p34tg")
+
+[node name="Control" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -102.0
+offset_right = 1151.0
+offset_bottom = 736.0
+texture = ExtResource("1_pivpm")
+
+[node name="back" type="TextureButton" parent="Control"]
+process_mode = 3
+layout_mode = 0
+offset_left = 449.0
+offset_top = 474.0
+offset_right = 494.0
+offset_bottom = 487.0
+scale = Vector2(5.70208, 5.83775)
+texture_normal = ExtResource("2_pj0g5")
+texture_pressed = ExtResource("3_b8bky")
+texture_hover = ExtResource("4_x1lbt")
+
+[node name="Label" type="Label" parent="Control/back"]
+layout_mode = 0
+offset_left = 12.627
+offset_top = 2.56947
+offset_right = 74.627
+offset_bottom = 25.5695
+scale = Vector2(0.312169, 0.280678)
+theme_override_colors/font_color = Color(0.188235, 0.172549, 0.12549, 1)
+theme_override_fonts/font = ExtResource("5_awgdd")
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 90.0
+offset_right = 947.0
+offset_bottom = 469.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 130
+
+[node name="Control" type="Control" parent="Control/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l0b5j")
+}
+
+[connection signal="pressed" from="Control/back" to="." method="_on_back_pressed"]

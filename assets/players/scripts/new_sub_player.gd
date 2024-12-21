@@ -115,6 +115,7 @@ func state_dig(delta):
 		set_sprite_direction(dig_position)
 		print(dig_position)
 		if global_position.distance_to(dig_position) <= DIG_DISTANCE:
+			velocity = Vector3(0,0,0)
 			anime.get("parameters/playback").travel("dig")
 			found_digging = true
 		else:

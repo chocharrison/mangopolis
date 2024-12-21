@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bb3l0k4dw367"]
+[gd_scene load_steps=26 format=3 uid="uid://bb3l0k4dw367"]
 
 [ext_resource type="MeshLibrary" uid="uid://cgw2rfur2y0mr" path="res://assets/tiles/toilet/toilet.tres" id="1_0f22h"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="2_et6lc"]
@@ -254,7 +254,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_3b1pn"]
 resource_name = "intro"
-length = 4.0
+length = 1.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -274,10 +274,10 @@ tracks/1/path = NodePath("Camera3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.7, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-63.1549, 12.4477, -4.31986), Vector3(-63.1549, 12.4477, -4.31986), Vector3(-40.7579, 9.88757, -14.3082)]
+"values": [Vector3(-40.7579, 9.88757, -14.3082)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -286,7 +286,7 @@ tracks/2/path = NodePath("toilets/Toilet_enemy4")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -300,11 +300,11 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4),
+"times": PackedFloat32Array(1.7),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"intro2"
+"method": &"intro3"
 }]
 }
 
@@ -554,6 +554,24 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_7n7kr"]
+resource_name = "intro_start"
+length = 2.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"intro"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8j06r"]
 _data = {
 "RESET": SubResource("Animation_yof2x"),
@@ -561,7 +579,8 @@ _data = {
 "intro": SubResource("Animation_3b1pn"),
 "intro2": SubResource("Animation_2amjc"),
 "intro3": SubResource("Animation_0yb84"),
-"intro_done": SubResource("Animation_xw5ht")
+"intro_done": SubResource("Animation_xw5ht"),
+"intro_start": SubResource("Animation_7n7kr")
 }
 
 [node name="BathroomNb" type="Node3D"]
@@ -731,6 +750,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node3D"]
+bus = &"music"
 
 [node name="Panel" type="Panel" parent="Node3D"]
 visible = false
@@ -746,7 +766,6 @@ offset_bottom = 40.0
 scale = Vector2(28.72, 16.24)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node3D/Panel"]
-visible = false
 position = Vector2(593, 300)
 scale = Vector2(4.125, 3.21484)
 texture = ExtResource("6_h6axy")
@@ -754,10 +773,10 @@ texture = ExtResource("6_h6axy")
 [node name="Label" type="Label" parent="Node3D/Panel"]
 visible = false
 layout_mode = 0
-offset_left = 261.0
-offset_top = 201.0
-offset_right = 938.0
-offset_bottom = 336.0
+offset_left = -223.0
+offset_top = -72.0
+offset_right = 454.0
+offset_bottom = 63.0
 theme_override_colors/font_color = Color(0.92505, 0.758606, 1.15514e-06, 1)
 theme_override_fonts/font = ExtResource("7_hmvfn")
 theme_override_font_sizes/font_size = 120
@@ -766,10 +785,10 @@ text = "GORO MAJIMA"
 [node name="Label2" type="Label" parent="Node3D/Panel"]
 visible = false
 layout_mode = 0
-offset_left = 26.0
-offset_top = 317.0
-offset_right = 1163.0
-offset_bottom = 476.0
+offset_left = -1733.0
+offset_top = 121.0
+offset_right = -596.0
+offset_bottom = 280.0
 theme_override_colors/font_color = Color(0.92549, 0.756863, 0, 1)
 theme_override_fonts/font = ExtResource("7_hmvfn")
 theme_override_font_sizes/font_size = 45

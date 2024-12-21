@@ -34,7 +34,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:previewRootNode/po0/pl0": {
-"generate/physics": true
+"generate/physics": true,
+"physics/layer": 3
 }
 }
 }

@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0i8ra003xwx3"]
+[gd_scene load_steps=13 format=3 uid="uid://db12ihkinyb81"]
 
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_7pxld"]
 [ext_resource type="MeshLibrary" uid="uid://cs2tlvou1di23" path="res://assets/tiles/house/house_assets.tres" id="2_73mvl"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="3_8cm6p"]
+[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="5_i7moi"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="5_w7vem"]
+[ext_resource type="Script" path="res://main_scenes/rooms/enemies.gd" id="6_fh3m2"]
+[ext_resource type="PackedScene" uid="uid://7tireusjdeel" path="res://assets/enemies/scenes/Richard.tscn" id="6_hl7ds"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1afwh"]
 size = Vector3(117.059, 24.6222, 3.81544)
@@ -15,6 +18,10 @@ albedo_color = Color(0.0157105, 0.129704, 0.103958, 1)
 material = SubResource("StandardMaterial3D_dpwy8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kw57c"]
+size = Vector3(1, 1, 2.69211)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8akhw"]
+size = Vector3(1, 4.46222, 104.315)
 
 [node name="GamerRoom" type="Node3D"]
 
@@ -30,42 +37,61 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
-[node name="invisible" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45353, 2.59544, 10.9527)
+[node name="back3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45353, 2.59544, 13.8719)
 collision_layer = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="invisible"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="back3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5271, 11.8111, 3.42062)
 shape = SubResource("BoxShape3D_1afwh")
 
-[node name="wall2" type="MeshInstance3D" parent="."]
+[node name="back" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45353, 2.59544, 10.9527)
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5271, 11.8111, 3.42062)
+shape = SubResource("BoxShape3D_1afwh")
+
+[node name="back2" type="MeshInstance3D" parent="."]
 transform = Transform3D(117.082, 0, 0, 0, 29.6421, 0, 0, 0, 1, 45.4318, 16.0913, -45.7387)
 mesh = SubResource("BoxMesh_ol8ux")
 
-[node name="invisible" type="StaticBody3D" parent="wall2"]
+[node name="back" type="StaticBody3D" parent="back2"]
 collision_layer = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall2/invisible"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="back2/back"]
+shape = SubResource("BoxShape3D_kw57c")
+
+[node name="wall6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.53779e-06, 0, 1, 0, 29.6421, 0, -58.0578, 0, -4.37114e-08, -14.6206, 16.0913, -16.8936)
+visible = false
+mesh = SubResource("BoxMesh_ol8ux")
+
+[node name="side" type="StaticBody3D" parent="wall6"]
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall6/side"]
 shape = SubResource("BoxShape3D_kw57c")
 
 [node name="wall3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.53779e-06, 0, 1, 0, 29.6421, 0, -58.0578, 0, -4.37114e-08, 103.073, 16.0913, -16.8936)
 mesh = SubResource("BoxMesh_ol8ux")
 
-[node name="invisible" type="StaticBody3D" parent="wall3"]
+[node name="side" type="StaticBody3D" parent="wall3"]
 collision_layer = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall3/invisible"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall3/side"]
 shape = SubResource("BoxShape3D_kw57c")
 
 [node name="wall4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.53779e-06, 0, 1, 0, 29.6421, 0, -58.0578, 0, -4.37114e-08, -13.3602, 16.0913, -16.8936)
 mesh = SubResource("BoxMesh_ol8ux")
 
-[node name="invisible" type="StaticBody3D" parent="wall4"]
+[node name="side" type="StaticBody3D" parent="wall4"]
 collision_layer = 7
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall4/invisible"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall4/side"]
 shape = SubResource("BoxShape3D_kw57c")
 
 [node name="wall5" type="MeshInstance3D" parent="."]
@@ -87,3 +113,75 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.7841, 2.94895, -44.8191)
 scene = "res://main_scenes/rooms/park.tscn"
 
 [node name="PauseUi" parent="." instance=ExtResource("3_8cm6p")]
+
+[node name="notebooks" parent="." instance=ExtResource("5_i7moi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 24.9582, 7.51921, -16.7158)
+message_id = 15
+
+[node name="notebooks2" parent="." instance=ExtResource("5_i7moi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 6.41197, 7.51921, 0.158045)
+message_id = 22
+
+[node name="enemies" type="Node3D" parent="."]
+script = ExtResource("6_fh3m2")
+
+[node name="wall3" type="MeshInstance3D" parent="enemies"]
+transform = Transform3D(-2.53779e-06, 0, 1, 0, 29.6421, 0, -58.0578, 0, -4.37114e-08, 73.1579, 16.0913, -16.8936)
+visible = false
+mesh = SubResource("BoxMesh_ol8ux")
+
+[node name="side" type="StaticBody3D" parent="enemies/wall3"]
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemies/wall3/side"]
+shape = SubResource("BoxShape3D_kw57c")
+disabled = true
+
+[node name="wall4" type="MeshInstance3D" parent="enemies"]
+transform = Transform3D(-2.53779e-06, 0, 1, 0, 29.6421, 0, -58.0578, 0, -4.37114e-08, 73.1579, 16.0913, -16.8936)
+visible = false
+mesh = SubResource("BoxMesh_ol8ux")
+
+[node name="side" type="StaticBody3D" parent="enemies/wall4"]
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemies/wall4/side"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.98)
+shape = SubResource("BoxShape3D_kw57c")
+disabled = true
+
+[node name="back2" type="MeshInstance3D" parent="enemies"]
+transform = Transform3D(117.082, 0, 0, 0, 29.6421, 0, 0, 0, 1, 45.4318, 16.0913, -46.9803)
+visible = false
+mesh = SubResource("BoxMesh_ol8ux")
+
+[node name="back" type="StaticBody3D" parent="enemies/back2"]
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemies/back2/back"]
+shape = SubResource("BoxShape3D_kw57c")
+
+[node name="enemies" type="Node3D" parent="enemies"]
+
+[node name="Richard" parent="enemies/enemies" instance=ExtResource("6_hl7ds")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 14.5297, 8.41327, 0)
+
+[node name="Richard2" parent="enemies/enemies" instance=ExtResource("6_hl7ds")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 33.2458, 8.41327, 0)
+
+[node name="Richard3" parent="enemies/enemies" instance=ExtResource("6_hl7ds")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 4.24179, 8.41327, -12.5238)
+
+[node name="Richard4" parent="enemies/enemies" instance=ExtResource("6_hl7ds")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 20.6913, 8.41327, -12.5238)
+
+[node name="Timer" type="Timer" parent="enemies"]
+
+[node name="Area3D" type="Area3D" parent="enemies"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemies/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5814, 1.73111, -40.7978)
+shape = SubResource("BoxShape3D_8akhw")
+
+[connection signal="timeout" from="enemies/Timer" to="enemies" method="_on_timer_timeout"]
+[connection signal="body_entered" from="enemies/Area3D" to="enemies" method="_on_area_3d_body_entered"]

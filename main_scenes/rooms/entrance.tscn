@@ -65,7 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.577, 11.8111, 1.35509)
 shape = SubResource("BoxShape3D_1vglb")
 
 [node name="dig" parent="." instance=ExtResource("4_nx713")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -31.2968, -0.115788, 16.9644)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -31.2968, 1.28431, 16.9644)
 is_notebook = true
 id_or_quantity = 3
 

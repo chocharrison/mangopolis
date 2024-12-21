@@ -9,6 +9,7 @@ extends Node3D
 @onready var anime = $AnimationPlayer
 @onready var player_pos = null
 @onready var sub_player_pos = null
+@onready var audio = $AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.interracted.connect(_on_interact)
@@ -20,8 +21,10 @@ func _process(delta: float) -> void:
 func _on_interact(panicked):
 	if is_interactive and is_near_coco and !panicked and !is_near_enemy:
 		print("door")
-		anime.play("door")
 		SaveStates.set_checkpoint(self.name,player_pos.position,sub_player_pos.position)
+		anime.play("door")
+		audio.stream = load("res://assets/interactives/sound effects/door.mp3")
+		audio.play()
 		SignalManager.show_interact_button_signal.emit(false)
 		
 func _on_clickable_body_entered(body: Node3D) -> void:
@@ -35,6 +38,7 @@ func _on_clickable_body_entered(body: Node3D) -> void:
 func _on_clickable_body_exited(body: Node3D) -> void:
 	if body.name == "main_player":
 		SignalManager.show_interact_button_signal.emit(false)
+		SignalManager.grunt_inactive.emit()
 		is_interactive = false
 
 

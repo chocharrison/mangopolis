@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://6qvmo5hbku7i" path="res://assets/interactives/plushie.tscn" id="4_ub5yu"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="5_vmer6"]
 [ext_resource type="MeshLibrary" uid="uid://bgx88pqbk3ymf" path="res://assets/tiles/assets.tres" id="6_r5b6k"]
-[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="7_yoequ"]
-[ext_resource type="PackedScene" uid="uid://vpkitu33rn0l" path="res://assets/enemies/scenes/locker.tscn" id="8_plsgr"]
+[ext_resource type="PackedScene" uid="uid://cx1qrjcxo0xiu" path="res://assets/ui/menu_ui/controls.tscn" id="8_8d7mc"]
+[ext_resource type="PackedScene" uid="uid://bnsnfl6d56wj" path="res://assets/collectibles/notebooks.tscn" id="8_gecmr"]
 
 [node name="bedroom" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0576439, -1.90735e-06, 0.0284271)
@@ -15,7 +15,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0576439, -1.90735e-06, 0.02
 [node name="Lobster" parent="." instance=ExtResource("1_g52xi")]
 
 [node name="FSM_Players" parent="." instance=ExtResource("2_an33x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.196, 8.3177, 44.664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88456, 8.3177, 29.5497)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9039, 17.1136, 24.5475)
@@ -46,14 +46,13 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="notebooks" parent="." instance=ExtResource("7_yoequ")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 7.57279, 0)
-message_id = 11
-
-[node name="Locker" parent="." instance=ExtResource("8_plsgr")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.44511, 11.185, 39.726)
-
 [node name="PauseUi" parent="." instance=ExtResource("3_u3hkx")]
+
+[node name="controls" parent="." instance=ExtResource("8_8d7mc")]
+
+[node name="notebooks" parent="." instance=ExtResource("8_gecmr")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.221107, 8.39629, 3.02793)
+message_id = 13
 
 [editable path="FSM_Players"]
 [editable path="FSM_Players/camera_controller"]

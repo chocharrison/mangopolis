@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://crigxfsd5fesj"]
+[gd_scene load_steps=43 format=3 uid="uid://crigxfsd5fesj"]
 
 [ext_resource type="Script" path="res://assets/boss/scripts/watermelon_manager.gd" id="1_cuwes"]
 [ext_resource type="Script" path="res://assets/boss/scripts/boss_room.gd" id="1_j3ek6"]
@@ -23,6 +23,60 @@ size = Vector3(109.904, 3.4668, 7.63965)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ed6mx"]
 size = Vector3(1, 109.871, 1)
+
+[sub_resource type="Animation" id="Animation_5dkwf"]
+resource_name = "End"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("intro/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_scene"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("intro:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("intro/ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_pte3o"]
 length = 0.001
@@ -277,6 +331,94 @@ tracks/20/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("intro/Panel/Sprite2D:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fnno7"]
+resource_name = "finish"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("intro/Panel/Label2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("intro/ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("intro/Panel/Sprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("intro/ColorRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_v8nrh"]
@@ -610,7 +752,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["[center] you may expect a certain mod.... BUT IT IS MOI... THE AWESOME MELON KITTY [/center]"]
+"values": ["[center] you may expect a certain cat... BUT IT IS MOI... THE AWESOME MELON KITTY [/center]"]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1147,7 +1289,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["[center] yes.. THATS RIGHT. I was the one to hire Mathima, and I HID the notebooks[/center]"]
+"values": ["[center] yes.. THATS RIGHT. I was the one to hire A and C, and I HID the notebooks[/center]"]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1570,7 +1712,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_832lq"]
 _data = {
+"End": SubResource("Animation_5dkwf"),
 "RESET": SubResource("Animation_pte3o"),
+"finish": SubResource("Animation_fnno7"),
 "intro": SubResource("Animation_v8nrh"),
 "intro_2": SubResource("Animation_wjs3y"),
 "intro_3": SubResource("Animation_2w886"),
@@ -1638,9 +1782,9 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_gd1f7"]
-resource_name = "phase_7"
-length = 40.0001
+[sub_resource type="Animation" id="Animation_o028a"]
+resource_name = "phase_11"
+length = 25.0001
 loop_mode = 1
 step = 1.0
 tracks/0/type = "method"
@@ -1650,35 +1794,23 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5, 10, 13, 15, 20, 23, 24, 25, 28),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 5, 7, 12, 14, 19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [5, 3],
-"method": &"add_unknown_chase"
+"args": [true],
+"method": &"follow_player"
 }, {
-"args": [16, 8],
-"method": &"add_unknown_chase"
-}, {
-"args": [12, 12],
-"method": &"add_unknown_chase"
-}, {
-"args": [20, 20],
-"method": &"add_unknown_charge"
-}, {
-"args": [12, 12],
-"method": &"add_unknown_chase"
-}, {
-"args": [5, 3],
-"method": &"add_unknown_chase"
+"args": [false],
+"method": &"follow_player"
 }, {
 "args": [true],
 "method": &"follow_player"
 }, {
-"args": [4, 12],
-"method": &"add_unknown_charge"
+"args": [false],
+"method": &"follow_player"
 }, {
-"args": [16, 8],
-"method": &"add_unknown_chase"
+"args": [true],
+"method": &"follow_player"
 }, {
 "args": [false],
 "method": &"follow_player"
@@ -1687,30 +1819,25 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("lights")
+tracks/1/path = NodePath("Melonkitty")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 28),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(4.84315, 5.89334, 11.8431, 12.8933, 18.8431, 20, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [false],
-"method": &"turn_switch"
+"args": [],
+"method": &"set_enter"
 }, {
-"args": [true],
-"method": &"turn_switch"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Melonkitty")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(29, 31, 39),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
+"args": [],
+"method": &"set_exit"
+}, {
+"args": [],
+"method": &"set_enter"
+}, {
+"args": [],
+"method": &"set_exit"
+}, {
 "args": [],
 "method": &"set_enter"
 }, {
@@ -1720,6 +1847,203 @@ tracks/2/keys = {
 "args": [],
 "method": &"set_exit"
 }]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("watermelon_manager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7, 14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"phase_11"
+}, {
+"args": [],
+"method": &"phase_11"
+}, {
+"args": [],
+"method": &"phase_11"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fdr2m"]
+resource_name = "phase_12"
+length = 40.0001
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2, 6, 10, 11, 14, 18, 20, 22, 26, 30, 39),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [5, 3],
+"method": &"add_unknown_chase"
+}, {
+"args": [16, 8],
+"method": &"add_unknown_chase"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_chase"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_charge"
+}, {
+"args": [2, 17],
+"method": &"add_unknown_chase"
+}, {
+"args": [5, 3],
+"method": &"add_unknown_chase"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_charge"
+}, {
+"args": [12, 6],
+"method": &"add_unknown_chase"
+}, {
+"args": [16, 8],
+"method": &"add_unknown_chase"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_charge"
+}, {
+"args": [],
+"method": &"next_phase"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lights")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"turn_switch"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("watermelon_manager")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 10, 17, 23, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"phase_12"
+}, {
+"args": [],
+"method": &"phase_12"
+}, {
+"args": [],
+"method": &"phase_12"
+}, {
+"args": [],
+"method": &"phase_12"
+}, {
+"args": [],
+"method": &"phase_12"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_awjo1"]
+resource_name = "phase_13"
+length = 32.0001
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 11, 21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [12, 12, true],
+"method": &"set_pos"
+}, {
+"args": [0, 0, false],
+"method": &"set_pos"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_charge"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_charge"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_charge"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("watermelon_manager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 8, 15, 22),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"phase_final"
+}, {
+"args": [],
+"method": &"phase_final"
+}, {
+"args": [],
+"method": &"phase_final"
+}, {
+"args": [],
+"method": &"phase_final"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Melonkitty")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 3, 19, 28),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_enter"
+}, {
+"args": [],
+"method": &"set_charge_start"
+}, {
+"args": [],
+"method": &"set_stab_start"
+}, {
+"args": [],
+"method": &"set_tired"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("phase_control")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_dqnah"]
@@ -1911,14 +2235,180 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_gd1f7"]
+resource_name = "phase_7"
+length = 40.0001
+loop_mode = 1
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 13, 15, 20, 23, 24, 25, 28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [5, 3],
+"method": &"add_unknown_chase"
+}, {
+"args": [16, 8],
+"method": &"add_unknown_chase"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_chase"
+}, {
+"args": [20, 20],
+"method": &"add_unknown_charge"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_chase"
+}, {
+"args": [5, 3],
+"method": &"add_unknown_chase"
+}, {
+"args": [true],
+"method": &"follow_player"
+}, {
+"args": [4, 12],
+"method": &"add_unknown_charge"
+}, {
+"args": [16, 8],
+"method": &"add_unknown_chase"
+}, {
+"args": [false],
+"method": &"follow_player"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lights")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 28),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"turn_switch"
+}, {
+"args": [true],
+"method": &"turn_switch"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Melonkitty")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(29, 31, 39),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_enter"
+}, {
+"args": [],
+"method": &"set_tired"
+}, {
+"args": [],
+"method": &"set_exit"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vpqsv"]
+resource_name = "phase_9"
+length = 40.0001
+loop_mode = 1
+step = 1.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 7, 12, 16, 21, 25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [12, 12, true],
+"method": &"set_pos"
+}, {
+"args": [0, 0, false],
+"method": &"set_pos"
+}, {
+"args": [20, 20],
+"method": &"add_unknown_charge"
+}, {
+"args": [20, 4],
+"method": &"add_unknown_charge"
+}, {
+"args": [4, 4],
+"method": &"add_unknown_charge"
+}, {
+"args": [4, 20],
+"method": &"add_unknown_charge"
+}, {
+"args": [12, 12],
+"method": &"add_unknown_charge"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("lights")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6, 28),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"turn_switch"
+}, {
+"args": [true],
+"method": &"turn_switch"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Melonkitty")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2, 31, 39),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_enter"
+}, {
+"args": [],
+"method": &"set_charge_start"
+}, {
+"args": [],
+"method": &"set_tired"
+}, {
+"args": [],
+"method": &"set_exit"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1nmb0"]
 _data = {
 "hurt": SubResource("Animation_0awbd"),
 "phase_1": SubResource("Animation_lhxo8"),
+"phase_11": SubResource("Animation_o028a"),
+"phase_12": SubResource("Animation_fdr2m"),
+"phase_13": SubResource("Animation_awjo1"),
 "phase_2": SubResource("Animation_dqnah"),
 "phase_4": SubResource("Animation_scjwn"),
 "phase_6": SubResource("Animation_vn14p"),
-"phase_7": SubResource("Animation_gd1f7")
+"phase_7": SubResource("Animation_gd1f7"),
+"phase_9": SubResource("Animation_vpqsv")
 }
 
 [node name="BossRoom" type="Node3D"]
@@ -1926,6 +2416,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.19892, 48.1184, 0, 54.6675)
 script = ExtResource("1_j3ek6")
 unknown_1 = ExtResource("2_1oxdh")
 unknown_2 = ExtResource("3_u2hi1")
+ending = "res://assets/ui/story/Ending.tscn"
 
 [node name="watermelon_manager" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.7682, 0, -45.0242)
@@ -1937,7 +2428,7 @@ watermelon = ExtResource("2_pugrm")
 [node name="player_timer" type="Timer" parent="watermelon_manager"]
 
 [node name="FSM_Players" parent="." instance=ExtResource("1_k1jxg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31697, 5.69819, 67.1313)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.31697, 5.69819, 144.408)
 
 [node name="trigger_intro" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50.7536)
@@ -2125,6 +2616,14 @@ collision_layer = 3
 transform = Transform3D(0.999995, 0, 0, 0, 1, -3.63798e-12, 0, -4.16334e-17, 1, -0.00485206, -56.916, -0.0013186)
 shape = SubResource("BoxShape3D_ed6mx")
 
+[node name="back" type="StaticBody3D" parent="stage"]
+transform = Transform3D(104.646, 0, 0, 0, -3.59986e-09, -33.404, 0, 0.0823553, -1.46015e-06, 2.16431, 15.2376, 160.447)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/back"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.63798e-12, 0, -2.77556e-17, 1, 0, -66.6858, 0)
+shape = SubResource("BoxShape3D_ed6mx")
+
 [node name="intro" type="Node3D" parent="."]
 visible = false
 
@@ -2178,10 +2677,10 @@ texture = ExtResource("8_onv4e")
 [node name="Label" type="Label" parent="intro/Panel"]
 visible = false
 layout_mode = 0
-offset_left = 286.0
-offset_top = 192.0
-offset_right = 920.0
-offset_bottom = 327.0
+offset_left = -86.0
+offset_top = 67.0
+offset_right = 548.0
+offset_bottom = 202.0
 theme_override_colors/font_color = Color(0, 0.92549, 0, 1)
 theme_override_fonts/font = ExtResource("10_d4jti")
 theme_override_font_sizes/font_size = 120
@@ -2190,9 +2689,9 @@ text = "MELON KITTY"
 [node name="Label2" type="Label" parent="intro/Panel"]
 visible = false
 layout_mode = 0
-offset_left = 26.0
+offset_left = -568.0
 offset_top = 317.0
-offset_right = 1163.0
+offset_right = 569.0
 offset_bottom = 476.0
 theme_override_colors/font_color = Color(0, 0.92549, 0, 1)
 theme_override_fonts/font = ExtResource("10_d4jti")
@@ -2203,6 +2702,7 @@ RIVAL OF MANGO PUPPY
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"music"
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
@@ -2265,13 +2765,17 @@ shadow_enabled = true
 omni_range = 78.8346
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="lights"]
+bus = &"sfx"
 
 [node name="PauseUi" parent="." instance=ExtResource("6_lor2e")]
 
 [node name="spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.4431, 0, -45.4791)
 
+[node name="Ending_timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="trigger_intro" to="." method="_on_trigger_intro_body_entered"]
+[connection signal="timeout" from="Ending_timer" to="." method="_on_ending_timer_timeout"]
 
 [editable path="FSM_Players"]
 [editable path="FSM_Players/camera_controller"]

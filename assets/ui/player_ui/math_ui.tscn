@@ -449,9 +449,9 @@ script = ExtResource("1_kjefr")
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 182.0
-offset_top = 667.0
+offset_top = 330.0
 offset_right = 970.0
-offset_bottom = 822.0
+offset_bottom = 485.0
 
 [node name="h" type="HBoxContainer" parent="math"]
 layout_mode = 0
@@ -497,6 +497,7 @@ theme_override_fonts/font = ExtResource("2_xo0m2")
 theme_override_font_sizes/font_size = 150
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0rugh")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0sadt")
+clear_button_enabled = true
 
 [node name="timer" type="ProgressBar" parent="math"]
 layout_mode = 0
@@ -512,4 +513,5 @@ libraries = {
 "": SubResource("AnimationLibrary_p7sh8")
 }
 
+[connection signal="text_changed" from="math/h/answer" to="." method="_on_answer_text_changed"]
 [connection signal="text_submitted" from="math/h/answer" to="." method="_on_answer_text_submitted"]

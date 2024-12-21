@@ -1,12 +1,12 @@
 extends Node3D
 
-const SPEED = 4.0
+const SPEED = 10
 
 @onready var anime = get_node("AnimationTree")
 @onready var soundeffects = get_node("AudioStreamPlayer")
 @onready var stab = $stab/collide
 @onready var detect = $detect/detect
-
+@onready var notebook_number = 2
 
 enum STATE {IDLE, CHASE, MATH, DISABLED, ENABLED}
 
@@ -19,6 +19,8 @@ enum STATE {IDLE, CHASE, MATH, DISABLED, ENABLED}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if notebook_number in SaveStates.notebooks:
+		queue_free()
 	SignalManager.math_success.connect(_on_result)
 
 
@@ -57,6 +59,8 @@ func set_chase():
 	#await wait(1)
 	state = STATE.CHASE
 	anime.get("parameters/playback").travel("chase")
+	soundeffects.stream = load("res://assets/enemies/sound/majima.mp3")
+	soundeffects.play()
 
 func set_disabled():
 	state = STATE.DISABLED
@@ -68,7 +72,7 @@ func set_found():
 	state = STATE.DISABLED
 	stab.disabled = false
 	anime.get("parameters/playback").travel("found")
-	soundeffects.stream = load("res://assets/enemies/sound/majima.mp3")
+	soundeffects.stream = load("res://assets/enemies/sound/majima-sensor.mp3")
 	soundeffects.play()
 
 func set_math():

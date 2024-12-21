@@ -8,11 +8,14 @@ extends Control
 @onready var answer = get_node("math/h/answer")
 @onready var math_anime = get_node("math_animation")
 @onready var timer_bar = get_node("math/timer")
-
+@onready var NumberLineEdit = $math/h/answer
 ##################################### default functions
+@onready var LineEditRegEx = RegEx.new()
+var old_text = ""
+
 
 func _ready() -> void:
-	pass
+	LineEditRegEx.compile("^[0-9-]*$")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -57,3 +60,11 @@ func set_timer(val: int):
 # Handles the player's input when they submit a math answer, emitting the answer as a signal
 func _on_answer_text_submitted(new_text: String) -> void:
 	SignalManager.submitted_math_answer.emit(new_text)
+
+
+func _on_answer_text_changed(new_text: String) -> void:
+	if LineEditRegEx.search(new_text):
+		old_text = str(new_text)
+	else:
+		NumberLineEdit.text = old_text
+		NumberLineEdit.set_caret_column(NumberLineEdit.text.length())

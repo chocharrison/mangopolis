@@ -2,16 +2,16 @@ extends Node3D
 
 @export var locker: PackedScene
 
-@export var notebook_arrays = [4,5,6,7]
+@export var notebook_arrays = [10,12]
 
 var rng = RandomNumberGenerator.new()
 var my_array = [1,2,3]
 var weights = PackedFloat32Array([2, 0.5, 0.25])
 
-var majimas = 4
-var health = 4
-var lobsters = 10
-var notebooks = 4
+var majimas = 6
+var health = 6
+var lobsters = 6
+var notebooks = 2
 
 var locker_array = []
 const offset = Vector3(-10,10.5,0)

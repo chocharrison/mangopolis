@@ -58,9 +58,7 @@ func set_state_unpaused():
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	#print(body.name)
 	if(body.is_in_group("items")):
-		print("yes")
 		var change = body.get_parent().get_node("AnimatedSprite3D")
 		change.modulate.a = 0.25
 

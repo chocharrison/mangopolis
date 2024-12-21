@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cq17bbe7caqup"
+path="res://.godot/imported/sprint.mp3-cecf0ec9f3f0e7c377edcba7ca08700e.mp3str"
+
+[deps]
+
+source_file="res://assets/players/sound effects/sprint.mp3"
+dest_files=["res://.godot/imported/sprint.mp3-cecf0ec9f3f0e7c377edcba7ca08700e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

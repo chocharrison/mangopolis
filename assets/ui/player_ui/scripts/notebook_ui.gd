@@ -12,7 +12,7 @@ extends Control
 @onready var text_visible = get_node("Control/text_x")
 @onready var images_visible = get_node("Control/image_x")
 
-
+@onready var bday_cards
 ##################################### variables
 @onready var page = 0
 @onready var link = ""
@@ -23,7 +23,7 @@ var state = STATE.CLOSE
 func _ready() -> void:
 	viewport.canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
 	set_note()
-
+	bday_cards = load_json()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -93,13 +93,10 @@ func notebook_control():
 		OS.shell_open(link)
 func load_json() -> Dictionary:
 	var json_file = FileAccess.open("res://notebooks/_messages.json",FileAccess.READ)
-	print(json_file)
 	var content = JSON.parse_string(json_file.get_as_text())
-	print(content)
 	return content
 
 func get_json_data(index: int):
-	var bday_cards = load_json()
 	images_visible.visible = false
 	text_visible.visible = false
 	print(bday_cards[str(index)]["message"])
@@ -107,7 +104,7 @@ func get_json_data(index: int):
 		var temp = FileAccess.open(bday_cards[str(index)]["message"],FileAccess.READ).get_as_text()
 		text.bbcode_text = str(page)+"\n\n"+temp+"\n \t-"+bday_cards[str(index)]["name"]
 	else:
-		text.txt = ""
+		text.text = ""
 	if(bday_cards[str(index)].has("image")):
 		images.texture = load(bday_cards[str(index)]["image"])
 	else:

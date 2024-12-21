@@ -102,7 +102,6 @@ func uninterrupted():
 func activate_notebook():
 	notebook_ui.activate_notebook()
 
-func _on_hurt_animation_finished(anim_name: StringName) -> void:
-	match anim_name:
-		"death":
-			get_tree().change_scene_to_file("res://main_scenes/hub.tscn")
+func dead():
+	SaveStates.set_scene()
+	get_tree().change_scene_to_file(SaveStates.get_scene())

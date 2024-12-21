@@ -23,7 +23,6 @@ enum STATE {IDLE, CHASE, DISABLED, ENABLED}
 
 
 func _ready() -> void:
-	set_enter()
 	SignalManager.math_in_session.connect(_in_math)
 
 func _physics_process(_delta: float) -> void:
@@ -62,8 +61,11 @@ func state_chase(_delta):
 		soundeffects.stream = load("res://assets/enemies/sound/stab.mp3")
 		soundeffects.play()
 
-func set_enter():
-	anime.get("parameters/playback").travel("enter")
+func set_enter(val: bool):
+	if val:
+		anime.get("parameters/playback").travel("enter_2")
+	else:
+		anime.get("parameters/playback").travel("enter")
 	remover.wait_time = waiter
 	remover.start()
 	soundeffects.stop()

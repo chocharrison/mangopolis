@@ -1,6 +1,6 @@
 extends Node3D
 
-const SPEED = 2
+const SPEED = 100
 
 var is_majima = false
 var is_health = false
@@ -96,7 +96,8 @@ func state_chase(_delta):
 		anime.play("chase")
 	print(global_position)
 	print(player.name)
-	global_position = global_position.lerp(player.global_position, SPEED * _delta)
+	var direction = (player.global_position - global_position).normalized()
+	global_position += direction * SPEED * _delta
 	if soundeffects.playing == false:
 		soundeffects.stream = load("res://assets/enemies/sound/metal.mp3")
 		soundeffects.play()
@@ -136,7 +137,7 @@ func set_disabled():
 func set_found():
 	state = STATE.DISABLED
 	anime.play("majima")
-	soundeffects.stream = load("res://assets/enemies/sound/locker.mp3")
+	soundeffects.stream = load("res://assets/enemies/sound/majima-sensor.mp3")
 	soundeffects.play()
 
 	

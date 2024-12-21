@@ -2,9 +2,9 @@ extends CharacterBody3D
 
 
 const SPEED = 60.0
-const STAB = 10
+const STAB = 15
 
-enum STATE {IDLE_WAIT,STAB,TIRED,CHARGE,IDLE,SMACKED,DISABLED,DEFAULT,CHARGE_START,ABOVE,STAB_START,ENTER}
+enum STATE {IDLE_WAIT,STAB,TIRED,CHARGE,IDLE,SMACKED,DISABLED,DEFAULT,CHARGE_START,ABOVE,STAB_START,ENTER,DEAD}
 @onready var state = STATE.IDLE
 
 var direction = Vector2(0,0) 
@@ -55,6 +55,10 @@ func handle_state_transitions(delta):
 	if state != STATE.CHARGE and state != STATE.STAB:
 		velocity = Vector3(0,0,0)
 	
+#	if state != STATE.TIRED:
+#			SignalManager.show_interact_button_signal.emit(false)
+#			is_interactive = false
+	
 	if player_in_range and is_not_timer:
 		SignalManager.hurt_signal.emit(10)
 		is_not_timer = false
@@ -97,6 +101,7 @@ func state_charge_start():
 		line.look_at(player.global_position+direction, Vector3.UP)
 
 func state_tired():
+	print(state)
 	set_sprite_direction_tired(player.global_position)
 	anime.get("parameters/playback").travel("tired")
 	
@@ -147,6 +152,8 @@ func set_above():
 
 func set_tired():
 	state = STATE.TIRED
+	print("the state is"+str(state))
+#	is_interactive = true
 
 func set_smacked():
 	state = STATE.SMACKED
@@ -154,8 +161,17 @@ func set_smacked():
 	soundeffects.stream = load("res://assets/boss/sound_effects/punch.mp3")
 	soundeffects.play()
 	set_sprite_direction(player.global_position)
+	player_in_range = false
 	SignalManager.hit_kitty.emit()
-	
+
+func set_ded():
+	state = STATE.DEAD
+	anime.get("parameters/playback").travel("dead")
+	soundeffects.stop()
+	soundeffects.stream = load("res://assets/boss/sound_effects/final_punch.mp3")
+	soundeffects.play()
+	player_in_range = false
+
 func set_stab_start():
 	state = STATE.STAB_START
 	anime.get("parameters/playback").travel("stab_start")
@@ -194,7 +210,7 @@ func _on_interact(panicked):
 
 func _on_stab_body_entered(body: Node3D) -> void:
 	if body.name == "main_player" and state != STATE.SMACKED:
-		if state == STATE.TIRED:
+		if state == STATE.TIRED or state == STATE.IDLE_WAIT:
 			SignalManager.show_interact_button_signal.emit(true)
 			is_interactive = true
 		else:

@@ -8,10 +8,7 @@ extends Control
 @onready var label = $"settings/TextureRect/baby_mode/Label"
 @onready var notebook = $"settings/TextureRect/notebooks"
 @onready var text_start = $ui/start/Label
-
-
-@onready var is_baby = false
-
+@onready var audio = $AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_tree().paused = false
@@ -25,7 +22,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if !audio.is_playing():
+		audio.stream = load("res://main_scenes/main_theme.mp3")
+		audio.play()
 
 
 func not_new_game():
@@ -54,10 +53,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 			get_tree().quit()
 		"start":
 			if SaveStates.get_scene() == null:
-				get_tree().change_scene_to_file("res://main_scenes/rooms/bedroom.tscn")
+				get_tree().change_scene_to_file("res://assets/ui/story/Starting.tscn")
 			else:
 				get_tree().change_scene_to_file(SaveStates.get_scene())
-			SaveStates.is_new_game = false
+
 			
 			
 func _on_settings_pressed() -> void:
@@ -84,12 +83,12 @@ func _on_reset_pressed() -> void:
 	new_game()
 
 func _on_baby_mode_pressed() -> void:
-	if !is_baby:
+	if !SaveStates.baby_mode:
 		label.text = "baby mode on"
-		is_baby = true
+		SaveStates.baby_mode = true
 	else:
 		label.text = "baby mode off"
-		is_baby = false
+		SaveStates.baby_mode = false
 
 
 func _on_start_pressed() -> void:

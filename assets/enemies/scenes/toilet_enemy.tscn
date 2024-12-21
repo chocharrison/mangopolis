@@ -1,9 +1,10 @@
-[gd_scene load_steps=55 format=3 uid="uid://cttb1pdqf2uer"]
+[gd_scene load_steps=57 format=3 uid="uid://cttb1pdqf2uer"]
 
 [ext_resource type="Script" path="res://assets/enemies/scripts/toilet_enemy.gd" id="1_wgy4f"]
 [ext_resource type="PackedScene" uid="uid://cvuw4gseph73f" path="res://assets/interactives/Sprites/toilet/Toilet.glb" id="2_c8ay8"]
 [ext_resource type="Texture2D" uid="uid://bdxlv7wm44vd6" path="res://assets/interactives/Sprites/Door.png" id="3_ijscj"]
 [ext_resource type="AudioStream" uid="uid://bks8lu6toyps6" path="res://assets/interactives/sound effects/metal.mp3" id="4_hquyj"]
+[ext_resource type="Texture2D" uid="uid://qmots4a5x732" path="res://assets/interactives/Sprites/Door_defeat.png" id="5_xu0vc"]
 [ext_resource type="Script" path="res://assets/enemies/scripts/majima_toilet.gd" id="7_304p4"]
 [ext_resource type="Texture2D" uid="uid://dduuyd37fqsdi" path="res://assets/interactives/Sprites/Toilet.png" id="7_w2d1w"]
 [ext_resource type="Texture2D" uid="uid://des4sxh20x7xa" path="res://assets/enemies/sprites/Smoke.png" id="8_wdjgi"]
@@ -101,6 +102,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(12.45, 7.8408, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("door/door:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ijscj")]
+}
 
 [sub_resource type="Animation" id="Animation_vbhgp"]
 resource_name = "close"
@@ -154,9 +167,73 @@ tracks/3/keys = {
 "values": [Vector3(0.909462, 7.8408, 1), Vector3(12.45, 7.8408, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_v35dm"]
+resource_name = "defeat"
+length = 1.33334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_hquyj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.6, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("door/door:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-5.135, 8, 6), Vector3(0, 8, 6)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("door/door:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.6, 0.933333, 0.966667, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.909462, 7.8408, 1), Vector3(12.45, 7.8408, 1), Vector3(12.45, 7.8408, 1), Vector3(12.45, 7.8408, 1), Vector3(15.7191, 10.3478, 1), Vector3(12.45, 7.8408, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("door/door:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_ijscj"), ExtResource("5_xu0vc")]
+}
+
 [sub_resource type="Animation" id="Animation_kixre"]
 resource_name = "intro"
-length = 4.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -164,7 +241,7 @@ tracks/0/path = NodePath("Node3D/seat:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2.7, 2.76667, 2.83333, 2.9, 2.96667, 3.03334, 3.1, 3.16667, 3.23334, 3.3, 3.36667, 3.43334),
+"times": PackedFloat32Array(1, 1.06667, 1.13333, 1.2, 1.26667, 1.33334, 1.4, 1.46667, 1.53334, 1.6, 1.66667, 1.73334),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 4.78735, 0), Vector3(0, 5.0572, 0), Vector3(0, 5.77652, 0), Vector3(0, 4.78735, 0)]
@@ -176,7 +253,7 @@ tracks/1/path = NodePath("Node3D/seat:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.7, 2.76667, 2.83334, 2.9, 2.96667, 3.03334, 3.1, 3.16667, 3.23334, 3.3, 3.36667, 3.43334),
+"times": PackedFloat32Array(1, 1.06667, 1.13334, 1.2, 1.26667, 1.33334, 1.4, 1.46667, 1.53334, 1.6, 1.66667, 1.73334),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(10.5405, 10.5408, 1), Vector3(10.5405, 11.1197, 1), Vector3(9.50323, 12.5423, 1), Vector3(10.5405, 10.5408, 1)]
@@ -188,7 +265,7 @@ tracks/2/path = NodePath("Node3D/seat:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.36667),
+"times": PackedFloat32Array(0, 1.66667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 2]
@@ -351,6 +428,7 @@ tracks/7/keys = {
 _data = {
 "RESET": SubResource("Animation_b0mrf"),
 "close": SubResource("Animation_vbhgp"),
+"defeat": SubResource("Animation_v35dm"),
 "intro": SubResource("Animation_kixre"),
 "majima": SubResource("Animation_0ni6n")
 }
@@ -948,6 +1026,9 @@ shape = SubResource("BoxShape3D_mle0p")
 
 [node name="door" type="Sprite3D" parent="door"]
 transform = Transform3D(12.45, 0, 0, 0, 7.8408, 0, 0, 0, 1, 0, 8, 6)
+shaded = true
+alpha_cut = 2
+texture_filter = 0
 texture = ExtResource("3_ijscj")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -965,12 +1046,15 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.63874, 0)
 volume_db = 26.988
 max_distance = 197.4
+bus = &"sfx"
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(0.67017, 0, 0, 0, 0.650041, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="seat" type="AnimatedSprite3D" parent="Node3D"]
 transform = Transform3D(10.5405, 0, 0, 0, 11.1197, 0, 0, 0, 1, 0, 5.0572, 0)
+shaded = true
+alpha_cut = 2
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_yokos")
 

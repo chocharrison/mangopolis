@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://67a50fcjb5u4"]
+
+[ext_resource type="Script" path="res://main_scenes/rooms/enemies_1.gd" id="1_mlije"]
+[ext_resource type="PackedScene" uid="uid://7tireusjdeel" path="res://assets/enemies/scenes/Richard.tscn" id="2_62vhm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_84oyw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bs3wm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80387"]
+size = Vector3(1, 6.14368, 49.2163)
+
+[node name="enemies_1" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.166, 0, 0)
+script = ExtResource("1_mlije")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.9355, 0, 0, 0, 32.5184, 0, 0, 0, 44.9149, 0, 11.316, 0)
+visible = false
+mesh = SubResource("BoxMesh_84oyw")
+
+[node name="side" type="StaticBody3D" parent="MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/side"]
+shape = SubResource("BoxShape3D_bs3wm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.9355, 0, 0, 0, 32.5184, 0, 0, 0, 44.9149, 173.322, 11.316, 0)
+visible = false
+mesh = SubResource("BoxMesh_84oyw")
+
+[node name="side" type="StaticBody3D" parent="MeshInstance3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/side"]
+shape = SubResource("BoxShape3D_bs3wm")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4409, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57184, 0.743408)
+shape = SubResource("BoxShape3D_80387")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="enemies" type="Node3D" parent="."]
+
+[node name="Richard" parent="enemies" instance=ExtResource("2_62vhm")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 88.7372, 10.9291, 12.6183)
+
+[node name="Richard2" parent="enemies" instance=ExtResource("2_62vhm")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 111.369, 11.1962, 0)
+
+[node name="Richard3" parent="enemies" instance=ExtResource("2_62vhm")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 143.353, 11.1962, 10.7877)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

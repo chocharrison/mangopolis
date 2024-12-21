@@ -579,6 +579,7 @@ disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_x3tqr")
+bus = &"sfx"
 
 [node name="line" type="Marker3D" parent="."]
 visible = false

@@ -48,3 +48,11 @@ signal closed_majima(val: int)
 signal save_health()
 
 signal fred_done(val: int)
+
+signal plushie_press(val: int)
+
+signal hint_update(val: int)
+
+signal grunt_dead()
+signal enemies_done()
+signal grunt_inactive()

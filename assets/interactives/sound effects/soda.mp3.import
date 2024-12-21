@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bevced55vells"
+path="res://.godot/imported/soda.mp3-8681fbd67762d04baabcd312fd747f59.mp3str"
+
+[deps]
+
+source_file="res://assets/interactives/sound effects/soda.mp3"
+dest_files=["res://.godot/imported/soda.mp3-8681fbd67762d04baabcd312fd747f59.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -114,6 +114,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0242615, 0, 0.0218811)
 shape = SubResource("BoxShape3D_q4wab")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="StaticBody3D"]
+shaded = true
+alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_q47rc")
 
 [node name="Area3D" type="Area3D" parent="."]

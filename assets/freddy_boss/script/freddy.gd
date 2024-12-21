@@ -229,6 +229,7 @@ func _on_stab_or_hit_body_entered(body: Node3D) -> void:
 			
 func _on_stab_or_hit_body_exited(body: Node3D) -> void:
 	player_in_range = false
+	is_interactive = false
 	SignalManager.show_interact_button_signal.emit(false)
 
 

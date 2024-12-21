@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var notebook_number = 4
+@export var notebook_number = 6
 
 @onready var fsm_player = $"../FSM_Players"
 
@@ -47,7 +47,7 @@ func _ready() -> void:
 	lights.turn_switch(true)
 	collision_wall.set_deferred("disabled",true)
 	if notebook_number in SaveStates.notebooks:
-		trigger.queue_free()
+		queue_free()
 	else:
 		fsm_player.state_health_timer_disable()
 		music.stream = load("res://assets/freddy_boss/sounds/intro_buildup.mp3")
@@ -68,6 +68,10 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if freddy.state == freddy.STATE.WALK:
+		if freddy.velocity.x < 0.5:
+			freddy.velocity.x = freddy.direction.x * freddy.STAB
+		if freddy.velocity.z < 0.5:
+			freddy.velocity.z = freddy.direction.z * freddy.STAB
 		freddy.global_position = freddy.global_position.lerp(freddy.target_pos, freddy.STAB * delta)
 		if freddy.global_position.distance_to(freddy.target_pos) < 8:
 			freddy.state = freddy.STATE.IDLE
@@ -194,6 +198,7 @@ func _on_hit():
 		
 	
 func boss_over():
+	
 	smack_timer.stop()
 	vuln_timer.stop()
 	walk_timer.stop()
@@ -203,13 +208,14 @@ func boss_over():
 	freddy.set_vuln()
 	freddy.set_dead()
 	anim.play("finish")
+	health_look.visible = false
 	Engine.time_scale = 0.25
 	await get_tree().create_timer(1).timeout
 	Engine.time_scale = 1
 	music.stop()
 	SaveStates.get_notebook(notebook_number)
 	SignalManager.collected_notebooks_signal.emit()
-	health_look.visible = false
+
 	collision_wall.set_deferred("disabled",true)
 
 func black_out(val: int):

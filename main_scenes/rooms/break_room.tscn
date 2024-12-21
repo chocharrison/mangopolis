@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwpx2i0cbxtca"]
+[gd_scene load_steps=11 format=3 uid="uid://cwpx2i0cbxtca"]
 
 [ext_resource type="PackedScene" uid="uid://bdghitkvcdl88" path="res://assets/players/scenes/fsm_players.tscn" id="1_fbtlp"]
 [ext_resource type="MeshLibrary" uid="uid://cs2tlvou1di23" path="res://assets/tiles/house/house_assets.tres" id="2_styyt"]
 [ext_resource type="PackedScene" uid="uid://crcwert6nxp2g" path="res://assets/ui/menu_ui/pause_ui.tscn" id="3_r72lb"]
 [ext_resource type="PackedScene" uid="uid://daov3645d55tu" path="res://assets/interactives/vending_machine.tscn" id="4_qvqdp"]
 [ext_resource type="PackedScene" uid="uid://b1dntipj4iict" path="res://assets/interactives/door.tscn" id="5_khorc"]
+[ext_resource type="PackedScene" uid="uid://7tireusjdeel" path="res://assets/enemies/scenes/Richard.tscn" id="6_7ec1a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1afwh"]
 size = Vector3(40.4696, 24.6222, 3.81544)
@@ -87,3 +88,6 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -6.50175, 7.86586, -40.922
 [node name="door" parent="." instance=ExtResource("5_khorc")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.8387, 2.94895, 4.72296)
 scene = "res://main_scenes/rooms/gamer_room.tscn"
+
+[node name="Richard" parent="." instance=ExtResource("6_7ec1a")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 13.0991, 8.5495, -14.7354)

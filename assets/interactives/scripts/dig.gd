@@ -29,13 +29,14 @@ func _digging_interupt():
 	
 func _after_dig():
 		print("digged")
-		if is_notebook:
-			SaveStates.get_notebook(id_or_quantity)
-			SignalManager.collected_notebooks_signal.emit()
-		else:
-			SignalManager.collected_healthpotions_signal.emit(id_or_quantity)
-		SignalManager.coco_in_dig_range_signal.emit(false)
-		queue_free()
+		if is_near_coco:
+			if is_notebook:
+				SaveStates.get_notebook(id_or_quantity)
+				SignalManager.collected_notebooks_signal.emit()
+			else:
+				SignalManager.collected_healthpotions_signal.emit(id_or_quantity)
+			SignalManager.coco_in_dig_range_signal.emit(false)
+			queue_free()
 
 # Detects when the main player enters the collection zone
 func _on_collect_body_entered(body: Node3D) -> void:

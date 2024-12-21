@@ -5,7 +5,7 @@ extends Node3D
 @onready var notebook_found = false
 @export var plush_num = 1
 
-@export var notebook_number = 6
+@export var notebook_number = 4
 
 
 var is_interactive = false
@@ -24,7 +24,8 @@ func _process(delta: float) -> void:
 func _on_interact(panicked):
 	if is_interactive:
 		anim.play("boop")
-		if !notebook_found and plush_num == 12:
+		SignalManager.plushie_press.emit(plush_num)
+		if !notebook_found and SaveStates.plushies.size() == 10:
 			notebook_found = true
 			SaveStates.get_notebook(notebook_number)
 			SignalManager.collected_notebooks_signal.emit()

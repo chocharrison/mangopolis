@@ -17,7 +17,7 @@ var move2D = []
 var follow = [false]
 var flagi = true
 var follows_player_throughout = false
-
+var flag = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,9 +46,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	watermelon_movement()
-	if follows_player_throughout and flagi:
-		follow_player_throughout_func()
+	if flag:
+		watermelon_movement()
+		if follows_player_throughout and flagi:
+			follow_player_throughout_func()
 		
 
 func set_follow_player(val: bool):
@@ -61,6 +62,9 @@ func watermelon_phase(i: int):
 		phase_5()
 	if i == 8:
 		phase_8()
+	if i == 10:
+		phase_10()
+	
 func set_follow_watermelon():
 	follow[0] = true
 	follow[1].set_spawn(false,10)
@@ -72,13 +76,17 @@ func drop_follow_watermelon(val: int):
 	follow[0] = false
 
 func set_watermelon(x: int,z: int,is_fast_fall: bool,damage: int,move: Vector2 = Vector2(0,0)):
-	array2D[x][z].set_spawn(is_fast_fall,damage)
-	array2D[x][z].position = original2D[x][z]
-	move2D[x][z] = move
+	if x <= array2D.size():
+		if z < array2D[x].size():
+			array2D[x][z].set_spawn(is_fast_fall,damage)
+			array2D[x][z].position = original2D[x][z]
+			move2D[x][z] = move
 
 func drop_watermelon( x:int, z:int,fall:int = 1):
-	move2D[x][z] = Vector2(0,0)
-	array2D[x][z].set_fall(fall)
+	if x < array2D.size():
+		if z < array2D[x].size():
+			move2D[x][z] = Vector2(0,0)
+			array2D[x][z].set_fall(fall)
 
 func wait(seconds: float) -> void:
 	timer.start(seconds)
@@ -90,15 +98,15 @@ func wait_player(seconds: float) -> void:
 
 func watermelon_movement():
 	for i in range(move2D.size()):
-		for j in range(move2D[i].size()):
-			if(move2D[i][j]!=Vector2.ZERO):
-				array2D[i][j].position.x += move2D[i][j].x * SPEED
-				array2D[i][j].position.z += move2D[i][j].y * SPEED
-				if(array2D[i][j].position.z > multiplier*maximum.z) or array2D[i][j].position.z < 0:
-					move2D[i][j].y = move2D[i][j].y * (-1)
+			for j in range(move2D[i].size()):
+				if(move2D[i][j]!=Vector2.ZERO):
+					array2D[i][j].position.x += move2D[i][j].x * SPEED
+					array2D[i][j].position.z += move2D[i][j].y * SPEED
+					if(array2D[i][j].position.z > multiplier*maximum.z) or array2D[i][j].position.z < 0:
+						move2D[i][j].y = move2D[i][j].y * (-1)
 
-				if(array2D[i][j].position.x > multiplier*maximum.x) or array2D[i][j].position.x < 0:
-					move2D[i][j].x = move2D[i][j].x * (-1)
+					if(array2D[i][j].position.x > multiplier*maximum.x) or array2D[i][j].position.x < 0:
+						move2D[i][j].x = move2D[i][j].x * (-1)
 	if(follow[0]):
 		follow[1].global_position.x = player.global_position.x
 		follow[1].global_position.z = player.global_position.z
@@ -107,6 +115,10 @@ func clear_watermelons():
 	for i in range(array2D.size()):
 		for j in range(array2D[i].size()):
 			array2D[i][j].queue_free()
+		for j in range(maximum.z):
+			array2D[i].pop_back()
+	for i in range(maximum.x):
+		array2D.pop_back()
 
 func follow_player_throughout_func():
 	flagi = 0
@@ -160,25 +172,30 @@ func phase_3():
 
 
 func phase_5():
-	for i in range(maximum.x):
-		set_watermelon(i,10,false,10,Vector2(randf_range(-1,1),randf_range(-1,1)))
-	await wait(5)
-	for i in range(maximum.x):
-		drop_watermelon(i,10)
-	await wait(2)
+	for k in range(3):
+		for i in range(maximum.x):
+			for j in range(5):
+				set_watermelon(i,j,false,10,Vector2(randf_range(-1,1),randf_range(-1,1)))
+		await wait(5)
+		for i in range(maximum.x):
+			for j in range(5):
+				drop_watermelon(i,j)
+		await wait(2)
 	SignalManager.finish_watermelon.emit()
 
 
 func phase_final():
 	for i in range(12):
-		for j in range(maximum.z):
-			set_watermelon(i,j,false,10)
-			set_watermelon(24-i-1,j,false,10)
+		if i < array2D.size():
+			for j in range(maximum.z):
+					set_watermelon(i,j,false,10)
+					set_watermelon(24-i-1,j,false,10)
 			await wait(0.1)
 		await wait(1)
 		for j in range(maximum.z):
-			drop_watermelon(i,j)
-			drop_watermelon(24-i-1,j)
+			if i < array2D.size():
+				drop_watermelon(i,j)
+				drop_watermelon(24-i-1,j)
 			await wait(0.1)
 		
 func phase_8():
@@ -200,8 +217,8 @@ func phase_8():
 		while j < maximum.z:
 			drop_watermelon(i,j)
 			j+=1
-		if i > maximum.x/2:
-			await wait(0.7)
+		if i > 20:
+			await wait(0.6)
 		else:
 			await wait(0.2)
 		i+=1
@@ -223,9 +240,79 @@ func phase_8():
 			drop_watermelon(j,i)
 			#await wait(0.1)
 			j+=1
-		if i > maximum.x/2:
-			await wait(0.7)
+		if i > 20:
+			await wait(0.6)
 		else:
 			await wait(0.2)
 		i+=1
 	SignalManager.finish_watermelon.emit()
+
+func phase_10():
+	for k in range(12):
+		for i in range(maximum.x):
+			if i%2 == 0:
+				for j in range(maximum.z):
+					if j%4==k%4:
+						set_watermelon(i,j,false,10)
+		await wait(0.5)
+
+		for i in range(maximum.x):
+			if i%2 == 0:
+				for j in range(maximum.z):
+					if j%4==k%4:
+						drop_watermelon(i,j)
+		
+		await wait(0.5)
+	wait(2)
+	
+	SignalManager.finish_watermelon.emit()
+
+
+func phase_11():
+	for i in range(maximum.x):
+		set_watermelon(i,10,false,10,Vector2(randf_range(-1,1),randf_range(-1,1)))
+	await wait(5)
+	for i in range(maximum.x):
+		drop_watermelon(i,10)
+	await wait(2)
+	
+func phase_12():
+	for i in range(maximum.x):
+		for j in [12,13]:
+			set_watermelon(i,j,false,10)
+		await wait(0.1)
+
+	for i in range(maximum.x):
+		for j in [12,13]:
+			drop_watermelon(i,j)
+	await wait(0.2)
+
+	for j in range(maximum.z):
+		for i in [12,13]:
+			set_watermelon(i,j,false,10)
+		await wait(0.1)
+
+	for j in range(maximum.z):
+		for i in [12,13]:
+			drop_watermelon(i,j)
+	await wait(0.2)
+	
+	
+	for j in range(maximum.z):
+		set_watermelon(j,j,false,10)
+		await wait(0.1)
+
+	for j in range(maximum.z):
+		drop_watermelon(j,j)
+	await wait(0.2)
+	
+	
+	
+	for j in range(maximum.z):
+		set_watermelon(j,24-j-1,false,10)
+		await wait(0.1)
+
+	for j in range(maximum.z):
+		drop_watermelon(j,24-j-1)
+	await wait(0.2)
+	

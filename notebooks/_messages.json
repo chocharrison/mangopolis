@@ -3,41 +3,48 @@
 	"1":
 		{
 		"name":"8BITNUGGETZ",
+		"hint":"Where do these lil guys come from ? This toilet is sus",
 		"message":"res://notebooks/nuggets.txt",
 		"image":"res://notebooks/nuggets.png",
 		},
 	"2":
 		{
 		"name":"Kira Kuroto",
+		"hint":"It's time to finally put an end with this guy who keeping bugging us",
 		"message":"res://notebooks/kira.txt",
 		},
 	"3":
 		{
 		"name":"Fedelol",
+		"hint":"I forgot I buried someone in the front",
 		"message":"res://notebooks/Fedelol.txt",
 		"image":"res://notebooks/Fedelol.png",
 		},
 	"4":
 		{
 		"name":"Kota",
+		"hint":"I wanna squish all these plushies so badly",
 		"message":"res://notebooks/Kota.txt",
 		"image":"res://notebooks/Kota.png",
 		},
 	"5":
 		{
 		"name":"Ayaneska",
+		"hint":"Where the lamb chops found ? Near the basement where the mod is ofcourse",
 		"message":"res://notebooks/Ayaneska.txt",
 		"image":"res://notebooks/Ayaneska.png",
 		},
 	"6":
 		{
 		"name":"Coyote",
+		"hint":"har har har har har har har",
 		"message":"res://notebooks/Coyote.txt",
 		"image":"res://notebooks/Coyote.png",
 		},
 	"7":
 		{
 		"name":"Miki",
+		"hint":"Someone's still hanging up there",
 		"message":"res://notebooks/Miki.txt",
 		"image":"res://notebooks/Miki.png",
 		},
@@ -51,6 +58,7 @@
 	"9":
 		{
 		"name":"Noby Grand",
+		"hint":"ugh, not my weakness",
 		"message":"res://notebooks/Noby_Grand.txt",
 		"link":"res://notebooks/Noby_Grand_link.txt",
 		"image":"res://notebooks/Noby_Grand.png",
@@ -59,6 +67,7 @@
 	"10":
 		{
 		"name":"Docleton",
+		"hint":"How did they end up in the locker ???",
 		"message":"res://notebooks/Docleton.txt",
 		"image":"res://notebooks/Docleton.png",
 		},
@@ -66,60 +75,84 @@
 	"11":
 		{
 		"name":"Kie",
+		"hint":"A certain shapeshifter has built her den somewhere here",
 		"message":"res://notebooks/Kie.txt",
 		"image":"res://notebooks/Kie.png",
 		},
 	"12":
 		{
 		"name":"Kai",
+		"hint":"How did they end up in the locker as well ???",
 		"message":"res://notebooks/Kai.txt",
 		"image":"res://notebooks/Kai.png",
 		},
 	"13":
 		{
 		"name":"German!",
+		"hint":"How can you forget this ??? It's litterally in front of you",
 		"message":"res://notebooks/German.txt",
 		"image":"res://notebooks/German.png",
 		},
 	"14":
 		{
 		"name":"Kaz",
+		"hint":"uh oh stinky",
 		"message":"res://notebooks/Kaz.txt",
 		"image":"res://notebooks/Kaz.png",
 		},
 	"15":
 		{
 		"name":"Sona Stargazer",
+		"hint":"uhhh I ran out of ideas, to the gamer room",
 		"message":"res://notebooks/Sona.txt",
 		"image":"res://notebooks/Sona.png",
 		},
 	"16":
 		{
 		"name":"Vee",
+		"hint":"The pond needs some piss in it",
 		"message":"res://notebooks/Vee.txt",
 		},
 	"17":
 		{
 		"name":"Vani",
+		"hint":"I will never run out of milk from her :3",
 		"message":"res://notebooks/Vani.txt",
 		"image":"res://notebooks/Vani.png",
 		},
 	"18":
 		{
 		"name":"Trix",
+		"hint":"I need to be hydrated, atleast 10 times, but where can I find it ?",
 		"message":"res://notebooks/Trix.txt",
 		"image":"res://notebooks/Trix.png",
 		},
 	"19":
 		{
 		"name":"La cumpleaños",
+		"hint":"Another mod buried under the park",
 		"message":"res://notebooks/Amber.txt",
 		"image":"res://notebooks/Amber.png",
 		},
 	"20":
 		{
 		"name":"Iantux",
+		"hint":"Please help, I need backseating, oh nvm",
 		"message":"res://notebooks/Iantux.txt",
 		"image":"res://notebooks/Iantux.png",
+		},
+	"21":
+		{
+		"name":"Anon",
+		"hint":"Man, Why do I keep feeding this guy with this?",
+		"message":"res://notebooks/Anon.txt",
+		"image":"res://notebooks/Anon.png",
+		},
+	"22":
+		{
+			"name":"Cookie",
+			"hint":"uhhh I ran out of ideas again",
+			"message":"res://notebooks/Cookie.txt",
+			"image":"res://notebooks/Cookie.png",
 		},
 }

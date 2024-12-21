@@ -425,6 +425,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_kr20b"]
 resource_name = "found"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -468,7 +469,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(2.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -742,15 +743,18 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_aqwl6")
 frame = 5
 
-[node name="stab" type="Area3D" parent="." groups=["items"]]
+[node name="stab" type="Area3D" parent="."]
 
 [node name="collide" type="CollisionShape3D" parent="stab"]
 shape = SubResource("CylinderShape3D_as4ed")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"music"
 
 [node name="majima" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.415257, 0)
+shaded = true
+alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_mqp53")
 
